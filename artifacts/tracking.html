@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Server-Side Conversion Tracking</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f8f7f4; color: #1a1a18; padding: 2rem; min-height: 100vh; }
+  .card { background: #fff; border: 0.5px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 2rem; max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 15px; font-weight: 500; color: #3d3d3a; margin-bottom: 4px; }
+  p.sub { font-size: 13px; color: #888780; margin-bottom: 1.5rem; }
+
+  /* SVG pre-built classes */
+  .t  { font-family: inherit; font-size: 14px; font-weight: 400; fill: #1a1a18; }
+  .ts { font-family: inherit; font-size: 12px; font-weight: 400; fill: #5f5e5a; }
+  .th { font-family: inherit; font-size: 14px; font-weight: 500; fill: #1a1a18; }
+
+  .c-gray  rect, .c-gray  circle { fill: #F1EFE8; stroke: #5F5E5A; }
+  .c-gray  .t, .c-gray  .ts, .c-gray  .th { fill: #2C2C2A; }
+  .c-gray  .ts { fill: #444441; }
+
+  .c-purple rect, .c-purple circle { fill: #EEEDFE; stroke: #534AB7; }
+  .c-purple .t, .c-purple .th { fill: #26215C; }
+  .c-purple .ts { fill: #3C3489; }
+
+  .c-teal  rect, .c-teal  circle { fill: #E1F5EE; stroke: #0F6E56; }
+  .c-teal  .t, .c-teal  .th { fill: #04342C; }
+  .c-teal  .ts { fill: #085041; }
+
+  .c-blue  rect, .c-blue  circle { fill: #E6F1FB; stroke: #185FA5; }
+  .c-blue  .t, .c-blue  .th { fill: #042C53; }
+  .c-blue  .ts { fill: #0C447C; }
+
+  .c-coral rect, .c-coral circle { fill: #FAECE7; stroke: #993C1D; }
+  .c-coral .t, .c-coral .th { fill: #4A1B0C; }
+  .c-coral .ts { fill: #712B13; }
+
+  .c-amber rect, .c-amber circle { fill: #FAEEDA; stroke: #854F0B; }
+  .c-amber .t, .c-amber .th { fill: #412402; }
+  .c-amber .ts { fill: #633806; }
+
+  .node { cursor: pointer; }
+  .node:hover rect, .node:hover circle { opacity: 0.85; }
+
+  .arr { fill: none; stroke: rgba(0,0,0,0.35); stroke-width: 1.5; }
+  .leader { fill: none; stroke: rgba(0,0,0,0.2); stroke-width: 0.5; stroke-dasharray: 3 3; }
+
+  @keyframes flow { to { stroke-dashoffset: -20; } }
+  .fl { stroke-dasharray: 6 4; animation: flow 0.65s linear infinite; }
+  @media (prefers-reduced-motion: reduce) { .fl { animation: none; } }
+
+  @media (prefers-color-scheme: dark) {
+    body { background: #1a1a18; }
+    .card { background: #23231f; border-color: rgba(255,255,255,0.1); }
+    h1 { color: #c2c0b6; }
+    p.sub { color: #888780; }
+    .t  { fill: #e8e6de; }
+    .ts { fill: #9c9a92; }
+    .th { fill: #e8e6de; }
+    .c-gray  rect { fill: #444441; stroke: #B4B2A9; }
+    .c-gray  .t, .c-gray .th { fill: #F1EFE8; }
+    .c-gray  .ts { fill: #D3D1C7; }
+    .c-purple rect { fill: #3C3489; stroke: #AFA9EC; }
+    .c-purple .t, .c-purple .th { fill: #EEEDFE; }
+    .c-purple .ts { fill: #CECBF6; }
+    .c-teal  rect { fill: #085041; stroke: #5DCAA5; }
+    .c-teal  .t, .c-teal  .th { fill: #E1F5EE; }
+    .c-teal  .ts { fill: #9FE1CB; }
+    .c-blue  rect { fill: #0C447C; stroke: #85B7EB; }
+    .c-blue  .t, .c-blue  .th { fill: #E6F1FB; }
+    .c-blue  .ts { fill: #B5D4F4; }
+    .c-coral rect { fill: #712B13; stroke: #F0997B; }
+    .c-coral .t, .c-coral .th { fill: #FAECE7; }
+    .c-coral .ts { fill: #F5C4B3; }
+    .c-amber rect { fill: #633806; stroke: #EF9F27; }
+    .c-amber .t, .c-amber .th { fill: #FAEEDA; }
+    .c-amber .ts { fill: #FAC775; }
+    .arr { stroke: rgba(255,255,255,0.3); }
+  }
+
+  .legend { display: flex; gap: 2rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 0.5px solid rgba(0,0,0,0.1); flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #888780; }
+  .legend-line { width: 24px; height: 2px; }
+  .legend-line.solid { background: rgba(0,0,0,0.3); }
+  .legend-line.dashed { background: linear-gradient(90deg, #1D9E75 50%, transparent 50%); background-size: 8px 2px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Server-side conversion tracking</h1>
+  <p class="sub">First-party data flow · E-commerce store → GA4, Meta Ads, Google Ads</p>
+
+  <svg width="100%" viewBox="0 0 690 600">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <text class="ts" x="85" y="28" text-anchor="middle">Customer</text>
+    <text class="ts" x="317" y="28" text-anchor="middle">E-commerce store</text>
+    <text class="ts" x="576" y="28" text-anchor="middle">Ad platforms</text>
+
+    <rect x="185" y="70" width="255" height="492" rx="10" fill="none" stroke="currentColor" stroke-opacity="0.15" stroke-width="0.8" stroke-dasharray="5 4"/>
+    <rect x="478" y="70" width="192" height="492" rx="10" fill="none" stroke="currentColor" stroke-opacity="0.15" stroke-width="0.8" stroke-dasharray="5 4"/>
+
+    <g class="node c-gray">
+      <rect x="20" y="90" width="130" height="56" rx="8" stroke-width="0.5"/>
+      <text class="th" x="85" y="111" text-anchor="middle" dominant-baseline="central">Browser</text>
+      <text class="ts" x="85" y="129" text-anchor="middle" dominant-baseline="central">visits &amp; converts</text>
+    </g>
+
+    <g class="node c-purple">
+      <rect x="205" y="90" width="215" height="56" rx="8" stroke-width="0.5"/>
+      <text class="th" x="312" y="111" text-anchor="middle" dominant-baseline="central">Thorntons.com</text>
+      <text class="ts" x="312" y="129" text-anchor="middle" dominant-baseline="central">page event collection</text>
+    </g>
+
+    <text class="ts" x="85" y="163" text-anchor="middle" style="fill:#854F0B">× blocked by ad blockers / ITP</text>
+
+    <rect x="192" y="318" width="240" height="200" rx="10" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.3"/>
+    <text class="ts" x="194" y="312" text-anchor="start" style="fill:#0F6E56; font-weight:500">Leaf Signal</text>
+
+    <g class="node c-teal">
+      <rect x="205" y="325" width="215" height="56" rx="8" stroke-width="0.5"/>
+      <text class="th" x="312" y="346" text-anchor="middle" dominant-baseline="central">signal.thorntons.com</text>
+      <text class="ts" x="312" y="364" text-anchor="middle" dominant-baseline="central">first-party data layer</text>
+    </g>
+
+    <g class="node c-blue">
+      <rect x="492" y="90" width="168" height="50" rx="8" stroke-width="0.5"/>
+      <text class="th" x="576" y="110" text-anchor="middle" dominant-baseline="central">GA4</text>
+      <text class="ts" x="576" y="127" text-anchor="middle" dominant-baseline="central">Measurement Protocol</text>
+    </g>
+
+    <g class="node c-coral">
+      <rect x="492" y="212" width="168" height="50" rx="8" stroke-width="0.5"/>
+      <text class="th" x="576" y="232" text-anchor="middle" dominant-baseline="central">Meta Ads</text>
+      <text class="ts" x="576" y="249" text-anchor="middle" dominant-baseline="central">Conversions API</text>
+    </g>
+
+    <g class="node c-amber">
+      <rect x="492" y="352" width="168" height="50" rx="8" stroke-width="0.5"/>
+      <text class="th" x="576" y="372" text-anchor="middle" dominant-baseline="central">Google Ads</text>
+      <text class="ts" x="576" y="389" text-anchor="middle" dominant-baseline="central">Enhanced Conversions</text>
+    </g>
+
+    <path d="M 150 118 L 205 118" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <path d="M 312 146 L 312 325" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <path d="M 85 146 L 85 588 L 680 588 L 680 115 L 660 115" fill="none" stroke="rgba(29,158,117,0.3)" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round" marker-end="url(#arrow)"/>
+    <path d="M 85 146 L 85 588 L 680 588 L 680 237 L 660 237" fill="none" stroke="rgba(29,158,117,0.3)" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round" marker-end="url(#arrow)"/>
+    <path d="M 85 146 L 85 588 L 680 588 L 680 377 L 660 377" fill="none" stroke="rgba(29,158,117,0.3)" stroke-width="1.5" stroke-dasharray="2 5" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+    <text class="ts" x="317" y="236" text-anchor="start" dominant-baseline="central">server event</text>
+
+    <path d="M 312 381 L 312 435" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text class="ts" x="312" y="402" text-anchor="middle" style="fill:#0F6E56">order ID · PII · session data</text>
+
+    <g class="node c-teal">
+      <rect x="205" y="435" width="215" height="56" rx="8" stroke-width="0.5"/>
+      <text class="th" x="312" y="456" text-anchor="middle" dominant-baseline="central">Data Processing</text>
+      <text class="ts" x="312" y="474" text-anchor="middle" dominant-baseline="central">clean · enrich · hash PII</text>
+    </g>
+
+    <text class="ts" x="312" y="505" text-anchor="middle" style="fill:#0F6E56">deduplicate · normalise · SHA-256 PII</text>
+
+    <path class="fl" d="M 420 448 L 450 448 L 450 115 L 492 115" fill="none" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <path class="fl" d="M 420 463 L 459 463 L 459 237 L 492 237" fill="none" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <path class="fl" d="M 420 478 L 450 478 L 450 377 L 492 377" fill="none" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </svg>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-line solid"></div>
+      Client-side request (weak signal)
+    </div>
+    <div class="legend-item">
+      <div class="legend-line dashed"></div>
+      Server-to-server API (100% signal)
+    </div>
+  </div>
+</div>
+</body>
+</html>
