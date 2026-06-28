@@ -9,7 +9,13 @@ assets/
   font/
   icons/
   logos/
+book/
+DESIGN.md
 ```
+
+`DESIGN.md` contains the first design-system foundation notes, starting with Leaf's core colour palette and implementation token names.
+
+`book/` contains an HTML-based brand book for visually reviewing the design foundations and brand assets together.
 
 ### Font
 
@@ -18,6 +24,8 @@ assets/
 Current file:
 
 - `MonaSans-VariableFont_wdth,wght.ttf`
+
+Mona Sans is the main font for product, UI, navigation, labels, body copy, landing pages, and most brand communication. Source Serif 4 is an optional editorial serif for blogs, long-form content, banners, marketing communications, pull quotes, and selected highlight moments. Load both fonts from Google Fonts for online usage, using Source Serif 4 `800` for headlines and italic `500` for quotes.
 
 ### Icons
 
@@ -81,11 +89,14 @@ assets/logos/_ leaf/logo/
 
 This repo includes `AGENTS.md` for agent-facing instructions. `CLAUDE.md` is a symlink to the same file so Claude-compatible tooling reads the same guidance.
 
+## Brand Book
+
+Open `book/index.html` in a browser to view the current HTML brand book prototype.
+
 ## Future Foundations
 
 This repo is expected to grow beyond static assets. Good next additions include:
 
-- Brand color tokens and usage rules.
 - Typography guidance for product and marketing contexts.
 - Logo clear-space, sizing, and background guidance.
 - Icon selection and implementation rules.

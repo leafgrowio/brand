@@ -6,7 +6,7 @@ This is the Leaf brand repository. Treat it as the canonical source for Leaf des
 
 This repo currently stores the brand primitives Leaf uses across products, marketing, sales, and internal materials:
 
-- `assets/font/` - Mona Sans, the current primary business font.
+- `assets/font/` - Mona Sans local source asset. Mona is the default system font; Source Serif 4 is an optional editorial/highlight serif loaded from Google Fonts where used.
 - `assets/icons/` - icon exports grouped by context, color treatment, and format.
 - `assets/logos/` - logos for Leaf and its related surfaces.
 
@@ -18,8 +18,10 @@ Over time, this repo should become the source of truth for reusable foundations 
 - Prefer SVG for implementation guidance and PNG for contexts that require raster assets.
 - Keep paired SVG and PNG exports together when adding or reorganizing icon or logo assets.
 - Preserve existing asset naming conventions unless the task is specifically about cleanup or normalization.
-- Do not treat `.DS_Store` files as brand assets. The repo ignores them, but some are currently present in asset folders.
+- Do not treat `.DS_Store` files as brand assets. The repo ignores them, and they should not be committed.
 - Keep documentation aligned with the actual folder structure. If assets move, update `README.md` and this file together.
+- Keep `DESIGN.md` aligned with any design foundation changes such as colour, typography, logo usage, icon guidance, or tokens.
+- Keep `book/` aligned with `DESIGN.md` when visual design foundations land. Preview-only explorations in `book/` do not need to be promoted to canonical docs until the user decides they have landed.
 - Be careful with bulk operations under `assets/icons/`; the icon library is large and grouped by context.
 - Before making broad edits, inventory the target folder with `find` or `rg --files` and work on a narrow subset.
 

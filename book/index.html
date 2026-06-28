@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leaf Brand Book</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand-mark" href="#top" aria-label="Leaf brand book home">
+        <img src="../assets/logos/_%20leaf/logo/svg/Leaf%20-%20Orange.svg" alt="Leaf" />
+      </a>
+      <nav class="site-nav" aria-label="Brand book sections">
+        <a href="#colour">Colour</a>
+        <a href="#typography">Type</a>
+        <a href="#logos">Logos</a>
+        <a href="#icons">Icons</a>
+        <a href="#applications">Applications</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero-section">
+        <div class="hero-copy">
+          <p class="eyebrow">Leaf design foundations</p>
+          <h1>Brand book</h1>
+          <p class="hero-text">
+            A visual reference for Leaf's colour, typography, logos, iconography, and emerging
+            design-system foundations.
+          </p>
+        </div>
+        <div class="hero-board" aria-label="Leaf palette preview">
+          <div class="tone-strip coral"></div>
+          <div class="tone-strip aqua"></div>
+          <div class="tone-strip stone"></div>
+          <div class="tone-strip ink"></div>
+        </div>
+      </section>
+
+      <section class="content-section intro-grid" aria-label="Foundation overview">
+        <div>
+          <p class="section-kicker">Current source</p>
+          <h2>Built from the assets in this repository.</h2>
+        </div>
+        <p>
+          This HTML book reads from the same asset folders used by the business: Mona Sans in
+          `assets/font`, logos in `assets/logos`, and context-led icons in `assets/icons`.
+        </p>
+      </section>
+
+      <section class="content-section" id="colour">
+        <div class="section-heading">
+          <p class="section-kicker">01</p>
+          <h2>Colour</h2>
+          <p>
+            Coral is the brand signal. Stone tones create the default environment. Aqua is a
+            supporting highlight. Black and White remain utility anchors while we explore more
+            branded everyday neutrals.
+          </p>
+        </div>
+
+        <div class="palette-grid">
+          <article class="swatch swatch-large coral-swatch">
+            <span>Core brand</span>
+            <h3>Coral</h3>
+            <p>#FB5E48</p>
+            <small>RGB 251 94 72</small>
+          </article>
+          <article class="swatch light-stone-swatch">
+            <span>Background</span>
+            <h3>Light Stone</h3>
+            <p>#F9F4F1</p>
+            <small>RGB 249 244 241</small>
+          </article>
+          <article class="swatch stone-swatch">
+            <span>Surface</span>
+            <h3>Stone</h3>
+            <p>#F2E8E1</p>
+            <small>RGB 242 232 225</small>
+          </article>
+          <article class="swatch white-swatch">
+            <span>Utility</span>
+            <h3>White</h3>
+            <p>#FFFFFF</p>
+            <small>RGB 255 255 255</small>
+          </article>
+          <article class="swatch black-swatch">
+            <span>Utility</span>
+            <h3>Black</h3>
+            <p>#000000</p>
+            <small>RGB 0 0 0</small>
+          </article>
+          <article class="swatch grey-swatch">
+            <span>Secondary text</span>
+            <h3>Warm Grey</h3>
+            <p>#656565</p>
+            <small>RGB 101 101 101</small>
+          </article>
+          <article class="swatch aqua-swatch">
+            <span>Highlight</span>
+            <h3>Aqua</h3>
+            <p>#7AD8CE</p>
+            <small>RGB 122 216 206</small>
+          </article>
+        </div>
+
+        <div class="secondary-palette">
+          <div class="section-heading">
+            <p class="section-kicker">Secondary palette</p>
+            <h3>For moments that need range, rhythm, or categorical colour.</h3>
+            <p>
+              These colours extend the primary palette for campaigns, data visualization, badges,
+              illustrations, and community moments. They should support Coral, Stone, and Aqua,
+              not replace them as the core Leaf signal.
+            </p>
+          </div>
+
+          <div class="secondary-grid">
+            <article class="swatch marigold-swatch">
+              <span>Warm accent</span>
+              <h3>Marigold</h3>
+              <p>#EFB75A</p>
+              <small>RGB 239 183 90</small>
+            </article>
+            <article class="swatch butter-swatch">
+              <span>Warm accent</span>
+              <h3>Butter</h3>
+              <p>#F6E49D</p>
+              <small>RGB 246 228 157</small>
+            </article>
+            <article class="swatch apricot-swatch">
+              <span>Warm accent</span>
+              <h3>Apricot</h3>
+              <p>#F4A38F</p>
+              <small>RGB 244 163 143</small>
+            </article>
+            <article class="swatch rosehip-swatch">
+              <span>Expressive accent</span>
+              <h3>Rosehip</h3>
+              <p>#D96B7C</p>
+              <small>RGB 217 107 124</small>
+            </article>
+            <article class="swatch sage-swatch">
+              <span>Fresh accent</span>
+              <h3>Sage</h3>
+              <p>#DCE8C4</p>
+              <small>RGB 220 232 196</small>
+            </article>
+            <article class="swatch laurel-swatch">
+              <span>Fresh accent</span>
+              <h3>Laurel</h3>
+              <p>#8EBB91</p>
+              <small>RGB 142 187 145</small>
+            </article>
+            <article class="swatch eucalyptus-swatch">
+              <span>Calm accent</span>
+              <h3>Eucalyptus</h3>
+              <p>#9FC7BC</p>
+              <small>RGB 159 199 188</small>
+            </article>
+            <article class="swatch harbor-swatch">
+              <span>Calm accent</span>
+              <h3>Harbor</h3>
+              <p>#4FA3A6</p>
+              <small>RGB 79 163 166</small>
+            </article>
+            <article class="swatch heather-swatch">
+              <span>Cool accent</span>
+              <h3>Heather</h3>
+              <p>#AAA2D4</p>
+              <small>RGB 170 162 212</small>
+            </article>
+            <article class="swatch mulberry-swatch">
+              <span>Deep accent</span>
+              <h3>Mulberry</h3>
+              <p>#5C263D</p>
+              <small>RGB 92 38 61</small>
+            </article>
+          </div>
+        </div>
+
+        <div class="usage-grid">
+          <article class="rule-panel">
+            <h3>Use this</h3>
+            <p>Black text on Coral, Aqua, and most secondary colours. Warm Grey secondary text on Stone and Light Stone.</p>
+          </article>
+          <article class="rule-panel">
+            <h3>Watch this</h3>
+            <p>White text on Coral is display-only. Use White text on Mulberry; keep Rosehip as an accent rather than a body-copy field.</p>
+          </article>
+          <article class="rule-panel">
+            <h3>Explore next</h3>
+            <p>Evaluate which secondary colours become product state tokens before using them for status UI.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section split-section" id="typography">
+        <div class="section-heading">
+          <p class="section-kicker">02</p>
+          <h2>Typography</h2>
+          <p>
+            Mona Sans is the main font across the design system. Source Serif 4 is available as an
+            editorial highlight for moments that need extra craft, warmth, or premium texture.
+          </p>
+        </div>
+        <div class="type-specimen">
+          <p class="type-label">Default: Mona Sans</p>
+          <h3>Helping teams turn signals into decisions.</h3>
+          <p>
+            Mona Sans is the everyday voice for UI, landing pages, product surfaces, navigation,
+            labels, and body copy. It should carry most of the system because it is clear,
+            structured, and easy to scan.
+          </p>
+          <div class="editorial-sample">
+            <p class="type-label">Editorial option: Source Serif 4</p>
+            <h4>Use Source Serif 4 at 800 for selected brand moments.</h4>
+            <p class="serif-note">Use Source Serif 4 Italic at 500 for pull quotes and editorial accents.</p>
+          </div>
+          <div class="type-scale">
+            <span class="size-xl">Aa</span>
+            <span class="size-lg">Aa</span>
+            <span class="size-md">Aa</span>
+            <span class="size-sm">Aa</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="logos">
+        <div class="section-heading">
+          <p class="section-kicker">03</p>
+          <h2>Logos</h2>
+          <p>
+            The logo system covers Leaf and product surfaces. Prefer SVG for digital use and keep
+            logo variants paired with their intended background.
+          </p>
+        </div>
+
+        <div class="logo-showcase">
+          <article class="logo-surface light-surface">
+            <img src="../assets/logos/_%20leaf/logo/svg/Leaf%20-%20Orange.svg" alt="Leaf orange logo" />
+          </article>
+          <article class="logo-surface coral-surface">
+            <img src="../assets/logos/_%20leaf/logo/svg/Leaf%20-%20White.svg" alt="Leaf white logo" />
+          </article>
+          <article class="logo-surface dark-surface">
+            <img src="../assets/logos/_%20leaf/logo/svg/Leaf%20-%20White.svg" alt="Leaf white logo on dark surface" />
+          </article>
+        </div>
+
+        <div class="product-logo-grid">
+          <article class="product-logo">
+            <img src="../assets/logos/answers/svg/Answers%20-%20Orange%20%2B%20Black.svg" alt="Answers logo" />
+          </article>
+          <article class="product-logo">
+            <img src="../assets/logos/stores/svg/Stores%20-%20Orange%20%2B%20Black.svg" alt="Stores logo" />
+          </article>
+          <article class="product-logo">
+            <img src="../assets/logos/blog/svg/Blog%20-%20Orange%20%2B%20Black.svg" alt="Blog logo" />
+          </article>
+          <article class="product-logo">
+            <img src="../assets/logos/signal/svg/Signal%20-%20Orange%20%2B%20Black.svg" alt="Signal logo" />
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section" id="icons">
+        <div class="section-heading">
+          <p class="section-kicker">04</p>
+          <h2>Icons</h2>
+          <p>
+            Icons are organized by context and exported in SVG and PNG. Start with SVG for product
+            usage, then choose the correct colour treatment for the surface.
+          </p>
+        </div>
+
+        <div class="icon-grid">
+          <article class="icon-tile">
+            <img src="../assets/icons/business/black/svg/Analytical%20Report.svg" alt="" />
+            <span>Analytical Report</span>
+          </article>
+          <article class="icon-tile">
+            <img src="../assets/icons/business/black/svg/Business%20Vision.svg" alt="" />
+            <span>Business Vision</span>
+          </article>
+          <article class="icon-tile">
+            <img src="../assets/icons/communications/black/svg/Customer%20Support.svg" alt="" />
+            <span>Customer Support</span>
+          </article>
+          <article class="icon-tile">
+            <img src="../assets/icons/communications/black/svg/Send.svg" alt="" />
+            <span>Send</span>
+          </article>
+          <article class="icon-tile">
+            <img src="../assets/icons/shopping/black/svg/Delivery%20Truck.svg" alt="" />
+            <span>Delivery Truck</span>
+          </article>
+          <article class="icon-tile">
+            <img src="../assets/icons/shopping/black/svg/Discount%20Tag.svg" alt="" />
+            <span>Discount Tag</span>
+          </article>
+        </div>
+
+        <div class="icon-application">
+          <div class="section-heading">
+            <p class="section-kicker">Colour with icons</p>
+            <h3>Secondary colour can group content without changing the icon language.</h3>
+            <p>
+              Use black SVG icons over secondary colour fields for page libraries, learning hubs,
+              onboarding collections, and editorial navigation. Keep labels on light surfaces so
+              the colour does the grouping and Mona carries the content.
+            </p>
+          </div>
+
+          <div class="icon-card-grid">
+            <article class="icon-card">
+              <div class="icon-card-media coral-swatch">
+                <img src="../assets/icons/ecology/black/svg/Leaf.svg" alt="" />
+              </div>
+              <p>A brief history of Leaf</p>
+            </article>
+            <article class="icon-card">
+              <div class="icon-card-media laurel-swatch">
+                <img src="../assets/icons/ecology/black/svg/Leaf%20Recycling.svg" alt="" />
+              </div>
+              <p>The Leafers</p>
+            </article>
+            <article class="icon-card">
+              <div class="icon-card-media heather-swatch">
+                <img src="../assets/icons/communications/black/svg/Guidebook.svg" alt="" />
+              </div>
+              <p>Our values</p>
+            </article>
+            <article class="icon-card">
+              <div class="icon-card-media butter-swatch">
+                <img src="../assets/icons/business/black/svg/Pyramid.svg" alt="" />
+              </div>
+              <p>What we do</p>
+            </article>
+            <article class="icon-card">
+              <div class="icon-card-media eucalyptus-swatch">
+                <img src="../assets/icons/business/black/svg/Creative%20Writing.svg" alt="" />
+              </div>
+              <p>Brand and voice</p>
+            </article>
+            <article class="icon-card">
+              <div class="icon-card-media apricot-swatch">
+                <img src="../assets/icons/business/black/svg/Winners%20Podium.svg" alt="" />
+              </div>
+              <p>Awards and certifications</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="applications">
+        <div class="section-heading">
+          <p class="section-kicker">05</p>
+          <h2>Applications</h2>
+          <p>
+            These quick compositions show how the foundations begin to feel when they are used
+            together across product and brand surfaces.
+          </p>
+        </div>
+
+        <div class="application-grid">
+          <article class="application-panel app-coral">
+            <p>Campaign surface</p>
+            <h3>Answers that feel immediate.</h3>
+            <span>Coral, Black, Light Stone</span>
+          </article>
+          <article class="application-panel app-stone">
+            <p>Product surface</p>
+            <h3>Quiet structure for repeated work.</h3>
+            <span>Light Stone, Stone, Warm Grey</span>
+          </article>
+          <article class="application-panel app-aqua">
+            <p>Highlight surface</p>
+            <h3 class="serif-heading">A clear moment of emphasis.</h3>
+            <span>Aqua, Black, White</span>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
