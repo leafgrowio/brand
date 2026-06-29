@@ -10,7 +10,7 @@ Source: core brand colour reference supplied June 2026
 - Lead with warmth and clarity.
 - Use Coral as the primary brand signal, not as a default text color.
 - Use the Stone palette to keep surfaces calm and recognizably Leaf.
-- Use Black for primary text and functional UI contrast.
+- Use Ink for primary text and functional UI contrast.
 - Use Aqua sparingly as a highlight or supporting accent.
 - Use secondary colours for variety, categorization, and expressive moments; do not let them replace Coral as the brand signal.
 - Prefer stable, named tokens over one-off color values in product work.
@@ -32,8 +32,8 @@ Source: core brand colour reference supplied June 2026
 | --- | --- | --- | --- | --- |
 | `color.neutral.light-stone` | Light Stone | `#F9F4F1` | `249 244 241` | Default warm page background, quiet surface color |
 | `color.neutral.stone` | Stone | `#F2E8E1` | `242 232 225` | Secondary warm surface, panels, subtle grouping |
-| `color.neutral.white` | White | `#FFFFFF` | `255 255 255` | High-clarity surface, cards, documents, assets on dark fills |
-| `color.neutral.black` | Black | `#000000` | `0 0 0` | Primary text, high-contrast iconography, strongest UI foreground |
+| `color.neutral.canvas` | Canvas | `#FFFDFB` | `255 253 251` | High-clarity warm surface, cards, documents, default light utility field |
+| `color.neutral.ink` | Ink | `#171412` | `23 20 18` | Primary text, high-contrast iconography, strongest brand foreground |
 | `color.neutral.warm-grey` | Warm Grey | `#656565` | `101 101 101` | Secondary text, muted foreground, subdued UI labels |
 
 ### Highlight Colour
@@ -44,7 +44,7 @@ Source: core brand colour reference supplied June 2026
 
 ### Secondary Palette
 
-The secondary palette is for moments that need more variety than the primary palette can provide: campaigns, editorial graphics, data visualization, badges, illustrations, community content, and product categorization. These colours are support actors. Coral, Stone, Light Stone, Aqua, Black, and Warm Grey remain the recognizable Leaf foundation.
+The secondary palette is for moments that need more variety than the primary palette can provide: campaigns, editorial graphics, data visualization, badges, illustrations, community content, and product categorization. These colours are support actors. Coral, Stone, Light Stone, Aqua, Ink, Canvas, and Warm Grey remain the recognizable Leaf foundation.
 
 This set is tuned from the previous extended palette into a warmer, softer, more Leaf-native range. It avoids duplicating Coral, keeps the brightest tones calmer, removes candy-like pinks and purples, and gives the system botanical, editorial, and premium accent options.
 
@@ -58,8 +58,8 @@ This set is tuned from the previous extended palette into a warmer, softer, more
 | `color.secondary.laurel` | Laurel | `#8EBB91` | `142 187 145` | Fresh mid accent, grounded organic moments |
 | `color.secondary.eucalyptus` | Eucalyptus | `#9FC7BC` | `159 199 188` | Muted green-blue accent, calm support colour |
 | `color.secondary.harbor` | Harbor | `#4FA3A6` | `79 163 166` | Strong blue-green accent, charts and active illustration details |
+| `color.secondary.lilac` | Lilac | `#D8CFF0` | `216 207 240` | Pale cool accent, gentle editorial and community moments |
 | `color.secondary.heather` | Heather | `#AAA2D4` | `170 162 212` | Soft cool accent, variety in charts or campaign sets |
-| `color.secondary.mulberry` | Mulberry | `#5C263D` | `92 38 61` | Deep accent, premium contrast, editorial depth |
 
 ## Typography
 
@@ -110,9 +110,9 @@ Use `no-padding/` exports inside applications, components, cards, watermarks, na
 - Do not trim, crop, or manually reframe a padded export to make the artwork appear larger; switch to the matching `no-padding/` export instead.
 - When placing padded logos in layout, align the export frame to the grid; the visible artwork already accounts for clear space inside that frame.
 - When placing no-padding logos, provide spacing through the component, grid, or surrounding layout.
-- Use Coral exports for primary brand placement on light, Stone, or White surfaces.
-- Use Black exports when Coral would create too much emphasis or when the surrounding system is monochrome.
-- Use White or Negative exports only on dark or Coral surfaces where the mark needs strong contrast.
+- Use Coral exports for primary brand placement on light, Stone, or Canvas surfaces.
+- Use Ink or Black exports when Coral would create too much emphasis or when the surrounding system is monochrome.
+- Use White or Negative exports only on dark, Ink, or Coral surfaces where the mark needs strong contrast.
 - Use the service sub logos for the named service surface. Use the Blog and Colectivo property logos for editorial and podcast contexts rather than treating them as services.
 - Keep SVG and PNG variants paired when adding or updating logo exports.
 
@@ -120,13 +120,14 @@ Use `no-padding/` exports inside applications, components, cards, watermarks, na
 
 - Use `Light Stone` as the default brand background for warm, editorial, or marketing surfaces.
 - Use `Stone` for secondary sections, grouped areas, and quiet contrast against `Light Stone`.
-- Use `White` when content density, legibility, or document-like clarity matters.
-- Use `Black` for high-impact brand moments only when the surrounding experience can support strong contrast.
+- Use `Canvas` when content density, legibility, or document-like clarity matters.
+- Use `Ink` for high-impact brand moments only when the surrounding experience can support strong contrast.
+- Use pure `White` and pure `Black` only when a destination, asset format, or strict contrast context requires them.
 
 ### Text
 
-- Use `Black` for primary text on `Light Stone`, `Stone`, `White`, `Coral`, and `Aqua`.
-- Use `Warm Grey` for secondary text on `Light Stone`, `Stone`, and `White`.
+- Use `Ink` for primary text on `Light Stone`, `Stone`, `Canvas`, `Coral`, and `Aqua`.
+- Use `Warm Grey` for secondary text on `Light Stone`, `Stone`, and `Canvas`.
 - Do not use `Coral`, `Aqua`, `Light Stone`, or `Stone` for body text.
 - Avoid white body text on `Coral`; it does not meet normal-size text contrast guidance.
 
@@ -140,11 +141,10 @@ Use `no-padding/` exports inside applications, components, cards, watermarks, na
 
 - Use secondary colours when a surface needs multiple distinct categories, varied campaign moments, editorial illustration, or chart series.
 - Keep secondary colours subordinate to the primary system. A secondary colour should rarely dominate a full page or product surface.
-- Pair secondary colour fields with black SVG icons when building content libraries, onboarding collections, learning hubs, editorial navigation, or page-category cards.
+- Pair secondary colour fields with Ink or black SVG icons when building content libraries, onboarding collections, learning hubs, editorial navigation, or page-category cards.
 - Keep the icon style consistent inside a collection. Let the colour vary by category while the icon treatment and label surface stay stable.
 - Do not use secondary colours for product states such as success, warning, error, focus, or disabled until those state tokens are defined separately.
-- Prefer Black text on Marigold, Butter, Apricot, Rosehip, Sage, Laurel, Eucalyptus, Harbor, and Heather.
-- Use White text on Mulberry.
+- Prefer Ink text on Marigold, Butter, Apricot, Rosehip, Sage, Laurel, Eucalyptus, Harbor, Heather, and Lilac.
 - Treat Rosehip as a display or accent colour; avoid relying on it for normal body text.
 
 ## Accessibility Notes
@@ -153,34 +153,34 @@ Contrast ratios are calculated against WCAG relative luminance guidance.
 
 | Pair | Contrast | Guidance |
 | --- | ---: | --- |
-| Black on White | 21.00:1 | Passes normal text |
-| Black on Light Stone | 19.24:1 | Passes normal text |
-| Black on Stone | 17.41:1 | Passes normal text |
-| Black on Coral | 6.80:1 | Passes normal text |
-| Black on Aqua | 12.54:1 | Passes normal text |
-| Warm Grey on White | 5.83:1 | Passes normal text |
+| Ink on Canvas | 18.07:1 | Passes normal text |
+| Ink on Light Stone | 16.80:1 | Passes normal text |
+| Ink on Stone | 15.20:1 | Passes normal text |
+| Ink on Coral | 5.93:1 | Passes normal text |
+| Ink on Aqua | 10.95:1 | Passes normal text |
+| Warm Grey on Canvas | 5.74:1 | Passes normal text |
 | Warm Grey on Light Stone | 5.34:1 | Passes normal text |
 | Warm Grey on Stone | 4.83:1 | Passes normal text |
 | White on Coral | 3.09:1 | Use only for large text or non-critical display text |
-| Black on Warm Grey | 3.60:1 | Use only for large text or graphic elements |
+| Ink on Warm Grey | 3.15:1 | Use only for large text or graphic elements |
 | Aqua on Warm Grey | 3.48:1 | Use only for large text or graphic elements |
 
-As a default implementation rule, use Black text on Coral and Aqua fills.
+As a default implementation rule, use Ink text on Coral and Aqua fills.
 
 ### Secondary Contrast
 
 | Pair | Contrast | Guidance |
 | --- | ---: | --- |
-| Black on Marigold | 11.59:1 | Passes normal text |
-| Black on Butter | 16.50:1 | Passes normal text |
-| Black on Apricot | 10.48:1 | Passes normal text |
-| Black on Rosehip | 6.34:1 | Passes normal text |
-| Black on Sage | 16.38:1 | Passes normal text |
-| Black on Laurel | 9.67:1 | Passes normal text |
-| Black on Eucalyptus | 11.37:1 | Passes normal text |
-| Black on Harbor | 7.12:1 | Passes normal text |
-| Black on Heather | 8.83:1 | Passes normal text |
-| White on Mulberry | 11.67:1 | Passes normal text |
+| Ink on Marigold | 10.12:1 | Passes normal text |
+| Ink on Butter | 14.41:1 | Passes normal text |
+| Ink on Apricot | 9.15:1 | Passes normal text |
+| Ink on Rosehip | 5.54:1 | Passes normal text |
+| Ink on Sage | 14.31:1 | Passes normal text |
+| Ink on Laurel | 8.44:1 | Passes normal text |
+| Ink on Eucalyptus | 9.93:1 | Passes normal text |
+| Ink on Harbor | 6.22:1 | Passes normal text |
+| Ink on Lilac | 12.31:1 | Passes normal text |
+| Ink on Heather | 7.71:1 | Passes normal text |
 
 ## Implementation Tokens
 
@@ -191,8 +191,8 @@ As a default implementation rule, use Black text on Coral and Aqua fills.
   --leaf-color-brand-coral: #fb5e48;
   --leaf-color-neutral-light-stone: #f9f4f1;
   --leaf-color-neutral-stone: #f2e8e1;
-  --leaf-color-neutral-white: #ffffff;
-  --leaf-color-neutral-black: #000000;
+  --leaf-color-neutral-canvas: #fffdfb;
+  --leaf-color-neutral-ink: #171412;
   --leaf-color-neutral-warm-grey: #656565;
   --leaf-color-highlight-aqua: #7ad8ce;
   --leaf-color-secondary-marigold: #efb75a;
@@ -203,8 +203,8 @@ As a default implementation rule, use Black text on Coral and Aqua fills.
   --leaf-color-secondary-laurel: #8ebb91;
   --leaf-color-secondary-eucalyptus: #9fc7bc;
   --leaf-color-secondary-harbor: #4fa3a6;
+  --leaf-color-secondary-lilac: #d8cff0;
   --leaf-color-secondary-heather: #aaa2d4;
-  --leaf-color-secondary-mulberry: #5c263d;
   --leaf-font-sans: "Mona Sans", Arial, sans-serif;
   --leaf-font-serif: "Source Serif 4", Georgia, serif;
   --leaf-font-serif-headline-weight: 800;
@@ -223,8 +223,8 @@ As a default implementation rule, use Black text on Coral and Aqua fills.
     "neutral": {
       "light-stone": { "value": "#F9F4F1", "rgb": "249 244 241" },
       "stone": { "value": "#F2E8E1", "rgb": "242 232 225" },
-      "white": { "value": "#FFFFFF", "rgb": "255 255 255" },
-      "black": { "value": "#000000", "rgb": "0 0 0" },
+      "canvas": { "value": "#FFFDFB", "rgb": "255 253 251" },
+      "ink": { "value": "#171412", "rgb": "23 20 18" },
       "warm-grey": { "value": "#656565", "rgb": "101 101 101" }
     },
     "highlight": {
@@ -239,8 +239,8 @@ As a default implementation rule, use Black text on Coral and Aqua fills.
       "laurel": { "value": "#8EBB91", "rgb": "142 187 145" },
       "eucalyptus": { "value": "#9FC7BC", "rgb": "159 199 188" },
       "harbor": { "value": "#4FA3A6", "rgb": "79 163 166" },
-      "heather": { "value": "#AAA2D4", "rgb": "170 162 212" },
-      "mulberry": { "value": "#5C263D", "rgb": "92 38 61" }
+      "lilac": { "value": "#D8CFF0", "rgb": "216 207 240" },
+      "heather": { "value": "#AAA2D4", "rgb": "170 162 212" }
     }
   },
   "font": {

@@ -4,8 +4,6 @@
   --coral: #fb5e48;
   --light-stone: #f9f4f1;
   --stone: #f2e8e1;
-  --white: #ffffff;
-  --black: #000000;
   --warm-grey: #656565;
   --aqua: #7ad8ce;
   --secondary-marigold: #efb75a;
@@ -16,8 +14,8 @@
   --secondary-laurel: #8ebb91;
   --secondary-eucalyptus: #9fc7bc;
   --secondary-harbor: #4fa3a6;
+  --secondary-lilac: #d8cff0;
   --secondary-heather: #aaa2d4;
-  --secondary-mulberry: #5c263d;
   --canvas: #fffdfb;
   --ink: #171412;
   --line: rgba(23, 20, 18, 0.14);
@@ -266,18 +264,18 @@ h3 {
   background: var(--stone);
 }
 
-.white-swatch {
-  background: var(--white);
+.canvas-swatch {
+  background: var(--canvas);
 }
 
-.black-swatch {
-  background: var(--black);
-  color: var(--white);
+.ink-swatch {
+  background: var(--ink);
+  color: var(--canvas);
 }
 
 .grey-swatch {
   background: var(--warm-grey);
-  color: var(--white);
+  color: var(--canvas);
 }
 
 .secondary-palette {
@@ -337,13 +335,12 @@ h3 {
   background: var(--secondary-harbor);
 }
 
-.heather-swatch {
-  background: var(--secondary-heather);
+.lilac-swatch {
+  background: var(--secondary-lilac);
 }
 
-.mulberry-swatch {
-  background: var(--secondary-mulberry);
-  color: var(--white);
+.heather-swatch {
+  background: var(--secondary-heather);
 }
 
 .usage-grid,
