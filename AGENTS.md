@@ -62,12 +62,13 @@ Logo groups currently include:
 - `answers`
 - `blog`
 - `colectivo`
+- `creative`
 - `performance`
 - `signal`
 - `stores`
 - `strategy`
 
-Most product/surface logo groups contain `png/` and `svg/` versions. Versioned product/surface exports keep that split inside the version folder, such as `v2/png/` and `v2/svg/`. The core `_ leaf` group is split into `icon/` and `logo/`, each with `png/` and `svg/` exports.
+Most product/surface logo groups contain `padding/` and `no-padding/` versions, each with `png/` and `svg/` exports. Use padded exports when the asset should carry its own 50%-Leaf-icon safe margin. Use no-padding exports inside applications, components, navigation, cards, and watermarks where layout spacing is already controlled. The core `_ leaf` icon and logo groups also have `padding/` and `no-padding/` folders.
 
 ## Useful Checks
 

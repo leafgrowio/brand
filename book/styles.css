@@ -350,6 +350,7 @@ h3 {
 .application-grid,
 .logo-showcase,
 .product-logo-grid,
+.property-logo-grid,
 .icon-grid,
 .icon-card-grid {
   display: grid;
@@ -476,21 +477,82 @@ h3 {
 }
 
 .product-logo-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .product-logo {
   align-items: center;
   background: var(--canvas);
   display: flex;
+  flex-direction: column;
+  gap: 18px;
   justify-content: center;
-  min-height: 150px;
+  min-height: 178px;
   padding: 26px;
+  text-align: center;
 }
 
 .product-logo img {
-  max-height: 46px;
+  max-height: 58px;
   width: auto;
+}
+
+.product-logo span {
+  color: var(--warm-grey);
+  font-size: 14px;
+  font-weight: 520;
+}
+
+.logo-family-heading {
+  margin-top: 48px;
+}
+
+.safe-margin-panel {
+  align-items: center;
+  background: var(--canvas);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 34px;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+  margin-top: 28px;
+  padding: 28px;
+}
+
+.safe-margin-art {
+  align-items: center;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px),
+    var(--light-stone);
+  background-size: 32px 32px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  min-height: 260px;
+  padding: 20px;
+}
+
+.safe-margin-art img {
+  height: 220px;
+  width: 220px;
+}
+
+.safe-margin-panel p:last-child {
+  color: var(--warm-grey);
+  font-size: 18px;
+  font-weight: 380;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.property-logo-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.property-logo {
+  min-height: 190px;
 }
 
 .icon-grid {
@@ -566,8 +628,17 @@ h3 {
 }
 
 .application-panel {
+  --application-card-padding: 30px;
+
   min-height: 280px;
-  padding: 30px;
+  overflow: hidden;
+  padding: var(--application-card-padding);
+  position: relative;
+}
+
+.application-panel > :not(.application-watermark) {
+  position: relative;
+  z-index: 1;
 }
 
 .application-panel h3 {
@@ -586,6 +657,20 @@ h3 {
   font-size: 15px;
   font-weight: 500;
   margin-top: 34px;
+}
+
+.application-watermark {
+  bottom: var(--application-card-padding);
+  height: clamp(35px, 13.125%, 49px);
+  opacity: 0.16;
+  pointer-events: none;
+  position: absolute;
+  right: var(--application-card-padding);
+  width: auto;
+}
+
+.app-stone .application-watermark {
+  opacity: 0.18;
 }
 
 .app-coral {
@@ -637,6 +722,7 @@ h3 {
   .usage-grid,
   .logo-showcase,
   .product-logo-grid,
+  .property-logo-grid,
   .icon-grid,
   .icon-card-grid,
   .application-grid {
@@ -649,6 +735,10 @@ h3 {
 
   .editorial-sample h4 {
     font-size: 42px;
+  }
+
+  .safe-margin-panel {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -664,6 +754,7 @@ h3 {
   .usage-grid,
   .logo-showcase,
   .product-logo-grid,
+  .property-logo-grid,
   .icon-grid,
   .icon-card-grid,
   .application-grid {

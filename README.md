@@ -68,16 +68,24 @@ Current groups:
 - `answers`
 - `blog`
 - `colectivo`
+- `creative`
 - `performance`
 - `signal`
 - `stores`
 - `strategy`
 
-Most logo groups include `png/` and `svg/` exports. Versioned logo exports keep the same split inside the version folder, such as `v2/png/` and `v2/svg/`. The core `_ leaf` group separates the Leaf icon and full logo:
+Most service and property logo groups include both `padding/` and `no-padding/` export modes, each with `png/` and `svg/` folders. Use `padding/` when the asset should carry its own safe area; the margin is equal to 50% of the Leaf icon. Use `no-padding/` inside applications, components, navigation, cards, and watermarks where the layout already controls spacing.
+
+The core `_ leaf` group separates the Leaf icon and full logo:
 
 ```text
 assets/logos/_ leaf/icon/
-assets/logos/_ leaf/logo/
+assets/logos/_ leaf/icon/padding/svg/
+assets/logos/_ leaf/icon/no-padding/svg/
+assets/logos/_ leaf/logo/padding/svg/
+assets/logos/_ leaf/logo/no-padding/svg/
+assets/logos/<group>/padding/svg/
+assets/logos/<group>/no-padding/svg/
 ```
 
 ## Working With Assets
@@ -100,6 +108,6 @@ Open `book/index.html` in a browser to view the current HTML brand book prototyp
 This repo is expected to grow beyond static assets. Good next additions include:
 
 - Typography guidance for product and marketing contexts.
-- Logo clear-space, sizing, and background guidance.
+- Logo minimum sizing and placement examples.
 - Icon selection and implementation rules.
 - Export or packaging workflows for downstream teams and apps.

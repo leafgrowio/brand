@@ -16,6 +16,7 @@ Source: core brand colour reference supplied June 2026
 - Prefer stable, named tokens over one-off color values in product work.
 - Use sentence case rather than all-caps labels in most brand and product surfaces.
 - Use confident medium-to-semibold weights for headings, balanced by lighter labels and supporting text.
+- Treat exported logo artwork as production-ready source assets. Choose the padded or no-padding export intentionally rather than cropping files by hand.
 
 ## Colour Palette
 
@@ -82,6 +83,38 @@ Mona Sans wins for most interfaces, landing pages, product surfaces, and general
 Load Mona Sans and Source Serif 4 from Google Fonts for online usage. The brand book imports Mona Sans weights `200..900` plus only the landed Source Serif 4 weights: normal `800` and italic `500`.
 
 ## Recommended Usage
+
+### Logos
+
+Leaf's logo system includes the core Leaf mark plus service and property sub logos. Service and property logos now ship in two export modes: `padding/` and `no-padding/`.
+
+Use `padding/` exports when the logo is being shared, dropped into a loose canvas, or used where the asset needs to carry its own safe area. The padded margin is equal to 50% of the Leaf icon.
+
+Use `no-padding/` exports inside applications, components, cards, watermarks, navigation, or any layout where the surrounding system already controls spacing. This avoids extra invisible space creating alignment or sizing issues.
+
+| Group | Role | Source |
+| --- | --- | --- |
+| Core Leaf icon | App icons, compact brand marks, favicons, small-space brand moments | `assets/logos/_ leaf/icon/{padding,no-padding}/` |
+| Core Leaf logo | Default company logo lockup | `assets/logos/_ leaf/logo/{padding,no-padding}/` |
+| Answers | Service sub logo for Leaf Answers | `assets/logos/answers/{padding,no-padding}/` |
+| Creative | Service sub logo for Leaf Creative | `assets/logos/creative/{padding,no-padding}/` |
+| Performance | Service sub logo for Leaf Performance | `assets/logos/performance/{padding,no-padding}/` |
+| Signal | Service sub logo for Leaf Signal | `assets/logos/signal/{padding,no-padding}/` |
+| Stores | Service sub logo for Leaf Stores | `assets/logos/stores/{padding,no-padding}/` |
+| Strategy | Service sub logo for Leaf Strategy | `assets/logos/strategy/{padding,no-padding}/` |
+| Blog | Property logo for Leaf Blog editorial surfaces | `assets/logos/blog/{padding,no-padding}/` |
+| Colectivo | Property logo for Leaf Colectivo, the podcast | `assets/logos/colectivo/{padding,no-padding}/` |
+
+- Use SVG for product, web, deck, and layout work whenever the output context supports vector assets.
+- Use PNG only when a raster asset is required by the destination.
+- Do not trim, crop, or manually reframe a padded export to make the artwork appear larger; switch to the matching `no-padding/` export instead.
+- When placing padded logos in layout, align the export frame to the grid; the visible artwork already accounts for clear space inside that frame.
+- When placing no-padding logos, provide spacing through the component, grid, or surrounding layout.
+- Use Coral exports for primary brand placement on light, Stone, or White surfaces.
+- Use Black exports when Coral would create too much emphasis or when the surrounding system is monochrome.
+- Use White or Negative exports only on dark or Coral surfaces where the mark needs strong contrast.
+- Use the service sub logos for the named service surface. Use the Blog and Colectivo property logos for editorial and podcast contexts rather than treating them as services.
+- Keep SVG and PNG variants paired when adding or updating logo exports.
 
 ### Backgrounds
 
@@ -230,7 +263,7 @@ As a default implementation rule, use Black text on Coral and Aqua fills.
 
 - Typography scale and Mona Sans + Source Serif 4 usage.
 - Voice and interface capitalization rules.
-- Logo usage, clear space, sizing, and background rules.
+- Logo minimum sizing and lockup-specific placement examples.
 - Icon sizing, stroke/fill guidance, and selection rules.
 - Color roles for product states such as success, warning, error, focus, and disabled.
 - Secondary palette usage examples for charts, categories, and campaign systems.
