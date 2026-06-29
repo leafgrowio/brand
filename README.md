@@ -68,10 +68,12 @@ Current groups:
 - `answers`
 - `blog`
 - `colectivo`
+- `performance`
 - `signal`
 - `stores`
+- `strategy`
 
-Most logo groups include `png/` and `svg/` exports. The core `_ leaf` group separates the Leaf icon and full logo:
+Most logo groups include `png/` and `svg/` exports. Versioned logo exports keep the same split inside the version folder, such as `v2/png/` and `v2/svg/`. The core `_ leaf` group separates the Leaf icon and full logo:
 
 ```text
 assets/logos/_ leaf/icon/

@@ -62,10 +62,12 @@ Logo groups currently include:
 - `answers`
 - `blog`
 - `colectivo`
+- `performance`
 - `signal`
 - `stores`
+- `strategy`
 
-Most product/surface logo groups contain `png/` and `svg/` versions. The core `_ leaf` group is split into `icon/` and `logo/`, each with `png/` and `svg/` exports.
+Most product/surface logo groups contain `png/` and `svg/` versions. Versioned product/surface exports keep that split inside the version folder, such as `v2/png/` and `v2/svg/`. The core `_ leaf` group is split into `icon/` and `logo/`, each with `png/` and `svg/` exports.
 
 ## Useful Checks
 
