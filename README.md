@@ -17,6 +17,8 @@ DESIGN.md
 
 `book/` contains an HTML-based brand book for visually reviewing the design foundations and brand assets together.
 
+`tools/notion_banner_generator.py` creates Leaf-style Notion gallery banners from the secondary colour palette and existing icon exports.
+
 ### Font
 
 `assets/font/` contains Mona Sans, the primary font Leaf currently uses for the business.
@@ -29,9 +31,9 @@ Mona Sans is the main font for product, UI, navigation, labels, body copy, landi
 
 ### Icons
 
-`assets/icons/` contains icon exports grouped by context. Each context includes color/style treatments, and each treatment includes both SVG and PNG exports.
+`assets/icons/` contains icon exports grouped by theme, then icon, then variation, then format. Each icon keeps its SVG and PNG exports together under the same icon-name folder.
 
-Current contexts:
+Current themes:
 
 - `banking`
 - `business`
@@ -43,20 +45,32 @@ Current contexts:
 - `shopping`
 - `social`
 
-Current treatment structure:
+Current icon structure:
 
 ```text
-assets/icons/<context>/<treatment>/<format>/<asset>
+assets/icons/<theme>/<icon>/<variation>/<format>/<asset>
 ```
 
 Examples:
 
 ```text
-assets/icons/business/black/svg/
-assets/icons/shopping/white solid/png/
+assets/icons/business/Analytical Report/black/svg/Analytical Report.svg
+assets/icons/shopping/Discount Tag/white solid/png/Discount Tag.png
 ```
 
 Use SVG when possible for product and web implementation. Use PNG when a raster format is required.
+
+### Notion Gallery Page Covers
+
+Use `tools/notion_banner_generator.py` to create simple Notion page-cover images that also work as gallery card previews, like Leaf learning hub cards: one secondary colour field with one centered black icon from the icon library.
+
+Example:
+
+```sh
+/Users/gcorrales/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 tools/notion_banner_generator.py "Our values" --colour heather
+```
+
+The default `page-cover` preset exports a 1500 by 600 PNG to `exports/notion-banners/`, which is ignored by git. Notion gallery views use the page cover as the card image, so the icon is centered in the page cover and stays readable when Notion crops it for the gallery preview. Use `--suggest-icons 8` to preview icon matches, `--icon "Certificate"` to force a specific icon, and `--preset gallery-preview` only when you need a standalone card-preview image outside Notion.
 
 ### Logos
 

@@ -147,6 +147,12 @@ Use `no-padding/` exports inside applications, components, cards, watermarks, na
 - Prefer Ink text on Marigold, Butter, Apricot, Rosehip, Sage, Laurel, Eucalyptus, Harbor, Heather, and Lilac.
 - Treat Rosehip as a display or accent colour; avoid relying on it for normal body text.
 
+### Notion Gallery Page Covers
+
+Notion gallery banners should be generated as page-cover images because Notion gallery views use the page cover as the card image. Each page cover should use one secondary colour as the full image field and one centered black icon from `assets/icons/<theme>/<icon>/black/png/`. This keeps the collection visually varied while preserving a consistent Leaf card system.
+
+Use `tools/notion_banner_generator.py` for generated PNG exports. The default Notion page-cover format is `1500x600`. The icon should stay centered and occupy roughly one third of the shorter side so it remains readable when Notion crops the cover into a gallery-card preview. Generated files should live in `exports/notion-banners/` unless a downstream workflow needs a committed asset.
+
 ## Accessibility Notes
 
 Contrast ratios are calculated against WCAG relative luminance guidance.
