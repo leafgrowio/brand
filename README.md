@@ -31,7 +31,7 @@ Mona Sans is the main font for product, UI, navigation, labels, body copy, landi
 
 ### Icons
 
-`assets/icons/` contains icon exports grouped by theme, then icon, then variation, then format. Each icon keeps its SVG and PNG exports together under the same icon-name folder.
+`assets/icons/` contains icon exports grouped by theme, then icon, then colour variation, then format. Each icon keeps its SVG and PNG exports together under the same icon-name folder.
 
 Current themes:
 
@@ -51,11 +51,20 @@ Current icon structure:
 assets/icons/<theme>/<icon>/<variation>/<format>/<asset>
 ```
 
+Icons with alternate drawings add an icon-variant layer:
+
+```text
+assets/icons/<theme>/<icon>/<icon-variant>/<variation>/<format>/<asset>
+```
+
+Use `default` for the unsuffixed original export and numbered folders such as `1`, `2`, or `3` for alternate drawings. Filenames should match the icon name, with the numbered variant appended when relevant.
+
 Examples:
 
 ```text
 assets/icons/business/Analytical Report/black/svg/Analytical Report.svg
 assets/icons/shopping/Discount Tag/white solid/png/Discount Tag.png
+assets/icons/electronics/Dataserver/2/black/svg/Dataserver_2.svg
 ```
 
 Use SVG when possible for product and web implementation. Use PNG when a raster format is required.

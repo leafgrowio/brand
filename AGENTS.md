@@ -47,7 +47,7 @@ Icon themes currently include:
 - `shopping`
 - `social`
 
-Each theme is organized by icon name. Each icon folder is organized by variation:
+Each theme is organized by icon name. Each icon folder is organized by colour variation:
 
 - `black`
 - `black solid`
@@ -59,6 +59,14 @@ Each variation contains `png/` and `svg/` exports. The canonical structure is:
 ```text
 assets/icons/<theme>/<icon>/<variation>/<format>/<asset>
 ```
+
+Icons with alternate drawings add an icon-variant layer between the icon and colour variation:
+
+```text
+assets/icons/<theme>/<icon>/<icon-variant>/<variation>/<format>/<asset>
+```
+
+Use `default` for the unsuffixed original export and numbered folders such as `1`, `2`, or `3` for alternate drawings. Filenames should match the icon name; numbered variants append the variant suffix, for example `Dataserver_2.svg`.
 
 ### Logos
 
