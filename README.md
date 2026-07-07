@@ -1,6 +1,8 @@
 # Leaf Brand
 
-This repository is the canonical home for Leaf's brand assets and design foundations. Today it contains the core asset library for typography, icons, and logos. Over time it should become the source of truth for the design primitives that power Leaf across product, marketing, sales, and internal materials.
+This repository is Leaf's canonical, public source of brand assets: fonts, icons, logos, the design foundation spec, and an HTML brand book. It is public because assets are fetched at runtime over plain HTTPS from `raw.githubusercontent.com/leafgrowio/brand/main/...`, so anyone building against Leaf's brand (internal tooling, partner integrations, or the open web) can pull the exact current asset without needing repo access or a local clone.
+
+Tools that generate, package, or clean these assets (the Notion banner generator, icon and logo manifest generators, export cleanup scripts) live in Leaf's internal `leaf` plugin repo, not here. See the "Tools" section below.
 
 ## What Is Here
 
@@ -13,25 +15,19 @@ book/
 DESIGN.md
 ```
 
-`DESIGN.md` contains the first design-system foundation notes, starting with Leaf's core colour palette and implementation token names.
+`DESIGN.md` contains the design-system foundation notes, starting with Leaf's core colour palette and implementation token names.
 
-`book/` contains an HTML-based brand book for visually reviewing the design foundations and brand assets together.
-
-`tools/notion_banner_generator.py` creates Leaf-style Notion gallery banners from the secondary colour palette and existing icon exports.
+`book/` contains an HTML-based brand book for visually reviewing the design foundations and brand assets together. Open `book/index.html` in a browser to view it.
 
 ### Font
 
-`assets/font/` contains Mona Sans, the primary font Leaf currently uses for the business.
-
-Current file:
-
-- `MonaSans-VariableFont_wdth,wght.ttf`
+`assets/font/` contains the two typefaces Leaf uses for product, marketing, and brand communication: Mona Sans and Source Serif 4. Both are distributed under the SIL Open Font License, and each font folder includes its own `OFL.txt` and `README.txt` alongside the variable-font source files.
 
 Mona Sans is the main font for product, UI, navigation, labels, body copy, landing pages, and most brand communication. Source Serif 4 is an optional editorial serif for blogs, long-form content, banners, marketing communications, pull quotes, and selected highlight moments. Load both fonts from Google Fonts for online usage, using Source Serif 4 `800` for headlines and italic `500` for quotes.
 
 ### Icons
 
-`assets/icons/` contains icon exports grouped by theme, then icon, then colour variation, then format. Each icon keeps its SVG and PNG exports together under the same icon-name folder.
+`assets/icons/` contains roughly 1,250 icons grouped by theme, then icon, then colour variation, then format. Each icon keeps its SVG and PNG exports together under the same icon-name folder.
 
 Current themes:
 
@@ -69,25 +65,13 @@ assets/icons/electronics/Dataserver/2/black/svg/Dataserver_2.svg
 
 Use SVG when possible for product and web implementation. Use PNG when a raster format is required.
 
-### Notion Gallery Page Covers
-
-Use `tools/notion_banner_generator.py` to create simple Notion page-cover images that also work as gallery card previews, like Leaf learning hub cards: one secondary colour field with one centered black icon from the icon library.
-
-Example:
-
-```sh
-/Users/gcorrales/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 tools/notion_banner_generator.py "Our values" --colour heather
-```
-
-The default `page-cover` preset exports a 1500 by 600 PNG to `exports/notion-banners/`, which is ignored by git. Notion gallery views use the page cover as the card image, so the icon is centered in the page cover and stays readable when Notion crops it for the gallery preview. Use `--suggest-icons 8` to preview icon matches, `--icon "Certificate"` to force a specific icon, and `--preset gallery-preview` only when you need a standalone card-preview image outside Notion.
-
 ### Logos
 
 `assets/logos/` contains logos for Leaf and related Leaf surfaces.
 
 Current groups:
 
-- `_ leaf`
+- `leaf`
 - `answers`
 - `blog`
 - `colectivo`
@@ -99,14 +83,14 @@ Current groups:
 
 Most service and property logo groups include both `padding/` and `no-padding/` export modes, each with `png/` and `svg/` folders. Use `padding/` when the asset should carry its own safe area; the margin is equal to 50% of the Leaf icon. Use `no-padding/` inside applications, components, navigation, cards, and watermarks where the layout already controls spacing.
 
-The core `_ leaf` group separates the Leaf icon and full logo:
+The core `leaf` group separates the Leaf icon and full logo:
 
 ```text
-assets/logos/_ leaf/icon/
-assets/logos/_ leaf/icon/padding/svg/
-assets/logos/_ leaf/icon/no-padding/svg/
-assets/logos/_ leaf/logo/padding/svg/
-assets/logos/_ leaf/logo/no-padding/svg/
+assets/logos/leaf/icon/
+assets/logos/leaf/icon/padding/svg/
+assets/logos/leaf/icon/no-padding/svg/
+assets/logos/leaf/logo/padding/svg/
+assets/logos/leaf/logo/no-padding/svg/
 assets/logos/<group>/padding/svg/
 assets/logos/<group>/no-padding/svg/
 ```
@@ -118,13 +102,17 @@ assets/logos/<group>/no-padding/svg/
 - Prefer existing folder conventions over introducing new naming patterns.
 - Keep documentation updated when adding new foundation areas, asset groups, or usage rules.
 
+## Paths Are a Public Contract
+
+Assets are consumed remotely over `raw.githubusercontent.com/leafgrowio/brand/main/...`, not through a local clone, so every asset path is a stable public URL that other systems depend on directly. Renaming, moving, or restructuring a folder is a breaking change for every consumer of that URL, not a local refactor. Coordinate any path change with a manifest regeneration in the `leaf` plugin repo (see "Tools" below) before merging, and treat path stability as a first-class constraint alongside asset fidelity.
+
+## Tools
+
+Asset tooling — the Notion banner generator, the icon and logo manifest generators, and export cleanup scripts — lives in Leaf's internal `leaf` plugin repo, not in this repo. Those tools run against a local clone of this repo and read or write files here directly; they are not published here because they are internal-only and not part of the public asset contract.
+
 ## Agent Setup
 
 This repo includes `AGENTS.md` for agent-facing instructions. `CLAUDE.md` is a symlink to the same file so Claude-compatible tooling reads the same guidance.
-
-## Brand Book
-
-Open `book/index.html` in a browser to view the current HTML brand book prototype.
 
 ## Future Foundations
 
