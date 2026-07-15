@@ -1,276 +1,224 @@
 # Leaf Design Foundations
 
-This document is the starting point for Leaf's design system. It records the current brand foundations in a format that can be used by design, product, marketing, sales, and future automation.
+This document is the written source of truth for Leaf's design system. It pairs with the visual brand book (`Leaf Brand Book.dc.html`). Where the two ever disagree, fix both.
 
-Status: foundational draft  
-Source: core brand colour reference supplied June 2026
+Status: v0.2 — foundations locked, data-visualization intentionally deferred.
+Source: core brand reference (June 2026) + v0.2 decisions (July 2026).
+
+---
+
+## What changed in v0.2
+
+- **Coral button system** — two tiers defined (primary solid, secondary outline).
+- **Coral content blocks** — softened to a light tint with Ink text instead of solid fills.
+- **Copy-colour rule** — type is Ink / Coral / Warm Grey / Aqua-on-dark only; palette colours are for fills, not text.
+- **Product state palette** — a dedicated set (Fern, Amber, Ember, Tidal), drawn deliberately outside the core and secondary palettes.
+- **Type scale** — a documented modular scale for Mona Sans.
+- **Spacing, layout, radius, elevation, motion, interaction states** — newly specified below.
+- Still open: **data visualization** (chart palettes, series vs status, axis/gridline treatment).
+
+---
 
 ## Principles
 
-- Lead with warmth and clarity.
-- Use Coral as the primary brand signal, not as a default text color.
-- Use the Stone palette to keep surfaces calm and recognizably Leaf.
-- Use Ink for primary text and functional UI contrast.
-- Use Aqua sparingly as a highlight or supporting accent.
-- Use secondary colours for variety, categorization, and expressive moments; do not let them replace Coral as the brand signal.
-- Prefer stable, named tokens over one-off color values in product work.
-- Use sentence case rather than all-caps labels in most brand and product surfaces.
-- Use confident medium-to-semibold weights for headings, balanced by lighter labels and supporting text.
-- Treat exported logo artwork as production-ready source assets. Choose the padded or no-padding export intentionally rather than cropping files by hand.
+1. Lead with warmth and clarity.
+2. Coral is a signal, not a coat of paint — one decisive coral moment per view.
+3. Stone is the room, Ink is the voice, Canvas is for clarity.
+4. Secondary colours are support actors — variety, categories, campaigns; never the brand signal.
+5. Sentence case, confident medium-to-semibold weights.
+6. Prefer stable, named tokens over one-off values.
 
-## Colour Palette
+---
 
-### Core Brand Colour
+## Colour
 
-| Token | Name | HEX | RGB | Role |
+The core, neutral, highlight, and secondary palettes are unchanged from v0.1 (see the palette tables at the end). The v0.2 decisions below govern *how* they are used.
+
+### Copy colour (rule)
+
+Text is set in a small, high-contrast set only:
+
+- **Ink** — primary text on all light surfaces.
+- **Coral** — emphasis, eyebrows, links, small brand accents.
+- **Warm Grey** — secondary text on Light Stone, Stone, and Canvas (passes AA; avoid at very small sizes on Stone).
+- **Aqua** — small labels and accents on Ink / dark surfaces only.
+
+Do **not** set copy in the secondary palette, in Stone tones, or in pale tints — their tones can't guarantee contrast at text sizes. Build small-text hierarchy with **weight**, not faint colour.
+
+Exception: a **state tone may label its own status** — a Fern "success" or Ember "error" heading — at title size and weight.
+
+### Coral usage
+
+Coral carries action and brand signal; it is not a large content fill.
+
+- **Primary button** — solid Coral (`#FB5E48`), Canvas text, pill shape. Darkens to `#E8462F` on hover. One primary per view.
+- **Secondary button** — transparent, 1px Coral border, Coral text, pill shape. Soft-tint (`#FBE4DF`) fill on hover. Kept visually lighter than the primary so it never competes.
+- **Coral content blocks** (cards, panels, slides) — use **soft Coral** (`#FBE4DF` tint) with Ink text, not a solid fill. Reserve solid Coral for CTAs and small brand marks.
+- Never Canvas/white text on Coral for anything longer than a short button label (white-on-Coral is 3.09:1, large-text only).
+
+### Product state palette (dedicated)
+
+Status needs more depth than the secondary palette can give. States use their own small palette — tuned to sit beside Coral and the neutrals, but drawn outside them. Use the **solid** tone for icons, dots, and borders; use the **soft tint** with **Ink** text for banners and backgrounds. Error stays clear of Coral so the brand signal never reads as an alarm.
+
+| Token | Name | Solid | Tint | Role |
 | --- | --- | --- | --- | --- |
-| `color.brand.coral` | Coral | `#FB5E48` | `251 94 72` | Primary brand color, hero moments, emphasis, key brand surfaces |
+| `color.state.success` | Fern | `#2F8B57` | `#E7F1EA` | Success, positive confirmation |
+| `color.state.warning` | Amber | `#C77E1C` | `#F6E9CC` | Warning, needs attention |
+| `color.state.error` | Ember | `#C63A2B` | `#F7E0DB` | Error, destructive |
+| `color.state.info` | Tidal | `#2E8388` | `#DDECEC` | Informational, neutral status |
 
-### Primary Palette
-
-| Token | Name | HEX | RGB | Role |
-| --- | --- | --- | --- | --- |
-| `color.neutral.light-stone` | Light Stone | `#F9F4F1` | `249 244 241` | Default warm page background, quiet surface color |
-| `color.neutral.stone` | Stone | `#F2E8E1` | `242 232 225` | Secondary warm surface, panels, subtle grouping |
-| `color.neutral.canvas` | Canvas | `#FFFDFB` | `255 253 251` | High-clarity warm surface, cards, documents, default light utility field |
-| `color.neutral.ink` | Ink | `#171412` | `23 20 18` | Primary text, high-contrast iconography, strongest brand foreground |
-| `color.neutral.warm-grey` | Warm Grey | `#656565` | `101 101 101` | Secondary text, muted foreground, subdued UI labels |
-
-### Highlight Colour
-
-| Token | Name | HEX | RGB | Role |
-| --- | --- | --- | --- | --- |
-| `color.highlight.aqua` | Aqua | `#7AD8CE` | `122 216 206` | Supporting highlight, positive accents, selected details |
-
-### Secondary Palette
-
-The secondary palette is for moments that need more variety than the primary palette can provide: campaigns, editorial graphics, data visualization, badges, illustrations, community content, and product categorization. These colours are support actors. Coral, Stone, Light Stone, Aqua, Ink, Canvas, and Warm Grey remain the recognizable Leaf foundation.
-
-This set is tuned from the previous extended palette into a warmer, softer, more Leaf-native range. It avoids duplicating Coral, keeps the brightest tones calmer, removes candy-like pinks and purples, and gives the system botanical, editorial, and premium accent options.
-
-| Token | Name | HEX | RGB | Role |
-| --- | --- | --- | --- | --- |
-| `color.secondary.marigold` | Marigold | `#EFB75A` | `239 183 90` | Warm accent, optimistic badges, campaign details |
-| `color.secondary.butter` | Butter | `#F6E49D` | `246 228 157` | Soft warm accent, light highlights, illustration fills |
-| `color.secondary.apricot` | Apricot | `#F4A38F` | `244 163 143` | Warm companion to Coral, gentle campaign accents |
-| `color.secondary.rosehip` | Rosehip | `#D96B7C` | `217 107 124` | Expressive accent, human warmth, high-energy details |
-| `color.secondary.sage` | Sage | `#DCE8C4` | `220 232 196` | Fresh light accent, calm grouping, low-intensity fills |
-| `color.secondary.laurel` | Laurel | `#8EBB91` | `142 187 145` | Fresh mid accent, grounded organic moments |
-| `color.secondary.eucalyptus` | Eucalyptus | `#9FC7BC` | `159 199 188` | Muted green-blue accent, calm support colour |
-| `color.secondary.harbor` | Harbor | `#4FA3A6` | `79 163 166` | Strong blue-green accent, charts and active illustration details |
-| `color.secondary.lilac` | Lilac | `#D8CFF0` | `216 207 240` | Pale cool accent, gentle editorial and community moments |
-| `color.secondary.heather` | Heather | `#AAA2D4` | `170 162 212` | Soft cool accent, variety in charts or campaign sets |
+---
 
 ## Typography
 
-Leaf uses Mona Sans as the main brand and product font. Source Serif 4 is an optional editorial serif for moments that need extra craft, emphasis, or long-form warmth.
+Mona Sans is the working font; Source Serif 4 is the editorial serif (headlines `800`, pull quotes italic `500`). Serif is never used for UI, tables, forms, nav, or small labels.
 
-| Font | Role | Use for |
-| --- | --- | --- |
-| Mona Sans | Default system font | Product UI, navigation, labels, body copy, landing pages, dense information, operational surfaces |
-| Source Serif 4 | Editorial/highlight serif | Blogs, long-form content, banners, marketing communications, pull quotes, selected highlight moments |
+### Type scale
 
-### Typography Weights
+| Token | Size / line-height | Weight | Use |
+| --- | --- | --- | --- |
+| `type.display` | 64 / 0.96 | 640 | Hero statements |
+| `type.h1` | 46 / 1.0 | 640 | Page / section titles |
+| `type.h2` | 32 / 1.05 | 600 | Sub-sections |
+| `type.h3` | 22 / 1.2 | 600 | Card and block titles |
+| `type.body-lg` | 18 / 1.55 | 400 | Marketing body, intros |
+| `type.body` | 16 / 1.6 | 400 | Default product / long text |
+| `type.label` | 14 / 1.4 | 500 | Buttons, nav, metadata |
+| `type.caption` | 13 / 1.4 | 500 | Smallest supporting text |
 
-| Use | Font | Weight |
-| --- | --- | --- |
-| Brand and editorial headlines | Source Serif 4 | `800` |
-| Pull quotes and editorial accents | Source Serif 4 Italic | `500` |
-| Product/UI/body copy/landing pages | Mona Sans | Use context-appropriate weights, generally regular to semibold |
+Display/H1 are fluid on marketing surfaces (`clamp()`); the values above are the desktop anchors. Tighten large headings with negative letter-spacing (~-0.03em display, -0.02em headings).
 
-Mona Sans wins for most interfaces, landing pages, product surfaces, and general brand communication. Use Source Serif 4 selectively when a moment should feel more editorial, crafted, or premium. Do not use Source Serif 4 for routine UI, forms, tables, dense operational views, navigation, or small labels.
+---
 
-Load Mona Sans and Source Serif 4 from Google Fonts for online usage. The brand book imports Mona Sans weights `200..900` plus only the landed Source Serif 4 weights: normal `800` and italic `500`.
+## Spacing & layout
 
-## Recommended Usage
+- **Base unit 4px, 8px rhythm.** Scale: `4, 8, 12, 16, 24, 32, 48, 64, 96`.
+- **Content max-width** 1200px, centred. **Section padding** `clamp(56px, 7vw, 96px)` vertical, `clamp(20px, 5vw, 56px)` horizontal.
+- **Grid** 12 columns, 16px gutter default. Use CSS grid / flex with `gap` — never margin-based spacing between siblings.
+- **Radius:** `sm 8px` (chips, small controls) · `md 14px` (cards, tiles) · `lg 18px` (large panels, hero blocks) · `pill 999px` (buttons, tags).
 
-### Logos
+---
 
-Leaf's logo system includes the core Leaf mark plus service and property sub logos. Service and property logos now ship in two export modes: `padding/` and `no-padding/`.
+## Elevation & borders
 
-Use `padding/` exports when the logo is being shared, dropped into a loose canvas, or used where the asset needs to carry its own safe area. The padded margin is equal to 50% of the Leaf icon.
+Leaf is **flat by default**: surfaces are separated by 1px hairline borders (`rgba(23,20,18,0.10)` on light, `rgba(255,253,251,0.12)` on dark) and by background tone, not by shadow.
 
-Use `no-padding/` exports inside applications, components, cards, watermarks, navigation, or any layout where the surrounding system already controls spacing. This avoids extra invisible space creating alignment or sizing issues.
+One soft, warm-tinted shadow exists for **lifted or transient surfaces only** — dropdowns, popovers, modals, and hover states. It reads as quiet texture, not depth theatre, and is the foundation for minimal motion (a small hover lift).
 
-| Group | Role | Source |
-| --- | --- | --- |
-| Core Leaf icon | App icons, compact brand marks, favicons, small-space brand moments | `assets/logos/_ leaf/icon/{padding,no-padding}/` |
-| Core Leaf logo | Default company logo lockup | `assets/logos/_ leaf/logo/{padding,no-padding}/` |
-| Answers | Service sub logo for Leaf Answers | `assets/logos/answers/{padding,no-padding}/` |
-| Creative | Service sub logo for Leaf Creative | `assets/logos/creative/{padding,no-padding}/` |
-| Performance | Service sub logo for Leaf Performance | `assets/logos/performance/{padding,no-padding}/` |
-| Signal | Service sub logo for Leaf Signal | `assets/logos/signal/{padding,no-padding}/` |
-| Stores | Service sub logo for Leaf Stores | `assets/logos/stores/{padding,no-padding}/` |
-| Strategy | Service sub logo for Leaf Strategy | `assets/logos/strategy/{padding,no-padding}/` |
-| Blog | Property logo for Leaf Blog editorial surfaces | `assets/logos/blog/{padding,no-padding}/` |
-| Colectivo | Property logo for Leaf Colectivo, the podcast | `assets/logos/colectivo/{padding,no-padding}/` |
+- `shadow.sm` — `0 1px 2px rgba(23,20,18,0.05), 0 2px 6px rgba(23,20,18,0.05)` — hover, resting cards that need faint lift.
+- `shadow.md` — `0 4px 12px rgba(23,20,18,0.08), 0 12px 28px rgba(23,20,18,0.07)` — menus, modals, overlays.
 
-- Use SVG for product, web, deck, and layout work whenever the output context supports vector assets.
-- Use PNG only when a raster asset is required by the destination.
-- Do not trim, crop, or manually reframe a padded export to make the artwork appear larger; switch to the matching `no-padding/` export instead.
-- When placing padded logos in layout, align the export frame to the grid; the visible artwork already accounts for clear space inside that frame.
-- When placing no-padding logos, provide spacing through the component, grid, or surrounding layout.
-- Use Coral exports for primary brand placement on light, Stone, or Canvas surfaces.
-- Use Ink or Black exports when Coral would create too much emphasis or when the surrounding system is monochrome.
-- Use White or Negative exports only on dark, Ink, or Coral surfaces where the mark needs strong contrast.
-- Use the service sub logos for the named service surface. Use the Blog and Colectivo property logos for editorial and podcast contexts rather than treating them as services.
-- Keep SVG and PNG variants paired when adding or updating logo exports.
+Never stack shadow *and* a heavy border on the same element; pick one separation cue.
 
-### Backgrounds
+---
 
-- Use `Light Stone` as the default brand background for warm, editorial, or marketing surfaces.
-- Use `Stone` for secondary sections, grouped areas, and quiet contrast against `Light Stone`.
-- Use `Canvas` when content density, legibility, or document-like clarity matters.
-- Use `Ink` for high-impact brand moments only when the surrounding experience can support strong contrast.
-- Use pure `White` and pure `Black` only when a destination, asset format, or strict contrast context requires them.
+## Interaction states
 
-### Text
+- **Focus** — `2px solid Coral` outline, `2px` offset (`focus-visible` only). On Ink / dark surfaces use Aqua. Never remove focus outlines.
+- **Hover** — buttons shift fill (primary → `#E8462F`, secondary → `#FBE4DF`); cards/links may lift with `shadow.sm`. Keep transitions 120–180ms.
+- **Disabled** — 40% opacity + `not-allowed` cursor. Never signal disabled by colour alone.
+- **Links** — Coral default, Ink on hover; underline on hover for inline/body links (not for nav or button-style links).
 
-- Use `Ink` for primary text on `Light Stone`, `Stone`, `Canvas`, `Coral`, and `Aqua`.
-- Use `Warm Grey` for secondary text on `Light Stone`, `Stone`, and `Canvas`.
-- Do not use `Coral`, `Aqua`, `Light Stone`, or `Stone` for body text.
-- Avoid white body text on `Coral`; it does not meet normal-size text contrast guidance.
+---
 
-### Brand Accent
+## Dark surfaces
 
-- Use `Coral` to make something feel distinctly Leaf.
-- Use `Aqua` as a highlight, not as a competing brand color.
-- Do not let `Coral` and `Aqua` carry important text contrast against each other.
+Ink (`#171412`) is a real brand surface (e.g. the "for agents" section). On dark:
 
-### Secondary Colour
+- Text: Canvas (`#FFFDFB`) primary; `rgba(255,253,251,0.6)` secondary.
+- Accent / small labels: **Aqua**.
+- Coral still works as the signal — solid Coral CTAs read well on Ink.
+- Borders / dividers: `rgba(255,253,251,0.12)`. Panels: `rgba(255,253,251,0.04)` fill.
 
-- Use secondary colours when a surface needs multiple distinct categories, varied campaign moments, editorial illustration, or chart series.
-- Keep secondary colours subordinate to the primary system. A secondary colour should rarely dominate a full page or product surface.
-- Pair secondary colour fields with Ink or black SVG icons when building content libraries, onboarding collections, learning hubs, editorial navigation, or page-category cards.
-- Keep the icon style consistent inside a collection. Let the colour vary by category while the icon treatment and label surface stay stable.
-- Do not use secondary colours for product states such as success, warning, error, focus, or disabled until those state tokens are defined separately.
-- Prefer Ink text on Marigold, Butter, Apricot, Rosehip, Sage, Laurel, Eucalyptus, Harbor, Heather, and Lilac.
-- Treat Rosehip as a display or accent colour; avoid relying on it for normal body text.
+---
 
-### Notion Gallery Page Covers
+## Motion
 
-Notion gallery banners should be generated as page-cover images because Notion gallery views use the page cover as the card image. Each page cover should use one secondary colour as the full image field and one centered black icon from `assets/icons/<theme>/<icon>/black/png/`. This keeps the collection visually varied while preserving a consistent Leaf card system.
+Minimal and purposeful. Animate `opacity` and `transform` only; 120–200ms; ease-out (`cubic-bezier(0.2, 0, 0, 1)`). Hover lifts and fades tie to `shadow.sm`. Always honour `prefers-reduced-motion: reduce`.
 
-Use `tools/notion_banner_generator.py` for generated PNG exports. The default Notion page-cover format is `1500x600`. The icon should stay centered and occupy roughly one third of the shorter side so it remains readable when Notion crops the cover into a gallery-card preview. Generated files should live in `exports/notion-banners/` unless a downstream workflow needs a committed asset.
+---
 
-## Accessibility Notes
+## Iconography
 
-Contrast ratios are calculated against WCAG relative luminance guidance.
+- Default to **SVG**, **black** variation. Keep icon treatment consistent within a set; let colour vary by category.
+- Sizes: `16 · 20 · 24 · 32 · 48`px. In coloured category tiles, the icon is ~⅓ of the shorter side.
+- Pair black icons with secondary-colour fields for libraries, hubs, and editorial navigation.
 
-| Pair | Contrast | Guidance |
-| --- | ---: | --- |
-| Ink on Canvas | 18.07:1 | Passes normal text |
-| Ink on Light Stone | 16.80:1 | Passes normal text |
-| Ink on Stone | 15.20:1 | Passes normal text |
-| Ink on Coral | 5.93:1 | Passes normal text |
-| Ink on Aqua | 10.95:1 | Passes normal text |
-| Warm Grey on Canvas | 5.74:1 | Passes normal text |
-| Warm Grey on Light Stone | 5.34:1 | Passes normal text |
-| Warm Grey on Stone | 4.83:1 | Passes normal text |
-| White on Coral | 3.09:1 | Use only for large text or non-critical display text |
-| Ink on Warm Grey | 3.15:1 | Use only for large text or graphic elements |
-| Aqua on Warm Grey | 3.48:1 | Use only for large text or graphic elements |
+---
 
-As a default implementation rule, use Ink text on Coral and Aqua fills.
+## Imagery
 
-### Secondary Contrast
+Not yet specified. Out of scope for v0.2 — revisit alongside marketing surfaces.
 
-| Pair | Contrast | Guidance |
-| --- | ---: | --- |
-| Ink on Marigold | 10.12:1 | Passes normal text |
-| Ink on Butter | 14.41:1 | Passes normal text |
-| Ink on Apricot | 9.15:1 | Passes normal text |
-| Ink on Rosehip | 5.54:1 | Passes normal text |
-| Ink on Sage | 14.31:1 | Passes normal text |
-| Ink on Laurel | 8.44:1 | Passes normal text |
-| Ink on Eucalyptus | 9.93:1 | Passes normal text |
-| Ink on Harbor | 6.22:1 | Passes normal text |
-| Ink on Lilac | 12.31:1 | Passes normal text |
-| Ink on Heather | 7.71:1 | Passes normal text |
+---
 
-## Implementation Tokens
+## Deferred — data visualization
 
-### CSS Custom Properties
+Locked for a dedicated pass. Open questions: categorical vs sequential chart palettes; how the **secondary palette** (series) and the **state palette** (status) divide; axis, gridline, and label treatment; legend and tooltip patterns; and small-multiple rules.
+
+---
+
+## Implementation tokens (additions for v0.2)
 
 ```css
 :root {
-  --leaf-color-brand-coral: #fb5e48;
-  --leaf-color-neutral-light-stone: #f9f4f1;
-  --leaf-color-neutral-stone: #f2e8e1;
-  --leaf-color-neutral-canvas: #fffdfb;
-  --leaf-color-neutral-ink: #171412;
-  --leaf-color-neutral-warm-grey: #656565;
-  --leaf-color-highlight-aqua: #7ad8ce;
-  --leaf-color-secondary-marigold: #efb75a;
-  --leaf-color-secondary-butter: #f6e49d;
-  --leaf-color-secondary-apricot: #f4a38f;
-  --leaf-color-secondary-rosehip: #d96b7c;
-  --leaf-color-secondary-sage: #dce8c4;
-  --leaf-color-secondary-laurel: #8ebb91;
-  --leaf-color-secondary-eucalyptus: #9fc7bc;
-  --leaf-color-secondary-harbor: #4fa3a6;
-  --leaf-color-secondary-lilac: #d8cff0;
-  --leaf-color-secondary-heather: #aaa2d4;
-  --leaf-font-sans: "Mona Sans", Arial, sans-serif;
-  --leaf-font-serif: "Source Serif 4", Georgia, serif;
-  --leaf-font-serif-headline-weight: 800;
-  --leaf-font-serif-quote-weight: 500;
+  /* --- state palette --- */
+  --leaf-color-state-success: #2f8b57;
+  --leaf-color-state-success-tint: #e7f1ea;
+  --leaf-color-state-warning: #c77e1c;
+  --leaf-color-state-warning-tint: #f6e9cc;
+  --leaf-color-state-error: #c63a2b;
+  --leaf-color-state-error-tint: #f7e0db;
+  --leaf-color-state-info: #2e8388;
+  --leaf-color-state-info-tint: #ddecec;
+
+  /* --- coral usage --- */
+  --leaf-color-coral-hover: #e8462f;
+  --leaf-color-coral-tint: #fbe4df;
+
+  /* --- spacing --- */
+  --leaf-space-1: 4px;
+  --leaf-space-2: 8px;
+  --leaf-space-3: 12px;
+  --leaf-space-4: 16px;
+  --leaf-space-5: 24px;
+  --leaf-space-6: 32px;
+  --leaf-space-7: 48px;
+  --leaf-space-8: 64px;
+  --leaf-space-9: 96px;
+
+  /* --- radius --- */
+  --leaf-radius-sm: 8px;
+  --leaf-radius-md: 14px;
+  --leaf-radius-lg: 18px;
+  --leaf-radius-pill: 999px;
+
+  /* --- layout --- */
+  --leaf-container-max: 1200px;
+
+  /* --- borders --- */
+  --leaf-border-light: rgba(23, 20, 18, 0.1);
+  --leaf-border-dark: rgba(255, 253, 251, 0.12);
+
+  /* --- elevation --- */
+  --leaf-shadow-sm: 0 1px 2px rgba(23, 20, 18, 0.05), 0 2px 6px rgba(23, 20, 18, 0.05);
+  --leaf-shadow-md: 0 4px 12px rgba(23, 20, 18, 0.08), 0 12px 28px rgba(23, 20, 18, 0.07);
+
+  /* --- motion --- */
+  --leaf-motion-fast: 120ms;
+  --leaf-motion-base: 180ms;
+  --leaf-ease: cubic-bezier(0.2, 0, 0, 1);
+
+  /* --- type scale --- */
+  --leaf-type-display: 640 64px/0.96 "Mona Sans";
+  --leaf-type-h1: 640 46px/1.0 "Mona Sans";
+  --leaf-type-h2: 600 32px/1.05 "Mona Sans";
+  --leaf-type-h3: 600 22px/1.2 "Mona Sans";
+  --leaf-type-body-lg: 400 18px/1.55 "Mona Sans";
+  --leaf-type-body: 400 16px/1.6 "Mona Sans";
+  --leaf-type-label: 500 14px/1.4 "Mona Sans";
+  --leaf-type-caption: 500 13px/1.4 "Mona Sans";
 }
 ```
 
-### JSON Tokens
-
-```json
-{
-  "color": {
-    "brand": {
-      "coral": { "value": "#FB5E48", "rgb": "251 94 72" }
-    },
-    "neutral": {
-      "light-stone": { "value": "#F9F4F1", "rgb": "249 244 241" },
-      "stone": { "value": "#F2E8E1", "rgb": "242 232 225" },
-      "canvas": { "value": "#FFFDFB", "rgb": "255 253 251" },
-      "ink": { "value": "#171412", "rgb": "23 20 18" },
-      "warm-grey": { "value": "#656565", "rgb": "101 101 101" }
-    },
-    "highlight": {
-      "aqua": { "value": "#7AD8CE", "rgb": "122 216 206" }
-    },
-    "secondary": {
-      "marigold": { "value": "#EFB75A", "rgb": "239 183 90" },
-      "butter": { "value": "#F6E49D", "rgb": "246 228 157" },
-      "apricot": { "value": "#F4A38F", "rgb": "244 163 143" },
-      "rosehip": { "value": "#D96B7C", "rgb": "217 107 124" },
-      "sage": { "value": "#DCE8C4", "rgb": "220 232 196" },
-      "laurel": { "value": "#8EBB91", "rgb": "142 187 145" },
-      "eucalyptus": { "value": "#9FC7BC", "rgb": "159 199 188" },
-      "harbor": { "value": "#4FA3A6", "rgb": "79 163 166" },
-      "lilac": { "value": "#D8CFF0", "rgb": "216 207 240" },
-      "heather": { "value": "#AAA2D4", "rgb": "170 162 212" }
-    }
-  },
-  "font": {
-    "sans": { "value": "Mona Sans" },
-    "serif": { "value": "Source Serif 4" },
-    "serif-headline-weight": { "value": 800 },
-    "serif-quote-weight": { "value": 500 }
-  }
-}
-```
-
-## Naming Standard
-
-- Use lowercase kebab-case for token ids.
-- Group tokens by role first, then color name.
-- Keep human-readable names title-cased in documentation.
-- Do not use raw HEX values in implementation when a token exists.
-
-## Next Foundations To Document
-
-- Typography scale and Mona Sans + Source Serif 4 usage.
-- Voice and interface capitalization rules.
-- Logo minimum sizing and lockup-specific placement examples.
-- Icon sizing, stroke/fill guidance, and selection rules.
-- Color roles for product states such as success, warning, error, focus, and disabled.
-- Secondary palette usage examples for charts, categories, and campaign systems.
-- Exported token files for downstream apps.
+> These are the v0.2 **additions**. Merge on top of the v0.1 `:root` block (core, neutral, highlight, secondary colour tokens + font tokens), which is unchanged.
