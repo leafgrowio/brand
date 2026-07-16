@@ -2,12 +2,14 @@
 
 This document is the written source of truth for Leaf's design system. It pairs with two visual references: the **brand book** (`Leaf Brand Book.dc.html`) for brand foundations, and the **component library** (`Leaf Component Library.dc.html`) for the application layer. Where any of them disagree, fix all. Keep the split clean: brand-level language (foundations, colour, type, voice, logos, icons, imagery, photography, data viz, applications preview) lives in the brand book; product components (catalog, patterns, app shell, overlays) live in the component library.
 
-Status: v1.0 — ratified 16 July 2026. All sections locked.
+Status: v1.0.1 — ratified 16 July 2026 (patch: palette tables restored). All sections locked.
 Source: core brand reference (June 2026) + v1.0 ratification (July 2026).
 
 ---
 
 ## Changelog
+
+**v1.0.1 — July 2026 (patch).** Restored the palette tables the Colour section references — core, neutral, highlight, and secondary with hexes — which had dropped out of the doc; values match `tokens/colors.css`.
 
 **v1.0 — ratified July 2026.** Full system locked; everything previously marked "proposed" is ratified. Added: Mona Sans **stylistic sets** (ss03/05/06/07/09, always on, self-hosted VF); a dedicated **Logos** section (clear space, minimum sizes, misuse, service/property family); **co-brand lockups** (divider for equal partnerships, `×` cross for customer announcements); the **approved colour pairings** matrix; an expanded **Voice** section with language patterns (use / use carefully / avoid) and mechanics; and **governance & versioning** (below).
 
@@ -463,6 +465,54 @@ Good-and-bad uses the **state palette only** — Fern for positive deltas, Ember
 - Axis labels, ticks, and legends: Warm Grey, `type.caption`/`type.label`, sentence case.
 - Label series directly where space allows. No chart junk: no 3D, no drop shadows, no heavy borders, no gradients outside a defined ramp.
 - Chart surfaces are Canvas cards with the standard hairline border and `radius.lg`.
+
+---
+
+## Palette tables
+
+The base palette the whole system builds on. Token names live in `tokens/colors.css`; the values here and there must never differ.
+
+### Core
+
+| Name | Hex | Role |
+| --- | --- | --- |
+| Coral | `#FB5E48` | The brand signal — one decisive moment per view |
+| Coral hover | `#E8462F` | Primary button hover |
+| Coral tint | `#FBE4DF` | Soft content blocks, active-state fills |
+| Ink | `#171412` | Primary text; a real brand surface |
+| Canvas | `#FFFDFB` | Clarity surface — cards, fields |
+
+### Neutral
+
+| Name | Hex | Role |
+| --- | --- | --- |
+| Light Stone | `#F9F4F1` | Default page ground |
+| Stone faint | `#FBF7F4` | Sidebar, table headers, zebra rows |
+| Stone | `#F2E8E1` | Surface, skeletons, muted chips |
+| Stone deep | `#EDE3DC` | Deeper stone ground |
+| Stone hairline | `#D9CFC8` | Off-state controls |
+| Warm Grey | `#656565` | Secondary text |
+
+### Highlight
+
+| Name | Hex | Role |
+| --- | --- | --- |
+| Aqua | `#7AD8CE` | Small labels and accents on Ink / dark surfaces only |
+
+### Secondary (fills only, never text — every one takes Ink text)
+
+| Name | Hex | Mood |
+| --- | --- | --- |
+| Marigold | `#EFB75A` | Warm |
+| Butter | `#F6E49D` | Warm |
+| Apricot | `#F4A38F` | Warm |
+| Rosehip | `#D96B7C` | Expressive |
+| Sage | `#DCE8C4` | Fresh |
+| Laurel | `#8EBB91` | Fresh |
+| Eucalyptus | `#9FC7BC` | Calm |
+| Harbor | `#4FA3A6` | Calm |
+| Lilac | `#D8CFF0` | Cool |
+| Heather | `#AAA2D4` | Cool |
 
 ---
 
