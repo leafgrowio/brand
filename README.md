@@ -18,7 +18,7 @@ system/
 
 ### Font
 
-`assets/font/` contains the two typefaces Leaf uses for product, marketing, and brand communication: Mona Sans and Source Serif 4. Both are distributed under the SIL Open Font License, and each font folder includes its own `OFL.txt` and `README.txt` alongside the variable-font source files.
+`assets/font/` contains the two typefaces Leaf uses for product, marketing, and brand communication: Mona Sans and Source Serif 4 — variable-font sources only, each beside its SIL Open Font License (`OFL.txt`). Both are pinned to named upstream releases (Mona Sans: github/mona-sans v2.0.27 · Source Serif 4: adobe-fonts/source-serif 4.005R) and refreshed deliberately from those repos; static instances are not carried — instance from the variable fonts when a fixed cut is needed.
 
 Mona Sans is the main font for product, UI, navigation, labels, body copy, landing pages, and most brand communication. Source Serif 4 is an optional editorial serif for blogs, long-form content, banners, marketing communications, pull quotes, and selected highlight moments — `800` for headlines, italic `500` for quotes. **Self-host Mona Sans** (from here or from `system/assets/fonts/`): Leaf's letterforms depend on stylistic sets ss03/05/06/07/09, which the Google Fonts build strips. Source Serif 4 may load from Google Fonts, though the design system self-hosts both for parity. See `system/tokens/fonts.css` for the reference `@font-face` rules.
 

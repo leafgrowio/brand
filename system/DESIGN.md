@@ -2,12 +2,14 @@
 
 This document is the written source of truth for Leaf's design system. It pairs with two visual references: the **brand book** (`Leaf Brand Book.dc.html`) for brand foundations, and the **component library** (`Leaf Component Library.dc.html`) for the application layer. Where any of them disagree, fix all. Keep the split clean: brand-level language (foundations, colour, type, voice, logos, icons, imagery, photography, data viz, applications preview) lives in the brand book; product components (catalog, patterns, app shell, overlays) live in the component library.
 
-Status: v1.0.3 — ratified 16 July 2026 (patches: palette tables restored; Mona Sans pinned to upstream v2.0.27 with all five stylistic sets). All sections locked.
+Status: v1.0.4 — ratified 16 July 2026 (patches: palette tables; fonts pinned to upstream releases). All sections locked.
 Source: core brand reference (June 2026) + v1.0 ratification (July 2026).
 
 ---
 
 ## Changelog
+
+**v1.0.4 — July 2026 (patch).** Source Serif 4 upgraded to upstream **4.005R** (adobe-fonts/source-serif) and both font families pinned to named releases, kept current deliberately (procedure in `AGENTS.md`). The repo's font folder now carries variable sources + licences only — static instances removed.
 
 **v1.0.3 — July 2026 (patch).** Mona Sans upgraded to upstream **v2.0.27** (github/mona-sans; the repo had shipped v2.000). The newer font adds an optical-size axis and restores `ss09` — so all five stylistic sets (ss03/05/06/07/09) are real again and back on. Fonts are pinned to a named upstream release; the upgrade procedure lives in `AGENTS.md`.
 

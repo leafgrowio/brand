@@ -38,7 +38,7 @@ Default to SVG, black variation. This project carries a curated flat set in `ass
 
 Sizes 16 · 20 · 24 · 32 · 48px. In coloured category tiles the icon is ~⅓ of the shorter side, always black line-art on a flat secondary-colour field — never recoloured, never on Coral. Leaf imagery is iconographic, not photographic: one icon, optically centred, one flat secondary field, topic-matched (people → Heather, decisions → Harbor, momentum → Marigold). Photography is the deliberate exception, reserved for customers in flight (co-brand `Partner × leafsignal` lockups, customer quotes on Ink).
 
-Small functional strokes inside components (check, chevron, ×, search, the sidebar glyphs) are part of the component spec; anything illustrative comes from `assets/icons/` — never hand-roll decorative SVGs.
+Small functional strokes inside components (check, chevron, ×, search, the sidebar glyphs) are part of the component spec; anything illustrative comes from `assets/icons/` — never hand-roll decorative SVGs. Agents running with the Leaf plugin should resolve icons and logos by query through its `find-icon` skill (the search layer over the full library), and reach for its `leaf-design` skill when producing sandboxed artifacts.
 
 ## Manifest
 

@@ -15,6 +15,8 @@ You are working inside Leaf's design system. Everything you produce should look 
 
 ## Producing work
 
+**Sandboxed artifacts (Chat/Cowork):** the Leaf plugin's **`leaf-design`** skill carries a self-contained kit built from this system (flattened tokens, starter template, embeddable Mona Sans subset) — prefer it there, since artifacts cannot fetch these files at render time.
+
 **Static HTML artifacts (previews, decks, one-off pages):**
 - Link `styles.css` (or inline-copy the token blocks from `tokens/*.css` when the artifact must be fully self-contained) and style exclusively with `var(--leaf-*)` tokens.
 - Copy specimen markup from `foundations/*.card.html` and `components/**/*.card.html` — they are small, correct, self-contained HTML you can lift patterns from directly.
@@ -25,7 +27,7 @@ You are working inside Leaf's design system. Everything you produce should look 
 - Start new screens from the `@startingPoint` components (Button, Input, Table, Modal, SidebarItem) and from the `ui_kits/answers/` screens, which show the full app shell composed correctly.
 
 **Assets:**
-- Icons: copy from `assets/icons/` (black SVG line-art by default); the full themed library is in the brand repo. Never hand-roll decorative SVGs, never recolour icons.
+- Icons: copy from `assets/icons/` (black SVG line-art by default); the full themed library (~1,250 icons) is in the brand repo. When the Leaf plugin is available, resolve icons and logos by query with its **`find-icon`** skill instead of guessing filenames — it searches the full library and returns exact paths per colour variation. Never hand-roll decorative SVGs, never recolour icons.
 - Logos: copy from `assets/logos/`; Coral on light, Negative on Coral/Ink; respect the padded exports' clear space; icon alone below 80px.
 - Imagery: one black line icon centred on one flat secondary-colour field. No stock photos, no gradients (photography is reserved for customer co-brand moments — see DESIGN.md).
 
