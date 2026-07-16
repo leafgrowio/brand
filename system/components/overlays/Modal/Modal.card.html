@@ -1,0 +1,74 @@
+<!-- @dsCard group="Components" viewport="700x360" subtitle="Centred dialog on the Ink scrim" name="Modal" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+  body { margin: 0; padding: var(--leaf-space-4); background: var(--leaf-surface-card); }
+  .stage {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--leaf-color-stone-deep);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+  }
+  .scrim { position: absolute; inset: 0; background: var(--leaf-scrim); }
+  .card {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background: var(--leaf-color-canvas);
+    border: 1px solid var(--leaf-border-light);
+    border-radius: var(--leaf-radius-lg);
+    box-shadow: var(--leaf-shadow-md);
+    padding: 26px;
+  }
+  .header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--leaf-space-4); margin-bottom: var(--leaf-space-1); }
+  .title { font: 600 20px/1.2 var(--leaf-font-sans); color: var(--leaf-text-primary); margin: 0; }
+  .close { color: var(--leaf-color-warm-grey); display: flex; flex: none; margin-top: 2px; }
+  .body { font: 400 14.5px/1.55 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin: 0 0 22px; }
+  .actions { display: flex; gap: 10px; justify-content: flex-end; }
+  .btn-cancel {
+    font: 600 14px/1 var(--leaf-font-sans);
+    color: var(--leaf-text-primary);
+    background: transparent;
+    border: 1px solid rgba(23, 20, 18, 0.16);
+    padding: 10px 16px;
+    border-radius: var(--leaf-radius-pill);
+  }
+  .btn-destructive {
+    font: 600 14px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-canvas);
+    background: var(--leaf-color-state-error);
+    padding: 10px 16px;
+    border-radius: var(--leaf-radius-pill);
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="scrim"></div>
+    <div class="card" role="dialog" aria-modal="true">
+      <div class="header">
+        <h2 class="title">Delete this report?</h2>
+        <span class="close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        </span>
+      </div>
+      <p class="body">"Black Friday 2026" and its 4 connected sources will be removed. This can't be undone.</p>
+      <div class="actions">
+        <span class="btn-cancel">Cancel</span>
+        <span class="btn-destructive">Delete report</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

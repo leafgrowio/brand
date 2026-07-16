@@ -1,0 +1,49 @@
+<!-- @dsCard group="Radius & Elevation" viewport="700x150" subtitle="sm, md, lg, pill on stone ground" name="Radius" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-color-stone); }
+  .row {
+    display: flex;
+    gap: var(--leaf-space-4);
+    padding: var(--leaf-space-4);
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--leaf-space-2);
+  }
+  .swatch {
+    width: 52px;
+    height: 52px;
+    background: var(--leaf-surface-card);
+    border: 1px solid var(--leaf-border-light);
+  }
+  .swatch.sm { border-radius: var(--leaf-radius-sm); }
+  .swatch.md { border-radius: var(--leaf-radius-md); }
+  .swatch.lg { border-radius: var(--leaf-radius-lg); }
+  .swatch.pill { border-radius: var(--leaf-radius-pill); }
+  .caption {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-secondary);
+    text-align: center;
+  }
+  .caption span {
+    display: block;
+    color: var(--leaf-text-muted);
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="swatch sm"></div><div class="caption">sm · 8px<span>chips</span></div></div>
+    <div class="item"><div class="swatch md"></div><div class="caption">md · 14px<span>cards</span></div></div>
+    <div class="item"><div class="swatch lg"></div><div class="caption">lg · 18px<span>panels</span></div></div>
+    <div class="item"><div class="swatch pill"></div><div class="caption">pill · 999px<span>buttons</span></div></div>
+  </div>
+</body>
+</html>

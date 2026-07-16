@@ -1,0 +1,80 @@
+<!-- @dsCard group="Colors" viewport="700x170" subtitle="Fern, Amber, Ember, Tidal — solid + tint pairs" name="State colours" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .row {
+    display: flex;
+    gap: var(--leaf-space-4);
+    padding: var(--leaf-space-4);
+  }
+  .col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-2);
+  }
+  .solid {
+    height: 36px;
+    border-radius: var(--leaf-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: var(--leaf-type-caption);
+    font-weight: 600;
+    color: var(--leaf-text-on-dark);
+  }
+  .solid.fern { background: var(--leaf-color-state-success); }
+  .solid.amber { background: var(--leaf-color-state-warning); }
+  .solid.ember { background: var(--leaf-color-state-error); }
+  .solid.tidal { background: var(--leaf-color-state-info); }
+  .tint {
+    height: 56px;
+    border-radius: var(--leaf-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 var(--leaf-space-2);
+    font: var(--leaf-type-caption);
+    color: var(--leaf-color-ink);
+  }
+  .tint.fern { background: var(--leaf-color-state-success-tint); }
+  .tint.amber { background: var(--leaf-color-state-warning-tint); }
+  .tint.ember { background: var(--leaf-color-state-error-tint); }
+  .tint.tidal { background: var(--leaf-color-state-info-tint); }
+  .hex {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="col">
+      <div class="solid fern">Fern</div>
+      <div class="tint fern">Tracking restored</div>
+      <div class="hex">#2F8B57 · #E7F1EA</div>
+    </div>
+    <div class="col">
+      <div class="solid amber">Amber</div>
+      <div class="tint amber">Needs review</div>
+      <div class="hex">#C77E1C · #F6E9CC</div>
+    </div>
+    <div class="col">
+      <div class="solid ember">Ember</div>
+      <div class="tint ember">Sync failed</div>
+      <div class="hex">#C63A2B · #F7E0DB</div>
+    </div>
+    <div class="col">
+      <div class="solid tidal">Tidal</div>
+      <div class="tint tidal">Draft saved</div>
+      <div class="hex">#2E8388 · #DDECEC</div>
+    </div>
+  </div>
+</body>
+</html>

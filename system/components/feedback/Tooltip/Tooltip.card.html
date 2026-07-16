@@ -1,0 +1,70 @@
+<!-- @dsCard group="Components" viewport="700x140" subtitle="top pointer, hover/focus reveal" name="Tooltip" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+  }
+  .tooltip-wrap {
+    position: relative;
+    display: inline-flex;
+  }
+  .trigger {
+    font-family: var(--leaf-font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--leaf-color-canvas);
+    background: var(--leaf-color-coral);
+    border: none;
+    border-radius: var(--leaf-radius-pill);
+    padding: 11px 20px;
+  }
+  .tooltip {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 8px 12px;
+    border-radius: var(--leaf-radius-sm);
+    background: var(--leaf-color-ink);
+    font-family: var(--leaf-font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--leaf-color-canvas);
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .pointer {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--leaf-color-ink);
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%) rotate(45deg);
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <span class="tooltip-wrap">
+      <button type="button" class="trigger">Export</button>
+      <span role="tooltip" class="tooltip">
+        Exports as CSV
+        <span class="pointer" aria-hidden="true"></span>
+      </span>
+    </span>
+  </div>
+</body>
+</html>

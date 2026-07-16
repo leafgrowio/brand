@@ -1,0 +1,110 @@
+<!-- @dsCard group="Components" viewport="700x300" subtitle="default, focus, error, disabled" name="Input" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+  body {
+    margin: 0;
+    padding: var(--leaf-space-4);
+    background: var(--leaf-surface-card);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--leaf-space-5) var(--leaf-space-6);
+  }
+  .cell {
+    display: flex;
+    flex-direction: column;
+  }
+  .field-label {
+    display: block;
+    font-family: var(--leaf-font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--leaf-color-ink);
+    margin-bottom: 7px;
+  }
+  .field-label.is-disabled {
+    color: var(--leaf-text-muted);
+  }
+  .field {
+    font-family: var(--leaf-font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--leaf-color-ink);
+    background: var(--leaf-color-canvas);
+    border: 1px solid var(--leaf-border-input);
+    border-radius: var(--leaf-radius-md);
+    padding: 11px 14px;
+  }
+  .field.focus {
+    border-color: var(--leaf-color-coral);
+    outline: 2px solid var(--leaf-focus-ring);
+    outline-offset: 1px;
+  }
+  .field.error {
+    border-color: var(--leaf-color-state-error);
+  }
+  .field.is-disabled {
+    color: var(--leaf-text-muted);
+    background: var(--leaf-color-stone-faint);
+    border: 1px solid rgba(23, 20, 18, 0.12);
+    opacity: 0.7;
+  }
+  .help {
+    font-family: var(--leaf-font-sans);
+    font-size: 12.5px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--leaf-color-warm-grey);
+    margin-top: 6px;
+  }
+  .error-text {
+    font-family: var(--leaf-font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--leaf-color-state-error);
+    margin-top: 6px;
+  }
+  .cap {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-muted);
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="cell">
+      <label class="field-label" for="i1">Campaign name</label>
+      <input id="i1" class="field" value="Black Friday 2026" readonly>
+      <span class="help">Visible to your team only.</span>
+      <span class="cap">Default</span>
+    </div>
+    <div class="cell">
+      <label class="field-label" for="i2">Campaign name</label>
+      <input id="i2" class="field focus" value="Black Friday 2026" readonly>
+      <span class="help">Visible to your team only.</span>
+      <span class="cap">Focus</span>
+    </div>
+    <div class="cell">
+      <label class="field-label" for="i3">Campaign name</label>
+      <input id="i3" class="field error" placeholder="e.g. Black Friday 2026">
+      <span class="error-text">Name is required.</span>
+      <span class="cap">Error</span>
+    </div>
+    <div class="cell">
+      <label class="field-label is-disabled" for="i4">Campaign name</label>
+      <input id="i4" class="field is-disabled" value="Black Friday 2026" disabled>
+      <span class="help">Visible to your team only.</span>
+      <span class="cap">Disabled</span>
+    </div>
+  </div>
+</body>
+</html>

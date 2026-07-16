@@ -1,0 +1,60 @@
+<!-- @dsCard group="Brand" viewport="700x210" subtitle="one decisive Coral moment — solid for CTA, tint for content" name="Coral rule" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-page); }
+  .mock {
+    padding: var(--leaf-space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-3);
+  }
+  .actions {
+    display: flex;
+    gap: var(--leaf-space-3);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    padding: 0 var(--leaf-space-4);
+    border-radius: var(--leaf-radius-pill);
+    font: var(--leaf-type-label);
+  }
+  .btn-primary {
+    background: var(--leaf-color-coral);
+    color: var(--leaf-color-ink);
+    border: 1px solid transparent;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--leaf-color-coral);
+    border: 1px solid var(--leaf-color-coral);
+  }
+  .content-block {
+    background: var(--leaf-color-coral-tint);
+    border: 1px solid rgba(251, 94, 72, 0.42);
+    border-radius: var(--leaf-radius-md);
+    padding: var(--leaf-space-4);
+    color: var(--leaf-color-ink);
+    font: var(--leaf-type-body);
+  }
+  .content-block strong { font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="mock">
+    <div class="actions">
+      <span class="btn btn-primary">Start with Signal</span>
+      <span class="btn btn-secondary">See a report</span>
+    </div>
+    <div class="content-block">
+      <strong>Wasted spend, flagged early.</strong> A soft Coral tint marks the moment worth a second look — the solid pill above is the only decisive Coral in the view.
+    </div>
+  </div>
+</body>
+</html>

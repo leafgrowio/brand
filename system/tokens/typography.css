@@ -1,0 +1,25 @@
+/* Leaf typography tokens — source: DESIGN.md § Typography + Implementation tokens.
+   Mona Sans is the working font; Source Serif 4 is the editorial serif only. */
+
+:root {
+  /* --- families --- */
+  --leaf-font-sans: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
+  --leaf-font-serif: "Source Serif 4", Georgia, serif;
+
+  /* --- type scale (font shorthands; desktop anchors) --- */
+  --leaf-type-display: 640 64px/0.96 "Mona Sans";
+  --leaf-type-h1: 640 46px/1.0 "Mona Sans";
+  --leaf-type-h2: 600 32px/1.05 "Mona Sans";
+  --leaf-type-h3: 600 22px/1.2 "Mona Sans";
+  --leaf-type-body-lg: 400 18px/1.55 "Mona Sans";
+  --leaf-type-body: 400 16px/1.6 "Mona Sans";
+  --leaf-type-label: 500 14px/1.4 "Mona Sans";
+  --leaf-type-caption: 500 13px/1.4 "Mona Sans";
+
+  /* --- stylistic sets: always on, enforced on * in fonts.css --- */
+  --leaf-type-features: "ss03" on, "ss05" on, "ss06" on, "ss07" on, "ss09" on;
+
+  /* --- tracking: tighten large headings --- */
+  --leaf-type-tracking-display: -0.03em;
+  --leaf-type-tracking-heading: -0.02em;
+}

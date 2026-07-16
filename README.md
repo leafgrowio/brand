@@ -1,6 +1,6 @@
 # Leaf Brand
 
-This repository is Leaf's canonical, public source of brand assets: fonts, icons, logos, the design foundation spec, and an HTML brand book. It is public because assets are fetched at runtime over plain HTTPS from `raw.githubusercontent.com/leafgrowio/brand/main/...`, so anyone building against Leaf's brand (internal tooling, partner integrations, or the open web) can pull the exact current asset without needing repo access or a local clone.
+This repository is Leaf's canonical, public source of brand assets and design foundations: fonts, icons, logos, and the full Leaf design system (spec, tokens, components, and reference UI). It is public because assets are fetched at runtime over plain HTTPS from `raw.githubusercontent.com/leafgrowio/brand/main/...`, so anyone building against Leaf's brand (internal tooling, partner integrations, or the open web) can pull the exact current asset without needing repo access or a local clone.
 
 Tools that generate, package, or clean these assets (the Notion banner generator, icon and logo manifest generators, export cleanup scripts) live in Leaf's internal `leaf` plugin repo, not here. See the "Tools" section below.
 
@@ -11,19 +11,16 @@ assets/
   font/
   icons/
   logos/
-book/
-DESIGN.md
+system/
 ```
 
-`DESIGN.md` contains the design-system foundation notes, starting with Leaf's core colour palette and implementation token names.
-
-`book/` contains an HTML-based brand book for visually reviewing the design foundations and brand assets together. Open `book/index.html` in a browser to view it.
+`system/` is the Leaf design system — the compiled, consumable form of the brand. It holds the ratified written spec (`system/DESIGN.md`, the single source of truth for design foundations), CSS design tokens (`system/styles.css` + `system/tokens/`), a React component library, foundation specimen cards, an interactive brand book and component library (`system/Leaf Brand Book.dc.html`, `system/Leaf Component Library.dc.html`), and the Answers UI kit. It syncs to Leaf's Claude Design "Design System" project, where it grounds design generation across the org. Start with `system/readme.md` for the guide and manifest; agents should read `system/AGENTS.md` before making changes there.
 
 ### Font
 
 `assets/font/` contains the two typefaces Leaf uses for product, marketing, and brand communication: Mona Sans and Source Serif 4. Both are distributed under the SIL Open Font License, and each font folder includes its own `OFL.txt` and `README.txt` alongside the variable-font source files.
 
-Mona Sans is the main font for product, UI, navigation, labels, body copy, landing pages, and most brand communication. Source Serif 4 is an optional editorial serif for blogs, long-form content, banners, marketing communications, pull quotes, and selected highlight moments. Load both fonts from Google Fonts for online usage, using Source Serif 4 `800` for headlines and italic `500` for quotes.
+Mona Sans is the main font for product, UI, navigation, labels, body copy, landing pages, and most brand communication. Source Serif 4 is an optional editorial serif for blogs, long-form content, banners, marketing communications, pull quotes, and selected highlight moments — `800` for headlines, italic `500` for quotes. **Self-host Mona Sans** (from here or from `system/assets/fonts/`): Leaf's letterforms depend on stylistic sets ss03/05/06/07/09, which the Google Fonts build strips. Source Serif 4 may load from Google Fonts, though the design system self-hosts both for parity. See `system/tokens/fonts.css` for the reference `@font-face` rules.
 
 ### Icons
 
@@ -112,13 +109,15 @@ Asset tooling — the Notion banner generator, the icon and logo manifest genera
 
 ## Agent Setup
 
-This repo includes `AGENTS.md` for agent-facing instructions. `CLAUDE.md` is a symlink to the same file so Claude-compatible tooling reads the same guidance.
+This repo includes `AGENTS.md` for agent-facing instructions, with `CLAUDE.md` as a symlink to the same file so Claude-compatible tooling reads the same guidance. The design system carries its own nested pair — `system/AGENTS.md` (and `system/CLAUDE.md` symlinked to it) — with the editing rules, verification workflow, and Claude Design sync procedure for that folder. Any agent (Claude Code, Codex, or otherwise) working under `system/` must follow it.
 
-## Future Foundations
+## Design System
 
-This repo is expected to grow beyond static assets. Good next additions include:
+The foundations that used to be aspirational here now live in `system/` as a working design system, ratified at v1.0 (16 July 2026):
 
-- Typography guidance for product and marketing contexts.
-- Logo minimum sizing and placement examples.
-- Icon selection and implementation rules.
-- Export or packaging workflows for downstream teams and apps.
+- **Spec** — `system/DESIGN.md`: colour, typography (including the always-on Mona Sans stylistic sets), voice, spacing, elevation, motion, logos, iconography, imagery, photography, data visualization, product patterns, navigation, overlays, responsive rules, and governance.
+- **Tokens** — `system/styles.css` imports `system/tokens/*.css`; every value is a `--leaf-*` CSS custom property.
+- **Components** — 18 React primitives across forms, data, feedback, navigation, and overlays, each with typed props, a usage prompt, and a rendered specimen card.
+- **Answers UI kit** — `system/ui_kits/answers/index.html`, an interactive recreation of Leaf's product surface composed from the primitives.
+
+Changes follow the governance in `system/DESIGN.md` (patch/minor/major versioning, Creative team review via creative@leaf.fm) and sync from this repo to the Claude Design project — see `system/AGENTS.md` for the workflow.

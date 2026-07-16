@@ -1,0 +1,67 @@
+<!-- @dsCard group="Components" viewport="700x120" subtitle="neutral, featured, count, removable" name="Tag" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: var(--leaf-space-3);
+    padding: var(--leaf-space-4);
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border-radius: var(--leaf-radius-pill);
+    font-family: var(--leaf-font-sans);
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 6px 12px;
+  }
+  .tag.neutral { color: var(--leaf-color-warm-grey); background: var(--leaf-color-stone); }
+  .tag.featured { color: var(--leaf-color-coral); background: var(--leaf-color-coral-tint); }
+  .tag.count { color: var(--leaf-color-coral); background: var(--leaf-color-coral-tint); padding: 5px 9px; }
+  .tag.removable {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--leaf-color-ink);
+    background: var(--leaf-color-stone-faint);
+    border: 1px solid rgba(23, 20, 18, 0.12);
+    padding: 6px 8px 6px 13px;
+  }
+  .tag .remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--leaf-text-muted);
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="tag neutral">Shopify</span>
+    <span class="tag featured">Featured</span>
+    <span class="tag count">12</span>
+    <span class="tag removable">
+      Paid media
+      <button type="button" class="remove" aria-label="Remove">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
+    </span>
+  </div>
+</body>
+</html>

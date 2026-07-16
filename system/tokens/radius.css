@@ -1,0 +1,8 @@
+/* Leaf radius tokens — sm: chips/small controls · md: cards/tiles · lg: large panels · pill: buttons/tags. */
+
+:root {
+  --leaf-radius-sm: 8px;
+  --leaf-radius-md: 14px;
+  --leaf-radius-lg: 18px;
+  --leaf-radius-pill: 999px;
+}

@@ -1,0 +1,93 @@
+/* Leaf colour tokens — source: DESIGN.md § Colour + § Data visualization + Implementation tokens,
+   verified against the brand book. Base palette first, then state, data-viz, and semantic aliases.
+
+   Usage rules live in DESIGN.md; the load-bearing ones:
+   - Copy colour: text is Ink / Coral / Warm Grey / Aqua-on-dark ONLY. Never secondary colours or tints as text.
+   - One decisive Coral moment per view. Solid Coral is for CTAs and small marks, never a large content fill.
+   - Ink text on every colour fill; Canvas text only on the dark anchors (Ink, Warm Grey, solid states, large-text Coral). */
+
+:root {
+  /* --- core --- */
+  --leaf-color-coral: #fb5e48;
+  --leaf-color-coral-hover: #e8462f;
+  --leaf-color-coral-tint: #fbe4df;
+  --leaf-color-ink: #171412;
+  --leaf-color-canvas: #fffdfb;
+
+  /* --- neutral --- */
+  --leaf-color-warm-grey: #656565;
+  --leaf-color-stone: #f2e8e1; /* skeletons, muted chips */
+  --leaf-color-stone-light: #f9f4f1; /* default page ground */
+  --leaf-color-stone-faint: #fbf7f4; /* sidebar, table headers, zebra */
+  --leaf-color-stone-deep: #ede3dc;
+  --leaf-color-stone-hairline: #d9cfc8;
+
+  /* --- highlight (dark surfaces only) --- */
+  --leaf-color-aqua: #7ad8ce;
+
+  /* --- secondary palette (fills only, never text) --- */
+  --leaf-color-harbor: #4fa3a6;
+  --leaf-color-marigold: #efb75a;
+  --leaf-color-butter: #f6e49d;
+  --leaf-color-apricot: #f4a38f;
+  --leaf-color-rosehip: #d96b7c;
+  --leaf-color-sage: #dce8c4;
+  --leaf-color-laurel: #8ebb91;
+  --leaf-color-eucalyptus: #9fc7bc;
+  --leaf-color-lilac: #d8cff0;
+  --leaf-color-heather: #aaa2d4;
+
+  /* --- product state palette (solid for icons/dots/borders; tint + Ink text for fills) --- */
+  --leaf-color-state-success: #2f8b57; /* Fern */
+  --leaf-color-state-success-tint: #e7f1ea;
+  --leaf-color-state-warning: #c77e1c; /* Amber */
+  --leaf-color-state-warning-tint: #f6e9cc;
+  --leaf-color-state-error: #c63a2b; /* Ember */
+  --leaf-color-state-error-tint: #f7e0db;
+  --leaf-color-state-info: #2e8388; /* Tidal */
+  --leaf-color-state-info-tint: #ddecec;
+
+  /* --- data-viz categorical series (fixed order) --- */
+  --leaf-chart-series-1: #fb5e48; /* Coral — focus */
+  --leaf-chart-series-2: #4fa3a6; /* Harbor */
+  --leaf-chart-series-3: #efb75a; /* Marigold */
+  --leaf-chart-series-4: #aaa2d4; /* Heather */
+  --leaf-chart-series-5: #8ebb91; /* Laurel */
+  --leaf-chart-series-6: #f4a38f; /* Apricot */
+  --leaf-chart-grid: rgba(23, 20, 18, 0.07);
+  --leaf-chart-axis: rgba(23, 20, 18, 0.16);
+
+  /* --- data-viz neutral lead (dense dashboards: graphite carries the set, Coral flags one series) --- */
+  --leaf-chart-neutral: #8c857e;
+  --leaf-chart-mono-1: #3f3a36;
+  --leaf-chart-mono-2: #8c857e;
+  --leaf-chart-mono-3: #c9c2bb;
+
+  /* --- sequential ramps (single measure) --- */
+  --leaf-ramp-coral-1: #fbe4df;
+  --leaf-ramp-coral-2: #f7a08f;
+  --leaf-ramp-coral-3: #fb5e48;
+  --leaf-ramp-coral-4: #c0392a;
+  --leaf-ramp-harbor-1: #ddecec;
+  --leaf-ramp-harbor-2: #9fc7bc;
+  --leaf-ramp-harbor-3: #4fa3a6;
+  --leaf-ramp-harbor-4: #2e8388;
+  --leaf-heatmap-mid: #efeae6; /* diverging heatmap midpoint */
+
+  /* --- semantic aliases --- */
+  --leaf-text-primary: var(--leaf-color-ink);
+  --leaf-text-secondary: var(--leaf-color-warm-grey);
+  --leaf-text-muted: #9a8f86; /* placeholders, disabled labels, quiet captions (intentional addition — see readme) */
+  --leaf-text-accent: var(--leaf-color-coral);
+  --leaf-text-on-dark: var(--leaf-color-canvas);
+  --leaf-text-on-dark-secondary: rgba(255, 253, 251, 0.6);
+  --leaf-surface-page: var(--leaf-color-stone-light);
+  --leaf-surface-card: var(--leaf-color-canvas);
+  --leaf-surface-ink: var(--leaf-color-ink);
+  --leaf-surface-ink-panel: rgba(255, 253, 251, 0.04);
+  --leaf-border: var(--leaf-border-light);
+
+  /* --- focus (focus-visible only; never removed) --- */
+  --leaf-focus-ring: var(--leaf-color-coral);
+  --leaf-focus-ring-dark: var(--leaf-color-aqua);
+}

@@ -1,0 +1,43 @@
+<!-- @dsCard group="Components" viewport="700x200" subtitle="Anchored content with a beak, no scrim" name="Popover" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+  body { margin: 0; padding: var(--leaf-space-6) var(--leaf-space-6) calc(var(--leaf-space-6) + 10px); background: var(--leaf-surface-card); }
+  .wrap { position: relative; width: 100%; max-width: 250px; }
+  .card {
+    background: var(--leaf-color-canvas);
+    border: 1px solid var(--leaf-border-light);
+    border-radius: 12px;
+    box-shadow: var(--leaf-shadow-md);
+    padding: 16px 18px;
+  }
+  .title { font: 600 14px/1.2 var(--leaf-font-sans); color: var(--leaf-text-primary); margin: 0 0 6px; }
+  .body { font: 400 13px/1.5 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin: 0 0 12px; }
+  .action { font: 600 12.5px/1 var(--leaf-font-sans); color: var(--leaf-text-accent); }
+  .beak {
+    position: absolute;
+    left: 26px;
+    bottom: -7px;
+    width: 12px;
+    height: 12px;
+    background: var(--leaf-color-canvas);
+    border-right: 1px solid var(--leaf-border-light);
+    border-bottom: 1px solid var(--leaf-border-light);
+    transform: rotate(45deg);
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="title">Compare to baseline</div>
+      <p class="body">Deltas are measured against the 2025 campaign period.</p>
+      <span class="action">Change baseline</span>
+    </div>
+    <span class="beak"></span>
+  </div>
+</body>
+</html>

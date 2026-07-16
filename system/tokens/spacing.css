@@ -1,0 +1,16 @@
+/* Leaf spacing tokens — base unit 4px, 8px rhythm. Source: DESIGN.md § Spacing & layout. */
+
+:root {
+  --leaf-space-1: 4px;
+  --leaf-space-2: 8px;
+  --leaf-space-3: 12px;
+  --leaf-space-4: 16px;
+  --leaf-space-5: 24px;
+  --leaf-space-6: 32px;
+  --leaf-space-7: 48px;
+  --leaf-space-8: 64px;
+  --leaf-space-9: 96px;
+
+  /* --- layout --- */
+  --leaf-container-max: 1200px;
+}

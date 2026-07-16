@@ -1,0 +1,48 @@
+<!-- @dsCard group="Radius & Elevation" viewport="700x170" subtitle="hairline, shadow-sm, shadow-md on stone-light ground" name="Elevation" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-color-stone-light); }
+  .row {
+    display: flex;
+    gap: var(--leaf-space-5);
+    padding: var(--leaf-space-5);
+  }
+  .item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--leaf-space-2);
+  }
+  .swatch {
+    width: 100%;
+    height: 64px;
+    border-radius: var(--leaf-radius-md);
+    background: var(--leaf-surface-card);
+  }
+  .swatch.hairline { border: 1px solid var(--leaf-border-light); }
+  .swatch.shadow-sm { box-shadow: var(--leaf-shadow-sm); }
+  .swatch.shadow-md { box-shadow: var(--leaf-shadow-md); }
+  .caption {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-secondary);
+    text-align: center;
+  }
+  .caption span {
+    display: block;
+    color: var(--leaf-text-muted);
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="swatch hairline"></div><div class="caption">Hairline border<span>resting</span></div></div>
+    <div class="item"><div class="swatch shadow-sm"></div><div class="caption">Shadow-sm<span>hover lift</span></div></div>
+    <div class="item"><div class="swatch shadow-md"></div><div class="caption">Shadow-md<span>menus · modals</span></div></div>
+  </div>
+</body>
+</html>

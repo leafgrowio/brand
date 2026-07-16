@@ -14,12 +14,12 @@ Do NOT hand-write `_ds_bundle.js`, `_ds_manifest.json`, `_adherence.oxlintrc.jso
 ---
 
 ## Phase 0 — Prep
-- [ ] Read `DESIGN.md` end to end; it is the spec. Every token/rule below traces to it.
-- [ ] Confirm the mounted `brand/` repo is attached (fonts + full asset tree live there if you need originals).
-- [ ] Keep the two `.dc.html` files as-is — they become the human reference; the compiler ignores them. Do not delete.
+- [x] Read `DESIGN.md` end to end; it is the spec. Every token/rule below traces to it.
+- [x] Confirm the mounted `brand/` repo is attached (fonts + full asset tree live there if you need originals).
+- [x] Keep the two `.dc.html` files as-is — they become the human reference; the compiler ignores them. Do not delete.
 
 ## Phase 1 — Tokens + CSS entry point (unblocks "turn it on")
-- [ ] Create `tokens/` with one file per concern, each declaring `--leaf-*` custom properties on `:root`:
+- [x] Create `tokens/` with one file per concern, each declaring `--leaf-*` custom properties on `:root`:
   - `tokens/colors.css` — **author the base palette first** (DESIGN.md's Implementation block is only the *extension*; the core/neutral/highlight/secondary tokens are referenced but not yet emitted). Needed families:
     - Core: `--leaf-color-coral: #fb5e48`, `--leaf-color-coral-hover: #e8462f`, `--leaf-color-coral-tint: #fbe4df`.
     - Neutral: Ink `#171412`, Canvas `#fffdfb`, Warm Grey `#656565`, Stone / Light Stone tints (`#f9f4f1`, `#fbf7f4`, `#f2e8e1`, `#ede3dc`, hairline `#d9cfc8`), Aqua `#7ad8ce`.
@@ -31,58 +31,58 @@ Do NOT hand-write `_ds_bundle.js`, `_ds_manifest.json`, `_adherence.oxlintrc.jso
   - `tokens/radius.css` — `--leaf-radius-sm/md/lg/pill`.
   - `tokens/elevation.css` — `--leaf-border-light/dark`, `--leaf-shadow-sm/md`.
   - `tokens/motion.css` — `--leaf-motion-fast/base`, `--leaf-ease`.
-- [ ] Create `tokens/fonts.css` with the `@font-face` rules:
+- [x] Create `tokens/fonts.css` with the `@font-face` rules:
   - Mona Sans normal + italic → `assets/fonts/MonaSans.ttf` / `MonaSans-Italic.ttf`, `format('truetype-variations')`, `font-weight: 200 900`, `font-stretch: 75% 125%`. **Self-hosting is mandatory** — Google Fonts' Mona Sans strips the ssXX stylistic-set tables.
   - Source Serif 4 via Google Fonts `@import` (or self-host from `brand/assets/font/Source Serif 4/`).
   - Add a global `* { font-feature-settings: var(--leaf-type-features); }` rule (the `font` shorthand resets feature settings, so enforce on `*`).
-- [ ] Create root `styles.css` — **`@import` lines only, no inline rules**. Import order: `fonts.css`, then every `tokens/*.css`. This is the file consumers link.
-- [ ] Verify: open any `@dsCard` (Phase 4) and confirm `var(--leaf-*)` resolve (no browser-default fallbacks).
+- [x] Create root `styles.css` — **`@import` lines only, no inline rules**. Import order: `fonts.css`, then every `tokens/*.css`. This is the file consumers link.
+- [x] Verify: open any `@dsCard` (Phase 4) and confirm `var(--leaf-*)` resolve (no browser-default fallbacks).
 
 ## Phase 2 — Component primitives (the consumable library)
 Split the HTML component catalog into real React files. **Each component = a directory with:** `<Name>.jsx` (named `export function <Name>`), `<Name>.d.ts` (props interface), `<Name>.prompt.md` (one-line what/when + JSX example + variants), and one `@dsCard`-tagged `.html` per directory. Reference styling via `var(--leaf-*)` only — React + relative sibling imports, no npm, no CSS-in-JS.
 
 Inventory (from `Leaf Component Library.dc.html` — build exactly these, don't invent extras):
-- [ ] `components/forms/`
+- [x] `components/forms/`
   - `Button` — variants: primary (solid Coral, Canvas text, pill), secondary (Coral outline, tint hover); sizes sm/md/lg; disabled; with-icon. Hover `--leaf-color-coral-hover`.
   - `Input` — Canvas field, `rgba(23,20,18,0.18)` border, `--leaf-radius-md`, 2px Coral focus ring. States: default, focus, error (Ember), disabled.
   - `Select` — matches Input; chevron affordance.
   - `Checkbox` — Coral checked fill, 6px radius.
   - `Radio` — Coral checked ring.
   - `Switch` (Toggle) — 44×26 pill, Coral when on.
-- [ ] `components/data/`
+- [x] `components/data/`
   - `Tag` / `Badge` — state palette (soft tint + solid dot + Ink label); pair colour with text always.
   - `Table` — quiet Stone header (`#fbf7f4`), Ink labels 11.5/600, 1.5px bottom rule; tabular figures right-aligned; em-dash for null.
-- [ ] `components/feedback/`
+- [x] `components/feedback/`
   - `Alert` / `Banner` — one structure across 4 states: soft-tint fill + 1px tint border + 3px solid left accent + solid badge/icon + Ink body.
   - `Tooltip` — Ink surface, Canvas text, small.
-- [ ] `components/navigation/`
+- [x] `components/navigation/`
   - `SidebarItem` — line icon + label; active = Coral tint fill + Coral text/icon + 3px accent; hover Stone tint.
   - `Tabs` — in-page only; active 2px Coral underline, inactive Warm Grey.
   - `Breadcrumbs` — chevron separators, ancestors Coral links, current Ink semibold.
-- [ ] `components/overlays/`
+- [x] `components/overlays/`
   - `Modal` — on `rgba(23,20,18,0.44)` scrim, `--leaf-shadow-md`, `--leaf-radius-lg`.
   - `Popover` / `Menu` — single warm shadow, hairline border.
   - `Drawer` — edge-anchored panel.
-- [ ] For each: add `@startingPoint` JSDoc tag on the `.d.ts` interface for the ones worth seeding new designs from (Button, Input, Table, Modal, SidebarItem).
+- [x] For each: add `@startingPoint` JSDoc tag on the `.d.ts` interface for the ones worth seeding new designs from (Button, Input, Table, Modal, SidebarItem).
 
 ## Phase 3 — UI kits (product recreations)
 Leaf's product is **Answers** (data/analytics) + internal tools. Build one kit that composes the primitives — screens, not a storybook.
-- [ ] `ui_kits/answers/` — `{README.md, index.html, <Screen>.jsx…}`. Core screens: app shell (sidebar + top bar + breadcrumbs), a dashboard/report view (charts per data-viz section), a table-heavy list view, one form/settings view. `index.html` shows an interactive click-through.
-- [ ] Tag `index.html` line 1: `<!-- @dsCard group="Answers" viewport="1440x900" -->`.
-- [ ] Recreate visuals from `Leaf Component Library.dc.html` app-shell/patterns sections + DESIGN.md — do not invent new layouts. Copy icons from `assets/icons/`, never hand-roll SVG.
+- [x] `ui_kits/answers/` — `{README.md, index.html, <Screen>.jsx…}`. Core screens: app shell (sidebar + top bar + breadcrumbs), a dashboard/report view (charts per data-viz section), a table-heavy list view, one form/settings view. `index.html` shows an interactive click-through.
+- [x] Tag `index.html` line 1: `<!-- @dsCard group="Answers" viewport="1440x900" -->`.
+- [x] Recreate visuals from `Leaf Component Library.dc.html` app-shell/patterns sections + DESIGN.md — do not invent new layouts. Copy icons from `assets/icons/`, never hand-roll SVG.
 
 ## Phase 4 — Design System tab specimen cards (`@dsCard`)
 Small HTML files, ~700×150px (400px max), each linking root `styles.css` via relative path, first line tagged `<!-- @dsCard group="…" viewport="700xNN" subtitle="…" name="…" -->`. Show specimens directly (card name renders outside — no titles inside). Aim for MANY small cards. Split from the brand book's existing panels:
-- [ ] **Colors** — separate cards: Core (Coral/Ink/Canvas), Neutral/Stone ramp, Aqua-on-Ink, Secondary categorical, State palette (solid+tint), Chart series order, Sequential ramps.
-- [ ] **Type** — display/H1/H2/H3 specimen, body/label/caption, the 5 stylistic-set glyphs (ss03/05/06/07/09), serif (Source Serif 4) editorial specimen.
-- [ ] **Spacing** — the 4→96 scale swatches; a spacing-in-use example.
-- [ ] **Radius / Elevation** — radius steps; the two shadows on cards.
-- [ ] **Brand** — Coral usage rule (one moment per view), approved text pairings matrix (Ink-on-colour / Canvas-on-dark).
-- [ ] **Components** — one card per component directory (already required in Phase 2).
+- [x] **Colors** — separate cards: Core (Coral/Ink/Canvas), Neutral/Stone ramp, Aqua-on-Ink, Secondary categorical, State palette (solid+tint), Chart series order, Sequential ramps.
+- [x] **Type** — display/H1/H2/H3 specimen, body/label/caption, the 5 stylistic-set glyphs (ss03/05/06/07/09), serif (Source Serif 4) editorial specimen.
+- [x] **Spacing** — the 4→96 scale swatches; a spacing-in-use example.
+- [x] **Radius / Elevation** — radius steps; the two shadows on cards.
+- [x] **Brand** — Coral usage rule (one moment per view), approved text pairings matrix (Ink-on-colour / Canvas-on-dark).
+- [x] **Components** — one card per component directory (already required in Phase 2).
 
 ## Phase 5 — Manifest, skill, governance
-- [ ] `readme.md` (root) — the guide + manifest. Fold in `DESIGN.md`'s CONTENT FUNDAMENTALS (voice: UK English, sentence case, em dashes, no exclamation marks/emojis, Signal/Answers/Watcher/Leaf Schema capitalised; use/use-carefully/avoid word lists) and VISUAL FOUNDATIONS (flat-by-default, hairline borders, one Coral moment, warm Stone grounds, minimal motion). Add ICONOGRAPHY section (SVG/black default from `assets/icons/`, structure `<theme>/<icon>/<variation>/<format>`). Index/manifest: list tokens, components, UI kits, cards. Cite sources: the `brand/` repo, `DESIGN.md`, both `.dc.html` references.
-- [ ] `SKILL.md` (root) — Agent-Skills-compatible frontmatter:
+- [x] `readme.md` (root) — the guide + manifest. Fold in `DESIGN.md`'s CONTENT FUNDAMENTALS (voice: UK English, sentence case, em dashes, no exclamation marks/emojis, Signal/Answers/Watcher/Leaf Schema capitalised; use/use-carefully/avoid word lists) and VISUAL FOUNDATIONS (flat-by-default, hairline borders, one Coral moment, warm Stone grounds, minimal motion). Add ICONOGRAPHY section (SVG/black default from `assets/icons/`, structure `<theme>/<icon>/<variation>/<format>`). Index/manifest: list tokens, components, UI kits, cards. Cite sources: the `brand/` repo, `DESIGN.md`, both `.dc.html` references.
+- [x] `SKILL.md` (root) — Agent-Skills-compatible frontmatter:
   ```
   ---
   name: leaf-design
@@ -91,12 +91,12 @@ Small HTML files, ~700×150px (400px max), each linking root `styles.css` via re
   ---
   ```
   Body: read `readme.md`, explore files; copy assets + emit static HTML for artifacts, or read rules for production code.
-- [ ] Keep `DESIGN.md` as the deep-dive spec; `readme.md` links to it. Ensure the token CSS files stay in sync with the DESIGN.md Implementation block.
+- [x] Keep `DESIGN.md` as the deep-dive spec; `readme.md` links to it. Ensure the token CSS files stay in sync with the DESIGN.md Implementation block.
 
 ## Phase 6 — Turn it on (the actual "org design system" switch)
-- [ ] In the **Share** menu, set the file **type to "Design System"** so others in the org can view/consume it. (This is the setting that surfaces it as a design system — everything above just makes it useful.)
-- [ ] Run `check_design_system` to get the generated `<Namespace>` for mounting components in card HTML (`const { Button } = window.<Namespace>`).
-- [ ] Verify every `@dsCard` renders and the Design System tab groups them correctly.
+- [x] In the **Share** menu, set the file **type to "Design System"** so others in the org can view/consume it. (This is the setting that surfaces it as a design system — everything above just makes it useful.)
+- [x] Run `check_design_system` to get the generated `<Namespace>` for mounting components in card HTML (`const { Button } = window.<Namespace>`).
+- [x] Verify every `@dsCard` renders and the Design System tab groups them correctly.
 
 ---
 
@@ -105,6 +105,17 @@ Small HTML files, ~700×150px (400px max), each linking root `styles.css` via re
 2. **Component inventory** — locked to what the component library shows. Add `IconButton` or an `Icon` wrapper only if the Answers kit needs it (list under "Intentional additions" in readme with a reason).
 3. **Source Serif 4** — self-host (from `brand/assets/font/Source Serif 4/`) vs Google Fonts `@import`. Self-host for parity with Mona Sans.
 4. **Answers kit fidelity** — recreate from `Leaf Component Library.dc.html` only; if a real Answers codebase/Figma exists, import it as ground truth before building (screenshots are lossy).
+
+## Amendments (Claude Code execution session, 16 Jul 2026)
+
+Gaps found on close reading; all executed below.
+
+1. **Data-viz tokens beyond the Implementation block.** DESIGN.md's CSS block omits values that only live in the Data visualization prose: the sequential ramps (Coral `#FBE4DF→#F7A08F→#FB5E48→#C0392A`, Harbor `#DDECEC→#9FC7BC→#4FA3A6→#2E8388`), the neutral-lead graphite (`#8C857E`, mono ramp `#3F3A36→#8C857E→#C9C2BB`), and the heatmap midpoint `#EFEAE6`. `tokens/colors.css` authors these as `--leaf-ramp-*`, `--leaf-chart-neutral`, `--leaf-chart-mono-*`, `--leaf-heatmap-mid`.
+2. **Semantic tokens the components need but the plan didn't list.** Input border `rgba(23,20,18,0.18)` (`--leaf-border-input`), modal scrim `rgba(23,20,18,0.44)` (`--leaf-scrim`), dark-surface text/panel tokens (`--leaf-text-on-dark`, `--leaf-text-on-dark-secondary: rgba(255,253,251,0.6)`, `--leaf-surface-ink-panel: rgba(255,253,251,0.04)`), focus tokens (`--leaf-focus-ring` Coral, `--leaf-focus-ring-dark` Aqua).
+3. **Open decisions resolved:** (1) `--leaf-color-*` naming confirmed; (3) Source Serif 4 **self-hosted** — variable TTFs copied from `brand/assets/font/Source Serif 4/` into `assets/fonts/`; (4) no Answers codebase/Figma supplied — kit recreated from the component library + DESIGN.md as planned.
+4. **Phase 6 from Claude Code.** `check_design_system` isn't callable from this session, but **DesignSync** is: create/target a design-system project (type is set at creation) and push the compiled tree. Component `@dsCard` cards are written as **static specimens** (self-contained HTML mirroring the JSX output) so every card renders with or without the generated bundle; readme notes how to switch a card to `window.<Namespace>` mounts once the app's self-check reports the namespace.
+5. **Governance sync.** Repo-root `DESIGN.md` is still v0.2; `system/DESIGN.md` is the ratified v1.0. Root copy gets synced (CLAUDE.md requires the two stay aligned).
+6. **Local verification.** Every card and the Answers kit get rendered in a browser before hand-off — tokens resolve, fonts load with stylistic sets on.
 
 ## Definition of done
 - Root `styles.css` resolves every token; fonts load with stylistic sets on.

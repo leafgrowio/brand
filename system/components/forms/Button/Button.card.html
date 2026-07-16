@@ -1,0 +1,95 @@
+<!-- @dsCard group="Components" viewport="700x260" subtitle="primary/secondary × default, hover, disabled, plus sizes" name="Button" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+  body {
+    margin: 0;
+    padding: var(--leaf-space-4);
+    background: var(--leaf-surface-card);
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-5);
+  }
+  .row {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--leaf-space-4) var(--leaf-space-5);
+  }
+  .group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--leaf-space-2);
+  }
+  .cap {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-muted);
+  }
+  .btn { white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--leaf-font-sans);
+    font-weight: 600;
+    line-height: 1;
+    border: none;
+    border-radius: var(--leaf-radius-pill);
+    cursor: pointer;
+  }
+  .btn.primary {
+    font-size: 14px;
+    color: var(--leaf-color-canvas);
+    background: var(--leaf-color-coral);
+    padding: 11px 20px;
+  }
+  .btn.primary.hover {
+    background: var(--leaf-color-coral-hover);
+  }
+  .btn.primary.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .btn.secondary {
+    font-size: 14px;
+    color: var(--leaf-color-coral);
+    background: transparent;
+    border: 1px solid var(--leaf-color-coral);
+    padding: 10px 19px;
+  }
+  .btn.secondary.hover {
+    background: var(--leaf-color-coral-tint);
+  }
+  .btn.secondary.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .btn.sm {
+    font-size: 13px;
+    padding: 8px 15px;
+  }
+  .btn.lg {
+    font-size: 15px;
+    padding: 13px 26px;
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="group"><button class="btn primary">Create report</button><span class="cap">Default</span></div>
+    <div class="group"><button class="btn primary hover">Create report</button><span class="cap">Hover</span></div>
+    <div class="group"><button class="btn primary disabled" disabled>Create report</button><span class="cap">Disabled</span></div>
+    <div class="group"><button class="btn secondary">View</button><span class="cap">Default</span></div>
+    <div class="group"><button class="btn secondary hover">View</button><span class="cap">Hover</span></div>
+    <div class="group"><button class="btn secondary disabled" disabled>View</button><span class="cap">Disabled</span></div>
+  </div>
+  <div class="row">
+    <div class="group"><button class="btn primary sm">Apply filters</button><span class="cap">Small</span></div>
+    <div class="group"><button class="btn primary">Apply filters</button><span class="cap">Medium</span></div>
+    <div class="group"><button class="btn primary lg">Apply filters</button><span class="cap">Large</span></div>
+  </div>
+</body>
+</html>

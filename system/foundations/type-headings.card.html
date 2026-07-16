@@ -1,0 +1,63 @@
+<!-- @dsCard group="Type" viewport="700x460" subtitle="Display, H1, H2, H3 at true size, with tracking" name="Heading scale" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-3);
+    padding: var(--leaf-space-4);
+  }
+  .row { display: flex; flex-direction: column; gap: 4px; }
+  .display {
+    font: var(--leaf-type-display);
+    letter-spacing: var(--leaf-type-tracking-display);
+    color: var(--leaf-text-primary);
+  }
+  .h1 {
+    font: var(--leaf-type-h1);
+    letter-spacing: var(--leaf-type-tracking-heading);
+    color: var(--leaf-text-primary);
+  }
+  .h2 {
+    font: var(--leaf-type-h2);
+    letter-spacing: var(--leaf-type-tracking-heading);
+    color: var(--leaf-text-primary);
+  }
+  .h3 {
+    font: var(--leaf-type-h3);
+    letter-spacing: var(--leaf-type-tracking-heading);
+    color: var(--leaf-text-primary);
+  }
+  .spec {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-muted);
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="row">
+      <div class="display">Know what your marketing actually earned</div>
+      <div class="spec">64 / 0.96 · 640 · display</div>
+    </div>
+    <div class="row">
+      <div class="h1">Post-attribution growth</div>
+      <div class="spec">46 / 1.0 · 640 · h1</div>
+    </div>
+    <div class="row">
+      <div class="h2">First-party signal data you can trust</div>
+      <div class="spec">32 / 1.05 · 600 · h2</div>
+    </div>
+    <div class="row">
+      <div class="h3">Board-ready numbers, every single time</div>
+      <div class="spec">22 / 1.2 · 600 · h3</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!-- @dsCard group="Components" viewport="700x110" subtitle="ancestor links, current page" name="Breadcrumbs" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../../styles.css" />
+<style>
+  body {
+    margin: 0;
+    padding: var(--leaf-space-4);
+    background: var(--leaf-surface-card);
+    display: flex;
+    align-items: center;
+  }
+
+  .crumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: var(--leaf-font-sans);
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  .crumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .crumb a {
+    color: var(--leaf-text-accent);
+    text-decoration: none;
+  }
+
+  .crumb .current {
+    color: var(--leaf-color-ink);
+    font-weight: 600;
+  }
+
+  .crumb .sep {
+    color: rgba(23, 20, 18, 0.28);
+  }
+</style>
+</head>
+<body>
+  <nav aria-label="Breadcrumb">
+    <ol class="crumbs">
+      <li class="crumb">
+        <a href="#">Reports</a>
+        <span class="sep">›</span>
+      </li>
+      <li class="crumb">
+        <a href="#">Q2 performance</a>
+        <span class="sep">›</span>
+      </li>
+      <li class="crumb">
+        <span class="current" aria-current="page">Meta ads</span>
+      </li>
+    </ol>
+  </nav>
+</body>
+</html>

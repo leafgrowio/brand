@@ -1,0 +1,52 @@
+<!-- @dsCard group="Spacing" viewport="700x180" subtitle="gap-based rhythm inside a card layout" name="Spacing in use" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-page); }
+  .card {
+    box-sizing: border-box;
+    width: 340px;
+    margin: 0 0 0 var(--leaf-space-3);
+    background: var(--leaf-surface-card);
+    border: 1px solid var(--leaf-border);
+    border-radius: var(--leaf-radius-md);
+    padding: var(--leaf-space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-3);
+  }
+  .gap-note {
+    font: var(--leaf-type-caption);
+    font-size: 10.5px;
+    line-height: 1.3;
+    color: var(--leaf-text-muted);
+  }
+  .block {
+    background: var(--leaf-color-stone-faint);
+    border-radius: var(--leaf-radius-sm);
+    height: 12px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--leaf-space-4);
+  }
+  .grid .block { height: 22px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="gap-note">card padding: space-5 (24px) · stack gap: space-3 (12px)</div>
+    <div class="block"></div>
+    <div class="block"></div>
+    <div class="gap-note">grid gap: space-4 (16px) between columns</div>
+    <div class="grid">
+      <div class="block"></div>
+      <div class="block"></div>
+    </div>
+  </div>
+</body>
+</html>

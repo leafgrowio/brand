@@ -1,0 +1,8 @@
+/* Leaf motion tokens — minimal and purposeful. Animate opacity and transform only;
+   ease-out; always honour prefers-reduced-motion. */
+
+:root {
+  --leaf-motion-fast: 120ms;
+  --leaf-motion-base: 180ms;
+  --leaf-ease: cubic-bezier(0.2, 0, 0, 1);
+}

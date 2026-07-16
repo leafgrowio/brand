@@ -1,0 +1,95 @@
+<!-- @dsCard group="Colors" viewport="700x190" subtitle="Coral and Harbor sequential ramps, diverging heatmap" name="Sequential & diverging ramps" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-2);
+    padding: var(--leaf-space-4);
+  }
+  .ramp-row {
+    display: flex;
+    align-items: center;
+    gap: var(--leaf-space-2);
+  }
+  .ramp-label {
+    width: 68px;
+    flex-shrink: 0;
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-secondary);
+  }
+  .stops {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+  }
+  .stop {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .swatch {
+    height: 26px;
+    border-radius: var(--leaf-radius-sm);
+    border: 1px solid var(--leaf-border-light);
+  }
+  .swatch.c1 { background: var(--leaf-ramp-coral-1); }
+  .swatch.c2 { background: var(--leaf-ramp-coral-2); }
+  .swatch.c3 { background: var(--leaf-ramp-coral-3); }
+  .swatch.c4 { background: var(--leaf-ramp-coral-4); }
+  .swatch.h1 { background: var(--leaf-ramp-harbor-1); }
+  .swatch.h2 { background: var(--leaf-ramp-harbor-2); }
+  .swatch.h3 { background: var(--leaf-ramp-harbor-3); }
+  .swatch.h4 { background: var(--leaf-ramp-harbor-4); }
+  .swatch.d1 { background: var(--leaf-ramp-harbor-4); }
+  .swatch.d2 { background: var(--leaf-ramp-harbor-2); }
+  .swatch.d3 { background: var(--leaf-heatmap-mid); }
+  .swatch.d4 { background: var(--leaf-ramp-coral-2); }
+  .swatch.d5 { background: var(--leaf-ramp-coral-4); }
+  .hex {
+    font: var(--leaf-type-caption);
+    font-size: 11px;
+    color: var(--leaf-text-muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="ramp-row">
+      <div class="ramp-label">Coral sequential</div>
+      <div class="stops">
+        <div class="stop"><div class="swatch c1"></div><div class="hex">#FBE4DF</div></div>
+        <div class="stop"><div class="swatch c2"></div><div class="hex">#F7A08F</div></div>
+        <div class="stop"><div class="swatch c3"></div><div class="hex">#FB5E48</div></div>
+        <div class="stop"><div class="swatch c4"></div><div class="hex">#C0392A</div></div>
+      </div>
+    </div>
+    <div class="ramp-row">
+      <div class="ramp-label">Harbor sequential</div>
+      <div class="stops">
+        <div class="stop"><div class="swatch h1"></div><div class="hex">#DDECEC</div></div>
+        <div class="stop"><div class="swatch h2"></div><div class="hex">#9FC7BC</div></div>
+        <div class="stop"><div class="swatch h3"></div><div class="hex">#4FA3A6</div></div>
+        <div class="stop"><div class="swatch h4"></div><div class="hex">#2E8388</div></div>
+      </div>
+    </div>
+    <div class="ramp-row">
+      <div class="ramp-label">Diverging</div>
+      <div class="stops">
+        <div class="stop"><div class="swatch d1"></div><div class="hex">#2E8388</div></div>
+        <div class="stop"><div class="swatch d2"></div><div class="hex">#9FC7BC</div></div>
+        <div class="stop"><div class="swatch d3"></div><div class="hex">#EFEAE6</div></div>
+        <div class="stop"><div class="swatch d4"></div><div class="hex">#F7A08F</div></div>
+        <div class="stop"><div class="swatch d5"></div><div class="hex">#C0392A</div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

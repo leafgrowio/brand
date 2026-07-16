@@ -1,0 +1,78 @@
+<!-- @dsCard group="Components" viewport="700x320" subtitle="info, success, warning, error" name="Alert" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-3);
+    padding: var(--leaf-space-4);
+  }
+  .alert {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-radius: var(--leaf-radius-md);
+    padding: 14px 18px;
+    border: 1px solid transparent;
+    border-left-width: 3px;
+    border-left-style: solid;
+  }
+  .badge {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-family: var(--leaf-font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--leaf-color-canvas);
+  }
+  .message {
+    margin: 0;
+    font-family: var(--leaf-font-sans);
+    font-size: 14.5px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--leaf-color-ink);
+  }
+  .message .title { font-weight: 600; }
+  .alert.info { background: var(--leaf-color-state-info-tint); border-color: rgba(46, 131, 136, 0.28); border-left-color: var(--leaf-color-state-info); }
+  .alert.info .badge { background: var(--leaf-color-state-info); }
+  .alert.success { background: var(--leaf-color-state-success-tint); border-color: rgba(47, 139, 87, 0.28); border-left-color: var(--leaf-color-state-success); }
+  .alert.success .badge { background: var(--leaf-color-state-success); }
+  .alert.warning { background: var(--leaf-color-state-warning-tint); border-color: rgba(199, 126, 28, 0.3); border-left-color: var(--leaf-color-state-warning); }
+  .alert.warning .badge { background: var(--leaf-color-state-warning); }
+  .alert.error { background: var(--leaf-color-state-error-tint); border-color: rgba(198, 58, 43, 0.3); border-left-color: var(--leaf-color-state-error); }
+  .alert.error .badge { background: var(--leaf-color-state-error); }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="alert info" role="status">
+      <span class="badge" aria-hidden="true">i</span>
+      <p class="message"><span class="title">Export scheduled.</span> Your report will land in the shared drive within the hour.</p>
+    </div>
+    <div class="alert success" role="status">
+      <span class="badge" aria-hidden="true">✓</span>
+      <p class="message"><span class="title">Tracking restored.</span> Signal reconnected to Shopify at 09:14.</p>
+    </div>
+    <div class="alert warning" role="alert">
+      <span class="badge" aria-hidden="true">!</span>
+      <p class="message"><span class="title">Spend pacing ahead of plan.</span> Paid media is tracking 14% over budget for the month.</p>
+    </div>
+    <div class="alert error" role="alert">
+      <span class="badge" aria-hidden="true">!</span>
+      <p class="message"><span class="title">Tracking lost.</span> Signal hasn't received an event from Shopify in 6 hours.</p>
+    </div>
+  </div>
+</body>
+</html>

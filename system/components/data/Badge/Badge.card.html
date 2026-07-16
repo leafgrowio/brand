@@ -1,0 +1,52 @@
+<!-- @dsCard group="Components" viewport="700x120" subtitle="success, warning, error, info" name="Badge" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: var(--leaf-space-4);
+    padding: var(--leaf-space-4);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px;
+    border-radius: var(--leaf-radius-pill);
+    border: 1px solid transparent;
+    font-family: var(--leaf-font-sans);
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--leaf-color-ink);
+  }
+  .badge .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .badge.success { background: var(--leaf-color-state-success-tint); border-color: rgba(47, 139, 87, 0.25); }
+  .badge.success .dot { background: var(--leaf-color-state-success); }
+  .badge.warning { background: var(--leaf-color-state-warning-tint); border-color: rgba(199, 126, 28, 0.28); }
+  .badge.warning .dot { background: var(--leaf-color-state-warning); }
+  .badge.error { background: var(--leaf-color-state-error-tint); border-color: rgba(198, 58, 43, 0.28); }
+  .badge.error .dot { background: var(--leaf-color-state-error); }
+  .badge.info { background: var(--leaf-color-state-info-tint); border-color: rgba(46, 131, 136, 0.28); }
+  .badge.info .dot { background: var(--leaf-color-state-info); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="badge success"><span class="dot" aria-hidden="true"></span>Live</span>
+    <span class="badge warning"><span class="dot" aria-hidden="true"></span>Needs review</span>
+    <span class="badge error"><span class="dot" aria-hidden="true"></span>Failed</span>
+    <span class="badge info"><span class="dot" aria-hidden="true"></span>Draft</span>
+  </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!-- @dsCard group="Colors" viewport="700x150" subtitle="Ink surface — Canvas text, Aqua accent, dark structure" name="Ink surface & Aqua accent" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-1);
+    height: 150px;
+    box-sizing: border-box;
+    padding: var(--leaf-space-4);
+    background: var(--leaf-surface-ink);
+  }
+  .label {
+    font-family: var(--leaf-font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--leaf-color-aqua);
+  }
+  .primary {
+    font: var(--leaf-type-body-lg);
+    color: var(--leaf-text-on-dark);
+  }
+  .secondary {
+    font: var(--leaf-type-body);
+    color: var(--leaf-text-on-dark-secondary);
+  }
+  .divider {
+    height: 1px;
+    background: var(--leaf-border-dark);
+    border: none;
+    margin: 0;
+  }
+  .panel-fill-row {
+    display: flex;
+    align-items: center;
+    gap: var(--leaf-space-2);
+  }
+  .panel-fill {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--leaf-radius-sm);
+    background: var(--leaf-surface-ink-panel);
+    border: 1px solid var(--leaf-border-dark);
+  }
+  .panel-fill-caption {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-on-dark-secondary);
+  }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <div class="label">Signal quality</div>
+    <div class="primary">Signal makes the data reliable.</div>
+    <div class="secondary">First-party, server-side, anomaly detection built in.</div>
+    <hr class="divider">
+    <div class="panel-fill-row">
+      <div class="panel-fill"></div>
+      <div class="panel-fill-caption">Panel fill — rgba(255,253,251,0.04)</div>
+    </div>
+  </div>
+</body>
+</html>

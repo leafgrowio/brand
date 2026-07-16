@@ -1,0 +1,54 @@
+<!-- @dsCard group="Colors" viewport="700x140" subtitle="the 6 categorical series, fixed order" name="Chart series" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .row {
+    display: flex;
+    gap: var(--leaf-space-3);
+    padding: var(--leaf-space-4);
+  }
+  .item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-2);
+  }
+  .tile {
+    height: 54px;
+    border-radius: var(--leaf-radius-sm);
+    display: flex;
+    align-items: flex-start;
+    padding: 6px;
+    box-sizing: border-box;
+    font-family: var(--leaf-font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--leaf-color-ink);
+  }
+  .tile.s1 { background: var(--leaf-chart-series-1); }
+  .tile.s2 { background: var(--leaf-chart-series-2); }
+  .tile.s3 { background: var(--leaf-chart-series-3); }
+  .tile.s4 { background: var(--leaf-chart-series-4); }
+  .tile.s5 { background: var(--leaf-chart-series-5); }
+  .tile.s6 { background: var(--leaf-chart-series-6); }
+  .caption {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-secondary);
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="tile s1">1</div><div class="caption">Coral</div></div>
+    <div class="item"><div class="tile s2">2</div><div class="caption">Harbor</div></div>
+    <div class="item"><div class="tile s3">3</div><div class="caption">Marigold</div></div>
+    <div class="item"><div class="tile s4">4</div><div class="caption">Heather</div></div>
+    <div class="item"><div class="tile s5">5</div><div class="caption">Laurel</div></div>
+    <div class="item"><div class="tile s6">6</div><div class="caption">Apricot</div></div>
+  </div>
+</body>
+</html>

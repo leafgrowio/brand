@@ -1,0 +1,67 @@
+<!-- @dsCard group="Components" viewport="700x360" subtitle="Edge-anchored panel over the Ink scrim" name="Drawer" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+  body { margin: 0; padding: var(--leaf-space-4); background: var(--leaf-surface-card); }
+  .stage {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--leaf-color-stone-deep);
+    min-height: 300px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .scrim { position: absolute; inset: 0; background: var(--leaf-scrim); }
+  .panel {
+    position: relative;
+    width: 72%;
+    background: var(--leaf-color-canvas);
+    box-shadow: var(--leaf-shadow-md);
+    padding: var(--leaf-space-5);
+    display: flex;
+    flex-direction: column;
+  }
+  .header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: var(--leaf-space-4); }
+  .title { font: 600 18px/1.2 var(--leaf-font-sans); color: var(--leaf-text-primary); margin: 0; }
+  .close { color: var(--leaf-color-warm-grey); display: flex; }
+  .rows { display: flex; flex-direction: column; gap: var(--leaf-space-3); flex: 1; }
+  .skel-label { height: 12px; width: 52%; border-radius: 6px; background: var(--leaf-color-stone); }
+  .skel-field { height: 40px; width: 100%; border-radius: 9px; background: var(--leaf-color-stone); }
+  .btn-apply {
+    font: 600 14px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-canvas);
+    background: var(--leaf-color-coral);
+    padding: 11px 16px;
+    border-radius: var(--leaf-radius-pill);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="scrim"></div>
+    <div class="panel" role="dialog" aria-modal="true">
+      <div class="header">
+        <h2 class="title">Filters</h2>
+        <span class="close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+          </svg>
+        </span>
+      </div>
+      <div class="rows">
+        <div class="skel-label"></div>
+        <div class="skel-field"></div>
+        <div class="skel-label" style="width:44%;"></div>
+        <div class="skel-field"></div>
+      </div>
+      <span class="btn-apply">Apply filters</span>
+    </div>
+  </div>
+</body>
+</html>

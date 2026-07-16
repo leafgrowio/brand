@@ -1,0 +1,57 @@
+<!-- @dsCard group="Colors" viewport="700x150" subtitle="Coral, Ink, Canvas — the three core anchors" name="Core colours" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--leaf-space-3);
+    padding: var(--leaf-space-4);
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-2);
+  }
+  .swatch.coral { flex: 2; }
+  .swatch.ink { flex: 1; }
+  .swatch.canvas { flex: 1; }
+  .tile {
+    height: 72px;
+    border-radius: var(--leaf-radius-md);
+    border: 1px solid var(--leaf-border-light);
+  }
+  .tile.coral { background: var(--leaf-color-coral); }
+  .tile.ink { background: var(--leaf-color-ink); }
+  .tile.canvas { background: var(--leaf-color-canvas); }
+  .caption {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-secondary);
+  }
+  .caption span {
+    display: block;
+    color: var(--leaf-text-muted);
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="swatch coral">
+      <div class="tile coral"></div>
+      <div class="caption">Coral<span>#FB5E48</span></div>
+    </div>
+    <div class="swatch ink">
+      <div class="tile ink"></div>
+      <div class="caption">Ink<span>#171412</span></div>
+    </div>
+    <div class="swatch canvas">
+      <div class="tile canvas"></div>
+      <div class="caption">Canvas<span>#FFFDFB</span></div>
+    </div>
+  </div>
+</body>
+</html>

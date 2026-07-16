@@ -1,0 +1,82 @@
+<!-- @dsCard group="Colors" viewport="700x190" subtitle="10 secondary swatches, grouped by mood, with the Ink-text rule" name="Secondary palette" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .row {
+    display: flex;
+    gap: var(--leaf-space-4);
+    padding: var(--leaf-space-4);
+  }
+  .group {
+    display: flex;
+    gap: var(--leaf-space-1);
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 58px;
+  }
+  .tile {
+    width: 58px;
+    height: 58px;
+    border-radius: var(--leaf-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--leaf-font-sans);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--leaf-color-ink);
+  }
+  .tile.marigold { background: var(--leaf-color-marigold); }
+  .tile.butter { background: var(--leaf-color-butter); }
+  .tile.apricot { background: var(--leaf-color-apricot); }
+  .tile.rosehip { background: var(--leaf-color-rosehip); }
+  .tile.sage { background: var(--leaf-color-sage); }
+  .tile.laurel { background: var(--leaf-color-laurel); }
+  .tile.eucalyptus { background: var(--leaf-color-eucalyptus); }
+  .tile.harbor { background: var(--leaf-color-harbor); }
+  .tile.lilac { background: var(--leaf-color-lilac); }
+  .tile.heather { background: var(--leaf-color-heather); }
+  .caption {
+    font: var(--leaf-type-caption);
+    font-size: 11px;
+    color: var(--leaf-text-secondary);
+    line-height: 1.25;
+  }
+  .caption span {
+    display: block;
+    color: var(--leaf-text-muted);
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="group">
+      <div class="swatch"><div class="tile marigold">Aa</div><div class="caption">Marigold<span>#EFB75A</span></div></div>
+      <div class="swatch"><div class="tile butter">Aa</div><div class="caption">Butter<span>#F6E49D</span></div></div>
+      <div class="swatch"><div class="tile apricot">Aa</div><div class="caption">Apricot<span>#F4A38F</span></div></div>
+    </div>
+    <div class="group">
+      <div class="swatch"><div class="tile rosehip">Aa</div><div class="caption">Rosehip<span>#D96B7C</span></div></div>
+    </div>
+    <div class="group">
+      <div class="swatch"><div class="tile sage">Aa</div><div class="caption">Sage<span>#DCE8C4</span></div></div>
+      <div class="swatch"><div class="tile laurel">Aa</div><div class="caption">Laurel<span>#8EBB91</span></div></div>
+    </div>
+    <div class="group">
+      <div class="swatch"><div class="tile eucalyptus">Aa</div><div class="caption">Eucalyptus<span>#9FC7BC</span></div></div>
+      <div class="swatch"><div class="tile harbor">Aa</div><div class="caption">Harbor<span>#4FA3A6</span></div></div>
+    </div>
+    <div class="group">
+      <div class="swatch"><div class="tile lilac">Aa</div><div class="caption">Lilac<span>#D8CFF0</span></div></div>
+      <div class="swatch"><div class="tile heather">Aa</div><div class="caption">Heather<span>#AAA2D4</span></div></div>
+    </div>
+  </div>
+</body>
+</html>

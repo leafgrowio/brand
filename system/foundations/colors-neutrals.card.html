@@ -1,0 +1,69 @@
+<!-- @dsCard group="Colors" viewport="700x150" subtitle="Light Stone, Stone-faint, Stone, Stone-deep, hairline, Warm Grey" name="Neutral ramp" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .row {
+    display: flex;
+    gap: var(--leaf-space-2);
+    padding: var(--leaf-space-4);
+  }
+  .swatch {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-2);
+  }
+  .tile {
+    height: 72px;
+    border-radius: var(--leaf-radius-md);
+    border: 1px solid var(--leaf-border-light);
+  }
+  .tile.light-stone { background: var(--leaf-color-stone-light); }
+  .tile.stone-faint { background: var(--leaf-color-stone-faint); }
+  .tile.stone { background: var(--leaf-color-stone); }
+  .tile.stone-deep { background: var(--leaf-color-stone-deep); }
+  .tile.hairline { background: var(--leaf-color-stone-hairline); }
+  .tile.warm-grey { background: var(--leaf-color-warm-grey); }
+  .caption {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-secondary);
+  }
+  .caption span {
+    display: block;
+    color: var(--leaf-text-muted);
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="swatch">
+      <div class="tile light-stone"></div>
+      <div class="caption">Light Stone<span>#F9F4F1</span></div>
+    </div>
+    <div class="swatch">
+      <div class="tile stone-faint"></div>
+      <div class="caption">Stone-faint<span>#FBF7F4</span></div>
+    </div>
+    <div class="swatch">
+      <div class="tile stone"></div>
+      <div class="caption">Stone<span>#F2E8E1</span></div>
+    </div>
+    <div class="swatch">
+      <div class="tile stone-deep"></div>
+      <div class="caption">Stone-deep<span>#EDE3DC</span></div>
+    </div>
+    <div class="swatch">
+      <div class="tile hairline"></div>
+      <div class="caption">Hairline<span>#D9CFC8</span></div>
+    </div>
+    <div class="swatch">
+      <div class="tile warm-grey"></div>
+      <div class="caption">Warm Grey<span>#656565</span></div>
+    </div>
+  </div>
+</body>
+</html>

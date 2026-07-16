@@ -1,0 +1,934 @@
+<!-- @dsCard group="Answers" viewport="1440x900" subtitle="App shell · dashboard · reports list · settings" name="Answers" -->
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Answers — app shell</title>
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--leaf-color-stone-light);
+    font-family: var(--leaf-font-sans);
+    color: var(--leaf-color-ink);
+  }
+
+  /* ---------- app frame ---------- */
+  .ak-frame {
+    width: min(1400px, 100vw - 32px);
+    height: min(864px, 100vh - 32px);
+    margin: 16px auto;
+    display: flex;
+    border: 1px solid var(--leaf-border-light);
+    border-radius: var(--leaf-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--leaf-shadow-sm);
+    background: var(--leaf-color-canvas);
+  }
+
+  /* ---------- sidebar ---------- */
+  .ak-sidebar {
+    width: 236px;
+    flex-shrink: 0;
+    background: var(--leaf-color-stone-faint);
+    border-right: 1px solid var(--leaf-border-light);
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+  }
+  .ak-org {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--leaf-color-canvas);
+    border: 1px solid rgba(23, 20, 18, 0.12);
+    border-radius: 10px;
+    padding: 9px 11px;
+    margin-bottom: var(--leaf-space-3);
+    cursor: pointer;
+  }
+  .ak-org__tile {
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+    background: var(--leaf-color-laurel);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 700 11px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-ink);
+  }
+  .ak-org__name {
+    flex: 1;
+    font: 600 13.5px/1.1 var(--leaf-font-sans);
+    color: var(--leaf-color-ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .ak-org__chevron { color: var(--leaf-color-warm-grey); display: flex; flex-shrink: 0; }
+
+  .ak-group-label {
+    font: 600 11px/1 var(--leaf-font-sans);
+    letter-spacing: 0.07em;
+    color: var(--leaf-text-muted);
+    text-transform: uppercase;
+    padding: 12px 12px 2px;
+  }
+  .ak-group-label:first-of-type { padding-top: 4px; }
+
+  .ak-sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 9px 12px;
+    border-radius: var(--leaf-radius-sm);
+    font: 500 14px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-ink);
+    text-decoration: none;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background-color var(--leaf-motion-fast) var(--leaf-ease),
+      color var(--leaf-motion-fast) var(--leaf-ease),
+      box-shadow var(--leaf-motion-fast) var(--leaf-ease),
+      padding var(--leaf-motion-fast) var(--leaf-ease);
+  }
+  .ak-sidebar-item:hover { background: rgba(23, 20, 18, 0.05); }
+  .ak-sidebar-item:focus-visible {
+    outline: 2px solid var(--leaf-focus-ring);
+    outline-offset: 2px;
+  }
+  .ak-sidebar-item.is-active {
+    padding: 9px 12px 9px 14px;
+    font-weight: 600;
+    color: var(--leaf-text-accent);
+    background: var(--leaf-color-coral-tint);
+    box-shadow: inset 3px 0 0 var(--leaf-color-coral);
+  }
+  .ak-sidebar-item.is-active:hover { background: var(--leaf-color-coral-tint); }
+  .ak-sidebar-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+  }
+  .ak-sidebar-item__label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ak-sidebar-item__count {
+    margin-left: auto;
+    font: 600 11px/1 var(--leaf-font-sans);
+    color: var(--leaf-text-accent);
+    background: var(--leaf-color-coral-tint);
+    border-radius: var(--leaf-radius-pill);
+    padding: 3px 7px;
+  }
+  @media (prefers-reduced-motion: reduce) { .ak-sidebar-item { transition: none; } }
+
+  /* ---------- main column ---------- */
+  .ak-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+  .ak-topbar {
+    height: 58px;
+    flex-shrink: 0;
+    padding: 0 18px;
+    background: var(--leaf-color-canvas);
+    border-bottom: 1px solid var(--leaf-border-light);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .ak-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--leaf-radius-sm);
+    background: none;
+    border: none;
+    color: var(--leaf-color-warm-grey);
+    cursor: pointer;
+  }
+  .ak-icon-btn:hover { background: rgba(23, 20, 18, 0.05); }
+  .ak-icon-btn:focus-visible { outline: 2px solid var(--leaf-focus-ring); outline-offset: 2px; }
+  .ak-divider { width: 1px; height: 22px; background: rgba(23, 20, 18, 0.12); flex-shrink: 0; }
+
+  .ak-breadcrumbs { display: flex; align-items: center; gap: 8px; font: 500 13.5px/1 var(--leaf-font-sans); }
+  .ak-breadcrumbs a { color: var(--leaf-text-accent); text-decoration: none; }
+  .ak-breadcrumbs a:hover { color: var(--leaf-color-ink); }
+  .ak-breadcrumbs__sep { color: rgba(23, 20, 18, 0.28); }
+  .ak-breadcrumbs__current { color: var(--leaf-color-ink); font-weight: 600; }
+
+  .ak-spacer { flex: 1; }
+
+  .ak-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--leaf-color-stone-faint);
+    border: 1px solid rgba(23, 20, 18, 0.12);
+    border-radius: var(--leaf-radius-pill);
+    padding: 7px 14px;
+    color: var(--leaf-color-warm-grey);
+    font: 500 13px/1 var(--leaf-font-sans);
+    width: 220px;
+  }
+  .ak-search svg { flex-shrink: 0; }
+  .ak-search span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .ak-pill-primary {
+    font: 600 13.5px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-canvas);
+    background: var(--leaf-color-coral);
+    border: none;
+    padding: 9px 15px;
+    border-radius: var(--leaf-radius-pill);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color var(--leaf-motion-base) var(--leaf-ease);
+  }
+  .ak-pill-primary:hover { background: var(--leaf-color-coral-hover); }
+  .ak-pill-primary:focus-visible { outline: 2px solid var(--leaf-focus-ring); outline-offset: 2px; }
+
+  .ak-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--leaf-color-heather);
+    color: var(--leaf-color-ink);
+    font: 700 12.5px/1 var(--leaf-font-sans);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .ak-content { flex: 1; padding: 24px 26px; background: var(--leaf-color-stone-light); overflow-y: auto; }
+  .ak-screen { display: none; }
+  .ak-screen.is-active { display: block; }
+
+  .ak-page-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .ak-page-title { font: 640 26px/1.1 var(--leaf-font-sans); letter-spacing: -0.02em; color: var(--leaf-color-ink); }
+  .ak-live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font: 500 12px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-state-success);
+    background: var(--leaf-color-state-success-tint);
+    border-radius: var(--leaf-radius-pill);
+    padding: 5px 10px;
+  }
+  .ak-meta { font: 400 13.5px/1.5 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin-bottom: 22px; }
+
+  /* ---------- KPI cards ---------- */
+  .ak-kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--leaf-space-5); margin-bottom: var(--leaf-space-5); }
+  .ak-kpi {
+    background: var(--leaf-color-canvas);
+    border: 1px solid var(--leaf-border-light);
+    border-radius: var(--leaf-radius-md);
+    padding: 18px;
+  }
+  .ak-kpi__label { font: 500 12.5px/1 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin-bottom: 10px; }
+  .ak-kpi__value { font: 640 26px/1 var(--leaf-font-sans); color: var(--leaf-color-ink); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .ak-kpi__delta { font: 600 12.5px/1 var(--leaf-font-sans); margin-top: 8px; font-variant-numeric: tabular-nums; }
+  .ak-kpi__delta.up { color: var(--leaf-color-state-success); }
+  .ak-kpi__delta.down { color: var(--leaf-color-state-error); }
+
+  /* ---------- chart cards ---------- */
+  .ak-chart-row { display: grid; grid-template-columns: 1.7fr 1fr; gap: var(--leaf-space-5); margin-bottom: var(--leaf-space-5); align-items: stretch; }
+  .ak-card {
+    background: var(--leaf-color-canvas);
+    border: 1px solid var(--leaf-border-light);
+    border-radius: var(--leaf-radius-lg);
+    padding: 20px 22px 18px;
+  }
+  .ak-card__title { font: 600 15px/1.2 var(--leaf-font-sans); color: var(--leaf-color-ink); margin-bottom: 18px; }
+
+  /* column chart */
+  .ak-columns { position: relative; height: 190px; display: flex; align-items: flex-end; gap: 18px; padding-bottom: 22px; }
+  .ak-columns__grid {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 22px;
+    background-image:
+      linear-gradient(to top, var(--leaf-chart-grid) 1px, transparent 1px),
+      linear-gradient(to top, var(--leaf-chart-grid) 1px, transparent 1px),
+      linear-gradient(to top, var(--leaf-chart-grid) 1px, transparent 1px);
+    background-size: 100% 25%, 100% 50%, 100% 75%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+  .ak-columns__baseline { position: absolute; left: 0; right: 0; bottom: 22px; height: 1px; background: var(--leaf-chart-axis); }
+  .ak-columns__target {
+    position: absolute;
+    left: 0; right: 0;
+    border-top: 2px dashed var(--leaf-color-state-error);
+  }
+  .ak-columns__target-label {
+    position: absolute;
+    left: 0;
+    top: -18px;
+    font: 600 11px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-state-error);
+    background: var(--leaf-color-canvas);
+    padding-right: 6px;
+  }
+  .ak-col { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; z-index: 1; }
+  .ak-col__value { font: 600 11.5px/1 var(--leaf-font-sans); color: var(--leaf-color-ink); margin-bottom: 6px; white-space: nowrap; }
+  .ak-col__bar { width: 26px; background: var(--leaf-color-coral); border-radius: 5px 5px 0 0; }
+  .ak-col__label {
+    position: absolute;
+    bottom: -20px;
+    font: 500 11.5px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-warm-grey);
+  }
+
+  /* donut */
+  .ak-donut-wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .ak-donut {
+    position: relative;
+    width: 158px;
+    height: 158px;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--leaf-chart-series-1) 0 46%,
+      var(--leaf-chart-series-2) 46% 69%,
+      var(--leaf-chart-series-3) 69% 86%,
+      var(--leaf-chart-series-4) 86% 100%
+    );
+  }
+  .ak-donut__hole {
+    position: absolute;
+    inset: 24px;
+    border-radius: 50%;
+    background: var(--leaf-color-canvas);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .ak-donut__value { font: 640 20px/1 var(--leaf-font-sans); color: var(--leaf-color-ink); letter-spacing: -0.02em; }
+  .ak-donut__caption { font: 500 11px/1.3 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin-top: 4px; }
+  .ak-legend { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+  .ak-legend__row { display: flex; align-items: center; gap: 9px; font: 400 13px/1 var(--leaf-font-sans); color: var(--leaf-color-ink); }
+  .ak-legend__swatch { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+  .ak-legend__label { flex: 1; }
+  .ak-legend__pct { font: 600 13px/1 var(--leaf-font-sans); color: var(--leaf-color-ink); font-variant-numeric: tabular-nums; }
+
+  /* line/area chart */
+  .ak-line-card { margin-bottom: var(--leaf-space-5); }
+  .ak-line-chart { width: 100%; height: 240px; display: block; }
+
+  /* ---------- tabs (reports screen) ---------- */
+  .ak-tabs { display: flex; gap: 22px; border-bottom: 1px solid rgba(23, 20, 18, 0.12); margin-bottom: 20px; }
+  .ak-tab {
+    appearance: none;
+    background: none;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    padding: 0 0 12px;
+    font: 500 14px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-warm-grey);
+  }
+  .ak-tab:hover { color: var(--leaf-color-ink); }
+  .ak-tab:focus-visible { outline: 2px solid var(--leaf-focus-ring); outline-offset: 2px; }
+  .ak-tab.is-active { font-weight: 600; color: var(--leaf-color-ink); box-shadow: inset 0 -2px 0 var(--leaf-color-coral); }
+
+  /* ---------- table ---------- */
+  .ak-table-wrap { background: var(--leaf-color-canvas); border: 1px solid var(--leaf-border-light); border-radius: var(--leaf-radius-lg); overflow: hidden; }
+  .ak-table { width: 100%; border-collapse: collapse; }
+  .ak-table thead tr { background: var(--leaf-color-stone-faint); border-bottom: 1.5px solid rgba(23, 20, 18, 0.14); }
+  .ak-table th {
+    text-align: left;
+    padding: 13px 16px;
+    font: 600 11.5px/1 var(--leaf-font-sans);
+    letter-spacing: 0.02em;
+    color: var(--leaf-color-ink);
+  }
+  .ak-table th[data-align="right"] { text-align: right; }
+  .ak-table tbody tr { border-bottom: 1px solid rgba(23, 20, 18, 0.07); }
+  .ak-table tbody tr:last-child { border-bottom: none; }
+  .ak-table tbody tr:nth-child(even) { background: var(--leaf-color-stone-faint); }
+  .ak-table td { padding: 12px 16px; font: 400 13.5px/1 var(--leaf-font-sans); color: var(--leaf-color-ink); }
+  .ak-table td[data-align="right"] { text-align: right; }
+  .ak-table td[data-numeric="true"] { font-weight: 500; font-variant-numeric: tabular-nums; }
+  .ak-swatch { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 8px; vertical-align: middle; }
+  .ak-delta { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .ak-delta.up { color: var(--leaf-color-state-success); }
+  .ak-delta.down { color: var(--leaf-color-state-error); }
+  .ak-empty { color: var(--leaf-text-muted); }
+
+  /* ---------- badge ---------- */
+  .ak-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px;
+    border-radius: var(--leaf-radius-pill);
+    border: 1px solid transparent;
+    font: 600 12.5px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-ink);
+  }
+  .ak-badge__dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .ak-badge--success { background: var(--leaf-color-state-success-tint); border-color: rgba(47, 139, 87, 0.25); }
+  .ak-badge--success .ak-badge__dot { background: var(--leaf-color-state-success); }
+  .ak-badge--warning { background: var(--leaf-color-state-warning-tint); border-color: rgba(199, 126, 28, 0.28); }
+  .ak-badge--warning .ak-badge__dot { background: var(--leaf-color-state-warning); }
+  .ak-badge--info { background: var(--leaf-color-state-info-tint); border-color: rgba(46, 131, 136, 0.28); }
+  .ak-badge--info .ak-badge__dot { background: var(--leaf-color-state-info); }
+
+  /* ---------- settings form ---------- */
+  .ak-settings-card {
+    max-width: 560px;
+    background: var(--leaf-color-canvas);
+    border: 1px solid var(--leaf-border-light);
+    border-radius: var(--leaf-radius-lg);
+    padding: 26px;
+  }
+  .ak-settings-title { font: 600 18px/1.2 var(--leaf-font-sans); color: var(--leaf-color-ink); margin-bottom: 4px; }
+  .ak-settings-sub { font: 400 13.5px/1.5 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin-bottom: 22px; }
+
+  .ak-field { display: flex; flex-direction: column; margin-bottom: 20px; }
+  .ak-field__label { font: 600 13px/1 var(--leaf-font-sans); color: var(--leaf-color-ink); margin-bottom: 7px; }
+  .ak-field__control {
+    font: 400 14px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-ink);
+    background: var(--leaf-color-canvas);
+    border: 1px solid var(--leaf-border-input);
+    border-radius: var(--leaf-radius-md);
+    padding: 11px 14px;
+  }
+  .ak-field__control:focus-visible {
+    border-color: var(--leaf-color-coral);
+    outline: 2px solid var(--leaf-focus-ring);
+    outline-offset: 1px;
+  }
+  .ak-select-control { position: relative; display: flex; align-items: center; }
+  .ak-select-control select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    padding-right: 38px;
+  }
+  .ak-select-control svg { position: absolute; right: 14px; pointer-events: none; color: var(--leaf-color-warm-grey); }
+  .ak-field__help { font: 400 12.5px/1.4 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin-top: 6px; }
+
+  .ak-switch-row { display: flex; align-items: center; justify-content: space-between; padding: 4px 0 18px; border-bottom: 1px solid rgba(23, 20, 18, 0.07); margin-bottom: 18px; }
+  .ak-switch-row__label { font: 500 14px/1.3 var(--leaf-font-sans); color: var(--leaf-color-ink); }
+  .ak-switch {
+    position: relative;
+    width: 44px;
+    height: 26px;
+    border-radius: var(--leaf-radius-pill);
+    background: var(--leaf-color-stone-hairline);
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+  }
+  .ak-switch.is-on { background: var(--leaf-color-coral); }
+  .ak-switch__thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--leaf-color-canvas);
+    box-shadow: 0 1px 2px rgba(23, 20, 18, 0.2);
+    transition: left var(--leaf-motion-base) var(--leaf-ease);
+  }
+  .ak-switch.is-on .ak-switch__thumb { left: 21px; }
+  .ak-switch:focus-visible { outline: 2px solid var(--leaf-focus-ring); outline-offset: 2px; }
+
+  .ak-checkbox-row { display: flex; align-items: center; gap: var(--leaf-space-2); margin-bottom: 24px; cursor: pointer; }
+  .ak-checkbox-row input {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .ak-checkbox-box {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 1.5px solid rgba(23, 20, 18, 0.3);
+    background: var(--leaf-color-canvas);
+  }
+  .ak-checkbox-row input:checked + .ak-checkbox-box {
+    background: var(--leaf-color-coral);
+    border-color: var(--leaf-color-coral);
+  }
+  .ak-checkbox-row input:focus-visible + .ak-checkbox-box { outline: 2px solid var(--leaf-focus-ring); outline-offset: 2px; }
+  .ak-checkbox-box svg { opacity: 0; color: var(--leaf-color-canvas); }
+  .ak-checkbox-row input:checked + .ak-checkbox-box svg { opacity: 1; }
+  .ak-checkbox-row__label { font: 400 14px/1.4 var(--leaf-font-sans); color: var(--leaf-color-ink); }
+
+  .ak-settings-footer { display: flex; justify-content: flex-end; gap: 10px; padding-top: 4px; }
+  .ak-btn-secondary {
+    font: 600 14px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-ink);
+    background: transparent;
+    border: 1px solid rgba(23, 20, 18, 0.16);
+    padding: 10px 16px;
+    border-radius: var(--leaf-radius-pill);
+    cursor: pointer;
+  }
+  .ak-btn-primary {
+    font: 600 14px/1 var(--leaf-font-sans);
+    color: var(--leaf-color-canvas);
+    background: var(--leaf-color-coral);
+    border: none;
+    padding: 11px 20px;
+    border-radius: var(--leaf-radius-pill);
+    cursor: pointer;
+    transition: background-color var(--leaf-motion-base) var(--leaf-ease);
+  }
+  .ak-btn-primary:hover { background: var(--leaf-color-coral-hover); }
+  .ak-btn-secondary:focus-visible, .ak-btn-primary:focus-visible { outline: 2px solid var(--leaf-focus-ring); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<div class="ak-frame">
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="ak-sidebar">
+    <button class="ak-org" type="button" aria-label="Switch organisation, current: Dash Water">
+      <span class="ak-org__tile">DW</span>
+      <span class="ak-org__name">Dash Water</span>
+      <span class="ak-org__chevron" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </span>
+    </button>
+
+    <nav aria-label="Primary">
+      <div class="ak-group-label">Main</div>
+      <button class="ak-sidebar-item is-active" type="button" data-screen="overview" aria-current="page">
+        <span class="ak-sidebar-item__icon" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3.5" y="3.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.2"/>
+            <rect x="3.5" y="13.5" width="7" height="7" rx="1.2"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.2"/>
+          </svg>
+        </span>
+        <span class="ak-sidebar-item__label">Overview</span>
+      </button>
+      <button class="ak-sidebar-item" type="button" data-screen="reports">
+        <span class="ak-sidebar-item__icon" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3.5" y1="20.5" x2="20.5" y2="20.5"/><rect x="6" y="12" width="3.4" height="8.5"/>
+            <rect x="10.8" y="7" width="3.4" height="13.5"/><rect x="15.6" y="10" width="3.4" height="10.5"/>
+          </svg>
+        </span>
+        <span class="ak-sidebar-item__label">Reports</span>
+      </button>
+      <a class="ak-sidebar-item" href="#" onclick="return false;">
+        <span class="ak-sidebar-item__icon" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="ak-sidebar-item__label">Campaigns</span>
+        <span class="ak-sidebar-item__count">3</span>
+      </a>
+      <a class="ak-sidebar-item" href="#" onclick="return false;">
+        <span class="ak-sidebar-item__icon" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="7" r="3.2"/><path d="M5.5 19.5c0-3.5 2.9-6 6.5-6s6.5 2.5 6.5 6"/><path d="M3 19.5c0-2.6 1.3-4.6 3-5.6"/>
+          </svg>
+        </span>
+        <span class="ak-sidebar-item__label">Audiences</span>
+      </a>
+
+      <div class="ak-group-label">Manage</div>
+      <a class="ak-sidebar-item" href="#" onclick="return false;">
+        <span class="ak-sidebar-item__icon" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 3 5 13.5h5.5L11 21l8-11h-5.5z"/>
+          </svg>
+        </span>
+        <span class="ak-sidebar-item__label">Automations</span>
+      </a>
+      <button class="ak-sidebar-item" type="button" data-screen="settings">
+        <span class="ak-sidebar-item__icon" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="8" x2="20" y2="8"/><circle cx="14" cy="8" r="2.2" fill="currentColor" stroke="none"/>
+            <line x1="4" y1="16" x2="20" y2="16"/><circle cx="9" cy="16" r="2.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="ak-sidebar-item__label">Settings</span>
+      </button>
+    </nav>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <div class="ak-main">
+    <header class="ak-topbar">
+      <button class="ak-icon-btn" type="button" aria-label="Toggle sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+      <span class="ak-divider" aria-hidden="true"></span>
+      <nav class="ak-breadcrumbs" aria-label="Breadcrumb" id="breadcrumbs">
+        <!-- filled by JS -->
+      </nav>
+      <span class="ak-spacer"></span>
+      <span class="ak-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="20.5" y2="20.5"/></svg>
+        <span>Search reports, channels…</span>
+      </span>
+      <button class="ak-pill-primary" type="button">New report</button>
+      <span class="ak-avatar" title="Sam Devlin">SD</span>
+    </header>
+
+    <main class="ak-content">
+
+      <!-- ================= OVERVIEW ================= -->
+      <section class="ak-screen is-active" id="screen-overview">
+        <div class="ak-page-head">
+          <h1 class="ak-page-title">Overview</h1>
+          <span class="ak-live-pill">● Live</span>
+        </div>
+        <p class="ak-meta">Dash Water · All campaigns · Last updated 14 Jul 2026, 09:02</p>
+
+        <div class="ak-kpi-row">
+          <div class="ak-kpi">
+            <div class="ak-kpi__label">Tracked revenue</div>
+            <div class="ak-kpi__value">£2.41M</div>
+            <div class="ak-kpi__delta up">▲ 18.4%</div>
+          </div>
+          <div class="ak-kpi">
+            <div class="ak-kpi__label">Blended ROAS</div>
+            <div class="ak-kpi__value">3.72x</div>
+            <div class="ak-kpi__delta up">▲ 0.3</div>
+          </div>
+          <div class="ak-kpi">
+            <div class="ak-kpi__label">Wasted spend</div>
+            <div class="ak-kpi__value">£48.2K</div>
+            <div class="ak-kpi__delta up">▼ 12.1%</div>
+          </div>
+        </div>
+
+        <div class="ak-chart-row">
+          <div class="ak-card">
+            <div class="ak-card__title">Tracked revenue — last 6 months</div>
+            <div class="ak-columns">
+              <div class="ak-columns__grid" aria-hidden="true"></div>
+              <div class="ak-columns__target" style="bottom: 76%;">
+                <span class="ak-columns__target-label">Target £350K</span>
+              </div>
+              <div class="ak-col">
+                <span class="ak-col__value">£238K</span>
+                <span class="ak-col__bar" style="height: 52%;"></span>
+                <span class="ak-col__label">Feb</span>
+              </div>
+              <div class="ak-col">
+                <span class="ak-col__value">£293K</span>
+                <span class="ak-col__bar" style="height: 64%;"></span>
+                <span class="ak-col__label">Mar</span>
+              </div>
+              <div class="ak-col">
+                <span class="ak-col__value">£265K</span>
+                <span class="ak-col__bar" style="height: 58%;"></span>
+                <span class="ak-col__label">Apr</span>
+              </div>
+              <div class="ak-col">
+                <span class="ak-col__value">£339K</span>
+                <span class="ak-col__bar" style="height: 74%;"></span>
+                <span class="ak-col__label">May</span>
+              </div>
+              <div class="ak-col">
+                <span class="ak-col__value">£311K</span>
+                <span class="ak-col__bar" style="height: 68%;"></span>
+                <span class="ak-col__label">Jun</span>
+              </div>
+              <div class="ak-col">
+                <span class="ak-col__value">£412K</span>
+                <span class="ak-col__bar" style="height: 90%;"></span>
+                <span class="ak-col__label">Jul</span>
+              </div>
+              <div class="ak-columns__baseline" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="ak-card">
+            <div class="ak-card__title">Revenue by channel</div>
+            <div class="ak-donut-wrap">
+              <div class="ak-donut" role="img" aria-label="Revenue by channel: Paid media 46%, Organic 23%, Email 17%, Referral 14%">
+                <div class="ak-donut__hole">
+                  <span class="ak-donut__value">£2.4M</span>
+                  <span class="ak-donut__caption">Tracked</span>
+                </div>
+              </div>
+              <div class="ak-legend">
+                <div class="ak-legend__row"><span class="ak-legend__swatch" style="background:var(--leaf-chart-series-1);"></span><span class="ak-legend__label">Paid media</span><span class="ak-legend__pct">46%</span></div>
+                <div class="ak-legend__row"><span class="ak-legend__swatch" style="background:var(--leaf-chart-series-2);"></span><span class="ak-legend__label">Organic</span><span class="ak-legend__pct">23%</span></div>
+                <div class="ak-legend__row"><span class="ak-legend__swatch" style="background:var(--leaf-chart-series-3);"></span><span class="ak-legend__label">Email</span><span class="ak-legend__pct">17%</span></div>
+                <div class="ak-legend__row"><span class="ak-legend__swatch" style="background:var(--leaf-chart-series-4);"></span><span class="ak-legend__label">Referral</span><span class="ak-legend__pct">14%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ak-card ak-line-card">
+          <div class="ak-card__title">Conversions — weekly, indexed</div>
+          <svg class="ak-line-chart" viewBox="0 0 900 240" preserveAspectRatio="none" role="img" aria-label="Weekly indexed conversions, this period trending above last period">
+            <defs>
+              <linearGradient id="ak-area-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--leaf-color-coral)" stop-opacity="0.16"/>
+                <stop offset="100%" stop-color="var(--leaf-color-coral)" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- gridlines -->
+            <line x1="0" y1="20" x2="900" y2="20" stroke="var(--leaf-chart-grid)" stroke-width="1"/>
+            <line x1="0" y1="75" x2="900" y2="75" stroke="var(--leaf-chart-grid)" stroke-width="1"/>
+            <line x1="0" y1="130" x2="900" y2="130" stroke="var(--leaf-chart-grid)" stroke-width="1"/>
+            <line x1="0" y1="185" x2="900" y2="185" stroke="var(--leaf-chart-grid)" stroke-width="1"/>
+            <line x1="0" y1="206" x2="900" y2="206" stroke="var(--leaf-chart-axis)" stroke-width="1"/>
+
+            <!-- Harbor comparison series (last period) -->
+            <polyline points="10,150 130,146 250,140 370,148 490,132 610,138 730,120 870,128"
+              fill="none" stroke="var(--leaf-chart-series-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- Coral series (this period) with soft fill -->
+            <polygon points="10,132 130,118 250,108 370,96 490,80 610,66 730,54 870,40 870,206 10,206"
+              fill="url(#ak-area-fill)" stroke="none"/>
+            <polyline points="10,132 130,118 250,108 370,96 490,80 610,66 730,54 870,40"
+              fill="none" stroke="var(--leaf-color-coral)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <text x="875" y="34" text-anchor="end" font-family="Mona Sans, sans-serif" font-size="12" font-weight="600" fill="var(--leaf-color-coral)">This period</text>
+            <text x="875" y="122" text-anchor="end" font-family="Mona Sans, sans-serif" font-size="12" font-weight="600" fill="var(--leaf-chart-series-2)">Last period</text>
+
+            <text x="10" y="226" font-family="Mona Sans, sans-serif" font-size="11" fill="var(--leaf-color-warm-grey)">W1</text>
+            <text x="130" y="226" text-anchor="middle" font-family="Mona Sans, sans-serif" font-size="11" fill="var(--leaf-color-warm-grey)">W2</text>
+            <text x="250" y="226" text-anchor="middle" font-family="Mona Sans, sans-serif" font-size="11" fill="var(--leaf-color-warm-grey)">W3</text>
+            <text x="370" y="226" text-anchor="middle" font-family="Mona Sans, sans-serif" font-size="11" fill="var(--leaf-color-warm-grey)">W4</text>
+            <text x="490" y="226" text-anchor="middle" font-family="Mona Sans, sans-serif" font-size="11" fill="var(--leaf-color-warm-grey)">W5</text>
+            <text x="610" y="226" text-anchor="middle" font-family="Mona Sans, sans-serif" font-size="11" fill="var(--leaf-color-warm-grey)">W6</text>
+            <text x="730" y="226" text-anchor="middle" font-family="Mona Sans, sans-serif" font-size="11" fill="var(--leaf-color-warm-grey)">W7</text>
+            <text x="870" y="226" text-anchor="end" font-family="Mona Sans, sans-serif" font-size="11" fill="var(--leaf-color-warm-grey)">W8</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- ================= REPORTS ================= -->
+      <section class="ak-screen" id="screen-reports">
+        <div class="ak-page-head">
+          <h1 class="ak-page-title">Reports</h1>
+        </div>
+        <p class="ak-meta">Dash Water · Channel performance, trailing 30 days</p>
+
+        <div class="ak-tabs" role="tablist" aria-label="Report views">
+          <button class="ak-tab is-active" type="button" role="tab" aria-selected="true">All reports</button>
+          <button class="ak-tab" type="button" role="tab" aria-selected="false">Scheduled</button>
+          <button class="ak-tab" type="button" role="tab" aria-selected="false">Archived</button>
+        </div>
+
+        <div class="ak-table-wrap">
+          <table class="ak-table">
+            <caption style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Spend and return by channel, trailing 30 days</caption>
+            <thead>
+              <tr>
+                <th>Channel</th>
+                <th data-align="right">Spend</th>
+                <th data-align="right">ROAS</th>
+                <th data-align="right">Δ</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="ak-swatch" style="background:var(--leaf-chart-series-1);"></span>Paid media</td>
+                <td data-align="right" data-numeric="true">£1.49M</td>
+                <td data-align="right" data-numeric="true" style="background:var(--leaf-ramp-harbor-1);">3.72</td>
+                <td data-align="right"><span class="ak-delta up">▲ 18%</span></td>
+                <td><span class="ak-badge ak-badge--success"><span class="ak-badge__dot"></span>Live</span></td>
+              </tr>
+              <tr>
+                <td><span class="ak-swatch" style="background:var(--leaf-chart-series-2);"></span>Organic</td>
+                <td data-align="right" data-numeric="true">£0.55M</td>
+                <td data-align="right" data-numeric="true" style="background:var(--leaf-heatmap-mid);">2.98</td>
+                <td data-align="right"><span class="ak-delta up">▲ 4%</span></td>
+                <td><span class="ak-badge ak-badge--success"><span class="ak-badge__dot"></span>Live</span></td>
+              </tr>
+              <tr>
+                <td><span class="ak-swatch" style="background:var(--leaf-chart-series-3);"></span>Email</td>
+                <td data-align="right" data-numeric="true">£0.37M</td>
+                <td data-align="right" data-numeric="true" style="background:var(--leaf-ramp-coral-1);">2.14</td>
+                <td data-align="right"><span class="ak-delta down">▼ 6%</span></td>
+                <td><span class="ak-badge ak-badge--warning"><span class="ak-badge__dot"></span>Needs review</span></td>
+              </tr>
+              <tr>
+                <td><span class="ak-swatch" style="background:var(--leaf-chart-series-4);"></span>Referral</td>
+                <td data-align="right" data-numeric="true">£0.21M</td>
+                <td data-align="right" data-numeric="true" style="background:var(--leaf-ramp-harbor-2);">4.10</td>
+                <td data-align="right"><span class="ak-empty">—</span></td>
+                <td><span class="ak-badge ak-badge--info"><span class="ak-badge__dot"></span>Draft</span></td>
+              </tr>
+              <tr>
+                <td><span class="ak-swatch" style="background:var(--leaf-chart-series-5);"></span>Social</td>
+                <td data-align="right" data-numeric="true">£0.18M</td>
+                <td data-align="right" data-numeric="true" style="background:var(--leaf-heatmap-mid);">2.45</td>
+                <td data-align="right"><span class="ak-delta up">▲ 9%</span></td>
+                <td><span class="ak-badge ak-badge--success"><span class="ak-badge__dot"></span>Live</span></td>
+              </tr>
+              <tr>
+                <td><span class="ak-swatch" style="background:var(--leaf-chart-series-6);"></span>Affiliate</td>
+                <td data-align="right" data-numeric="true">£0.09M</td>
+                <td data-align="right" data-numeric="true" style="background:var(--leaf-ramp-coral-2);">1.86</td>
+                <td data-align="right"><span class="ak-delta down">▼ 3%</span></td>
+                <td><span class="ak-badge ak-badge--warning"><span class="ak-badge__dot"></span>Needs review</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= SETTINGS ================= -->
+      <section class="ak-screen" id="screen-settings">
+        <div class="ak-page-head">
+          <h1 class="ak-page-title">Settings</h1>
+        </div>
+        <p class="ak-meta">Dash Water · Workspace preferences</p>
+
+        <div class="ak-settings-card">
+          <div class="ak-settings-title">Workspace</div>
+          <div class="ak-settings-sub">Applies to every report and dashboard in this workspace.</div>
+
+          <div class="ak-field">
+            <label class="ak-field__label" for="workspace-name">Workspace name</label>
+            <input class="ak-field__control" id="workspace-name" type="text" value="Dash Water" />
+          </div>
+
+          <div class="ak-field">
+            <label class="ak-field__label" for="reporting-currency">Reporting currency</label>
+            <div class="ak-select-control">
+              <select class="ak-field__control" id="reporting-currency">
+                <option>GBP £</option>
+                <option>USD $</option>
+                <option>EUR €</option>
+              </select>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+
+          <div class="ak-field">
+            <label class="ak-field__label" for="report-recipients">Report recipients</label>
+            <input class="ak-field__control" id="report-recipients" type="text" placeholder="e.g. sam@dashwater.com, finance@dashwater.com" />
+            <span class="ak-field__help">Comma-separated email addresses. Sent every Monday at 9am.</span>
+          </div>
+
+          <div class="ak-switch-row">
+            <span class="ak-switch-row__label">Send weekly summary</span>
+            <button type="button" class="ak-switch is-on" role="switch" aria-checked="true" aria-label="Send weekly summary" onclick="this.classList.toggle('is-on'); this.setAttribute('aria-checked', this.classList.contains('is-on'));">
+              <span class="ak-switch__thumb"></span>
+            </button>
+          </div>
+
+          <label class="ak-checkbox-row">
+            <input type="checkbox" checked />
+            <span class="ak-checkbox-box" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 7"/></svg>
+            </span>
+            <span class="ak-checkbox-row__label">Include comparison period</span>
+          </label>
+
+          <div class="ak-settings-footer">
+            <button class="ak-btn-secondary" type="button">Cancel</button>
+            <button class="ak-btn-primary" type="button">Save changes</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var screens = {
+      overview: {
+        el: document.getElementById("screen-overview"),
+        crumbs: [{ label: "Answers" }, { current: "Overview" }],
+      },
+      reports: {
+        el: document.getElementById("screen-reports"),
+        crumbs: [{ label: "Answers" }, { current: "Reports" }],
+      },
+      settings: {
+        el: document.getElementById("screen-settings"),
+        crumbs: [{ label: "Answers" }, { current: "Settings" }],
+      },
+    };
+
+    var navButtons = document.querySelectorAll("[data-screen]");
+    var breadcrumbsEl = document.getElementById("breadcrumbs");
+
+    function renderBreadcrumbs(crumbs) {
+      var html = '<ol style="display:flex;align-items:center;gap:8px;margin:0;padding:0;list-style:none;">';
+      crumbs.forEach(function (crumb, index) {
+        if (index > 0) {
+          html += '<li class="ak-breadcrumbs__sep" aria-hidden="true">›</li>';
+        }
+        if (crumb.current) {
+          html += '<li class="ak-breadcrumbs__current" aria-current="page">' + crumb.current + "</li>";
+        } else {
+          html += '<li><a href="#" onclick="return false;">' + crumb.label + "</a></li>";
+        }
+      });
+      html += "</ol>";
+      breadcrumbsEl.innerHTML = html;
+    }
+
+    function activate(screenKey) {
+      Object.keys(screens).forEach(function (key) {
+        screens[key].el.classList.toggle("is-active", key === screenKey);
+      });
+      navButtons.forEach(function (btn) {
+        var isActive = btn.getAttribute("data-screen") === screenKey;
+        btn.classList.toggle("is-active", isActive);
+        if (btn.tagName === "BUTTON") {
+          if (isActive) btn.setAttribute("aria-current", "page");
+          else btn.removeAttribute("aria-current");
+        }
+      });
+      renderBreadcrumbs(screens[screenKey].crumbs);
+    }
+
+    navButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        activate(btn.getAttribute("data-screen"));
+      });
+    });
+
+    // in-page tabs on the Reports screen (visual only — one dataset shown)
+    var tabButtons = document.querySelectorAll("#screen-reports .ak-tab");
+    tabButtons.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tabButtons.forEach(function (t) {
+          t.classList.remove("is-active");
+          t.setAttribute("aria-selected", "false");
+        });
+        tab.classList.add("is-active");
+        tab.setAttribute("aria-selected", "true");
+      });
+    });
+
+    activate("overview");
+  })();
+</script>
+
+</body>
+</html>

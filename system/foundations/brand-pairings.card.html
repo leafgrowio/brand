@@ -1,0 +1,109 @@
+<!-- @dsCard group="Brand" viewport="700x210" subtitle="approved text pairings — Ink text on fills, Canvas text on dark anchors" name="Text pairings" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-3);
+    padding: var(--leaf-space-3) var(--leaf-space-4);
+  }
+  .matrix-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--leaf-space-3);
+  }
+  .row-label {
+    width: 100px;
+    flex-shrink: 0;
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-muted);
+    padding-top: 20px;
+  }
+  .tiles {
+    flex: 1;
+    display: flex;
+    gap: 6px;
+  }
+  .tile-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+  }
+  .tile {
+    width: 100%;
+    height: 44px;
+    border-radius: var(--leaf-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--leaf-font-sans);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .tile.ink-text { color: var(--leaf-color-ink); }
+  .tile.canvas-text { color: var(--leaf-color-canvas); }
+  .tile.coral { background: var(--leaf-color-coral); }
+  .tile.aqua { background: var(--leaf-color-aqua); }
+  .tile.marigold { background: var(--leaf-color-marigold); }
+  .tile.butter { background: var(--leaf-color-butter); }
+  .tile.apricot { background: var(--leaf-color-apricot); }
+  .tile.rosehip { background: var(--leaf-color-rosehip); }
+  .tile.sage { background: var(--leaf-color-sage); }
+  .tile.laurel { background: var(--leaf-color-laurel); }
+  .tile.eucalyptus { background: var(--leaf-color-eucalyptus); }
+  .tile.harbor { background: var(--leaf-color-harbor); }
+  .tile.lilac { background: var(--leaf-color-lilac); }
+  .tile.heather { background: var(--leaf-color-heather); }
+  .tile.ink { background: var(--leaf-color-ink); }
+  .tile.warm-grey { background: var(--leaf-color-warm-grey); }
+  .tile.fern { background: var(--leaf-color-state-success); }
+  .tile.ember { background: var(--leaf-color-state-error); }
+  .tile.tidal { background: var(--leaf-color-state-info); }
+  .name {
+    font: var(--leaf-type-caption);
+    font-size: 10px;
+    color: var(--leaf-text-muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="matrix-row">
+      <div class="row-label">Ink text on</div>
+      <div class="tiles">
+        <div class="tile-wrap"><div class="tile ink-text coral">Aa</div><div class="name">Coral</div></div>
+        <div class="tile-wrap"><div class="tile ink-text aqua">Aa</div><div class="name">Aqua</div></div>
+        <div class="tile-wrap"><div class="tile ink-text marigold">Aa</div><div class="name">Marigold</div></div>
+        <div class="tile-wrap"><div class="tile ink-text butter">Aa</div><div class="name">Butter</div></div>
+        <div class="tile-wrap"><div class="tile ink-text apricot">Aa</div><div class="name">Apricot</div></div>
+        <div class="tile-wrap"><div class="tile ink-text rosehip">Aa</div><div class="name">Rosehip</div></div>
+        <div class="tile-wrap"><div class="tile ink-text sage">Aa</div><div class="name">Sage</div></div>
+        <div class="tile-wrap"><div class="tile ink-text laurel">Aa</div><div class="name">Laurel</div></div>
+        <div class="tile-wrap"><div class="tile ink-text eucalyptus">Aa</div><div class="name">Eucalyptus</div></div>
+        <div class="tile-wrap"><div class="tile ink-text harbor">Aa</div><div class="name">Harbor</div></div>
+        <div class="tile-wrap"><div class="tile ink-text lilac">Aa</div><div class="name">Lilac</div></div>
+        <div class="tile-wrap"><div class="tile ink-text heather">Aa</div><div class="name">Heather</div></div>
+      </div>
+    </div>
+    <div class="matrix-row">
+      <div class="row-label">Canvas text on</div>
+      <div class="tiles">
+        <div class="tile-wrap"><div class="tile canvas-text ink">Aa</div><div class="name">Ink</div></div>
+        <div class="tile-wrap"><div class="tile canvas-text warm-grey">Aa</div><div class="name">Warm Grey</div></div>
+        <div class="tile-wrap"><div class="tile canvas-text fern">Aa</div><div class="name">Fern</div></div>
+        <div class="tile-wrap"><div class="tile canvas-text ember">Aa</div><div class="name">Ember</div></div>
+        <div class="tile-wrap"><div class="tile canvas-text tidal">Aa</div><div class="name">Tidal</div></div>
+        <div class="tile-wrap"><div class="tile canvas-text coral">Aa</div><div class="name">Coral — large only</div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

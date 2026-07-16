@@ -1,0 +1,50 @@
+<!-- @dsCard group="Type" viewport="700x200" subtitle="Source Serif 4 — headline 800, pull quote italic 500" name="Editorial serif" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-3);
+    padding: var(--leaf-space-4);
+  }
+  .headline {
+    font-family: var(--leaf-font-serif);
+    font-weight: 800;
+    font-size: 34px;
+    line-height: 1.08;
+    color: var(--leaf-text-primary);
+  }
+  .quote {
+    font-family: var(--leaf-font-serif);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.3;
+    color: var(--leaf-text-primary);
+  }
+  .attribution {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-secondary);
+  }
+  .note {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-muted);
+  }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="headline">Four ways attribution quietly lies to you.</div>
+    <div>
+      <div class="quote">"The signal was always there. We just made it trustworthy."</div>
+      <div class="attribution">Leaf Colectivo · Episode 12</div>
+    </div>
+    <div class="note">Editorial only — never UI</div>
+  </div>
+</body>
+</html>

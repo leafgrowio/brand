@@ -1,0 +1,47 @@
+<!-- @dsCard group="Type" viewport="700x220" subtitle="Body large, body, label, caption" name="Body scale" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--leaf-surface-card); }
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--leaf-space-2);
+    padding: var(--leaf-space-4);
+  }
+  .row { display: flex; flex-direction: column; gap: 2px; }
+  .body-lg { font: var(--leaf-type-body-lg); color: var(--leaf-text-primary); }
+  .body { font: var(--leaf-type-body); color: var(--leaf-text-primary); }
+  .label { font: var(--leaf-type-label); color: var(--leaf-text-primary); }
+  .caption-text { font: var(--leaf-type-caption); color: var(--leaf-text-secondary); }
+  .spec {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-muted);
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="row">
+      <div class="body-lg">Body large — the comfortable reading size for marketing and intros.</div>
+      <div class="spec">18 / 1.55 · 400 · body-lg</div>
+    </div>
+    <div class="row">
+      <div class="body">Body — the default for product and long text.</div>
+      <div class="spec">16 / 1.6 · 400 · body</div>
+    </div>
+    <div class="row">
+      <div class="label">Label — buttons, nav, metadata</div>
+      <div class="spec">14 / 1.4 · 500 · label</div>
+    </div>
+    <div class="row">
+      <div class="caption-text">Caption — the smallest supporting text</div>
+      <div class="spec">13 / 1.4 · 500 · caption</div>
+    </div>
+  </div>
+</body>
+</html>
