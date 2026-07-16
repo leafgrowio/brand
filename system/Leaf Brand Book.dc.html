@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Mona Sans';
+    src: url('assets/fonts/MonaSans.ttf') format('truetype-variations');
+    font-weight: 200 900;
+    font-stretch: 75% 125%;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Mona Sans';
+    src: url('assets/fonts/MonaSans-Italic.ttf') format('truetype-variations');
+    font-weight: 200 900;
+    font-stretch: 75% 125%;
+    font-style: italic;
+    font-display: swap;
+  }
+  * { box-sizing: border-box; font-feature-settings: "ss03" 1, "ss05" 1, "ss06" 1, "ss07" 1, "ss09" 1 !important; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F9F4F1; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  ::selection { background: #FB5E48; color: #FFFDFB; }
+  a { color: #FB5E48; text-decoration: none; }
+  a:hover { color: #171412; }
+  img { display: block; max-width: 100%; }
+  :focus-visible { outline: 2px solid #FB5E48; outline-offset: 2px; border-radius: 3px; }
+</style>
+</helmet>
+
+<div style="background:#F9F4F1;color:#171412;font-family:'Mona Sans',Arial,sans-serif;min-height:100vh;">
+
+  <header style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px clamp(20px,5vw,56px);background:rgba(249,244,241,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(23,20,18,0.09);">
+    <a href="#top" style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/logos/Leaf - Coral.svg" alt="Leaf" style="height:24px;width:auto;">
+      <span style="font:500 13px/1 'Mona Sans',sans-serif;color:#656565;padding:4px 9px;border:1px solid rgba(23,20,18,0.14);border-radius:999px;letter-spacing:.01em;">Brand book</span>
+    </a>
+    <nav style="display:flex;flex-wrap:wrap;gap:2px;align-items:center;justify-content:flex-end;">
+      <a href="#foundations" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Foundations</a>
+      <a href="#colour" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Colour</a>
+      <a href="#type" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Type</a>
+      <a href="#voice" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Voice</a>
+      <a href="#logos" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Logos</a>
+      <a href="#icons" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Icons</a>
+      <a href="#imagery" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Imagery</a>
+      <a href="#photography" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Photography</a>
+      <a href="#dataviz" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Data</a>
+      <a href="#applications" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Applications</a>
+      <a href="#wild" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">In the wild</a>
+      <a href="Leaf Component Library.dc.html" style="font:520 14px/1 'Mona Sans',sans-serif;color:#171412;padding:8px 12px;border-radius:999px;" style-hover="background:rgba(23,20,18,0.05);">Components ↗</a>
+      <a href="#agents" style="font:600 14px/1 'Mona Sans',sans-serif;color:#FFFDFB;background:#171412;padding:8px 14px;border-radius:999px;margin-left:6px;" style-hover="background:#FB5E48;">For agents</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section style="max-width:1200px;margin:0 auto;padding:clamp(56px,9vw,120px) clamp(20px,5vw,56px) clamp(48px,6vw,80px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,0.95fr);gap:clamp(32px,5vw,72px);align-items:center;">
+      <div>
+        <p style="display:inline-flex;align-items:center;gap:9px;color:#171412;font:520 13px/1 'Mona Sans',sans-serif;background:#F2E8E1;border:1px solid rgba(23,20,18,0.10);padding:6px 12px;border-radius:999px;margin:0 0 28px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#FB5E48;"></span>Design system · v1.0
+        </p>
+        <h1 style="font:640 clamp(48px,7vw,86px)/0.96 'Mona Sans',sans-serif;letter-spacing:-0.035em;margin:0 0 24px;color:#171412;text-wrap:balance;">The Leaf design system</h1>
+        <p style="font:400 clamp(18px,2.2vw,21px)/1.5 'Mona Sans',sans-serif;color:#656565;margin:0 0 20px;max-width:52ch;text-wrap:pretty;">One source of truth for colour, type, logos, and iconography — written to be read by people and by the agents that generate Leaf's decks, sites, and campaigns.</p>
+        <p style="font:italic 500 clamp(19px,2.3vw,24px)/1.35 'Source Serif 4',Georgia,serif;color:#171412;margin:0;max-width:40ch;">Performance intelligence for D2C ecommerce — reliable signals, decision-grade answers, profitable execution.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:96px;gap:12px;">
+        <div style="grid-column:span 2;grid-row:span 2;background:#FB5E48;border-radius:16px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;">
+          <img src="assets/logos/Leaf Icon.svg" alt="" style="width:36px;height:36px;opacity:0.9;">
+          <div><div style="font:600 16px/1 'Mona Sans';color:#171412;">Coral</div><div style="font:500 13px/1.4 'Mona Sans';color:rgba(23,20,18,0.62);margin-top:4px;">Brand signal</div></div>
+        </div>
+        <div style="background:#7AD8CE;border-radius:16px;padding:16px;display:flex;align-items:flex-end;"><span style="font:600 13px/1 'Mona Sans';color:#171412;">Aqua</span></div>
+        <div style="background:#F2E8E1;border-radius:16px;padding:16px;display:flex;align-items:flex-end;border:1px solid rgba(23,20,18,0.07);"><span style="font:600 13px/1 'Mona Sans';color:#171412;">Stone</span></div>
+        <div style="grid-column:span 2;background:#171412;border-radius:16px;padding:16px;display:flex;align-items:flex-end;"><span style="font:600 13px/1 'Mona Sans';color:#FFFDFB;">Ink</span></div>
+        <div style="background:#FFFDFB;border-radius:16px;padding:16px;display:flex;align-items:flex-end;border:1px solid rgba(23,20,18,0.10);"><span style="font:600 13px/1 'Mona Sans';color:#171412;">Canvas</span></div>
+      </div>
+    </section>
+
+    <!-- ============ FOUNDATIONS / PRINCIPLES ============ -->
+    <section id="foundations" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:720px;margin-bottom:48px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">01 — Foundations</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">Principles that keep everything recognisably Leaf.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">Six rules sit above every token. When a decision isn't covered by a specific spec, these decide it.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+          <div style="width:34px;height:34px;border-radius:9px;background:rgba(239,183,90,0.30);display:flex;align-items:center;justify-content:center;font:700 17px/1 'Mona Sans';color:#171412;margin-bottom:18px;">01</div>
+          <h3 style="font:600 20px/1.2 'Mona Sans';margin:0 0 8px;color:#171412;">Lead with warmth and clarity</h3>
+          <p style="font:400 15.5px/1.5 'Mona Sans';color:#656565;margin:0;">Warm neutrals, generous space, plain language. Nothing cold, nothing loud for its own sake.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+          <div style="width:34px;height:34px;border-radius:9px;background:rgba(244,163,143,0.34);display:flex;align-items:center;justify-content:center;font:700 17px/1 'Mona Sans';color:#171412;margin-bottom:18px;">02</div>
+          <h3 style="font:600 20px/1.2 'Mona Sans';margin:0 0 8px;color:#171412;">Coral is a signal, not a coat of paint</h3>
+          <p style="font:400 15.5px/1.5 'Mona Sans';color:#656565;margin:0;">One decisive coral moment per view. It marks what matters — never body text, never a full background of text.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+          <div style="width:34px;height:34px;border-radius:9px;background:rgba(217,107,124,0.30);display:flex;align-items:center;justify-content:center;font:700 17px/1 'Mona Sans';color:#171412;margin-bottom:18px;">03</div>
+          <h3 style="font:600 20px/1.2 'Mona Sans';margin:0 0 8px;color:#171412;">Stone is the room, Ink is the voice</h3>
+          <p style="font:400 15.5px/1.5 'Mona Sans';color:#656565;margin:0;">Stone tones set a calm, recognisable environment. Ink carries text and contrast. Canvas is for clarity.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+          <div style="width:34px;height:34px;border-radius:9px;background:rgba(142,187,145,0.40);display:flex;align-items:center;justify-content:center;font:700 17px/1 'Mona Sans';color:#171412;margin-bottom:18px;">04</div>
+          <h3 style="font:600 20px/1.2 'Mona Sans';margin:0 0 8px;color:#171412;">Secondary colours are support actors</h3>
+          <p style="font:400 15.5px/1.5 'Mona Sans';color:#656565;margin:0;">Use them for variety, categories, and campaigns — never to replace Coral as the brand signal.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+          <div style="width:34px;height:34px;border-radius:9px;background:rgba(79,163,166,0.32);display:flex;align-items:center;justify-content:center;font:700 17px/1 'Mona Sans';color:#171412;margin-bottom:18px;">05</div>
+          <h3 style="font:600 20px/1.2 'Mona Sans';margin:0 0 8px;color:#171412;">Sentence case, medium weights</h3>
+          <p style="font:400 15.5px/1.5 'Mona Sans';color:#656565;margin:0;">Sentence case over all-caps. Confident medium-to-semibold headings, balanced by lighter labels.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+          <div style="width:34px;height:34px;border-radius:9px;background:rgba(170,162,212,0.42);display:flex;align-items:center;justify-content:center;font:700 17px/1 'Mona Sans';color:#171412;margin-bottom:18px;">06</div>
+          <h3 style="font:600 20px/1.2 'Mona Sans';margin:0 0 8px;color:#171412;">Prefer tokens over one-off values</h3>
+          <p style="font:400 15.5px/1.5 'Mona Sans';color:#656565;margin:0;">Reach for a named token before a raw hex. Stable names keep product, marketing, and agents in sync.</p>
+        </div>
+      </div>
+
+      <!-- primitives -->
+      <div style="max-width:720px;margin:56px 0 22px;">
+        <h3 style="font:640 clamp(24px,3vw,32px)/1.05 'Mona Sans';letter-spacing:-0.02em;margin:0 0 10px;color:#171412;">Space, form, elevation &amp; motion</h3>
+        <p style="font:400 16px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">The primitives every screen is built from. Each one has a stable token name — reach for the token, not the raw value. Full set lives in the <code style="font:500 13.5px/1 'Mona Sans';background:#F2E8E1;padding:2px 6px;border-radius:5px;color:#171412;">:root</code> block in <span style="color:#171412;font-weight:600;">DESIGN.md</span>.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:16px;">
+        <!-- spacing -->
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px;"><span style="font:600 16px/1.2 'Mona Sans';color:#171412;">Spacing scale</span><span style="font:500 12px/1 'Mona Sans';color:#656565;">4px base · 8px rhythm</span></div>
+          <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0 0 18px;">Layout gaps come from this scale only. Use CSS grid / flex with <code style="font:500 12.5px/1 'Mona Sans';color:#171412;">gap</code> — never margins between siblings.</p>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:78px;flex:none;font:500 12px/1 'Mona Sans';color:#656565;">space-2 · 8</span><span style="height:14px;width:8px;background:#FB5E48;border-radius:3px;"></span></div>
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:78px;flex:none;font:500 12px/1 'Mona Sans';color:#656565;">space-3 · 12</span><span style="height:14px;width:12px;background:#FB5E48;border-radius:3px;"></span></div>
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:78px;flex:none;font:500 12px/1 'Mona Sans';color:#656565;">space-4 · 16</span><span style="height:14px;width:16px;background:#FB5E48;border-radius:3px;"></span></div>
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:78px;flex:none;font:500 12px/1 'Mona Sans';color:#656565;">space-5 · 24</span><span style="height:14px;width:24px;background:#FB5E48;border-radius:3px;"></span></div>
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:78px;flex:none;font:500 12px/1 'Mona Sans';color:#656565;">space-6 · 32</span><span style="height:14px;width:32px;background:#FB5E48;border-radius:3px;"></span></div>
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:78px;flex:none;font:500 12px/1 'Mona Sans';color:#656565;">space-7 · 48</span><span style="height:14px;width:48px;background:#FB5E48;border-radius:3px;"></span></div>
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:78px;flex:none;font:500 12px/1 'Mona Sans';color:#656565;">space-8 · 64</span><span style="height:14px;width:64px;background:#FB5E48;border-radius:3px;"></span></div>
+            <div style="display:flex;align-items:center;gap:14px;"><span style="width:78px;flex:none;font:500 12px/1 'Mona Sans';color:#656565;">space-9 · 96</span><span style="height:14px;width:96px;background:#FB5E48;border-radius:3px;"></span></div>
+          </div>
+        </div>
+
+        <!-- layout + radius -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+            <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:14px;">Layout</div>
+            <div style="display:flex;flex-direction:column;gap:11px;">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(23,20,18,0.08);padding-bottom:11px;"><span style="font:400 14px/1.4 'Mona Sans';color:#656565;">Content max-width</span><span style="font:600 14px/1 'Mona Sans';color:#171412;">1200px</span></div>
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(23,20,18,0.08);padding-bottom:11px;"><span style="font:400 14px/1.4 'Mona Sans';color:#656565;">Grid</span><span style="font:600 14px/1 'Mona Sans';color:#171412;">12 col · 16px gutter</span></div>
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;"><span style="font:400 14px/1.4 'Mona Sans';color:#656565;">Section padding</span><span style="font:600 14px/1 'Mona Sans';color:#171412;">clamp(56, 7vw, 96)</span></div>
+            </div>
+          </div>
+          <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+            <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:16px;">Radius</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+              <div style="text-align:center;"><div style="height:52px;background:#F2E8E1;border:1px solid rgba(23,20,18,0.12);border-radius:8px;margin-bottom:9px;"></div><div style="font:600 12.5px/1 'Mona Sans';color:#171412;">sm</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">8 · chips</div></div>
+              <div style="text-align:center;"><div style="height:52px;background:#F2E8E1;border:1px solid rgba(23,20,18,0.12);border-radius:14px;margin-bottom:9px;"></div><div style="font:600 12.5px/1 'Mona Sans';color:#171412;">md</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">14 · cards</div></div>
+              <div style="text-align:center;"><div style="height:52px;background:#F2E8E1;border:1px solid rgba(23,20,18,0.12);border-radius:18px;margin-bottom:9px;"></div><div style="font:600 12.5px/1 'Mona Sans';color:#171412;">lg</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">18 · panels</div></div>
+              <div style="text-align:center;"><div style="height:52px;background:#F2E8E1;border:1px solid rgba(23,20,18,0.12);border-radius:999px;margin-bottom:9px;"></div><div style="font:600 12.5px/1 'Mona Sans';color:#171412;">pill</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">999 · buttons</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:16px;">
+        <!-- elevation -->
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:6px;">Elevation</div>
+          <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0 0 20px;">Flat by default — separate surfaces with a hairline border and tone. One warm shadow, for lifted or transient surfaces only. Never a shadow <em>and</em> a heavy border on the same element.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+            <div style="text-align:center;"><div style="height:64px;background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:12px;margin-bottom:10px;"></div><div style="font:600 12px/1 'Mona Sans';color:#171412;">hairline</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">resting</div></div>
+            <div style="text-align:center;"><div style="height:64px;background:#FFFDFB;border-radius:12px;box-shadow:0 1px 2px rgba(23,20,18,0.05),0 2px 6px rgba(23,20,18,0.05);margin-bottom:10px;"></div><div style="font:600 12px/1 'Mona Sans';color:#171412;">shadow-sm</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">hover lift</div></div>
+            <div style="text-align:center;"><div style="height:64px;background:#FFFDFB;border-radius:12px;box-shadow:0 4px 12px rgba(23,20,18,0.08),0 12px 28px rgba(23,20,18,0.07);margin-bottom:10px;"></div><div style="font:600 12px/1 'Mona Sans';color:#171412;">shadow-md</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">menus · modals</div></div>
+          </div>
+        </div>
+
+        <!-- motion + interaction states -->
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px;"><span style="font:600 16px/1.2 'Mona Sans';color:#171412;">Motion &amp; interaction states</span></div>
+          <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0 0 18px;">Animate <code style="font:500 12.5px/1 'Mona Sans';color:#171412;">opacity</code> and <code style="font:500 12.5px/1 'Mona Sans';color:#171412;">transform</code> only, 120–180ms, ease-out <code style="font:500 12.5px/1 'Mona Sans';color:#171412;">cubic-bezier(0.2,0,0,1)</code>. Honour reduced-motion.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+            <span style="font:600 14px/1 'Mona Sans';color:#FFFDFB;background:#FB5E48;padding:11px 18px;border-radius:999px;">Default</span>
+            <span style="font:600 14px/1 'Mona Sans';color:#FFFDFB;background:#E8462F;padding:11px 18px;border-radius:999px;">Hover</span>
+            <span style="font:600 14px/1 'Mona Sans';color:#FFFDFB;background:#FB5E48;padding:11px 18px;border-radius:999px;outline:2px solid #FB5E48;outline-offset:2px;">Focus</span>
+            <span style="font:600 14px/1 'Mona Sans';color:#FFFDFB;background:#FB5E48;padding:11px 18px;border-radius:999px;opacity:0.4;cursor:not-allowed;">Disabled</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(23,20,18,0.08);">
+            <span style="font:500 12.5px/1.4 'Mona Sans';color:#656565;"><span style="width:8px;height:8px;border-radius:50%;background:#FB5E48;display:inline-block;margin-right:6px;"></span>Focus ring: 2px Coral, 2px offset (Aqua on dark)</span>
+            <span style="font:500 12.5px/1.4 'Mona Sans';color:#656565;"><span style="width:8px;height:8px;border-radius:50%;background:#171412;display:inline-block;margin-right:6px;"></span>Disabled: 40% opacity + not-allowed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- dark surfaces -->
+      <div style="background:#171412;border-radius:18px;padding:34px 36px;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:8px;">
+          <h3 style="font:600 22px/1.2 'Mona Sans';margin:0;color:#FFFDFB;">Dark surfaces</h3>
+          <span style="font:600 12px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;">INK IS A REAL BRAND SURFACE</span>
+        </div>
+        <p style="font:400 15px/1.55 'Mona Sans';color:rgba(255,253,251,0.6);margin:0 0 22px;max-width:70ch;">On Ink, Canvas carries primary text and Aqua takes over as the small-label accent. Coral still works as the signal — solid Coral CTAs read well on Ink.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+          <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px 20px;"><div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;margin-bottom:10px;">TEXT</div><p style="font:400 14px/1.5 'Mona Sans';color:#FFFDFB;margin:0 0 4px;">Canvas — primary</p><p style="font:400 13px/1.5 'Mona Sans';color:rgba(255,253,251,0.6);margin:0;">60% — secondary</p></div>
+          <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px 20px;"><div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;margin-bottom:10px;">ACCENT</div><p style="font:600 15px/1.4 'Mona Sans';color:#7AD8CE;margin:0;">Aqua labels &amp; accents</p></div>
+          <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px 20px;"><div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;margin-bottom:10px;">SIGNAL</div><span style="font:600 13px/1 'Mona Sans';color:#FFFDFB;background:#FB5E48;padding:9px 14px;border-radius:999px;display:inline-block;">Coral CTA</span></div>
+          <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px 20px;"><div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;margin-bottom:10px;">STRUCTURE</div><p style="font:400 13.5px/1.5 'Mona Sans';color:rgba(255,253,251,0.82);margin:0;">Borders 12% · panels 4% Canvas</p></div>
+        </div>
+      </div>
+
+      <!-- accessibility band -->
+      <div style="margin-top:16px;background:#171412;border-radius:18px;padding:34px 36px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:22px;">
+          <h3 style="font:600 22px/1.2 'Mona Sans';margin:0;color:#FFFDFB;">Accessibility is a foundation, not a pass at the end</h3>
+          <span style="font:600 12px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;">TARGET · WCAG 2.1 AA</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+          <div style="background:rgba(255,253,251,0.05);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px 20px;">
+            <div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;margin-bottom:10px;">CONTRAST</div>
+            <p style="font:400 14px/1.55 'Mona Sans';color:rgba(255,253,251,0.82);margin:0;">Text ≥ 4.5:1, large text and UI edges ≥ 3:1. Ink on Canvas/Stone always passes; the copy-colour rule exists to keep it that way.</p>
+          </div>
+          <div style="background:rgba(255,253,251,0.05);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px 20px;">
+            <div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;margin-bottom:10px;">NEVER COLOUR ALONE</div>
+            <p style="font:400 14px/1.55 'Mona Sans';color:rgba(255,253,251,0.82);margin:0;">Deltas pair colour with a ▲/▼ glyph; series carry direct labels; status banners carry an icon. Meaning survives greyscale and colour-blindness.</p>
+          </div>
+          <div style="background:rgba(255,253,251,0.05);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px 20px;">
+            <div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;margin-bottom:10px;">FOCUS &amp; TARGETS</div>
+            <p style="font:400 14px/1.55 'Mona Sans';color:rgba(255,253,251,0.82);margin:0;">A visible 2px Coral focus ring on every interactive element. Hit targets ≥ 44px. Full keyboard reach, logical tab order.</p>
+          </div>
+          <div style="background:rgba(255,253,251,0.05);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px 20px;">
+            <div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;margin-bottom:10px;">MOTION &amp; SEMANTICS</div>
+            <p style="font:400 14px/1.55 'Mona Sans';color:rgba(255,253,251,0.82);margin:0;">Honour <code style="font-family:'Mona Sans';color:#FFFDFB;">prefers-reduced-motion</code>. Real headings, labelled inputs, and alt text on meaningful imagery — never motion or colour as the only cue.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="colour" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:720px;margin-bottom:44px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">02 — Colour</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">A warm core, a wide bench.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">Coral is the brand signal. Stone tones build the environment; Canvas and Ink are the everyday anchors; Aqua highlights. A tuned secondary palette adds range without diluting the core.</p>
+      </div>
+
+      <!-- core + neutrals -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+        <article style="grid-column:span 2;grid-row:span 2;background:#FB5E48;border-radius:16px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;min-height:280px;color:#171412;">
+          <div><span style="font:520 12.5px/1 'Mona Sans';opacity:.7;">Core brand</span><h3 style="font:680 40px/1 'Mona Sans';margin:14px 0 0;letter-spacing:-.02em;">Coral</h3></div>
+          <div><div style="font:600 17px/1 'Mona Sans';">#FB5E48</div><div style="font:420 14px/1.5 'Mona Sans';opacity:.7;margin-top:6px;">RGB 251 94 72 · <code style="font-family:'Mona Sans';">color.brand.coral</code></div></div>
+        </article>
+        <article style="background:#F9F4F1;border:1px solid rgba(23,20,18,0.09);border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:133px;">
+          <span style="font:520 12px/1 'Mona Sans';color:#656565;">Default background</span>
+          <div><div style="font:600 20px/1 'Mona Sans';color:#171412;">Light Stone</div><div style="font:420 13px/1 'Mona Sans';color:#656565;margin-top:5px;">#F9F4F1</div></div>
+        </article>
+        <article style="background:#F2E8E1;border:1px solid rgba(23,20,18,0.07);border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:133px;">
+          <span style="font:520 12px/1 'Mona Sans';color:#656565;">Surface</span>
+          <div><div style="font:600 20px/1 'Mona Sans';color:#171412;">Stone</div><div style="font:420 13px/1 'Mona Sans';color:#656565;margin-top:5px;">#F2E8E1</div></div>
+        </article>
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.11);border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:133px;">
+          <span style="font:520 12px/1 'Mona Sans';color:#656565;">Clarity surface</span>
+          <div><div style="font:600 20px/1 'Mona Sans';color:#171412;">Canvas</div><div style="font:420 13px/1 'Mona Sans';color:#656565;margin-top:5px;">#FFFDFB</div></div>
+        </article>
+        <article style="background:#171412;border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:133px;">
+          <span style="font:520 12px/1 'Mona Sans';color:rgba(255,253,251,0.6);">Primary text</span>
+          <div><div style="font:600 20px/1 'Mona Sans';color:#FFFDFB;">Ink</div><div style="font:420 13px/1 'Mona Sans';color:rgba(255,253,251,0.6);margin-top:5px;">#171412</div></div>
+        </article>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px;">
+        <article style="background:#656565;border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:120px;">
+          <span style="font:520 12px/1 'Mona Sans';color:rgba(255,253,251,0.72);">Secondary text</span>
+          <div><div style="font:600 20px/1 'Mona Sans';color:#FFFDFB;">Warm Grey</div><div style="font:420 13px/1 'Mona Sans';color:rgba(255,253,251,0.72);margin-top:5px;">#656565</div></div>
+        </article>
+        <article style="background:#7AD8CE;border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:120px;">
+          <span style="font:520 12px/1 'Mona Sans';color:#171412;opacity:.7;">Highlight</span>
+          <div><div style="font:600 20px/1 'Mona Sans';color:#171412;">Aqua</div><div style="font:420 13px/1 'Mona Sans';color:#171412;opacity:.7;margin-top:5px;">#7AD8CE</div></div>
+        </article>
+        <article style="grid-column:span 2;background:#FFFDFB;border:1px dashed rgba(23,20,18,0.22);border-radius:16px;padding:22px;display:flex;align-items:center;">
+          <p style="font:400 14.5px/1.5 'Mona Sans';color:#656565;margin:0;"><span style="color:#171412;font-weight:600;">Reading order.</span> Ink for primary text, Warm Grey for secondary — on Light Stone, Stone, and Canvas. Never set body copy in Coral, Aqua, or any Stone tone.</p>
+        </article>
+      </div>
+
+      <!-- secondary palette -->
+      <div style="margin-top:56px;">
+        <div style="max-width:820px;margin-bottom:26px;">
+          <p style="color:#FB5E48;font:600 12.5px/1 'Mona Sans';margin:0 0 12px;">Secondary palette</p>
+          <h3 style="font:600 27px/1.1 'Mona Sans';letter-spacing:-.02em;margin:0 0 10px;color:#171412;">Ten support colours for range, rhythm, and categories.</h3>
+          <p style="font:400 16px/1.55 'Mona Sans';color:#656565;margin:0;">Campaigns, data visualization, badges, illustration, and content libraries. Botanical and editorial, tuned to sit under Coral rather than compete with it. Pair every one with Ink text.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;">
+          <article style="background:#EFB75A;border-radius:14px;padding:18px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:520 11.5px/1 'Mona Sans';color:#171412;opacity:.62;">Warm</span><div><div style="font:600 17px/1 'Mona Sans';color:#171412;">Marigold</div><div style="font:420 12px/1 'Mona Sans';color:#171412;opacity:.62;margin-top:4px;">#EFB75A</div></div></article>
+          <article style="background:#F6E49D;border-radius:14px;padding:18px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:520 11.5px/1 'Mona Sans';color:#171412;opacity:.62;">Warm</span><div><div style="font:600 17px/1 'Mona Sans';color:#171412;">Butter</div><div style="font:420 12px/1 'Mona Sans';color:#171412;opacity:.62;margin-top:4px;">#F6E49D</div></div></article>
+          <article style="background:#F4A38F;border-radius:14px;padding:18px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:520 11.5px/1 'Mona Sans';color:#171412;opacity:.62;">Warm</span><div><div style="font:600 17px/1 'Mona Sans';color:#171412;">Apricot</div><div style="font:420 12px/1 'Mona Sans';color:#171412;opacity:.62;margin-top:4px;">#F4A38F</div></div></article>
+          <article style="background:#D96B7C;border-radius:14px;padding:18px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:520 11.5px/1 'Mona Sans';color:#171412;opacity:.7;">Expressive</span><div><div style="font:600 17px/1 'Mona Sans';color:#171412;">Rosehip</div><div style="font:420 12px/1 'Mona Sans';color:#171412;opacity:.7;margin-top:4px;">#D96B7C</div></div></article>
+          <article style="background:#DCE8C4;border-radius:14px;padding:18px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:520 11.5px/1 'Mona Sans';color:#171412;opacity:.62;">Fresh</span><div><div style="font:600 17px/1 'Mona Sans';color:#171412;">Sage</div><div style="font:420 12px/1 'Mona Sans';color:#171412;opacity:.62;margin-top:4px;">#DCE8C4</div></div></article>
+          <article style="background:#8EBB91;border-radius:14px;padding:18px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:520 11.5px/1 'Mona Sans';color:#171412;opacity:.66;">Fresh</span><div><div style="font:600 17px/1 'Mona Sans';color:#171412;">Laurel</div><div style="font:420 12px/1 'Mona Sans';color:#171412;opacity:.66;margin-top:4px;">#8EBB91</div></div></article>
+          <article style="background:#9FC7BC;border-radius:14px;padding:18px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:520 11.5px/1 'Mona Sans';color:#171412;opacity:.66;">Calm</span><div><div style="font:600 17px/1 'Mona Sans';color:#171412;">Eucalyptus</div><div style="font:420 12px/1 'Mona Sans';color:#171412;opacity:.66;margin-top:4px;">#9FC7BC</div></div></article>
+          <article style="background:#4FA3A6;border-radius:14px;padding:18px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:520 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Calm</span><div><div style="font:600 17px/1 'Mona Sans';color:#171412;">Harbor</div><div style="font:420 12px/1 'Mona Sans';color:#171412;opacity:.72;margin-top:4px;">#4FA3A6</div></div></article>
+          <article style="background:#D8CFF0;border-radius:14px;padding:18px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:520 11.5px/1 'Mona Sans';color:#171412;opacity:.6;">Cool</span><div><div style="font:600 17px/1 'Mona Sans';color:#171412;">Lilac</div><div style="font:420 12px/1 'Mona Sans';color:#171412;opacity:.6;margin-top:4px;">#D8CFF0</div></div></article>
+          <article style="background:#AAA2D4;border-radius:14px;padding:18px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:520 11.5px/1 'Mona Sans';color:#171412;opacity:.66;">Cool</span><div><div style="font:600 17px/1 'Mona Sans';color:#171412;">Heather</div><div style="font:420 12px/1 'Mona Sans';color:#171412;opacity:.66;margin-top:4px;">#AAA2D4</div></div></article>
+        </div>
+      </div>
+
+      <!-- product state colours -->
+      <div style="margin-top:56px;">
+        <div style="max-width:820px;margin-bottom:22px;">
+          <h3 style="font:600 27px/1.1 'Mona Sans';letter-spacing:-.02em;margin:0 0 10px;color:#171412;">Product state colours.</h3>
+          <p style="font:400 16px/1.55 'Mona Sans';color:#656565;margin:0;">Status needs more depth than the secondary palette can give — borrowed accents like Laurel and Marigold read too pale for success and warning. So states get their own small palette: four confident colours tuned to feel at home beside Coral and the neutrals, but drawn deliberately outside them. Use the solid tone for icons, dots, and borders; use the soft tint with Ink text for banners and backgrounds. Error stays clear of Coral so the brand signal never reads as an alarm.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;">
+            <div style="background:#2F8B57;height:64px;display:flex;align-items:flex-end;padding:12px;"><span style="font:600 13px/1 'Mona Sans';color:#FFFDFB;">Success</span></div>
+            <div style="padding:14px 16px;"><div style="font:600 14px/1 'Mona Sans';color:#171412;">Fern</div><div style="font:420 12.5px/1.4 'Mona Sans';color:#656565;margin-top:5px;">#2F8B57 · color.state.success</div><div style="margin-top:12px;display:flex;align-items:center;gap:8px;background:#E7F1EA;border-radius:8px;padding:8px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:#2F8B57;"></span><span style="font:500 12px/1 'Mona Sans';color:#171412;">On tint · Ink</span></div></div>
+          </article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;">
+            <div style="background:#C77E1C;height:64px;display:flex;align-items:flex-end;padding:12px;"><span style="font:600 13px/1 'Mona Sans';color:#171412;">Warning</span></div>
+            <div style="padding:14px 16px;"><div style="font:600 14px/1 'Mona Sans';color:#171412;">Amber</div><div style="font:420 12.5px/1.4 'Mona Sans';color:#656565;margin-top:5px;">#C77E1C · color.state.warning</div><div style="margin-top:12px;display:flex;align-items:center;gap:8px;background:#F6E9CC;border-radius:8px;padding:8px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:#C77E1C;"></span><span style="font:500 12px/1 'Mona Sans';color:#171412;">On tint · Ink</span></div></div>
+          </article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;">
+            <div style="background:#C63A2B;height:64px;display:flex;align-items:flex-end;padding:12px;"><span style="font:600 13px/1 'Mona Sans';color:#FFFDFB;">Error</span></div>
+            <div style="padding:14px 16px;"><div style="font:600 14px/1 'Mona Sans';color:#171412;">Ember</div><div style="font:420 12.5px/1.4 'Mona Sans';color:#656565;margin-top:5px;">#C63A2B · color.state.error</div><div style="margin-top:12px;display:flex;align-items:center;gap:8px;background:#F7E0DB;border-radius:8px;padding:8px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:#C63A2B;"></span><span style="font:500 12px/1 'Mona Sans';color:#171412;">On tint · Ink</span></div></div>
+          </article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;">
+            <div style="background:#2E8388;height:64px;display:flex;align-items:flex-end;padding:12px;"><span style="font:600 13px/1 'Mona Sans';color:#FFFDFB;">Info</span></div>
+            <div style="padding:14px 16px;"><div style="font:600 14px/1 'Mona Sans';color:#171412;">Tidal</div><div style="font:420 12.5px/1.4 'Mona Sans';color:#656565;margin-top:5px;">#2E8388 · color.state.info</div><div style="margin-top:12px;display:flex;align-items:center;gap:8px;background:#DDECEC;border-radius:8px;padding:8px 10px;"><span style="width:9px;height:9px;border-radius:50%;background:#2E8388;"></span><span style="font:500 12px/1 'Mona Sans';color:#171412;">On tint · Ink</span></div></div>
+          </article>
+        </div>
+      </div>
+
+      <!-- contrast reference -->
+      <div style="margin-top:40px;background:#171412;border-radius:18px;padding:clamp(24px,3vw,36px);">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:22px;">
+          <h3 style="font:600 22px/1.1 'Mona Sans';color:#FFFDFB;margin:0;letter-spacing:-.01em;">Contrast reference</h3>
+          <p style="font:400 14px/1.4 'Mona Sans';color:rgba(255,253,251,0.55);margin:0;">Default rule — Ink text on Coral, Aqua, and every secondary fill.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;">
+          <div style="background:#FFFDFB;border-radius:10px;padding:14px;"><span style="font:600 17px/1.1 'Mona Sans';color:#171412;">Ink · Canvas</span><div style="font:500 13px/1 'Mona Sans';color:#8EBB91;margin-top:8px;">18.07 : 1 ✓ AAA</div></div>
+          <div style="background:#F9F4F1;border-radius:10px;padding:14px;"><span style="font:600 17px/1.1 'Mona Sans';color:#171412;">Ink · Light Stone</span><div style="font:500 13px/1 'Mona Sans';color:#4b8a52;margin-top:8px;">16.80 : 1 ✓ AAA</div></div>
+          <div style="background:#FB5E48;border-radius:10px;padding:14px;"><span style="font:600 17px/1.1 'Mona Sans';color:#171412;">Ink · Coral</span><div style="font:600 13px/1 'Mona Sans';color:#171412;margin-top:8px;opacity:.7;">5.93 : 1 ✓ AA</div></div>
+          <div style="background:#7AD8CE;border-radius:10px;padding:14px;"><span style="font:600 17px/1.1 'Mona Sans';color:#171412;">Ink · Aqua</span><div style="font:600 13px/1 'Mona Sans';color:#171412;margin-top:8px;opacity:.7;">10.95 : 1 ✓ AAA</div></div>
+          <div style="background:#FFFDFB;border-radius:10px;padding:14px;"><span style="font:600 17px/1.1 'Mona Sans';color:#656565;">Warm Grey · Canvas</span><div style="font:500 13px/1 'Mona Sans';color:#8a6a2a;margin-top:8px;">5.74 : 1 ✓ AA</div></div>
+          <div style="background:#FB5E48;border-radius:10px;padding:14px;"><span style="font:600 17px/1.1 'Mona Sans';color:#FFFDFB;">White · Coral</span><div style="font:600 13px/1 'Mona Sans';color:#FFFDFB;margin-top:8px;opacity:.8;">3.09 : 1 · large only</div></div>
+        </div>
+      </div>
+
+      <!-- approved text pairings -->
+      <div style="margin-top:40px;">
+        <div style="max-width:760px;margin-bottom:22px;">
+          <p style="color:#FB5E48;font:600 12.5px/1 'Mona Sans';margin:0 0 10px;">Approved text pairings</p>
+          <h3 style="font:600 25px/1.1 'Mona Sans';letter-spacing:-.02em;margin:0 0 8px;color:#171412;">Ink on colour, Canvas on the darks.</h3>
+          <p style="font:400 15.5px/1.55 'Mona Sans';color:#656565;margin:0;">Every Coral, Aqua, secondary, and state fill takes Ink text. Only the dark anchors — Ink, Warm Grey, the solid success/error/info tones, and Coral (large text only) — take Canvas.</p>
+        </div>
+        <div style="margin-bottom:12px;font:600 12px/1 'Mona Sans';color:#656565;">Ink text</div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px;">
+          <div style="background:#FB5E48;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Coral</span></div>
+          <div style="background:#7AD8CE;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Aqua</span></div>
+          <div style="background:#EFB75A;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Marigold</span></div>
+          <div style="background:#F6E49D;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Butter</span></div>
+          <div style="background:#F4A38F;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Apricot</span></div>
+          <div style="background:#D96B7C;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Rosehip</span></div>
+          <div style="background:#DCE8C4;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Sage</span></div>
+          <div style="background:#8EBB91;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Laurel</span></div>
+          <div style="background:#9FC7BC;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Eucalyptus</span></div>
+          <div style="background:#4FA3A6;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Harbor</span></div>
+          <div style="background:#D8CFF0;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Lilac</span></div>
+          <div style="background:#AAA2D4;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#171412;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#171412;opacity:.72;">Heather</span></div>
+        </div>
+        <div style="margin-bottom:12px;font:600 12px/1 'Mona Sans';color:#656565;">Canvas text</div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
+          <div style="background:#FB5E48;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#FFFDFB;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#FFFDFB;opacity:.85;">Coral · CTA / large</span></div>
+          <div style="background:#171412;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#FFFDFB;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#FFFDFB;opacity:.7;">Ink</span></div>
+          <div style="background:#656565;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#FFFDFB;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#FFFDFB;opacity:.7;">Warm Grey</span></div>
+          <div style="background:#2F8B57;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#FFFDFB;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#FFFDFB;opacity:.7;">Fern</span></div>
+          <div style="background:#C63A2B;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#FFFDFB;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#FFFDFB;opacity:.7;">Ember</span></div>
+          <div style="background:#2E8388;border-radius:12px;padding:14px;min-height:80px;display:flex;flex-direction:column;justify-content:space-between;"><span style="font:700 22px/1 'Mona Sans';color:#FFFDFB;">Aa</span><span style="font:500 11.5px/1 'Mona Sans';color:#FFFDFB;opacity:.7;">Tidal</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TYPOGRAPHY ============ -->
+    <section id="type" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:720px;margin-bottom:44px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">03 — Typography</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">Mona Sans does the work. Source Serif adds the craft.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">Mona Sans carries product, UI, and most marketing. Source Serif 4 is reserved for editorial and highlight moments — headlines at 800, pull quotes in italic 500.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:30px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span style="font:520 12.5px/1 'Mona Sans';color:#FB5E48;">Default · Mona Sans</span><span style="font:420 12.5px/1 'Mona Sans';color:#656565;">Variable 200–900</span></div>
+          <div style="font:600 72px/1 'Mona Sans';color:#171412;letter-spacing:-.03em;margin-bottom:16px;">Aa</div>
+          <p style="font:400 15.5px/1.55 'Mona Sans';color:#656565;margin:0;">Product UI, navigation, labels, body, landing pages, dense operational surfaces. Clear, structured, easy to scan.</p>
+        </article>
+        <article style="background:#171412;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:30px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span style="font:520 12.5px/1 'Mona Sans';color:#7AD8CE;">Editorial · Source Serif 4</span><span style="font:420 12.5px/1 'Mona Sans';color:rgba(255,253,251,0.5);">800 · italic 500</span></div>
+          <div style="font:800 72px/1 'Source Serif 4',Georgia,serif;color:#FFFDFB;margin-bottom:16px;">Aa</div>
+          <p style="font:italic 500 19px/1.4 'Source Serif 4',Georgia,serif;color:rgba(255,253,251,0.82);margin:0;">Blogs, long-form, banners, pull quotes, and selected highlight moments — never routine UI, tables, or small labels.</p>
+        </article>
+      </div>
+
+      <!-- type scale -->
+      <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;overflow:hidden;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;padding:24px 28px;border-bottom:1px solid rgba(23,20,18,0.08);">
+          <h3 style="font:600 22px/1.1 'Mona Sans';color:#171412;margin:0;">Type scale</h3>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:22px 28px;border-bottom:1px solid rgba(23,20,18,0.06);">
+          <span style="font:640 64px/1.12 'Mona Sans';color:#171412;letter-spacing:-.035em;white-space:nowrap;">Display</span>
+          <span style="font:420 13px/1.5 'Mona Sans';color:#656565;text-align:right;white-space:nowrap;">64 / 0.96 · 640 · type.display</span>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:20px 28px;border-bottom:1px solid rgba(23,20,18,0.06);">
+          <span style="font:640 46px/1 'Mona Sans';color:#171412;letter-spacing:-.028em;">Heading 1</span>
+          <span style="font:420 13px/1.5 'Mona Sans';color:#656565;text-align:right;white-space:nowrap;">46 / 1.0 · 640 · type.h1</span>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:18px 28px;border-bottom:1px solid rgba(23,20,18,0.06);">
+          <span style="font:600 32px/1.05 'Mona Sans';color:#171412;letter-spacing:-.02em;">Heading 2</span>
+          <span style="font:420 13px/1.5 'Mona Sans';color:#656565;text-align:right;white-space:nowrap;">32 / 1.05 · 600 · type.h2</span>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:16px 28px;border-bottom:1px solid rgba(23,20,18,0.06);">
+          <span style="font:600 22px/1.2 'Mona Sans';color:#171412;">Heading 3</span>
+          <span style="font:420 13px/1.5 'Mona Sans';color:#656565;text-align:right;white-space:nowrap;">22 / 1.2 · 600 · type.h3</span>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:16px 28px;border-bottom:1px solid rgba(23,20,18,0.06);">
+          <span style="font:400 18px/1.55 'Mona Sans';color:#171412;">Body large — the comfortable reading size for marketing and intros.</span>
+          <span style="font:420 13px/1.5 'Mona Sans';color:#656565;text-align:right;white-space:nowrap;">18 / 1.55 · 400 · type.body-lg</span>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:16px 28px;border-bottom:1px solid rgba(23,20,18,0.06);">
+          <span style="font:400 16px/1.6 'Mona Sans';color:#171412;">Body — the default for product and long text.</span>
+          <span style="font:420 13px/1.5 'Mona Sans';color:#656565;text-align:right;white-space:nowrap;">16 / 1.6 · 400 · type.body</span>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:16px 28px;border-bottom:1px solid rgba(23,20,18,0.06);">
+          <span style="font:500 14px/1.4 'Mona Sans';color:#171412;">Label — buttons, nav, metadata</span>
+          <span style="font:420 13px/1.5 'Mona Sans';color:#656565;text-align:right;white-space:nowrap;">14 / 1.4 · 500 · type.label</span>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:16px 28px;">
+          <span style="font:500 13px/1.4 'Mona Sans';color:#656565;">Caption — the smallest supporting text</span>
+          <span style="font:420 13px/1.5 'Mona Sans';color:#656565;text-align:right;white-space:nowrap;">13 / 1.4 · 500 · type.caption</span>
+        </div>
+      </div>
+
+      <!-- stylistic sets -->
+      <div style="margin-top:16px;background:#171412;border-radius:16px;padding:clamp(24px,3vw,32px);">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:22px;">
+          <h3 style="font:600 22px/1.1 'Mona Sans';color:#FFFDFB;margin:0;letter-spacing:-.01em;">Stylistic sets</h3>
+          <p style="font:400 14px/1.4 'Mona Sans';color:rgba(255,253,251,0.55);margin:0;">Mona Sans is a variable font — these five sets are always on.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;">
+          <div style="background:rgba(255,253,251,0.05);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px;text-align:center;"><div style="font:600 52px/1 'Mona Sans';color:#FFFDFB;">l</div><div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;margin-top:14px;">ss03</div><div style="font:400 12px/1.4 'Mona Sans';color:rgba(255,253,251,0.6);margin-top:5px;">Lowercase l with tail</div></div>
+          <div style="background:rgba(255,253,251,0.05);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px;text-align:center;"><div style="font:600 52px/1 'Mona Sans';color:#FFFDFB;">a</div><div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;margin-top:14px;">ss05</div><div style="font:400 12px/1.4 'Mona Sans';color:rgba(255,253,251,0.6);margin-top:5px;">Double-storey a</div></div>
+          <div style="background:rgba(255,253,251,0.05);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px;text-align:center;"><div style="font:600 52px/1 'Mona Sans';color:#FFFDFB;">g</div><div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;margin-top:14px;">ss06</div><div style="font:400 12px/1.4 'Mona Sans';color:rgba(255,253,251,0.6);margin-top:5px;">Double-storey g</div></div>
+          <div style="background:rgba(255,253,251,0.05);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px;text-align:center;"><div style="font:600 52px/1 'Mona Sans';color:#FFFDFB;">G</div><div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;margin-top:14px;">ss07</div><div style="font:400 12px/1.4 'Mona Sans';color:rgba(255,253,251,0.6);margin-top:5px;">Square G</div></div>
+          <div style="background:rgba(255,253,251,0.05);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px;text-align:center;"><div style="font:600 52px/1 'Mona Sans';color:#FFFDFB;">Q</div><div style="font:600 12px/1 'Mona Sans';color:#7AD8CE;margin-top:14px;">ss09</div><div style="font:400 12px/1.4 'Mona Sans';color:rgba(255,253,251,0.6);margin-top:5px;">Q with diagonal arm</div></div>
+        </div>
+        <p style="font:400 13.5px/1.55 'Mona Sans';color:rgba(255,253,251,0.6);margin:20px 0 0;">Set once, globally: <code style="font-family:'Mona Sans';color:#FFFDFB;">font-feature-settings: "ss03" on, "ss05" on, "ss06" on, "ss07" on, "ss09" on;</code> — apply it at the root so every surface inherits the same letterforms.</p>
+      </div>
+    </section>
+
+    <!-- ============ VOICE ============ -->
+    <section id="voice" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:720px;margin-bottom:44px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">04 — Voice</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">Commercially sharp, plain-spoken, evidence-led.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">Leaf turns unreliable marketing signals into decisions operators can trust — so the writing leads with the mechanism, names the commercial cost, and lands on a practical consequence. Technically credible and willing to make the uncomfortable point, without blaming the buyer. Never hypey, never vague.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+            <p style="font:600 17px/1.2 'Mona Sans';color:#2F8B57;margin:0 0 16px;">We write</p>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;">
+              <li style="font:400 15px/1.45 'Mona Sans';color:#171412;">"Server-side tracking that closes the gaps quietly costing you spend."</li>
+              <li style="font:400 15px/1.45 'Mona Sans';color:#171412;">"Decision-grade reporting on shared metric definitions — not another dashboard."</li>
+              <li style="font:400 15px/1.45 'Mona Sans';color:#171412;">"Know what your marketing actually earned, in board-ready numbers."</li>
+            </ul>
+          </div>
+          <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+            <p style="font:600 17px/1.2 'Mona Sans';color:#C63A2B;margin:0 0 16px;">We avoid</p>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;">
+              <li style="font:400 15px/1.45 'Mona Sans';color:#656565;">"Unlock growth with our seamless solution."</li>
+              <li style="font:400 15px/1.45 'Mona Sans';color:#656565;">"Your single source of truth."</li>
+              <li style="font:400 15px/1.45 'Mona Sans';color:#656565;">"Real ROAS, guaranteed."</li>
+            </ul>
+          </div>
+        </div>
+        <div style="background:#F2E8E1;border:1px solid rgba(23,20,18,0.07);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;">
+          <p style="font:600 17px/1.2 'Mona Sans';color:#171412;margin:0;">Mechanics</p>
+          <div style="font:500 15px/1.3 'Mona Sans';color:#171412;">Sentence case for headings, buttons, labels, and nav.</div>
+          <div style="display:flex;gap:16px;"><div style="flex:1;"><span style="font:600 13px/1 'Mona Sans';color:#2F8B57;">Do</span><div style="font:400 13.5px/1.4 'Mona Sans';color:#171412;margin-top:4px;">Start free trial</div></div><div style="flex:1;"><span style="font:600 13px/1 'Mona Sans';color:#C63A2B;">Don't</span><div style="font:400 13.5px/1.4 'Mona Sans';color:#656565;margin-top:4px;">START FREE TRIAL</div></div></div>
+          <div style="border-top:1px solid rgba(23,20,18,0.10);padding-top:14px;font:400 13.5px/1.5 'Mona Sans';color:#171412;">UK English — optimisation, behaviour, analyse, centre.</div>
+          <div style="font:400 13.5px/1.5 'Mona Sans';color:#171412;">Em dashes for asides · straight quotes · no exclamation marks · no emojis.</div>
+          <div style="border-top:1px solid rgba(23,20,18,0.10);padding-top:14px;font:400 13.5px/1.5 'Mona Sans';color:#171412;">Capitalise product names: Signal, Answers, Watcher, Leaf Schema.</div>
+        </div>
+      </div>
+
+      <!-- language patterns -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px;">
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <p style="font:600 17px/1.2 'Mona Sans';color:#2F8B57;margin:0 0 16px;">Use</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font:500 13px/1 'Mona Sans';color:#1F6B40;background:#E7F1EA;padding:7px 11px;border-radius:999px;">performance intelligence</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#1F6B40;background:#E7F1EA;padding:7px 11px;border-radius:999px;">reliable signal data</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#1F6B40;background:#E7F1EA;padding:7px 11px;border-radius:999px;">tracking accuracy</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#1F6B40;background:#E7F1EA;padding:7px 11px;border-radius:999px;">wasted spend</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#1F6B40;background:#E7F1EA;padding:7px 11px;border-radius:999px;">targeting quality</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#1F6B40;background:#E7F1EA;padding:7px 11px;border-radius:999px;">bidding efficiency</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#1F6B40;background:#E7F1EA;padding:7px 11px;border-radius:999px;">decision-grade reporting</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#1F6B40;background:#E7F1EA;padding:7px 11px;border-radius:999px;">board-ready numbers</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#1F6B40;background:#E7F1EA;padding:7px 11px;border-radius:999px;">unit economics</span>
+          </div>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <p style="font:600 17px/1.2 'Mona Sans';color:#C77E1C;margin:0 0 16px;">Use carefully</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;">
+            <li style="font:400 13.5px/1.45 'Mona Sans';color:#171412;"><strong style="font-weight:600;">"better performance"</strong> — only tied to the mechanism behind it.</li>
+            <li style="font:400 13.5px/1.45 'Mona Sans';color:#171412;"><strong style="font-weight:600;">"data accuracy"</strong> — name the context: platforms, GA4, or attribution.</li>
+            <li style="font:400 13.5px/1.45 'Mona Sans';color:#171412;"><strong style="font-weight:600;">"ROI"</strong> — only with the assumptions made explicit.</li>
+            <li style="font:400 13.5px/1.45 'Mona Sans';color:#171412;"><strong style="font-weight:600;">"agency"</strong> — only when the comparison needs it.</li>
+          </ul>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <p style="font:600 17px/1.2 'Mona Sans';color:#C63A2B;margin:0 0 16px;">Avoid</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="font:500 13px/1 'Mona Sans';color:#C63A2B;background:#F7E0DB;padding:7px 11px;border-radius:999px;">unlock growth</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#C63A2B;background:#F7E0DB;padding:7px 11px;border-radius:999px;">seamless solution</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#C63A2B;background:#F7E0DB;padding:7px 11px;border-radius:999px;">game-changing</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#C63A2B;background:#F7E0DB;padding:7px 11px;border-radius:999px;">single source of truth</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#C63A2B;background:#F7E0DB;padding:7px 11px;border-radius:999px;">real ROAS</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#C63A2B;background:#F7E0DB;padding:7px 11px;border-radius:999px;">kill your spreadsheets</span>
+            <span style="font:500 13px/1 'Mona Sans';color:#C63A2B;background:#F7E0DB;padding:7px 11px;border-radius:999px;">white-label Signal/Answers</span>
+          </div>
+        </div>
+      </div>
+
+      <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:16px 0 0;">Calibration — how the writing should feel: Linear, Stripe, 37signals, dbt Labs, Segment.</p>
+
+      <!-- microcopy -->
+      <div style="max-width:720px;margin:56px 0 22px;">
+        <h3 style="font:640 clamp(24px,3vw,32px)/1.05 'Mona Sans';letter-spacing:-0.02em;margin:0 0 10px;color:#171412;">Microcopy</h3>
+        <p style="font:400 16px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">The same voice in the smallest moments — where a few words carry the whole experience. Lead with what happened, then what to do: verb-first, one idea, present tense. Never blame the user, never bury the action.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;">
+        <!-- errors -->
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <p style="font:600 12px/1 'Mona Sans';color:#FB5E48;letter-spacing:.02em;margin:0 0 14px;">ERRORS</p>
+          <div style="display:flex;gap:11px;background:#F7E0DB;border:1px solid rgba(198,58,43,0.28);border-left:3px solid #C63A2B;border-radius:12px;padding:14px 15px;margin-bottom:14px;">
+            <span style="width:18px;height:18px;border-radius:50%;background:#C63A2B;flex:none;display:flex;align-items:center;justify-content:center;margin-top:1px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFDFB" stroke-width="3" stroke-linecap="round"><line x1="12" y1="6" x2="12" y2="14"/><line x1="12" y1="18" x2="12" y2="18.5"/></svg></span>
+            <div><div style="font:600 13.5px/1.35 'Mona Sans';color:#171412;">We couldn't connect to Shopify.</div><div style="font:400 13px/1.45 'Mona Sans';color:#656565;margin-top:3px;">Check the store URL and try again.</div></div>
+          </div>
+          <p style="font:400 13.5px/1.55 'Mona Sans';color:#656565;margin:0;"><strong style="font-weight:600;color:#171412;">Reassure, don't blame.</strong> Say what failed and the one thing to do next. No codes, no "invalid", no fault.</p>
+        </div>
+        <!-- empty -->
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <p style="font:600 12px/1 'Mona Sans';color:#FB5E48;letter-spacing:.02em;margin:0 0 14px;">EMPTY STATES</p>
+          <div style="background:#FBF7F4;border:1px solid rgba(23,20,18,0.08);border-radius:12px;padding:18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;margin-bottom:14px;">
+            <span style="width:38px;height:38px;border-radius:10px;background:#F2E8E1;display:flex;align-items:center;justify-content:center;color:#171412;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="11" width="3" height="6" rx="0.6"/><rect x="11" y="6" width="3" height="11" rx="0.6"/><rect x="16" y="14" width="3" height="3" rx="0.6"/></svg></span>
+            <div style="font:600 14px/1.3 'Mona Sans';color:#171412;">No reports yet</div>
+            <div style="font:400 12.5px/1.4 'Mona Sans';color:#656565;">Connect a source to see your first report.</div>
+            <span style="font:600 13px/1 'Mona Sans';color:#FFFDFB;background:#FB5E48;padding:9px 15px;border-radius:999px;margin-top:4px;">Connect a source</span>
+          </div>
+          <p style="font:400 13.5px/1.55 'Mona Sans';color:#656565;margin:0;"><strong style="font-weight:600;color:#171412;">Point to one action.</strong> Name what's missing without apology, then offer the single next step.</p>
+        </div>
+        <!-- confirm -->
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <p style="font:600 12px/1 'Mona Sans';color:#FB5E48;letter-spacing:.02em;margin:0 0 14px;">CONFIRMATIONS</p>
+          <div style="background:#FBF7F4;border:1px solid rgba(23,20,18,0.08);border-radius:12px;padding:16px;margin-bottom:14px;">
+            <div style="font:600 14.5px/1.3 'Mona Sans';color:#171412;margin-bottom:4px;">Delete this report?</div>
+            <div style="font:400 12.5px/1.45 'Mona Sans';color:#656565;margin-bottom:14px;">Removes "Black Friday 2026" and its 4 sources. This can't be undone.</div>
+            <div style="display:flex;gap:8px;justify-content:flex-end;">
+              <span style="font:600 12.5px/1 'Mona Sans';color:#171412;border:1px solid rgba(23,20,18,0.16);padding:8px 13px;border-radius:999px;">Cancel</span>
+              <span style="font:600 12.5px/1 'Mona Sans';color:#FFFDFB;background:#C63A2B;padding:8px 13px;border-radius:999px;">Delete report</span>
+            </div>
+          </div>
+          <p style="font:400 13.5px/1.55 'Mona Sans';color:#656565;margin:0;"><strong style="font-weight:600;color:#171412;">Name the consequence.</strong> Ask the real question; the button repeats the verb ("Delete report", never "OK").</p>
+        </div>
+      </div>
+
+      <!-- instead of / we write -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <p style="font:600 17px/1.2 'Mona Sans';color:#C63A2B;margin:0 0 16px;">Instead of</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;">
+            <li style="font:400 15px/1.45 'Mona Sans';color:#656565;">"Error 500: request failed."</li>
+            <li style="font:400 15px/1.45 'Mona Sans';color:#656565;">"No data available."</li>
+            <li style="font:400 15px/1.45 'Mona Sans';color:#656565;">"Are you sure?"</li>
+            <li style="font:400 15px/1.45 'Mona Sans';color:#656565;">"Submit"</li>
+          </ul>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <p style="font:600 17px/1.2 'Mona Sans';color:#2F8B57;margin:0 0 16px;">We write</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px;">
+            <li style="font:400 15px/1.45 'Mona Sans';color:#171412;">"We couldn't load this report. Refresh to try again."</li>
+            <li style="font:400 15px/1.45 'Mona Sans';color:#171412;">"No reports yet. Connect a source to get started."</li>
+            <li style="font:400 15px/1.45 'Mona Sans';color:#171412;">"Delete this report? This can't be undone."</li>
+            <li style="font:400 15px/1.45 'Mona Sans';color:#171412;">"Create report"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOGOS ============ -->
+    <section id="logos" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:720px;margin-bottom:44px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">05 — Logos</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">One mark, a clear family.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">The Leaf mark leads. Service and property lockups extend it. Every logo ships as padded and no-padding exports — choose by context, never crop by hand.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:30px;"><img src="assets/logos/Leaf - Coral.svg" alt="Leaf coral" style="height:44px;"><span style="font:500 13px/1 'Mona Sans';color:#656565;">Coral on light</span></article>
+        <article style="background:#FB5E48;border-radius:16px;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:30px;"><img src="assets/logos/Leaf - Negative.svg" alt="Leaf negative" style="height:44px;"><span style="font:500 13px/1 'Mona Sans';color:#171412;opacity:.7;">Negative on Coral</span></article>
+        <article style="background:#171412;border-radius:16px;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:30px;"><img src="assets/logos/Leaf - Negative.svg" alt="Leaf negative" style="height:44px;"><span style="font:500 13px/1 'Mona Sans';color:rgba(255,253,251,0.6);">Negative on Ink</span></article>
+      </div>
+
+      <!-- safe margin + sizing -->
+      <div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:16px;margin-top:16px;">
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px;">
+          <div style="flex:1;min-height:190px;border-radius:12px;background-image:linear-gradient(rgba(23,20,18,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(23,20,18,0.06) 1px,transparent 1px);background-size:28px 28px;background-color:#F9F4F1;display:flex;align-items:center;justify-content:center;"><img src="assets/logos/Leaf Icon - Padded.svg" alt="Leaf icon safe area" style="height:150px;width:150px;"></div>
+          <div><p style="font:600 15px/1.2 'Mona Sans';color:#171412;margin:0 0 6px;">Safe margin = 50% of the icon</p><p style="font:400 14px/1.5 'Mona Sans';color:#656565;margin:0;">Padded exports carry their own clear area. Don't trim it — switch to no-padding instead.</p></div>
+        </div>
+        <div style="background:#171412;border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:22px;">
+          <p style="display:inline-flex;align-items:center;gap:8px;font:600 12.5px/1 'Mona Sans';color:#7AD8CE;margin:0;"><span style="width:6px;height:6px;border-radius:50%;background:#7AD8CE;"></span>Minimum sizes</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;">
+            <div style="background:rgba(255,253,251,0.06);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px 20px;flex:1;min-width:150px;"><img src="assets/logos/Leaf Icon - Coral.svg" style="height:22px;margin-bottom:14px;"><div style="font:600 15px/1 'Mona Sans';color:#FFFDFB;">Icon</div><div style="font:420 13px/1.4 'Mona Sans';color:rgba(255,253,251,0.6);margin-top:5px;">16px digital · 6mm print</div></div>
+            <div style="background:rgba(255,253,251,0.06);border:1px solid rgba(255,253,251,0.12);border-radius:12px;padding:18px 20px;flex:1;min-width:150px;"><img src="assets/logos/Leaf - Coral.svg" style="height:16px;margin-bottom:16px;"><div style="font:600 15px/1 'Mona Sans';color:#FFFDFB;">Full logo</div><div style="font:420 13px/1.4 'Mona Sans';color:rgba(255,253,251,0.6);margin-top:5px;">80px digital · 20mm print</div></div>
+          </div>
+          <p style="font:400 13.5px/1.5 'Mona Sans';color:rgba(255,253,251,0.6);margin:0;">Below the full-logo minimum, use the icon alone. Prefer SVG everywhere vectors are supported; PNG only when raster is required.</p>
+        </div>
+      </div>
+
+      <!-- service family -->
+      <div style="margin-top:48px;">
+        <div style="margin-bottom:22px;"><p style="color:#FB5E48;font:600 12.5px/1 'Mona Sans';margin:0 0 10px;">Service sub-logos</p><h3 style="font:600 25px/1.1 'Mona Sans';letter-spacing:-.02em;margin:0;color:#171412;">The two divisions, six services.</h3></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:118px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;"><img src="assets/logos/Leaf Signal.svg" style="height:30px;"><span style="font:500 12.5px/1 'Mona Sans';color:#656565;">Signal · tracking</span></article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:118px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;"><img src="assets/logos/Leaf Answers.svg" style="height:30px;"><span style="font:500 12.5px/1 'Mona Sans';color:#656565;">Answers · reporting</span></article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:118px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;"><img src="assets/logos/Leaf Performance.svg" style="height:30px;"><span style="font:500 12.5px/1 'Mona Sans';color:#656565;">Performance · media</span></article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:118px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;"><img src="assets/logos/Leaf Creative.svg" style="height:30px;"><span style="font:500 12.5px/1 'Mona Sans';color:#656565;">Creative · content</span></article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:118px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;"><img src="assets/logos/Leaf Stores.svg" style="height:30px;"><span style="font:500 12.5px/1 'Mona Sans';color:#656565;">Stores · Shopify</span></article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:118px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;"><img src="assets/logos/Leaf Strategy.svg" style="height:30px;"><span style="font:500 12.5px/1 'Mona Sans';color:#656565;">Strategy · SEO</span></article>
+        </div>
+      </div>
+
+      <!-- properties -->
+      <div style="margin-top:40px;">
+        <div style="margin-bottom:22px;"><p style="color:#FB5E48;font:600 12.5px/1 'Mona Sans';margin:0 0 10px;">Special properties</p><h3 style="font:600 25px/1.1 'Mona Sans';letter-spacing:-.02em;margin:0;color:#171412;">Editorial and community marks.</h3></div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+          <article style="background:#F2E8E1;border:1px solid rgba(23,20,18,0.07);border-radius:14px;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:28px;"><img src="assets/logos/Leaf Blog.svg" style="height:34px;"><span style="font:500 12.5px/1 'Mona Sans';color:#656565;">Blog · editorial</span></article>
+          <article style="background:#F2E8E1;border:1px solid rgba(23,20,18,0.07);border-radius:14px;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:28px;"><img src="assets/logos/Leaf Colectivo.svg" style="height:34px;"><span style="font:500 12.5px/1 'Mona Sans';color:#656565;">Colectivo · podcast</span></article>
+        </div>
+      </div>
+
+      <!-- co-branding / partner lockups -->
+      <div style="margin-top:48px;">
+        <div style="max-width:760px;margin-bottom:22px;">
+          <p style="color:#FB5E48;font:600 12.5px/1 'Mona Sans';margin:0 0 10px;">Co-branding</p>
+          <h3 style="font:600 25px/1.1 'Mona Sans';letter-spacing:-.02em;margin:0 0 8px;color:#171412;">Standing beside our customers.</h3>
+          <p style="font:400 15.5px/1.55 'Mona Sans';color:#656565;margin:0;">Leaf gains from the association, so partner marks get equal air. Match cap height, divide with a hairline, and let each brand keep its own space.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:16px;">
+          <div style="display:flex;flex-direction:column;gap:14px;height:100%;">
+            <div style="flex:1;background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:26px;">
+              <div style="display:flex;align-items:center;gap:28px;">
+                <img src="assets/logos/Leaf - Coral.svg" style="height:28px;">
+                <span style="width:1px;height:36px;background:rgba(23,20,18,0.22);"></span>
+                <span style="display:inline-flex;align-items:center;justify-content:center;border:1px dashed rgba(23,20,18,0.32);border-radius:8px;padding:9px 18px;font:600 14px/1 'Mona Sans';color:#656565;">Partner logo</span>
+              </div>
+              <span style="font:500 12px/1 'Mona Sans';color:#656565;">Hairline divider — equal partnerships &amp; footers</span>
+            </div>
+            <div style="flex:1;background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:26px;">
+              <div style="display:flex;align-items:center;gap:22px;">
+                <img src="assets/logos/Leaf - Coral.svg" style="height:28px;">
+                <span style="font:400 22px/1 'Mona Sans';color:#656565;">&#215;</span>
+                <span style="display:inline-flex;align-items:center;justify-content:center;border:1px dashed rgba(23,20,18,0.32);border-radius:8px;padding:9px 18px;font:600 14px/1 'Mona Sans';color:#656565;">Customer logo</span>
+              </div>
+              <span style="font:500 12px/1 'Mona Sans';color:#656565;">Cross lockup — customer announcements &amp; quotes</span>
+            </div>
+          </div>
+          <div style="background:#171412;border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;">
+            <p style="display:inline-flex;align-items:center;gap:8px;font:600 12.5px/1 'Mona Sans';color:#7AD8CE;margin:0 0 4px;"><span style="width:6px;height:6px;border-radius:50%;background:#7AD8CE;"></span>Lockup rules</p>
+            <p style="font:400 13.5px/1.5 'Mona Sans';color:rgba(255,253,251,0.72);margin:0;">Match <span style="color:#FFFDFB;font-weight:600;">cap height</span>, not the bounding box — the marks read the same size.</p>
+            <p style="font:400 13.5px/1.5 'Mona Sans';color:rgba(255,253,251,0.72);margin:0;">Separate with a <span style="color:#FFFDFB;font-weight:600;">hairline divider</span> at roughly 60% of the lockup height.</p>
+            <p style="font:400 13.5px/1.5 'Mona Sans';color:rgba(255,253,251,0.72);margin:0;">Keep at least <span style="color:#FFFDFB;font-weight:600;">one leaf-icon width</span> of clear space either side of the divider.</p>
+            <p style="font:400 13.5px/1.5 'Mona Sans';color:rgba(255,253,251,0.72);margin:0;">Leaf leads on Leaf surfaces; the <span style="color:#FFFDFB;font-weight:600;">partner leads on theirs</span>. Never merge the two into one combined mark.</p>
+            <p style="font:400 13.5px/1.5 'Mona Sans';color:rgba(255,253,251,0.72);margin:0;">For customer announcements and quotes, use the <span style="color:#FFFDFB;font-weight:600;">&#215; cross lockup</span> over photography of the customer in flight.</p>
+          </div>
+        </div>
+      </div>
+      <!-- misuse / don'ts -->
+      <div style="margin-top:48px;">
+        <div style="max-width:760px;margin-bottom:22px;">
+          <p style="color:#FB5E48;font:600 12.5px/1 'Mona Sans';margin:0 0 10px;">Misuse</p>
+          <h3 style="font:600 25px/1.1 'Mona Sans';letter-spacing:-.02em;margin:0 0 8px;color:#171412;">Six ways to break the mark.</h3>
+          <p style="font:400 15.5px/1.55 'Mona Sans';color:#656565;margin:0;">The logo ships finished. Don't redraw, recolour, or dress it up — reach for the right export instead.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <figure style="margin:0;background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="height:120px;background:#F9F4F1;display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="assets/logos/Leaf - Coral.svg" style="height:30px;filter:hue-rotate(155deg) saturate(1.4);"></div><figcaption style="padding:13px 15px;display:flex;gap:9px;align-items:flex-start;"><span style="flex:0 0 auto;width:16px;height:16px;border-radius:50%;background:#C63A2B;color:#FFFDFB;font:700 10px/16px 'Mona Sans';text-align:center;">✕</span><span style="font:500 12.5px/1.4 'Mona Sans';color:#656565;">Don't recolour the mark or its wordmark.</span></figcaption></figure>
+          <figure style="margin:0;background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="height:120px;background:#F9F4F1;display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="assets/logos/Leaf - Coral.svg" style="height:30px;transform:scaleX(1.7);"></div><figcaption style="padding:13px 15px;display:flex;gap:9px;align-items:flex-start;"><span style="flex:0 0 auto;width:16px;height:16px;border-radius:50%;background:#C63A2B;color:#FFFDFB;font:700 10px/16px 'Mona Sans';text-align:center;">✕</span><span style="font:500 12.5px/1.4 'Mona Sans';color:#656565;">Don't stretch, squash, or rescale on one axis.</span></figcaption></figure>
+          <figure style="margin:0;background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="height:120px;background:#F9F4F1;display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="assets/logos/Leaf - Coral.svg" style="height:30px;transform:rotate(-11deg);"></div><figcaption style="padding:13px 15px;display:flex;gap:9px;align-items:flex-start;"><span style="flex:0 0 auto;width:16px;height:16px;border-radius:50%;background:#C63A2B;color:#FFFDFB;font:700 10px/16px 'Mona Sans';text-align:center;">✕</span><span style="font:500 12.5px/1.4 'Mona Sans';color:#656565;">Don't rotate or set the mark on an angle.</span></figcaption></figure>
+          <figure style="margin:0;background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="height:120px;background:#F9F4F1;display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="assets/logos/Leaf - Coral.svg" style="height:30px;filter:drop-shadow(0 5px 6px rgba(23,20,18,0.5));"></div><figcaption style="padding:13px 15px;display:flex;gap:9px;align-items:flex-start;"><span style="flex:0 0 auto;width:16px;height:16px;border-radius:50%;background:#C63A2B;color:#FFFDFB;font:700 10px/16px 'Mona Sans';text-align:center;">✕</span><span style="font:500 12.5px/1.4 'Mona Sans';color:#656565;">Don't add shadows, glows, or other effects.</span></figcaption></figure>
+          <figure style="margin:0;background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="height:120px;background:#F4A38F;display:flex;align-items:center;justify-content:center;overflow:hidden;"><img src="assets/logos/Leaf - Coral.svg" style="height:30px;"></div><figcaption style="padding:13px 15px;display:flex;gap:9px;align-items:flex-start;"><span style="flex:0 0 auto;width:16px;height:16px;border-radius:50%;background:#C63A2B;color:#FFFDFB;font:700 10px/16px 'Mona Sans';text-align:center;">✕</span><span style="font:500 12.5px/1.4 'Mona Sans';color:#656565;">Don't place on low-contrast or busy grounds.</span></figcaption></figure>
+          <figure style="margin:0;background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="height:120px;background:#F9F4F1;display:flex;align-items:center;justify-content:center;overflow:hidden;"><span style="display:inline-flex;border:2px solid #171412;border-radius:5px;padding:5px 7px;"><img src="assets/logos/Leaf - Coral.svg" style="height:26px;"></span></div><figcaption style="padding:13px 15px;display:flex;gap:9px;align-items:flex-start;"><span style="flex:0 0 auto;width:16px;height:16px;border-radius:50%;background:#C63A2B;color:#FFFDFB;font:700 10px/16px 'Mona Sans';text-align:center;">✕</span><span style="font:500 12.5px/1.4 'Mona Sans';color:#656565;">Don't box the mark or crop its clear space.</span></figcaption></figure>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============ ICONS ============ -->
+    <section id="icons" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:720px;margin-bottom:44px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">06 — Icons</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">A library of ~1,250, one consistent language.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">Grouped by theme, icon, variation, and format. Reach for SVG and the black variation by default. Keep icon treatment stable inside a set; let colour do the categorising.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px;">
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px;"><img src="assets/icons/Analytical Report.svg" style="height:40px;width:40px;"><span style="font:500 12px/1.2 'Mona Sans';color:#656565;text-align:center;">Analytical Report</span></article>
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px;"><img src="assets/icons/Data Funnel.svg" style="height:40px;width:40px;"><span style="font:500 12px/1.2 'Mona Sans';color:#656565;text-align:center;">Data Funnel</span></article>
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px;"><img src="assets/icons/Growth Chart.svg" style="height:40px;width:40px;"><span style="font:500 12px/1.2 'Mona Sans';color:#656565;text-align:center;">Growth Chart</span></article>
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px;"><img src="assets/icons/Speedometer.svg" style="height:40px;width:40px;"><span style="font:500 12px/1.2 'Mona Sans';color:#656565;text-align:center;">Speedometer</span></article>
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px;"><img src="assets/icons/Target.svg" style="height:40px;width:40px;"><span style="font:500 12px/1.2 'Mona Sans';color:#656565;text-align:center;">Target</span></article>
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px;"><img src="assets/icons/Pay Per Click.svg" style="height:40px;width:40px;"><span style="font:500 12px/1.2 'Mona Sans';color:#656565;text-align:center;">Pay Per Click</span></article>
+      </div>
+
+      <!-- colour with icons -->
+      <div style="margin-top:44px;">
+        <div style="max-width:760px;margin-bottom:22px;">
+          <p style="color:#FB5E48;font:600 12.5px/1 'Mona Sans';margin:0 0 10px;">Colour with icons</p>
+          <h3 style="font:600 25px/1.1 'Mona Sans';letter-spacing:-.02em;margin:0 0 8px;color:#171412;">Let colour group content without changing the icon language.</h3>
+          <p style="font:400 15.5px/1.55 'Mona Sans';color:#656565;margin:0;">Black icons on secondary-colour fields for libraries, hubs, and editorial navigation. Colour varies by category; the icon treatment and label surface stay stable.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="background:#EFB75A;min-height:120px;display:flex;align-items:center;justify-content:center;"><img src="assets/icons/Leaf.svg" style="height:52px;width:52px;"></div><p style="font:600 15.5px/1.3 'Mona Sans';color:#171412;margin:0;padding:16px 18px;">A brief history of Leaf</p></article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="background:#8EBB91;min-height:120px;display:flex;align-items:center;justify-content:center;"><img src="assets/icons/Potted Plant.svg" style="height:52px;width:52px;"></div><p style="font:600 15.5px/1.3 'Mona Sans';color:#171412;margin:0;padding:16px 18px;">The Leafers</p></article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="background:#AAA2D4;min-height:120px;display:flex;align-items:center;justify-content:center;"><img src="assets/icons/Guidebook.svg" style="height:52px;width:52px;"></div><p style="font:600 15.5px/1.3 'Mona Sans';color:#171412;margin:0;padding:16px 18px;">Our values</p></article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="background:#F6E49D;min-height:120px;display:flex;align-items:center;justify-content:center;"><img src="assets/icons/Pyramid.svg" style="height:52px;width:52px;"></div><p style="font:600 15.5px/1.3 'Mona Sans';color:#171412;margin:0;padding:16px 18px;">What we do</p></article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="background:#9FC7BC;min-height:120px;display:flex;align-items:center;justify-content:center;"><img src="assets/icons/Send.svg" style="height:52px;width:52px;"></div><p style="font:600 15.5px/1.3 'Mona Sans';color:#171412;margin:0;padding:16px 18px;">Brand and voice</p></article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;overflow:hidden;"><div style="background:#F4A38F;min-height:120px;display:flex;align-items:center;justify-content:center;"><img src="assets/icons/Winners Podium.svg" style="height:52px;width:52px;"></div><p style="font:600 15.5px/1.3 'Mona Sans';color:#171412;margin:0;padding:16px 18px;">Awards and certifications</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IMAGERY ============ -->
+    <section id="imagery" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:740px;margin-bottom:44px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">07 — Imagery</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">Iconographic, not photographic.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">Leaf doesn't lean on stock photography. Our imagery is a single black isometric line icon, centred on a flat field of one secondary colour. It's calm, ownable, and made entirely from parts of the system we already have — the icon library and the palette.</p>
+      </div>
+
+      <!-- specimen banners -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <figure style="margin:0;border:1px solid rgba(23,20,18,0.08);border-radius:16px;overflow:hidden;">
+          <img src="assets/imagery/identity.png" alt="Isometric ID card icon on a Heather field" style="display:block;width:100%;height:auto;">
+          <figcaption style="font:400 13px/1.4 'Mona Sans';color:#656565;padding:12px 16px;background:#FFFDFB;">Heather field · identity</figcaption>
+        </figure>
+        <figure style="margin:0;border:1px solid rgba(23,20,18,0.08);border-radius:16px;overflow:hidden;">
+          <img src="assets/imagery/decisions.png" alt="Isometric decision-node icon on a Harbor field" style="display:block;width:100%;height:auto;">
+          <figcaption style="font:400 13px/1.4 'Mona Sans';color:#656565;padding:12px 16px;background:#FFFDFB;">Harbor field · decisions</figcaption>
+        </figure>
+        <figure style="margin:0;border:1px solid rgba(23,20,18,0.08);border-radius:16px;overflow:hidden;">
+          <img src="assets/imagery/now.png" alt="Isometric refresh-and-growth icon on a Marigold field" style="display:block;width:100%;height:auto;">
+          <figcaption style="font:400 13px/1.4 'Mona Sans';color:#656565;padding:12px 16px;background:#FFFDFB;">Marigold field · now</figcaption>
+        </figure>
+        <figure style="margin:0;border:1px solid rgba(23,20,18,0.08);border-radius:16px;overflow:hidden;">
+          <img src="assets/imagery/brief-config.png" alt="Isometric brief-configuration icon on a coloured field" style="display:block;width:100%;height:auto;">
+          <figcaption style="font:400 13px/1.4 'Mona Sans';color:#656565;padding:12px 16px;background:#FFFDFB;">Brief &amp; config</figcaption>
+        </figure>
+      </div>
+      <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0 0 40px;max-width:80ch;">Real Leaf Studio banners. One icon, one colour, generous breathing room — the topic drives both the icon and the field colour (people → Heather, decisions → Harbor, momentum → Marigold).</p>
+
+      <!-- construction rules -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;">
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">One icon, centred</div>
+          <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">A single black line icon from the library, optically centred, sized to roughly a quarter of the shorter edge. Never a cluster, never full-bleed.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Flat secondary field</div>
+          <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">The background is one solid secondary colour — never Coral, never a gradient, never a photo. Coral stays the brand signal, not a backdrop.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Black line only</div>
+          <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">Icons stay black line-art on the colour — no fills, no drop shadows, no recolouring to match. Contrast does the work.</p>
+        </div>
+      </div>
+
+      <!-- do / don't -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#E1EFE7;border:1px solid rgba(47,139,87,0.25);border-radius:16px;padding:22px 24px;">
+          <p style="font:600 13px/1 'Mona Sans';color:#2F8B57;margin:0 0 12px;">Do</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;">
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#2F8B57;">✓</span>Match field colour to topic, and rotate colours across a set for rhythm.</li>
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#2F8B57;">✓</span>Keep wide margins so the icon reads as one calm mark.</li>
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#2F8B57;">✓</span>Reuse library icons so imagery and UI stay one family.</li>
+          </ul>
+        </div>
+        <div style="background:#F7E0DB;border:1px solid rgba(198,58,43,0.28);border-radius:16px;padding:22px 24px;">
+          <p style="font:600 13px/1 'Mona Sans';color:#C63A2B;margin:0 0 12px;">Don't</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;">
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#C63A2B;">✕</span>Use stock photography, 3D renders, or gradient meshes.</li>
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#C63A2B;">✕</span>Put icons on a Coral field or recolour them to the field.</li>
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#C63A2B;">✕</span>Crowd the field with multiple icons, text, or drop shadows.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PHOTOGRAPHY ============ -->
+    <section id="photography" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:760px;margin-bottom:44px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">08 — Photography</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">Let the brand be the hero.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">Leaf usually stays out of the frame — our own imagery is iconographic (see <a href="#imagery" style="color:#FB5E48;">Imagery</a>). Photography is the deliberate exception. We reach for it to show customers <em style="font-style:italic;color:#171412;">in flight</em>: real brands, real products, real moments. Leaf takes a step back and gains through the association — a light co-brand lockup, never a takeover.</p>
+      </div>
+
+      <!-- co-brand gallery -->
+      <figure style="margin:0 0 16px;border:1px solid rgba(23,20,18,0.08);border-radius:16px;overflow:hidden;">
+        <img src="assets/photography/dash-water.jpg" alt="DASH sparkling water cans against a blue sky, co-branded leafsignal × DASH water" style="display:block;width:100%;height:auto;">
+        <figcaption style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;font:400 13px/1.4 'Mona Sans';color:#656565;padding:13px 18px;background:#FFFDFB;"><span style="font-weight:600;color:#171412;">leafsignal × DASH Water</span><span>Launch announcement — the partner's product owns the frame.</span></figcaption>
+      </figure>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:14px;">
+        <figure style="margin:0;border:1px solid rgba(23,20,18,0.08);border-radius:16px;overflow:hidden;">
+          <img src="assets/photography/bradshaw-taylor.jpg" alt="Two people paddling a canoe on a lake at golden hour, co-branded Bradshaw Taylor × leafsignal" style="display:block;width:100%;height:auto;">
+          <figcaption style="font:400 13px/1.4 'Mona Sans';color:#656565;padding:12px 16px;background:#FFFDFB;"><span style="font-weight:600;color:#171412;">Bradshaw Taylor</span> · customer in flight</figcaption>
+        </figure>
+        <figure style="margin:0;border:1px solid rgba(23,20,18,0.08);border-radius:16px;overflow:hidden;">
+          <img src="assets/photography/wax-london.jpg" alt="Man in a colourful printed shirt and sunglasses in bright daylight, co-branded wax london × leafsignal" style="display:block;width:100%;height:auto;">
+          <figcaption style="font:400 13px/1.4 'Mona Sans';color:#656565;padding:12px 16px;background:#FFFDFB;"><span style="font-weight:600;color:#171412;">wax london</span> · customer in flight</figcaption>
+        </figure>
+        <figure style="margin:0;border:1px solid rgba(23,20,18,0.08);border-radius:16px;overflow:hidden;">
+          <img src="assets/photography/nikura.jpg" alt="Nikura essential oils and a diffuser on a wooden table, co-branded Nikura × leafsignal" style="display:block;width:100%;height:auto;">
+          <figcaption style="font:400 13px/1.4 'Mona Sans';color:#656565;padding:12px 16px;background:#FFFDFB;"><span style="font-weight:600;color:#171412;">Nikura</span> · product in context</figcaption>
+        </figure>
+      </div>
+      <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0 0 40px;max-width:82ch;">Real co-brand posts. The customer's world fills the frame; Leaf appears only as a light lockup. We borrow the spotlight rather than compete for it.</p>
+
+      <!-- the co-brand lockup -->
+      <h3 style="font:600 22px/1.2 'Mona Sans';color:#171412;margin:0 0 6px;">The co-brand lockup</h3>
+      <p style="font:400 15px/1.55 'Mona Sans';color:#656565;margin:0 0 18px;max-width:80ch;">Whenever we share a customer's frame, the two marks lock up as <strong style="font-weight:600;color:#171412;">Partner × leafsignal</strong> — separated by a lowercase&nbsp;×.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;">
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Equal billing, light touch</div>
+          <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">Partner mark and leafsignal sit at the same visual weight, joined by a lowercase ×. Leaf never outsizes the customer it's celebrating.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">White knockout on imagery</div>
+          <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">On photography the Leaf lockup is the Canvas (white) mark, set in a calm corner with clear space — no box, no heavy scrim beyond what the photo already gives.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Either brand can lead</div>
+          <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">Order flips by channel — partner-first on their story, Leaf-first on ours. The × stays the constant that ties the two together.</p>
+        </div>
+      </div>
+
+      <!-- customer quotes -->
+      <h3 style="font:600 22px/1.2 'Mona Sans';color:#171412;margin:0 0 6px;">Customer quotes</h3>
+      <p style="font:400 15px/1.55 'Mona Sans';color:#656565;margin:0 0 18px;max-width:80ch;">For quotes and customer stories, the subject anchors the frame and their words lead — set on Ink, with Coral doing one job.</p>
+      <div style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:16px;align-items:stretch;">
+        <figure style="margin:0;border:1px solid rgba(23,20,18,0.08);border-radius:16px;overflow:hidden;">
+          <img src="assets/photography/quote-bradshaw-taylor.jpg" alt="Customer quote card: a speaker holding a microphone on an Ink background, with an oversized coral quotation mark and attribution to Stefania Del Zotto, Digital Director at Bradshaw Taylor" style="display:block;width:100%;height:auto;">
+        </figure>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:22px 24px;">
+            <div style="font:600 15px/1.2 'Mona Sans';color:#171412;margin-bottom:6px;">Their words lead</div>
+            <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">The quote is the largest element — Canvas type on an Ink surface, opened and closed by oversized <span style="color:#FB5E48;font-weight:600;">Coral quotation marks</span>. Coral appears once; nowhere else in the frame.</p>
+          </div>
+          <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:22px 24px;">
+            <div style="font:600 15px/1.2 'Mona Sans';color:#171412;margin-bottom:6px;">Subject to one side</div>
+            <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">Crop the person to one edge so the quote breathes. Attribution is name, role, and the partner logo — the customer is named, Leaf is not.</p>
+          </div>
+          <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:22px 24px;">
+            <div style="font:600 15px/1.2 'Mona Sans';color:#171412;margin-bottom:6px;">Campaign tag, quietly</div>
+            <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">A campaign line (e.g. "Elevating the Game") sits small in a corner in Canvas — a signature, never a headline.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- do / don't -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+        <div style="background:#E1EFE7;border:1px solid rgba(47,139,87,0.25);border-radius:16px;padding:22px 24px;">
+          <p style="font:600 13px/1 'Mona Sans';color:#2F8B57;margin:0 0 12px;">Do</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;">
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#2F8B57;">✓</span>Use photography for the brand-association moments — launches, partnerships, customer quotes.</li>
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#2F8B57;">✓</span>Let the partner's world fill the frame and keep the Leaf lockup light.</li>
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#2F8B57;">✓</span>Choose warm, real, in-context imagery that feels like the customer, not like Leaf.</li>
+          </ul>
+        </div>
+        <div style="background:#F7E0DB;border:1px solid rgba(198,58,43,0.28);border-radius:16px;padding:22px 24px;">
+          <p style="font:600 13px/1 'Mona Sans';color:#C63A2B;margin:0 0 12px;">Don't</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;">
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#C63A2B;">✕</span>Reach for photography to decorate product UI or system imagery — that stays iconographic.</li>
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#C63A2B;">✕</span>Recolour or filter a partner's photography to Leaf's palette.</li>
+            <li style="font:400 14px/1.5 'Mona Sans';color:#171412;padding-left:18px;position:relative;"><span style="position:absolute;left:0;color:#C63A2B;">✕</span>Oversize the Leaf mark or let it crowd the co-brand lockup.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DATA VISUALIZATION ============ -->
+    <section id="dataviz" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:740px;margin-bottom:44px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">09 — Data visualization</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">Charts are where Leaf earns trust.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">Answers is mostly data visualization, so the brand has to hold up in charts. The rule of thumb: Coral leads the number that matters, the categorical palette carries series, the state palette carries good-and-bad, and everything structural stays quiet.</p>
+      </div>
+
+      <!-- principles -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:40px;">
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;padding:22px;"><div style="font:600 15px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Coral leads</div><p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0;">The headline metric or primary series is Coral. Everything else supports it.</p></div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;padding:22px;"><div style="font:600 15px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Series in order</div><p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0;">Multi-series charts use the categorical palette in its fixed sequence — for stable, repeatable colour.</p></div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;padding:22px;"><div style="font:600 15px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Status ≠ series</div><p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0;">Good-and-bad uses the state palette (Fern, Ember). Never overload a series colour with meaning.</p></div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;padding:22px;"><div style="font:600 15px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Quiet structure</div><p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0;">Axes, gridlines, and labels are Warm Grey and hairline. No chart junk, no heavy borders.</p></div>
+      </div>
+
+      <!-- categorical palette -->
+      <div style="margin-bottom:16px;">
+        <p style="font:600 12.5px/1 'Mona Sans';color:#FB5E48;margin:0 0 12px;">Categorical series palette · in order</p>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
+          <div style="border:1px solid rgba(23,20,18,0.08);border-radius:12px;overflow:hidden;"><div style="height:52px;background:#FB5E48;"></div><div style="padding:9px 11px;"><div style="font:600 12.5px/1 'Mona Sans';color:#171412;">1 · Coral</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">#FB5E48</div></div></div>
+          <div style="border:1px solid rgba(23,20,18,0.08);border-radius:12px;overflow:hidden;"><div style="height:52px;background:#4FA3A6;"></div><div style="padding:9px 11px;"><div style="font:600 12.5px/1 'Mona Sans';color:#171412;">2 · Harbor</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">#4FA3A6</div></div></div>
+          <div style="border:1px solid rgba(23,20,18,0.08);border-radius:12px;overflow:hidden;"><div style="height:52px;background:#EFB75A;"></div><div style="padding:9px 11px;"><div style="font:600 12.5px/1 'Mona Sans';color:#171412;">3 · Marigold</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">#EFB75A</div></div></div>
+          <div style="border:1px solid rgba(23,20,18,0.08);border-radius:12px;overflow:hidden;"><div style="height:52px;background:#AAA2D4;"></div><div style="padding:9px 11px;"><div style="font:600 12.5px/1 'Mona Sans';color:#171412;">4 · Heather</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">#AAA2D4</div></div></div>
+          <div style="border:1px solid rgba(23,20,18,0.08);border-radius:12px;overflow:hidden;"><div style="height:52px;background:#8EBB91;"></div><div style="padding:9px 11px;"><div style="font:600 12.5px/1 'Mona Sans';color:#171412;">5 · Laurel</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">#8EBB91</div></div></div>
+          <div style="border:1px solid rgba(23,20,18,0.08);border-radius:12px;overflow:hidden;"><div style="height:52px;background:#F4A38F;"></div><div style="padding:9px 11px;"><div style="font:600 12.5px/1 'Mona Sans';color:#171412;">6 · Apricot</div><div style="font:500 11px/1.3 'Mona Sans';color:#656565;margin-top:3px;">#F4A38F</div></div></div>
+        </div>
+      </div>
+
+      <!-- sequential + status -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px;">
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;padding:20px;">
+          <div style="font:600 13px/1 'Mona Sans';color:#171412;margin-bottom:14px;">Sequential · Coral</div>
+          <div style="display:flex;height:34px;border-radius:8px;overflow:hidden;"><span style="flex:1;background:#FBE4DF;"></span><span style="flex:1;background:#F7A08F;"></span><span style="flex:1;background:#FB5E48;"></span><span style="flex:1;background:#C0392A;"></span></div>
+          <p style="font:400 12.5px/1.45 'Mona Sans';color:#656565;margin:10px 0 0;">Intensity of a single measure — heatmaps, density, one metric over a range.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;padding:20px;">
+          <div style="font:600 13px/1 'Mona Sans';color:#171412;margin-bottom:14px;">Sequential · Harbor</div>
+          <div style="display:flex;height:34px;border-radius:8px;overflow:hidden;"><span style="flex:1;background:#DDECEC;"></span><span style="flex:1;background:#9FC7BC;"></span><span style="flex:1;background:#4FA3A6;"></span><span style="flex:1;background:#2E8388;"></span></div>
+          <p style="font:400 12.5px/1.45 'Mona Sans';color:#656565;margin:10px 0 0;">A cooler, neutral alternative when Coral would read as alarm or emphasis.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:14px;padding:20px;">
+          <div style="font:600 13px/1 'Mona Sans';color:#171412;margin-bottom:14px;">Status · deltas</div>
+          <div style="display:flex;gap:8px;">
+            <div style="flex:1;background:#E7F1EA;border-radius:8px;padding:10px;text-align:center;"><div style="font:600 15px/1 'Mona Sans';color:#2F8B57;">▲ 18%</div><div style="font:500 11px/1 'Mona Sans';color:#2F8B57;margin-top:5px;">Fern</div></div>
+            <div style="flex:1;background:#F7E0DB;border-radius:8px;padding:10px;text-align:center;"><div style="font:600 15px/1 'Mona Sans';color:#C63A2B;">▼ 6%</div><div style="font:500 11px/1 'Mona Sans';color:#C63A2B;margin-top:5px;">Ember</div></div>
+          </div>
+          <p style="font:400 12.5px/1.45 'Mona Sans';color:#656565;margin:10px 0 0;">Up-is-good / down-is-bad only — from the state palette, not series colours.</p>
+        </div>
+      </div>
+
+      <!-- chart specimens -->
+      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-bottom:16px;">
+        <!-- column chart -->
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:18px;padding:26px 28px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;"><span style="font:600 16px/1.2 'Mona Sans';color:#171412;">Tracked revenue</span><span style="font:600 12.5px/1 'Mona Sans';color:#2F8B57;background:#E7F1EA;padding:4px 8px;border-radius:6px;">▲ 18.4%</span></div>
+          <div style="font:400 13px/1 'Mona Sans';color:#656565;margin-bottom:20px;">Last 6 months · vs target</div>
+          <div style="position:relative;height:200px;display:flex;align-items:flex-end;gap:16px;background:repeating-linear-gradient(to top,transparent 0,transparent 49px,rgba(23,20,18,0.07) 49px,rgba(23,20,18,0.07) 50px);border-bottom:1px solid rgba(23,20,18,0.16);">
+            <div style="position:absolute;left:0;right:0;top:22%;border-top:1.5px dashed #C63A2B;"></div>
+            <span style="position:absolute;right:0;top:calc(22% - 18px);font:600 11px/1 'Mona Sans';color:#C63A2B;">Target</span>
+            <div style="flex:1;display:flex;justify-content:center;align-items:flex-end;height:100%;"><div style="width:100%;max-width:38px;height:52%;background:#FB5E48;border-radius:6px 6px 0 0;"></div></div>
+            <div style="flex:1;display:flex;justify-content:center;align-items:flex-end;height:100%;"><div style="width:100%;max-width:38px;height:64%;background:#FB5E48;border-radius:6px 6px 0 0;"></div></div>
+            <div style="flex:1;display:flex;justify-content:center;align-items:flex-end;height:100%;"><div style="width:100%;max-width:38px;height:58%;background:#FB5E48;border-radius:6px 6px 0 0;"></div></div>
+            <div style="flex:1;display:flex;justify-content:center;align-items:flex-end;height:100%;"><div style="width:100%;max-width:38px;height:74%;background:#FB5E48;border-radius:6px 6px 0 0;"></div></div>
+            <div style="flex:1;display:flex;justify-content:center;align-items:flex-end;height:100%;"><div style="width:100%;max-width:38px;height:68%;background:#FB5E48;border-radius:6px 6px 0 0;"></div></div>
+            <div style="flex:1;display:flex;justify-content:center;align-items:flex-end;height:100%;"><div style="width:100%;max-width:38px;height:90%;background:#FB5E48;border-radius:6px 6px 0 0;"></div></div>
+          </div>
+          <div style="display:flex;gap:16px;margin-top:10px;">
+            <span style="flex:1;text-align:center;font:500 12px/1 'Mona Sans';color:#656565;">Feb</span>
+            <span style="flex:1;text-align:center;font:500 12px/1 'Mona Sans';color:#656565;">Mar</span>
+            <span style="flex:1;text-align:center;font:500 12px/1 'Mona Sans';color:#656565;">Apr</span>
+            <span style="flex:1;text-align:center;font:500 12px/1 'Mona Sans';color:#656565;">May</span>
+            <span style="flex:1;text-align:center;font:500 12px/1 'Mona Sans';color:#656565;">Jun</span>
+            <span style="flex:1;text-align:center;font:500 12px/1 'Mona Sans';color:#656565;">Jul</span>
+          </div>
+        </article>
+        <!-- donut -->
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:18px;padding:26px 28px;">
+          <span style="font:600 16px/1.2 'Mona Sans';color:#171412;">Revenue by channel</span>
+          <div style="display:flex;align-items:center;gap:22px;margin-top:20px;">
+            <div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(#FB5E48 0 46%,#4FA3A6 46% 69%,#EFB75A 69% 86%,#AAA2D4 86% 100%);flex-shrink:0;display:flex;align-items:center;justify-content:center;"><div style="width:72px;height:72px;border-radius:50%;background:#FFFDFB;display:flex;flex-direction:column;align-items:center;justify-content:center;"><span style="font:640 20px/1 'Mona Sans';color:#171412;letter-spacing:-.02em;">$2.4M</span><span style="font:500 10px/1 'Mona Sans';color:#656565;margin-top:3px;">total</span></div></div>
+            <div style="display:flex;flex-direction:column;gap:9px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:3px;background:#FB5E48;"></span><span style="font:400 13px/1 'Mona Sans';color:#171412;">Paid media</span></div>
+              <div style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:3px;background:#4FA3A6;"></span><span style="font:400 13px/1 'Mona Sans';color:#171412;">Organic</span></div>
+              <div style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:3px;background:#EFB75A;"></span><span style="font:400 13px/1 'Mona Sans';color:#171412;">Email</span></div>
+              <div style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:3px;background:#AAA2D4;"></span><span style="font:400 13px/1 'Mona Sans';color:#171412;">Referral</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- line/area chart -->
+      <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:18px;padding:26px 28px;margin-bottom:32px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;"><span style="font:600 16px/1.2 'Mona Sans';color:#171412;">Conversions</span><div style="display:flex;gap:16px;"><span style="display:flex;align-items:center;gap:7px;font:500 12.5px/1 'Mona Sans';color:#171412;"><span style="width:12px;height:3px;border-radius:2px;background:#FB5E48;"></span>This year</span><span style="display:flex;align-items:center;gap:7px;font:500 12.5px/1 'Mona Sans';color:#656565;"><span style="width:12px;height:3px;border-radius:2px;background:#4FA3A6;"></span>Last year</span></div></div>
+        <div style="font:400 13px/1 'Mona Sans';color:#656565;margin-bottom:16px;">Weekly, indexed</div>
+        <svg viewBox="0 0 640 200" width="100%" height="200" preserveAspectRatio="none" style="display:block;" data-om-raster>
+          <line x1="0" y1="50" x2="640" y2="50" stroke="rgba(23,20,18,0.07)" stroke-width="1"></line>
+          <line x1="0" y1="100" x2="640" y2="100" stroke="rgba(23,20,18,0.07)" stroke-width="1"></line>
+          <line x1="0" y1="150" x2="640" y2="150" stroke="rgba(23,20,18,0.07)" stroke-width="1"></line>
+          <line x1="0" y1="190" x2="640" y2="190" stroke="rgba(23,20,18,0.16)" stroke-width="1"></line>
+          <path d="M0,150 L106,120 L213,128 L320,96 L426,104 L533,64 L640,74 L640,190 L0,190 Z" fill="#FB5E48" fill-opacity="0.10"></path>
+          <polyline points="0,150 106,120 213,128 320,96 426,104 533,64 640,74" fill="none" stroke="#4FA3A6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,26)" opacity="0.9"></polyline>
+          <polyline points="0,150 106,120 213,128 320,96 426,104 533,64 640,74" fill="none" stroke="#FB5E48" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+        </svg>
+      </article>
+
+      <!-- lead options -->
+      <div style="margin-bottom:32px;">
+        <p style="font:600 12.5px/1 'Mona Sans';color:#FB5E48;margin:0 0 12px;">Lead options · pick per chart</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:22px 24px;">
+            <div style="font:600 15px/1.2 'Mona Sans';color:#171412;margin-bottom:2px;">Coral lead</div>
+            <div style="font:400 13px/1.5 'Mona Sans';color:#656565;margin-bottom:18px;">Single-focus charts and headline metrics — one series is the point.</div>
+            <div style="height:120px;display:flex;align-items:flex-end;gap:12px;">
+              <div style="flex:1;height:54%;background:#FB5E48;border-radius:5px 5px 0 0;"></div>
+              <div style="flex:1;height:70%;background:#FB5E48;border-radius:5px 5px 0 0;"></div>
+              <div style="flex:1;height:62%;background:#FB5E48;border-radius:5px 5px 0 0;"></div>
+              <div style="flex:1;height:82%;background:#FB5E48;border-radius:5px 5px 0 0;"></div>
+              <div style="flex:1;height:74%;background:#FB5E48;border-radius:5px 5px 0 0;"></div>
+            </div>
+          </article>
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:22px 24px;">
+            <div style="font:600 15px/1.2 'Mona Sans';color:#171412;margin-bottom:2px;">Neutral lead</div>
+            <div style="font:400 13px/1.5 'Mona Sans';color:#656565;margin-bottom:18px;">Dense dashboards and many equal-weight series — graphite carries the set, Coral flags only what matters.</div>
+            <div style="height:120px;display:flex;align-items:flex-end;gap:12px;">
+              <div style="flex:1;height:54%;background:#8C857E;border-radius:5px 5px 0 0;"></div>
+              <div style="flex:1;height:70%;background:#8C857E;border-radius:5px 5px 0 0;"></div>
+              <div style="flex:1;height:62%;background:#8C857E;border-radius:5px 5px 0 0;"></div>
+              <div style="flex:1;height:82%;background:#FB5E48;border-radius:5px 5px 0 0;"></div>
+              <div style="flex:1;height:74%;background:#8C857E;border-radius:5px 5px 0 0;"></div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- chart patterns -->
+      <div style="margin-bottom:32px;">
+        <p style="font:600 12.5px/1 'Mona Sans';color:#FB5E48;margin:0 0 12px;">Answers patterns · brand-treated</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+          <!-- combo bar+line -->
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:22px 24px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;"><span style="font:600 15px/1.2 'Mona Sans';color:#171412;">Combo · bar + line</span><div style="display:flex;gap:12px;"><span style="display:flex;align-items:center;gap:6px;font:500 11.5px/1 'Mona Sans';color:#171412;"><span style="width:9px;height:9px;border-radius:2px;background:#4FA3A6;"></span>Spend</span><span style="display:flex;align-items:center;gap:6px;font:500 11.5px/1 'Mona Sans';color:#171412;"><span style="width:12px;height:3px;border-radius:2px;background:#FB5E48;"></span>ROAS</span></div></div>
+            <div style="font:400 12.5px/1.5 'Mona Sans';color:#656565;margin:2px 0 16px;">Volume as bars, the rate as a Coral line on a second axis.</div>
+            <div style="position:relative;height:120px;">
+              <div style="position:absolute;inset:0;display:flex;align-items:flex-end;gap:14px;"><div style="flex:1;height:58%;background:#4FA3A6;border-radius:5px 5px 0 0;"></div><div style="flex:1;height:80%;background:#4FA3A6;border-radius:5px 5px 0 0;"></div><div style="flex:1;height:46%;background:#4FA3A6;border-radius:5px 5px 0 0;"></div></div>
+              <svg viewBox="0 0 300 120" width="100%" height="120" preserveAspectRatio="none" style="position:absolute;inset:0;" data-om-raster><polyline points="50,40 150,26 250,64" fill="none" stroke="#FB5E48" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="50" cy="40" r="4" fill="#FB5E48"></circle><circle cx="150" cy="26" r="4" fill="#FB5E48"></circle><circle cx="250" cy="64" r="4" fill="#FB5E48"></circle></svg>
+            </div>
+          </article>
+
+          <!-- waterfall -->
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:22px 24px;">
+            <span style="font:600 15px/1.2 'Mona Sans';color:#171412;">Waterfall</span>
+            <div style="font:400 12.5px/1.5 'Mona Sans';color:#656565;margin:2px 0 16px;">Coral for start and net total; graphite for the steps between.</div>
+            <div style="height:120px;display:flex;gap:12px;">
+              <div style="flex:1;height:120px;display:flex;flex-direction:column;"><div style="height:12px;"></div><div style="flex:1;background:#FB5E48;border-radius:5px 5px 0 0;"></div></div>
+              <div style="flex:1;height:120px;display:flex;flex-direction:column;"><div style="height:16px;"></div><div style="height:30px;background:#8C857E;border-radius:5px;"></div></div>
+              <div style="flex:1;height:120px;display:flex;flex-direction:column;"><div style="height:46px;"></div><div style="height:26px;background:#8C857E;border-radius:5px;"></div></div>
+              <div style="flex:1;height:120px;display:flex;flex-direction:column;"><div style="height:70px;"></div><div style="height:20px;background:#8C857E;border-radius:5px;"></div></div>
+              <div style="flex:1;height:120px;display:flex;flex-direction:column;"><div style="height:44px;"></div><div style="flex:1;background:#FB5E48;border-radius:5px 5px 0 0;"></div></div>
+            </div>
+          </article>
+
+          <!-- funnel -->
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:22px 24px;">
+            <span style="font:600 15px/1.2 'Mona Sans';color:#171412;">Funnel</span>
+            <div style="font:400 12.5px/1.5 'Mona Sans';color:#656565;margin:2px 0 16px;">Stages in categorical order, narrowing by volume.</div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+              <div style="width:100%;height:34px;background:#FB5E48;border-radius:6px;display:flex;align-items:center;justify-content:center;font:600 12.5px/1 'Mona Sans';color:#171412;">Prospecting</div>
+              <div style="width:72%;height:34px;background:#4FA3A6;border-radius:6px;display:flex;align-items:center;justify-content:center;font:600 12.5px/1 'Mona Sans';color:#171412;">Retargeting</div>
+              <div style="width:46%;height:34px;background:#EFB75A;border-radius:6px;display:flex;align-items:center;justify-content:center;font:600 12.5px/1 'Mona Sans';color:#171412;">Customers</div>
+            </div>
+          </article>
+
+          <!-- heatmap table -->
+          <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:22px 24px;">
+            <span style="font:600 15px/1.2 'Mona Sans';color:#171412;">Heatmap table</span>
+            <div style="font:400 12.5px/1.5 'Mona Sans';color:#656565;margin:2px 0 16px;">Diverging Harbor→Coral tint: cool is good, warm is watch.</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;">
+              <div style="background:#9FC7BC;border-radius:5px;padding:9px;text-align:center;font:600 12px/1 'Mona Sans';color:#171412;">3.72</div>
+              <div style="background:#DDECEC;border-radius:5px;padding:9px;text-align:center;font:600 12px/1 'Mona Sans';color:#171412;">2.98</div>
+              <div style="background:#FBE4DF;border-radius:5px;padding:9px;text-align:center;font:600 12px/1 'Mona Sans';color:#171412;">£18.4</div>
+              <div style="background:#DDECEC;border-radius:5px;padding:9px;text-align:center;font:600 12px/1 'Mona Sans';color:#171412;">3.10</div>
+              <div style="background:#F7A08F;border-radius:5px;padding:9px;text-align:center;font:600 12px/1 'Mona Sans';color:#171412;">£17.2</div>
+              <div style="background:#9FC7BC;border-radius:5px;padding:9px;text-align:center;font:600 12px/1 'Mona Sans';color:#171412;">£12.6</div>
+              <div style="background:#FBE4DF;border-radius:5px;padding:9px;text-align:center;font:600 12px/1 'Mona Sans';color:#171412;">2.14%</div>
+              <div style="background:#9FC7BC;border-radius:5px;padding:9px;text-align:center;font:600 12px/1 'Mona Sans';color:#171412;">4.63</div>
+              <div style="background:#EFEAE6;border-radius:5px;padding:9px;text-align:center;font:600 12px/1 'Mona Sans';color:#171412;">£47.6</div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- do / dont -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <p style="font:600 15px/1.2 'Mona Sans';color:#2F8B57;margin:0 0 14px;">Do</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px;">
+            <li style="font:400 14.5px/1.5 'Mona Sans';color:#171412;">Use one Coral series as the focus; mute comparisons in Harbor or Warm Grey.</li>
+            <li style="font:400 14.5px/1.5 'Mona Sans';color:#171412;">Follow the categorical order so the same channel keeps the same colour across charts.</li>
+            <li style="font:400 14.5px/1.5 'Mona Sans';color:#171412;">Label directly and keep axes, gridlines, and ticks hairline and Warm Grey.</li>
+          </ul>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <p style="font:600 15px/1.2 'Mona Sans';color:#C63A2B;margin:0 0 14px;">Don't</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px;">
+            <li style="font:400 14.5px/1.5 'Mona Sans';color:#171412;">Fill a chart with every secondary colour at once, or reorder the palette per chart.</li>
+            <li style="font:400 14.5px/1.5 'Mona Sans';color:#171412;">Use Fern/Ember for ordinary series — reserve them for good-and-bad status.</li>
+            <li style="font:400 14.5px/1.5 'Mona Sans';color:#171412;">Add heavy gridlines, drop shadows, 3D, or gradients that aren't a defined ramp.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APPLICATIONS ============ -->
+    <section id="applications" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:720px;margin-bottom:44px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">10 — Applications</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">How the system behaves in the wild.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">The same tokens produce a marketing hero, a product surface, a social card, and a deck slide. These are the shapes agents should reach for.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;">
+        <!-- marketing hero mock -->
+        <article style="background:#F9F4F1;border:1px solid rgba(23,20,18,0.10);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid rgba(23,20,18,0.08);"><img src="assets/logos/Leaf - Coral.svg" style="height:20px;"><div style="display:flex;gap:18px;align-items:center;"><span style="font:500 13px/1 'Mona Sans';color:#656565;">Product</span><span style="font:500 13px/1 'Mona Sans';color:#656565;">Services</span><span style="font:600 13px/1 'Mona Sans';color:#FFFDFB;background:#171412;padding:8px 13px;border-radius:999px;">Book a demo</span></div></div>
+          <div style="padding:44px 40px 48px;">
+            <p style="display:inline-flex;align-items:center;gap:8px;font:520 12.5px/1 'Mona Sans';color:#171412;background:#F2E8E1;border:1px solid rgba(23,20,18,0.08);padding:5px 11px;border-radius:999px;margin:0 0 20px;"><span style="width:6px;height:6px;border-radius:50%;background:#FB5E48;"></span>Performance intelligence</p>
+            <h3 style="font:640 42px/1.02 'Mona Sans';letter-spacing:-.03em;color:#171412;margin:0 0 16px;max-width:16ch;text-wrap:balance;">Know what your marketing actually earned.</h3>
+            <p style="font:400 17px/1.5 'Mona Sans';color:#656565;margin:0 0 26px;max-width:44ch;">Server-side tracking you can trust, reporting you can decide on, and teams that act on it.</p>
+            <div style="display:flex;gap:12px;"><span style="font:600 15px/1 'Mona Sans';color:{{ ctaFg }};background:{{ ctaBg }};border:{{ ctaBorder }};padding:13px 20px;border-radius:999px;">Start with Signal</span><span style="font:600 15px/1 'Mona Sans';color:#FB5E48;background:transparent;border:1px solid #FB5E48;padding:13px 20px;border-radius:999px;">See a report</span></div>
+          </div>
+        </article>
+        <!-- product surface mock -->
+        <article style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:18px;overflow:hidden;">
+          <div style="padding:22px 24px;border-bottom:1px solid rgba(23,20,18,0.08);display:flex;align-items:center;justify-content:space-between;"><span style="font:600 15px/1 'Mona Sans';color:#171412;">Answers · Overview</span><span style="font:600 11px/1 'Mona Sans';color:#171412;background:#7AD8CE;padding:5px 9px;border-radius:6px;">Live</span></div>
+          <div style="padding:22px 24px;display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;"><span style="font:500 13px/1 'Mona Sans';color:#656565;">Tracked revenue</span><span style="font:600 12px/1 'Mona Sans';color:#171412;background:#DCE8C4;padding:4px 8px;border-radius:6px;">+18.4%</span></div>
+            <div style="font:640 40px/1 'Mona Sans';letter-spacing:-.03em;color:#171412;">$2.41M</div>
+            <div style="height:8px;border-radius:6px;background:#F2E8E1;overflow:hidden;display:flex;"><span style="width:62%;background:#FB5E48;"></span><span style="width:23%;background:#EFB75A;"></span><span style="width:15%;background:#4FA3A6;"></span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+              <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:3px;background:#FB5E48;"></span><span style="font:400 13.5px/1 'Mona Sans';color:#171412;flex:1;">Paid media</span><span style="font:600 13.5px/1 'Mona Sans';color:#171412;">$1.49M</span></div>
+              <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:3px;background:#EFB75A;"></span><span style="font:400 13.5px/1 'Mona Sans';color:#171412;flex:1;">Organic</span><span style="font:600 13.5px/1 'Mona Sans';color:#171412;">$0.55M</span></div>
+              <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:3px;background:#4FA3A6;"></span><span style="font:400 13.5px/1 'Mona Sans';color:#171412;flex:1;">Email</span><span style="font:600 13.5px/1 'Mona Sans';color:#171412;">$0.37M</span></div>
+            </div>
+          </div>
+        </article>
+        <!-- social card mock -->
+        <article style="background:#171412;border-radius:18px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:260px;">
+          <img src="assets/logos/Leaf Icon - Coral.svg" style="height:30px;">
+          <div>
+            <p style="font:italic 500 27px/1.28 'Source Serif 4',Georgia,serif;color:#FFFDFB;margin:0 0 18px;text-wrap:balance;">“The signal was always there. We just made it trustworthy.”</p>
+            <span style="font:500 13px/1 'Mona Sans';color:rgba(255,253,251,0.55);">Leaf Colectivo · Episode 12</span>
+          </div>
+        </article>
+        <!-- deck slide mock -->
+        <article style="background:{{ blockBg }};border:{{ blockBorder }};border-radius:18px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;min-height:260px;">
+          <span style="font:520 12.5px/1 'Mona Sans';color:{{ blockFg }};opacity:.7;">Q3 review · 03</span>
+          <div>
+            <h3 style="font:640 34px/1.02 'Mona Sans';letter-spacing:-.02em;color:{{ blockFg }};margin:0 0 12px;text-wrap:balance;">Reliable data changed every downstream decision.</h3>
+            <p style="font:400 15px/1.5 'Mona Sans';color:{{ blockFg }};opacity:.78;margin:0;max-width:40ch;">Once Signal closed the tracking gap, Performance reallocated spend within a week.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ BRAND IN THE WILD ============ -->
+    <section id="wild" style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="max-width:760px;margin-bottom:44px;">
+        <p style="color:#FB5E48;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;">11 — Brand in the wild</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#171412;">The small, branded touchpoints.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:#656565;margin:0;text-wrap:pretty;">The tiny surfaces where Leaf shows up outside the product — a browser favicon, a link preview, an email sign-off. Small canvases, same system: the mark in Coral, Ink and Stone grounds, sentence case, one accent.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:16px;">
+        <!-- favicon -->
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;display:flex;flex-direction:column;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:4px;">Favicon</div>
+          <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0 0 22px;">The bare Leaf icon — never the wordmark. Three finishes so it reads on any chrome: Coral on light, Ink on light, White for dark mode.</p>
+          <div style="display:flex;gap:14px;margin-bottom:24px;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:9px;"><span style="width:100%;aspect-ratio:1;border-radius:14px;background:#F4EEE9;border:1px solid rgba(23,20,18,0.06);display:flex;align-items:center;justify-content:center;"><img src="assets/logos/Leaf Icon - Coral.svg" alt="Coral icon" style="width:42%;height:auto;"></span><span style="font:500 11.5px/1 'Mona Sans';color:#656565;">Coral</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:9px;"><span style="width:100%;aspect-ratio:1;border-radius:14px;background:#F4EEE9;border:1px solid rgba(23,20,18,0.06);display:flex;align-items:center;justify-content:center;"><img src="assets/logos/Leaf Icon.svg" alt="Ink icon" style="width:42%;height:auto;"></span><span style="font:500 11.5px/1 'Mona Sans';color:#656565;">Ink</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:9px;"><span style="width:100%;aspect-ratio:1;border-radius:14px;background:#171412;display:flex;align-items:center;justify-content:center;"><img src="assets/logos/Leaf Icon - Negative.svg" alt="White icon" style="width:42%;height:auto;"></span><span style="font:500 11.5px/1 'Mona Sans';color:#656565;">White · dark</span></div>
+          </div>
+          <!-- browser tab -->
+          <div style="margin-top:auto;background:#EDE3DC;border-radius:10px 10px 0 0;padding:8px 8px 0;">
+            <div style="display:flex;align-items:center;gap:8px;background:#F9F4F1;border:1px solid rgba(23,20,18,0.08);border-bottom:none;border-radius:8px 8px 0 0;padding:8px 11px;max-width:240px;">
+              <img src="assets/logos/Leaf Icon - Coral.svg" alt="" style="width:14px;height:14px;flex:none;">
+              <span style="font:500 12px/1 'Mona Sans';color:#171412;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Leaf — Decision-grade reporting</span>
+              <span style="color:#9A8F86;display:flex;flex:none;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></span>
+            </div>
+          </div>
+        </div>
+        <!-- app icon -->
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:4px;">App icon</div>
+          <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0 0 22px;">For a filled tile, pick one: Coral ground with a white icon, or Ink ground with a Canvas icon. Both keep the mark centred with generous padding.</p>
+          <div style="display:flex;gap:18px;margin-bottom:22px;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:10px;"><span style="width:88px;height:88px;border-radius:22px;background:#FB5E48;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(23,20,18,0.14);"><img src="assets/logos/Leaf Icon - Negative.svg" alt="App icon coral" style="width:48px;height:48px;"></span><span style="font:500 11.5px/1 'Mona Sans';color:#656565;">Coral · white</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:10px;"><span style="width:88px;height:88px;border-radius:22px;background:#171412;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(23,20,18,0.14);"><img src="assets/logos/Leaf Icon - Negative.svg" alt="App icon ink" style="width:48px;height:48px;"></span><span style="font:500 11.5px/1 'Mona Sans';color:#656565;">Ink · canvas</span></div>
+          </div>
+          <p style="font:400 12.5px/1.5 'Mona Sans';color:#9A8F86;margin:0;">Home-screen sizes round the corners further; ship the icon un-rounded and let the OS mask it.</p>
+        </div>
+      </div>
+
+      <!-- email signature -->
+      <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:26px;margin-bottom:16px;">
+        <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:4px;">Email signature</div>
+        <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0 0 20px;max-width:60ch;">Real text, not an image — so it stays crisp and links work. Coral for the address, Warm Grey for the rest, one line of role.</p>
+        <div style="background:#FBF7F4;border:1px solid rgba(23,20,18,0.08);border-radius:12px;padding:22px 24px;max-width:420px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;">Alex Rivera</div>
+          <div style="font:400 13.5px/1.4 'Mona Sans';color:#656565;margin-top:3px;">Solutions Lead · Leaf</div>
+          <div style="height:1px;background:rgba(23,20,18,0.10);margin:16px 0;"></div>
+          <img src="assets/logos/Leaf - Coral.svg" alt="Leaf" style="display:block;width:66px;height:auto;margin-bottom:12px;">
+          <div style="font:500 13px/1.7 'Mona Sans';color:#656565;"><a href="#" style="color:#FB5E48;">alex@leaf.fm</a> &nbsp;·&nbsp; <a href="#" style="color:#FB5E48;">leaf.fm</a><br>Know what your marketing actually earned.</div>
+        </div>
+      </div>
+
+      <!-- social / link previews -->
+      <div style="margin-bottom:16px;">
+        <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:4px;">Social &amp; link previews</div>
+        <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0 0 16px;max-width:66ch;">1200×630. The logo sits with the CTA, not floating alone. Product news leads on Ink; the blog leads on a brand-colour field with the icon and title; announcements can run light on Canvas.</p>
+
+        <!-- product / feature card -->
+        <div style="position:relative;background:#171412;border-radius:16px;overflow:hidden;padding:clamp(28px,4vw,48px);min-height:300px;display:flex;align-items:flex-start;margin-bottom:16px;">
+          <div style="max-width:22ch;">
+            <p style="font:600 13px/1 'Mona Sans';color:#7AD8CE;letter-spacing:.02em;margin:0 0 16px;">Signal · Server-side tracking</p>
+            <h3 style="font:640 clamp(28px,3.6vw,44px)/1.05 'Mona Sans';letter-spacing:-0.025em;color:#FFFDFB;margin:0;text-wrap:balance;">Know what your marketing actually earned.</h3>
+          </div>
+          <div style="position:absolute;right:clamp(28px,4vw,48px);bottom:clamp(28px,4vw,48px);display:flex;align-items:center;gap:20px;">
+            <img src="assets/logos/Leaf - Negative.svg" alt="Leaf" style="display:block;width:72px;height:auto;">
+            <span style="font:600 13px/1 'Mona Sans';color:#171412;background:#FB5E48;padding:10px 16px;border-radius:999px;">Start free</span>
+          </div>
+        </div>
+
+        <!-- blog card, secondary colour + library icon -->
+        <div style="position:relative;background:#4FA3A6;border-radius:16px;overflow:hidden;padding:clamp(28px,4vw,48px);min-height:300px;display:flex;flex-direction:column;justify-content:space-between;margin-bottom:16px;">
+          <img src="assets/logos/Leaf Blog - Black.svg" alt="Leaf Blog" style="position:absolute;bottom:clamp(28px,4vw,48px);right:clamp(28px,4vw,48px);width:132px;height:auto;opacity:1;">
+          <img src="assets/icons/Data Funnel.svg" alt="" style="display:block;width:64px;height:64px;">
+          <h3 style="font:640 clamp(28px,3.6vw,44px)/1.05 'Mona Sans';letter-spacing:-0.025em;color:#171412;margin:0;max-width:20ch;text-wrap:balance;">Building a funnel that survives attribution gaps</h3>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+          <!-- blog card -->
+          <div style="background:#FB5E48;border-radius:16px;overflow:hidden;padding:clamp(24px,3vw,36px);min-height:260px;display:flex;flex-direction:column;justify-content:space-between;">
+            <img src="assets/logos/Leaf Icon - Negative.svg" alt="Leaf" style="width:40px;height:40px;">
+            <div>
+              <p style="font:600 12px/1 'Mona Sans';color:rgba(255,253,251,0.75);letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px;">Leaf Blog</p>
+              <h4 style="font:640 clamp(22px,2.5vw,30px)/1.1 'Mona Sans';letter-spacing:-0.02em;color:#FFFDFB;margin:0;text-wrap:balance;">How server-side tracking survives cookie loss</h4>
+            </div>
+          </div>
+          <!-- announcement card, light -->
+          <div style="background:#FBF7F4;border:1px solid rgba(23,20,18,0.10);border-radius:16px;overflow:hidden;padding:clamp(24px,3vw,36px);min-height:260px;display:flex;flex-direction:column;justify-content:space-between;">
+            <p style="font:600 12px/1 'Mona Sans';color:#FB5E48;letter-spacing:.06em;text-transform:uppercase;margin:0;">New in Leaf</p>
+            <h4 style="font:640 clamp(22px,2.5vw,30px)/1.1 'Mona Sans';letter-spacing:-0.02em;color:#171412;margin:0;text-wrap:balance;">Blended CAC, now on every dashboard</h4>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;">
+              <span style="font:600 13px/1 'Mona Sans';color:#FFFDFB;background:#171412;padding:10px 16px;border-radius:999px;">See what's new</span>
+              <img src="assets/logos/Leaf Icon - Coral.svg" alt="Leaf" style="display:block;width:34px;height:auto;">
+            </div>
+          </div>
+        </div>
+
+        <!-- linkedin / instagram carousel -->
+        <div style="font:600 15px/1.3 'Mona Sans';color:#171412;margin:28px 0 4px;">Carousel post — LinkedIn / Instagram</div>
+        <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0 0 16px;max-width:66ch;">1080×1080 square cards. A title card opens, two full-colour content cards carry one idea each, a close card ends on the action. Ink anchors the set, the content cards pull vivid secondary fields (Aqua, Amber) for energy, and a black icon sits directly on each field per the imagery rule.</p>
+        <div style="display:flex;gap:14px;overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory;">
+
+          <!-- 01 · title card (Ink) -->
+          <div style="flex:0 0 auto;width:320px;aspect-ratio:1/1;scroll-snap-align:start;position:relative;background:#171412;border-radius:16px;overflow:hidden;padding:28px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <p style="font:600 12px/1 'Mona Sans';color:#FB5E48;letter-spacing:.02em;margin:0;">Leaf · Playbook</p>
+              <span style="font:600 12px/1 'Mona Sans';color:rgba(255,253,251,0.5);">01 / 04</span>
+            </div>
+            <h3 style="font:800 italic 34px/1.02 'Source Serif 4';color:#FFFDFB;margin:0;text-wrap:balance;">Four ways attribution quietly lies to you.</h3>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <img src="assets/logos/Leaf - Negative.svg" alt="Leaf" style="display:block;width:66px;height:auto;">
+              <span style="font:600 12px/1 'Mona Sans';color:rgba(255,253,251,0.55);">Swipe →</span>
+            </div>
+          </div>
+
+          <!-- 02 · content card (vivid Aqua) -->
+          <div style="flex:0 0 auto;width:320px;aspect-ratio:1/1;scroll-snap-align:start;position:relative;background:#7AD8CE;border-radius:16px;overflow:hidden;padding:28px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+              <img src="assets/icons/Data Funnel.svg" alt="" style="width:40px;height:40px;">
+              <span style="font:600 12px/1 'Mona Sans';color:rgba(23,20,18,0.45);">02 / 04</span>
+            </div>
+            <div>
+              <p style="font:600 12px/1 'Mona Sans';color:rgba(23,20,18,0.6);letter-spacing:.01em;margin:0 0 10px;">Last-click</p>
+              <h4 style="font:640 25px/1.08 'Mona Sans';letter-spacing:-0.02em;color:#171412;margin:0;text-wrap:balance;">It hands all the credit to the final touch.</h4>
+            </div>
+          </div>
+
+          <!-- 03 · content card (full Amber field) -->
+          <div style="flex:0 0 auto;width:320px;aspect-ratio:1/1;scroll-snap-align:start;position:relative;background:#F3C969;border-radius:16px;overflow:hidden;padding:28px;display:flex;flex-direction:column;justify-content:space-between;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+              <img src="assets/icons/Cash Flow.svg" alt="" style="width:40px;height:40px;">
+              <span style="font:600 12px/1 'Mona Sans';color:rgba(23,20,18,0.4);">03 / 04</span>
+            </div>
+            <div>
+              <p style="font:600 12px/1 'Mona Sans';color:rgba(23,20,18,0.6);letter-spacing:.01em;margin:0 0 10px;">Cookie loss</p>
+              <h4 style="font:640 25px/1.08 'Mona Sans';letter-spacing:-0.02em;color:#171412;margin:0;text-wrap:balance;">Half your conversions never make it back to source.</h4>
+            </div>
+          </div>
+
+          <!-- 04 · close / CTA card -->
+          <div style="flex:0 0 auto;width:320px;aspect-ratio:1/1;scroll-snap-align:start;position:relative;background:#171412;border-radius:16px;overflow:hidden;padding:28px;display:flex;flex-direction:column;justify-content:space-between;">
+            <span style="font:600 12px/1 'Mona Sans';color:rgba(255,253,251,0.5);align-self:flex-end;">04 / 04</span>
+            <h3 style="font:640 30px/1.05 'Mona Sans';letter-spacing:-0.025em;color:#FFFDFB;margin:0;text-wrap:balance;">See what your marketing actually earned.</h3>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+              <img src="assets/logos/Leaf - Negative.svg" alt="Leaf" style="display:block;width:66px;height:auto;">
+              <span style="font:600 13px/1 'Mona Sans';color:#171412;background:#FB5E48;padding:12px 18px;border-radius:999px;">Start free</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- rules -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Icon in tight squares</div>
+          <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">Favicons and app icons use the Leaf icon — Coral, Ink, or White to suit the ground. The full wordmark needs breathing room and never gets cropped into a square.</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Logo travels with the CTA</div>
+          <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">On share cards the wordmark sits beside the action, not alone in a corner — the headline owns the space, the lockup signs it off. Never a photo behind the wordmark (that's for co-brand posts — see <a href="#photography" style="color:#FB5E48;">Photography</a>).</p>
+        </div>
+        <div style="background:#FFFDFB;border:1px solid rgba(23,20,18,0.10);border-radius:16px;padding:24px;">
+          <div style="font:600 16px/1.2 'Mona Sans';color:#171412;margin-bottom:8px;">Signatures stay text</div>
+          <p style="font:400 14px/1.55 'Mona Sans';color:#656565;margin:0;">Email sign-offs are live HTML text with Coral links — never an image-only block that breaks on dark mode or high-DPI screens.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AGENTS ============ -->
+    <section id="agents" style="background:#171412;">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,7vw,104px) clamp(20px,5vw,56px);">
+      <div style="max-width:760px;margin-bottom:44px;">
+        <p style="display:inline-flex;align-items:center;gap:8px;color:#7AD8CE;font:600 13px/1 'Mona Sans';letter-spacing:.02em;margin:0 0 16px;"><span style="width:6px;height:6px;border-radius:50%;background:#7AD8CE;"></span>10 — For agents</p>
+        <h2 style="font:640 clamp(34px,4.4vw,52px)/1.0 'Mona Sans';letter-spacing:-0.025em;margin:0 0 18px;color:#FFFDFB;">Rules for generating on-brand Leaf artifacts.</h2>
+        <p style="font:400 19px/1.55 'Mona Sans';color:rgba(255,253,251,0.62);margin:0;text-wrap:pretty;">Read this before producing a deck, page, post, or doc. When these conflict with a specific instruction, ask — don't guess.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+        <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(122,216,206,0.25);border-radius:16px;padding:26px;">
+          <p style="font:600 13px/1 'Mona Sans';color:#7AD8CE;margin:0 0 18px;">Always</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;">
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Start on Light Stone. Use Canvas for dense or document-like content, Ink for high-impact moments.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Ink for primary text, Warm Grey for secondary. One decisive Coral moment per view.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Buttons come in two tiers. Primary: solid Coral with Canvas text. Secondary: transparent with a Coral border and Coral text. Coral is the brand colour — it carries the action, never a full content surface.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>For coral content blocks — cards, panels, slides — use soft Coral (a light tint) with Ink text, not a solid fill.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Mona Sans for headings and body; Source Serif 4 (800 / italic 500) only for editorial or quote moments.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Sentence case everywhere. Ink text on Coral, Aqua, and every secondary fill.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Black SVG icons, consistent within a set, ~⅓ the width of a coloured tile.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Reference tokens by name, not raw hex. Generous whitespace, ~14px radii.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Set copy in Ink or Coral only — plus Warm Grey for secondary text on light surfaces, and Aqua for small labels on Ink/dark surfaces (like this one). The secondary and state palettes are for fills, dots, charts, and category fields, never for setting type — their tones aren't strong enough to hold contrast at text sizes. Build small-text hierarchy with weight, not faint colour. The one exception: a state tone may label its own status — a Fern “success” or Ember “error” heading — at title size and weight.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Status uses the state palette, never Coral: alerts share one structure — soft tint + solid left accent + icon + Ink copy (Info Tidal, Success Fern, Warning Amber, Error Ember).</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Numbers: tabular figures, right-aligned; abbreviate currency at ≥1M; ratios 2 dp with ×, percentages 1 dp; deltas signed with ▲/▼ (Fern/Ember); dates as 1 Jun 2026; missing data is an em-dash, never blank or 0.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Imagery is iconographic, not photographic: one black line icon centred on a flat secondary-colour field (never Coral, never a gradient or photo). No stock imagery.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#7AD8CE;">→</span>Meet WCAG AA: text ≥4.5:1, a visible 2px focus ring, 44px targets, and never colour as the only cue — pair it with a glyph, label, or icon. Honour prefers-reduced-motion.</li>
+          </ul>
+        </div>
+        <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(192,69,59,0.35);border-radius:16px;padding:26px;">
+          <p style="font:600 13px/1 'Mona Sans';color:#E08A80;margin:0 0 18px;">Never</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px;">
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#E08A80;">×</span>Coral, Aqua, or a Stone tone as body text. Canvas/white text on Coral for anything longer than a short button label.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#E08A80;">×</span>A secondary colour dominating a full page or standing in for Coral as the signal.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#E08A80;">×</span>Source Serif for UI, tables, forms, nav, or small labels.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#E08A80;">×</span>ALL-CAPS labels, or Title Case on buttons and headings.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#E08A80;">×</span>Hypey marketing language, invented hex values, or cropping padded logos.</li>
+            <li style="font:400 15px/1.5 'Mona Sans';color:rgba(255,253,251,0.85);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#E08A80;">×</span>Gradients, emoji, or decorative effects that aren't part of the system.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- button spec -->
+      <div style="background:#FFFDFB;border-radius:16px;padding:26px 28px;margin-bottom:16px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+          <span style="font:600 15px/1 'Mona Sans';color:#FFFDFB;background:#FB5E48;padding:13px 22px;border-radius:999px;" style-hover="background:#E8462F;">Primary action</span>
+          <span style="font:600 15px/1 'Mona Sans';color:#FB5E48;background:transparent;border:1px solid #FB5E48;padding:12px 22px;border-radius:999px;" style-hover="background:#FBE4DF;">Secondary</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <p style="font:600 14px/1.3 'Mona Sans';color:#171412;margin:0;">Coral is the brand colour, used the way Stripe uses purple.</p>
+          <p style="font:400 13.5px/1.5 'Mona Sans';color:#656565;margin:0;">Primary: solid Coral, Canvas text, darkens on hover. Secondary: Coral outline and Coral text, soft-tint fill on hover. One primary per view.</p>
+        </div>
+      </div>
+
+      <!-- artifact recipes -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px;">
+        <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(255,253,251,0.1);border-radius:14px;padding:22px;"><div style="font:600 15px/1 'Mona Sans';color:#FFFDFB;margin-bottom:12px;">Decks</div><p style="font:400 13.5px/1.55 'Mona Sans';color:rgba(255,253,251,0.6);margin:0;">Light Stone slides; one Coral or Ink section-break per deck. Serif only for the opening statement and quotes.</p></div>
+        <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(255,253,251,0.1);border-radius:14px;padding:22px;"><div style="font:600 15px/1 'Mona Sans';color:#FFFDFB;margin-bottom:12px;">Web pages</div><p style="font:400 13.5px/1.55 'Mona Sans';color:rgba(255,253,251,0.6);margin:0;">Light Stone canvas, Canvas cards, Ink text. Coral for the single primary CTA. Sentence-case nav.</p></div>
+        <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(255,253,251,0.1);border-radius:14px;padding:22px;"><div style="font:600 15px/1 'Mona Sans';color:#FFFDFB;margin-bottom:12px;">Social</div><p style="font:400 13.5px/1.55 'Mona Sans';color:rgba(255,253,251,0.6);margin:0;">Ink or Coral field, icon watermark, one line of serif. Secondary colour to distinguish a series.</p></div>
+        <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(255,253,251,0.1);border-radius:14px;padding:22px;"><div style="font:600 15px/1 'Mona Sans';color:#FFFDFB;margin-bottom:12px;">Docs</div><p style="font:400 13.5px/1.55 'Mona Sans';color:rgba(255,253,251,0.6);margin:0;">Canvas background for clarity, Ink text, Warm Grey metadata. Minimal colour — Coral for emphasis only.</p></div>
+      </div>
+
+      <!-- token cheat sheet -->
+      <div style="background:rgba(255,253,251,0.04);border:1px solid rgba(255,253,251,0.1);border-radius:16px;padding:26px 28px;">
+        <p style="font:600 13px/1 'Mona Sans';color:#7AD8CE;margin:0 0 18px;">Token cheat-sheet</p>
+        <div style="font-family:'Mona Sans';font-size:13px;line-height:2.0;color:rgba(255,253,251,0.82);white-space:pre-wrap;">--leaf-color-brand-coral: #FB5E48;      /* signal, one per view       */
+--leaf-color-neutral-light-stone: #F9F4F1;  /* default background     */
+--leaf-color-neutral-stone: #F2E8E1;        /* surfaces, grouping     */
+--leaf-color-neutral-canvas: #FFFDFB;       /* clarity, cards, docs   */
+--leaf-color-neutral-ink: #171412;          /* primary text           */
+--leaf-color-neutral-warm-grey: #656565;    /* secondary text         */
+--leaf-color-highlight-aqua: #7AD8CE;       /* highlight, positive    */
+--leaf-color-state-success: #2F8B57;        /* Fern  · solid + tint   */
+--leaf-color-state-warning: #C77E1C;        /* Amber · solid + tint   */
+--leaf-color-state-error: #C63A2B;          /* Ember · clear of Coral */
+--leaf-color-state-info: #2E8388;           /* Tidal · solid + tint   */
+--leaf-font-sans: "Mona Sans";              /* everything             */
+--leaf-font-serif: "Source Serif 4";        /* editorial · 800 / i500 */</div>
+      </div>
+
+      <div style="margin-top:44px;padding-top:32px;border-top:1px solid rgba(255,253,251,0.12);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
+        <div style="display:flex;align-items:center;gap:12px;"><img src="assets/logos/Leaf Icon - Coral.svg" style="height:22px;"><span style="font:400 14px/1.4 'Mona Sans';color:rgba(255,253,251,0.5);">Leaf design system · shaped for people and agents</span></div>
+        <span style="font:400 13px/1.4 'Mona Sans';color:rgba(255,253,251,0.4);">Source: brand repo · DESIGN.md</span>
+      </div>
+    </div>
+    </section>
+
+    <!-- ============ FOOTER / MASTHEAD ============ -->
+    <footer style="max-width:1200px;margin:0 auto;padding:clamp(44px,5vw,68px) clamp(20px,5vw,56px);border-top:1px solid rgba(23,20,18,0.09);">
+      <div style="display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:32px;align-items:start;">
+        <div>
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px;"><img src="assets/logos/Leaf Icon - Coral.svg" style="height:26px;"><span style="font:600 17px/1 'Mona Sans';color:#171412;">Leaf Design System</span></div>
+          <span style="display:inline-flex;align-items:center;gap:8px;background:#FBE4DF;border:1px solid rgba(251,94,72,0.42);border-radius:999px;padding:5px 12px;"><span style="width:6px;height:6px;border-radius:50%;background:#FB5E48;"></span><span style="font:600 12px/1 'Mona Sans';color:#C0453B;">v1.0</span></span>
+          <p style="font:400 13.5px/1.55 'Mona Sans';color:#656565;margin:14px 0 0;max-width:34ch;">Version 1.0 — ratified 16 Jul 2026. A living document maintained by the Creative team; changes go through review.</p>
+        </div>
+        <div>
+          <p style="font:600 12.5px/1 'Mona Sans';color:#FB5E48;margin:0 0 14px;">Get the assets</p>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <a href="#" style="font:500 14px/1.3 'Mona Sans';color:#171412;text-decoration:none;" style-hover="color:#FB5E48;">Figma library</a>
+            <a href="#logos" style="font:500 14px/1.3 'Mona Sans';color:#171412;text-decoration:none;" style-hover="color:#FB5E48;">Logo &amp; lockup pack</a>
+            <a href="#icons" style="font:500 14px/1.3 'Mona Sans';color:#171412;text-decoration:none;" style-hover="color:#FB5E48;">Icon library (~1,250)</a>
+            <a href="#" style="font:500 14px/1.3 'Mona Sans';color:#171412;text-decoration:none;" style-hover="color:#FB5E48;">Design tokens · DESIGN.md</a>
+          </div>
+        </div>
+        <div>
+          <p style="font:600 12.5px/1 'Mona Sans';color:#FB5E48;margin:0 0 14px;">Ownership</p>
+          <p style="font:400 13.5px/1.55 'Mona Sans';color:#656565;margin:0 0 10px;">Maintained by the Creative team.</p>
+          <a href="mailto:creative@leaf.fm" style="font:600 14px/1.3 'Mona Sans';color:#171412;text-decoration:none;" style-hover="color:#FB5E48;">creative@leaf.fm</a>
+          <p style="font:400 13.5px/1.55 'Mona Sans';color:#656565;margin:10px 0 0;max-width:32ch;">Request an exception or a new asset before going off-system.</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1280, &quot;height&quot;: 900 }
+}">class Component extends DCLogic {
+  renderVals() {
+    const CORAL = "#FB5E48", INK = "#171412", CANVAS = "#FFFDFB", TINT = "#FBE4DF";
+
+    // CTA buttons: solid Coral with Canvas text.
+    const ctaBg = CORAL, ctaBorder = "0 solid transparent", ctaFg = CANVAS;
+    // Coral content blocks: soft Coral tint + Ink text.
+    const blockBg = TINT, blockBorder = "1px solid rgba(251,94,72,0.42)", blockFg = INK;
+
+    return { ctaBg, ctaBorder, ctaFg, blockBg, blockBorder, blockFg };
+  }
+}</script>
+</body>
+</html>
