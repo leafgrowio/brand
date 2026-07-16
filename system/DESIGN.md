@@ -2,12 +2,14 @@
 
 This document is the written source of truth for Leaf's design system. It pairs with two visual references: the **brand book** (`Leaf Brand Book.dc.html`) for brand foundations, and the **component library** (`Leaf Component Library.dc.html`) for the application layer. Where any of them disagree, fix all. Keep the split clean: brand-level language (foundations, colour, type, voice, logos, icons, imagery, photography, data viz, applications preview) lives in the brand book; product components (catalog, patterns, app shell, overlays) live in the component library.
 
-Status: v1.0.4 — ratified 16 July 2026 (patches: palette tables; fonts pinned to upstream releases). All sections locked.
+Status: v1.0.5 — ratified 16 July 2026 (patches: palette tables; fonts pinned to upstream releases; visual references now consume the system). All sections locked.
 Source: core brand reference (June 2026) + v1.0 ratification (July 2026).
 
 ---
 
 ## Changelog
+
+**v1.0.5 — July 2026 (patch).** The two visual references (`Leaf Brand Book.dc.html`, `Leaf Component Library.dc.html`) refactored to consume the system instead of restating it: all styling now flows through `styles.css` tokens (`var(--leaf-*)`; ~1,000 hard-coded values replaced), fonts self-hosted via `tokens/fonts.css` (removing the component library's Google-Fonts Mona Sans, which strips the stylistic sets), and both pages gained a **Rendered from source** section that live-embeds every specimen card (18 component + 17 foundation) at its declared viewport, plus per-section source links into `tokens/`, `components/`, and this spec. Reference-only drift fixed against the spec in passing: off-token alert-banner tints → the state tint tokens; two hand-typed muted greys → `--leaf-text-muted`. No token values or rules changed. Do/don't specimens keep literal off-palette hexes by design.
 
 **v1.0.4 — July 2026 (patch).** Source Serif 4 upgraded to upstream **4.005R** (adobe-fonts/source-serif) and both font families pinned to named releases, kept current deliberately (procedure in `AGENTS.md`). The repo's font folder now carries variable sources + licences only — static instances removed.
 

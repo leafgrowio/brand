@@ -6,7 +6,7 @@ This folder is the **compiled, consumable form of Leaf's brand**: tokens, React 
 
 1. **`DESIGN.md`** (in this folder) — the ratified written spec (v1.0). Every rule and token traces to it. This is the single canonical DESIGN.md; there is deliberately no copy at the repo root.
 2. **`readme.md`** — the guide + manifest digest (voice rules, visual fundamentals, component index, intentional additions, resolved discrepancies).
-3. **`Leaf Brand Book.dc.html`** and **`Leaf Component Library.dc.html`** — visual references for humans. The compiler ignores them; do not delete them.
+3. **`Leaf Brand Book.dc.html`** and **`Leaf Component Library.dc.html`** — visual references for humans, and navigators of the system (since v1.0.5). They consume `styles.css` — all styling through `var(--leaf-*)` tokens, fonts self-hosted via `tokens/fonts.css` — and each ends with a **Rendered from source** section that live-embeds every specimen card via relative iframes at its declared viewport. Keep them token-clean (no new hard-coded values; the only literal hexes are visible swatch-label text, do/don't specimens, and the JS fallbacks beside the `getComputedStyle` token reads). Renaming or moving a card breaks these embeds — update both references in the same change. The compiler ignores them; do not delete them.
 4. The files themselves (`tokens/`, `components/`, `foundations/`, `ui_kits/`).
 
 Where anything disagrees, DESIGN.md wins and **all** artifacts get fixed together in the same change. A token value may never differ between `tokens/*.css` and DESIGN.md's implementation block.
