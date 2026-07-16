@@ -17,7 +17,7 @@
   --leaf-type-caption: 500 13px/1.4 "Mona Sans";
 
   /* --- stylistic sets: always on, enforced on * in fonts.css --- */
-  --leaf-type-features: "ss03" on, "ss05" on, "ss06" on, "ss07" on, "ss09" on;
+  --leaf-type-features: "ss03" on, "ss05" on, "ss06" on, "ss07" on;
 
   /* --- tracking: tighten large headings --- */
   --leaf-type-tracking-display: -0.03em;

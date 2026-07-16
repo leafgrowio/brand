@@ -2,12 +2,14 @@
 
 This document is the written source of truth for Leaf's design system. It pairs with two visual references: the **brand book** (`Leaf Brand Book.dc.html`) for brand foundations, and the **component library** (`Leaf Component Library.dc.html`) for the application layer. Where any of them disagree, fix all. Keep the split clean: brand-level language (foundations, colour, type, voice, logos, icons, imagery, photography, data viz, applications preview) lives in the brand book; product components (catalog, patterns, app shell, overlays) live in the component library.
 
-Status: v1.0.1 — ratified 16 July 2026 (patch: palette tables restored). All sections locked.
+Status: v1.0.2 — ratified 16 July 2026 (patches: palette tables restored; stylistic sets corrected to the four the font ships). All sections locked.
 Source: core brand reference (June 2026) + v1.0 ratification (July 2026).
 
 ---
 
 ## Changelog
+
+**v1.0.2 — July 2026 (patch).** Corrected the stylistic sets to the four Mona Sans actually ships (ss03/05/06/07). The previously listed ss09 does not exist in the font — the distinctive Q with the diagonal arm is Mona Sans's default letterform and needs no feature. CSS updated in `tokens/typography.css`.
 
 **v1.0.1 — July 2026 (patch).** Restored the palette tables the Colour section references — core, neutral, highlight, and secondary with hexes — which had dropped out of the doc; values match `tokens/colors.css`.
 
@@ -92,7 +94,7 @@ Display/H1 are fluid on marketing surfaces (`clamp()`); the values above are the
 
 ### Stylistic sets
 
-Mona Sans is a variable font. Five OpenType stylistic sets are **always on**, set once at the root so every surface inherits the same letterforms:
+Mona Sans is a variable font. Four OpenType stylistic sets are **always on**, set once at the root so every surface inherits the same letterforms (the distinctive `Q` with the diagonal arm is Mona Sans's default letterform — no feature needed):
 
 | Set | Feature | Letterform |
 | --- | --- | --- |
@@ -100,11 +102,10 @@ Mona Sans is a variable font. Five OpenType stylistic sets are **always on**, se
 | `ss05` | on | Double-storey `a` |
 | `ss06` | on | Double-storey `g` |
 | `ss07` | on | Square `G` |
-| `ss09` | on | `Q` with diagonal arm |
 
 ```css
 /* the `font` shorthand resets this — enforce on * where inline fonts are used */
-* { font-feature-settings: "ss03" on, "ss05" on, "ss06" on, "ss07" on, "ss09" on; }
+* { font-feature-settings: "ss03" on, "ss05" on, "ss06" on, "ss07" on; }
 ```
 
 ---
@@ -586,7 +587,7 @@ The base palette the whole system builds on. Token names live in `tokens/colors.
   --leaf-type-body: 400 16px/1.6 "Mona Sans";
   --leaf-type-label: 500 14px/1.4 "Mona Sans";
   --leaf-type-caption: 500 13px/1.4 "Mona Sans";
-  --leaf-type-features: "ss03" on, "ss05" on, "ss06" on, "ss07" on, "ss09" on;  /* always on */
+  --leaf-type-features: "ss03" on, "ss05" on, "ss06" on, "ss07" on;  /* always on */
 }
 ```
 

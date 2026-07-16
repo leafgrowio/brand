@@ -28,7 +28,7 @@ SKILL.md                # agent entry point for producing Leaf-branded work
 **Tokens**
 - All styling flows through `var(--leaf-*)` tokens. Never introduce a new hex colour anywhere; one-off `rgba(23,20,18,x)` / `rgba(255,253,251,x)` alphas are allowed only where the spec uses them and no token exists.
 - A token change lands in **both** `tokens/*.css` and DESIGN.md's implementation block in the same commit, with a version bump (see Governance).
-- Fonts stay **self-hosted** from `assets/fonts/`. Never switch Mona Sans to Google Fonts — that build strips the ss03/05/06/07/09 stylistic-set tables the brand depends on. The sets are enforced via `* { font-feature-settings: var(--leaf-type-features) }` because the `font` shorthand resets them.
+- Fonts stay **self-hosted** from `assets/fonts/`. Never switch Mona Sans to Google Fonts — that build strips the ss03/05/06/07 stylistic-set tables the brand depends on. The sets are enforced via `* { font-feature-settings: var(--leaf-type-features) }` because the `font` shorthand resets them.
 - `assets/fonts/` here is a deliberate **runtime subset** (4 variable TTFs + their OFL licences) of the canonical font sources at the repo root (`assets/font/`, which also carries static faces and READMEs). The Claude Design project is self-contained, so the system cannot reference files outside this folder — do not "deduplicate" the subset away, and keep the OFL licence files beside the fonts (the SIL licence requires them to travel together).
 
 **Components**
