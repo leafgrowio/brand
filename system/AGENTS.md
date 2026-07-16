@@ -81,6 +81,8 @@ Forward (the normal loop):
 4. Push **only the changed paths** with the DesignSync tool: `list_files` to confirm state → `finalize_plan` with the exact changed paths → `write_files` with `localPath` entries relative to this folder (`localDir` = this folder). Incremental, per-component — never a wholesale replace, and never touching the `_ds_*` generated files.
 5. Open the project in the Claude Design app afterwards so its self-check recompiles `_ds_bundle.js` / `_ds_manifest.json`.
 
+Downstream consumers to re-sync on version bumps (both live in the `leaf` plugin repo, `prompts/`): `brand/files/DESIGN.md` (verbatim copy of `DESIGN.md`, keeping its header) and the `leaf-design` artifact kit (`brand/skills/leaf-design/assets/leaf-tokens.css` regenerated from `tokens/*.css`; the font subset via `brand/tools/subset_fonts.py` if Mona Sans changed).
+
 Reverse (a change born in the app — e.g. a generation produced a treatment worth keeping): pull it back before it strands — `get_file` the changed component, land the change here **and** in DESIGN.md, then re-push so both sides agree.
 
 DesignSync is a Claude-session tool. Agents without it (Codex, others): make the repo-side change with full verification, then leave the push to a Claude Code session or note it clearly for a human — do not attempt to edit the Claude Design project by other means.
