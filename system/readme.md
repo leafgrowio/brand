@@ -10,7 +10,7 @@ Version 1.0 — ratified 16 July 2026. Maintained by the Creative team (creative
 
 **For agents:** read [SKILL.md](SKILL.md). Short version — for artifacts and static HTML, copy the token values and specimen patterns; for production code, import the components; for rules, read this file and DESIGN.md.
 
-**Fonts are self-hosted and that matters.** Mona Sans must load from `assets/fonts/` — the Google Fonts build strips the stylistic-set tables (ss03/05/06/07) that give Leaf its letterforms. The sets are enforced globally via `* { font-feature-settings: var(--leaf-type-features) }` because the `font` shorthand resets them. Source Serif 4 (editorial serif only — never UI, tables, forms, nav, or small labels) is self-hosted alongside for parity.
+**Fonts are self-hosted and that matters.** Mona Sans must load from `assets/fonts/` — the Google Fonts build strips the stylistic-set tables (ss03/05/06/07/09) that give Leaf its letterforms. The sets are enforced globally via `* { font-feature-settings: var(--leaf-type-features) }` because the `font` shorthand resets them. Source Serif 4 (editorial serif only — never UI, tables, forms, nav, or small labels) is self-hosted alongside for parity.
 
 ## Content fundamentals
 
