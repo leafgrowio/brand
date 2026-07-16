@@ -52,10 +52,10 @@ Icon themes currently include:
 
 Each theme is organized by icon name. Each icon folder is organized by colour variation:
 
-- `black`
-- `black solid`
-- `white`
-- `white solid`
+- `black` — the default; black line-art is the brand treatment
+- `white` — line-art for dark surfaces
+
+Solid variations were deliberately removed (July 2026): the brand is line-art only, and keeping solids invited off-brand use. Do not re-add them. Any variation change must be coordinated with a manifest regeneration in the `leaf` plugin repo (`prompts/brand/tools/generate_icon_manifest.py`) and updates to the hard-coded variation lists in the `find-icon` skill.
 
 Each variation contains `png/` and `svg/` exports. The canonical structure is:
 

@@ -52,11 +52,13 @@ assets/icons/<theme>/<icon>/<icon-variant>/<variation>/<format>/<asset>
 
 Use `default` for the unsuffixed original export and numbered folders such as `1`, `2`, or `3` for alternate drawings. Filenames should match the icon name, with the numbered variant appended when relevant.
 
+Colour variations are `black` (the default — black line-art is the brand treatment) and `white` (line-art for dark surfaces). The brand carries no solid icon variations.
+
 Examples:
 
 ```text
 assets/icons/business/Analytical Report/black/svg/Analytical Report.svg
-assets/icons/shopping/Discount Tag/white solid/png/Discount Tag.png
+assets/icons/shopping/Discount Tag/white/png/Discount Tag.png
 assets/icons/electronics/Dataserver/2/black/svg/Dataserver_2.svg
 ```
 

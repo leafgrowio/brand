@@ -34,7 +34,7 @@ Leaf sounds commercially sharp, technically credible, plain-spoken, and evidence
 
 ## Iconography
 
-Default to SVG, black variation. This project carries a curated flat set in `assets/icons/` (the icons the brand book and kit actually use). The full library (~1,250 icons) lives in the [brand repo](https://github.com/leafgrowio/brand) under `assets/icons/<theme>/<icon>/<variation>/<format>/` — themes: banking, business, communications, ecology, education, electronics, logistics, shopping, social; variations: black, black solid, white, white solid.
+Default to SVG, black variation. This project carries a curated flat set in `assets/icons/` (the icons the brand book and kit actually use). The full library (~1,250 icons) lives in the [brand repo](https://github.com/leafgrowio/brand) under `assets/icons/<theme>/<icon>/<variation>/<format>/` — themes: banking, business, communications, ecology, education, electronics, logistics, shopping, social; variations: black (default) and white (dark surfaces), both line-art — the brand carries no solid icons.
 
 Sizes 16 · 20 · 24 · 32 · 48px. In coloured category tiles the icon is ~⅓ of the shorter side, always black line-art on a flat secondary-colour field — never recoloured, never on Coral. Leaf imagery is iconographic, not photographic: one icon, optically centred, one flat secondary field, topic-matched (people → Heather, decisions → Harbor, momentum → Marigold). Photography is the deliberate exception, reserved for customers in flight (co-brand `Partner × leafsignal` lockups, customer quotes on Ink).
 
