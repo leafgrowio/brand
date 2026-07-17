@@ -3,7 +3,7 @@
 Self-contained [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) for working with the Leaf brand from any Claude setup — Claude Code CLI, the desktop app, or anything else that reads `SKILL.md` folders. They are the same skills that ship inside Leaf's internal `leaf` plugin, packaged here so that people without access to the plugin distribution can still generate on-brand output.
 
 - **`find-icon/`** — resolves a natural-language description to an exact Leaf icon or logo asset (SVG or PNG, right colour variation) from this repo's ~1,250-icon library, and can generate Notion banners from a pick. Assets are fetched at runtime from this repo's raw GitHub URLs and cached locally, so the skill folder stays small.
-- **`leaf-design/`** — the artifact kit: Leaf design tokens, base styles, component classes, chart recipes, and an embeddable Mona Sans subset, plus the brand's hard rules, so generated HTML artifacts, dashboards, decks, and reports follow the Leaf design system without fetching anything at render time.
+- **`leaf-design/`** — the artifact kit: Leaf design tokens, base styles, component classes, chart recipes, and an embeddable Mona Sans subset, plus the brand's hard rules, so generated HTML artifacts, dashboards, decks, and reports follow the Leaf design system without fetching anything at render time. Also carries the matplotlib kit for Python-generated charts: "Leaf Sans" static font cuts (Mona Sans with the brand letterforms and tabular figures frozen into the glyphs — matplotlib can't use variable fonts or apply OpenType features) and `leaf_matplotlib.py`, which applies the Leaf chart style and number formats in one call.
 
 ## Install
 
@@ -19,7 +19,7 @@ cp -R brand/skills/find-icon brand/skills/leaf-design ~/.claude/skills/
 
 **skills CLI:** `npx skills add leafgrowio/brand` installs them from this repo directly, if you use the `skills` installer.
 
-Requirements: `find_icon.py` is stdlib-only. Banner generation additionally needs Pillow (`pip install pillow`). Asset fetching needs network access to `raw.githubusercontent.com` (with an automatic git-clone fallback via `github.com` when raw is blocked).
+Requirements: `find_icon.py` is stdlib-only. Banner generation additionally needs Pillow (`pip install pillow`); branded matplotlib charts need matplotlib ≥ 3.7. Asset fetching needs network access to `raw.githubusercontent.com` (with an automatic git-clone fallback via `github.com` when raw is blocked).
 
 **Leafers:** if you have the `leaf` plugin installed, do not install these — the plugin already ships both skills (plus `leaf-context`, which layers the deeper design spec and company context on top). These copies exist for setups the plugin does not reach.
 

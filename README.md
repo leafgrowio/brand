@@ -111,7 +111,7 @@ Assets are consumed remotely over `raw.githubusercontent.com/leafgrowio/brand/ma
 `skills/` holds standalone Claude Agent Skills for working with the brand from any Claude setup, without Leaf's internal plugin distribution:
 
 - `skills/find-icon/` — resolves a natural-language description to an exact icon or logo asset in this repo (right colour variation, SVG or PNG) and can generate Notion banners from a pick.
-- `skills/leaf-design/` — the artifact kit: design tokens, base styles, component classes, chart recipes, and an embeddable Mona Sans subset, so generated artifacts follow the Leaf design system.
+- `skills/leaf-design/` — the artifact kit: design tokens, base styles, component classes, chart recipes, and an embeddable Mona Sans subset, so generated artifacts follow the Leaf design system. Includes the matplotlib kit: "Leaf Sans" static font cuts (the brand letterforms frozen in, since matplotlib can't apply OpenType features) plus a one-call style/palette/formatter helper for Python-generated charts.
 
 Install by copying the skill folders into `~/.claude/skills/` (or a project's `.claude/skills/`) — see `skills/README.md` for full instructions. These folders are synced exports from the internal `leaf` plugin repo, which remains the canonical source; edit them there, never here.
 

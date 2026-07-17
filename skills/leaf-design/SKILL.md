@@ -1,6 +1,6 @@
 ---
 name: leaf-design
-description: Make any generated visual artifact look and sound like Leaf — HTML artifacts, dashboards, deck slides, landing mockups, reports, social cards, charts. Ships a self-contained artifact kit (design tokens, base styles, component classes, an embeddable Mona Sans subset) plus the brand's hard rules, so artifacts follow the Leaf design system without fetching anything at render time. Use before generating any visual output for Leaf; pairs with find-icon (assets) and the full design spec, system/DESIGN.md in leafgrowio/brand (deep rules).
+description: Make any generated visual artifact look and sound like Leaf — HTML artifacts, dashboards, deck slides, landing mockups, reports, social cards, charts (including matplotlib). Ships a self-contained artifact kit (design tokens, base styles, component classes, an embeddable Mona Sans subset) plus a matplotlib kit (static brand fonts with the letterforms frozen in, an rcParams/palette helper) and the brand's hard rules, so output follows the Leaf design system without fetching anything at render time. Use before generating any visual output for Leaf; pairs with find-icon (assets) and the full design spec, system/DESIGN.md in leafgrowio/brand (deep rules).
 ---
 
 # Leaf design (artifact kit)
@@ -15,6 +15,8 @@ This kit is a downstream build of the Leaf design system (`system/` in the publi
 - **`leaf-tokens.css`** — just the token block, for when you're adding Leaf styling to an existing artifact rather than starting fresh. Paste it into the `<style>` and reference only `var(--leaf-*)` from then on.
 - **`leaf-fonts-inline.css`** — Mona Sans as an embeddable `@font-face` (latin subset, variable weight 200–900, the five brand stylistic sets intact; ~60KB base64). Replace the `/* FONT: ... */` comment in the template with this file's contents.
 - **`MonaSans-subset.woff2`** — the raw subset behind that CSS (SIL OFL; licence travels with the brand repo). Rebuild both with `brand/tools/subset_fonts.py` in Leaf's internal `leaf` plugin repo when the brand repo's font changes.
+- **`LeafSans-{Regular,Medium,SemiBold,Bold}.ttf`** — static cuts of Mona Sans (SIL OFL; copyright and licence records kept inside each file) for renderers that can't use variable fonts or apply OpenType features (matplotlib above all), with the brand stylistic sets and tabular figures frozen into the glyphs. The family registers as "Leaf Sans" (the OFL reserves "Mona" for unmodified builds, and the distinct name stops a stock Mona Sans shadowing it). Built by the same `subset_fonts.py`.
+- **`leaf_matplotlib.py`** — the matplotlib kit: registers those statics and applies the Leaf rcParams (grounds, grid, spines, series cycle, type), and exposes the palette plus the number-rule formatters (`currency()`, `fmt_ratio()`, `fmt_delta()`, …). One call: `leaf.use()`.
 
 **When to embed the font:** whenever type is prominent — decks, heroes, landing mockups, dashboards, anything a human is meant to *look at*. Skip it only for dense utilitarian output (a long data table, a quick throwaway diff view); the template's fallback stack degrades gracefully. Never load Mona Sans from Google Fonts anywhere: their build strips the stylistic sets that make the letterforms Leaf's.
 
@@ -30,7 +32,7 @@ This kit is a downstream build of the Leaf design system (`system/` in the publi
 
 ## Charts
 
-Read `references/chart-recipes.md` before drawing any chart. The load-bearing rules: categorical series in fixed order (`--leaf-chart-series-1..6` — Coral leads or flags the one series that matters over a graphite set); hairline gridlines (`--leaf-chart-grid`) and a slightly stronger baseline (`--leaf-chart-axis`); axis labels in Warm Grey caption size; direct series labels over legends where space allows; Fern/Ember reserved for good/bad, never as series colours; no 3D, no drop shadows, no gradients outside the defined ramps.
+Read `references/chart-recipes.md` before drawing any chart in HTML/SVG. For charts generated in Python, read `references/matplotlib.md` and use the kit's `leaf_matplotlib.py` — never point matplotlib at stock Mona Sans (it can't apply the stylistic sets; the shipped "Leaf Sans" statics have them frozen in). The load-bearing rules: categorical series in fixed order (`--leaf-chart-series-1..6` — Coral leads or flags the one series that matters over a graphite set); hairline gridlines (`--leaf-chart-grid`) and a slightly stronger baseline (`--leaf-chart-axis`); axis labels in Warm Grey caption size; direct series labels over legends where space allows; Fern/Ember reserved for good/bad, never as series colours; no 3D, no drop shadows, no gradients outside the defined ramps.
 
 ## Icons and logos in artifacts
 
