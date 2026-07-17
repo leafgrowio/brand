@@ -19,9 +19,12 @@ properly and never applies OpenType features. (Renamed per the OFL's
 Reserved Font Name clause; the distinct family also stops a stock Mona Sans
 install shadowing the frozen letterforms.) Do not substitute a stock
 Mona Sans here: it will render the wrong letterforms and proportional
-digits. ▲/▼ are not in Mona Sans; they render
-from the DejaVu Sans fallback (matplotlib >= 3.7), which is why it stays in
-the family list.
+digits. ▲/▼ are not in Mona Sans; the build draws them into Leaf Sans as
+original Leaf geometry (sized to the tabular figures, so delta columns
+align), which is why one family covers everything a Leaf chart sets and
+findfont stays silent. If a chart genuinely needs glyphs beyond latin +
+▲/▼, append "DejaVu Sans" to rcParams["font.family"] after use() and
+accept its one-line weight-miss log as the trade.
 
 Palette and rules mirror leaf-tokens.css / references/chart-recipes.md
 (downstream of system/DESIGN.md in leafgrowio/brand). Never edit values here;
@@ -94,11 +97,12 @@ def rc(lead: str = "coral") -> dict:
 
     colors = SERIES if lead == "coral" else MONO
     return {
-        # type — Leaf Sans statics; DejaVu covers ▲/▼ (not in Mona Sans).
-        # The families MUST be an explicit list: matplotlib only builds a
-        # per-glyph fallback chain from a list, never through the generic
-        # 'sans-serif' alias (which resolves to a single font).
-        "font.family": [FAMILY, "DejaVu Sans"],
+        # type — the Leaf Sans statics carry everything a Leaf chart sets,
+        # ▲/▼ included, so one family keeps findfont silent. Kept as a list:
+        # appending a fallback family (e.g. "DejaVu Sans" for exotic glyphs)
+        # only builds a per-glyph fallback chain in list form, never through
+        # the generic 'sans-serif' alias.
+        "font.family": [FAMILY],
         "font.size": 10.0,
         # text colours: titles Ink, axis labels and ticks Warm Grey
         "text.color": INK,

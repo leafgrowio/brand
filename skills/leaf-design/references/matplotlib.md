@@ -8,9 +8,9 @@ what matplotlib needs on top.
 
 ## Quickstart
 
-The kit ships in `assets/`: `leaf_matplotlib.py` plus four
-`LeafSans-*.ttf` statics. The module finds the fonts next to itself, so
-keep those five files together if you copy them out of the skill.
+The kit ships in `assets/`: `leaf_matplotlib.py` plus four `LeafSans-*.ttf`
+statics. The module finds the fonts next to itself, so keep those five files
+together if you copy them out of the skill.
 
 ```python
 import sys
@@ -49,10 +49,12 @@ glyphs.
   the wrong letterforms and proportional digits. This is the same reason the
   web kit self-hosts. If someone hands you a chart set in plain "Mona Sans",
   the letterforms are wrong — rebuild with the kit.
-- ▲/▼ are not in Mona Sans; the kit keeps DejaVu Sans in the family list and
-  matplotlib (≥ 3.7) pulls just those glyphs from it. A one-line log noise
-  `findfont: Failed to find font weight semibold` is DejaVu (which has no
-  600 cut) being scored for the fallback chain — harmless, ignore it.
+- ▲/▼ are not in Mona Sans; the build draws them into Leaf Sans as original
+  Leaf geometry, sized to the tabular figures so delta columns align. One
+  family covers everything a Leaf chart sets, and findfont stays silent. If
+  you need glyphs beyond latin + ▲/▼ (Cyrillic, CJK, emoji), append
+  `"DejaVu Sans"` to `font.family` after `use()` — per-glyph fallback needs
+  matplotlib ≥ 3.7 — and accept its one-line weight-miss log as the trade.
 - Weights map cleanly: `fontweight="medium"` → 500, `"semibold"` → 600.
   Titles are semibold via rcParams already; KPI-style numbers take
   `fontweight="semibold"` or `"bold"`.
