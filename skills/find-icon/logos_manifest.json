@@ -1,0 +1,318 @@
+{
+  "base_url": "https://raw.githubusercontent.com/leafgrowio/brand/main",
+  "generated_by": "brand/tools/generate_logo_manifest.py",
+  "group_count": 9,
+  "groups": {
+    "answers": {
+      "default": {
+        "no-padding": {
+          "png": [
+            "assets/logos/answers/no-padding/png/Leaf Answers - Black.png",
+            "assets/logos/answers/no-padding/png/Leaf Answers - Negative.png",
+            "assets/logos/answers/no-padding/png/Leaf Answers - White.png",
+            "assets/logos/answers/no-padding/png/Leaf Answers.png"
+          ],
+          "svg": [
+            "assets/logos/answers/no-padding/svg/Leaf Answers - Black.svg",
+            "assets/logos/answers/no-padding/svg/Leaf Answers - Negative.svg",
+            "assets/logos/answers/no-padding/svg/Leaf Answers - White.svg",
+            "assets/logos/answers/no-padding/svg/Leaf Answers.svg"
+          ]
+        },
+        "padding": {
+          "png": [
+            "assets/logos/answers/padding/png/Leaf Answers - Black.png",
+            "assets/logos/answers/padding/png/Leaf Answers - Negative.png",
+            "assets/logos/answers/padding/png/Leaf Answers - White.png",
+            "assets/logos/answers/padding/png/Leaf Answers.png"
+          ],
+          "svg": [
+            "assets/logos/answers/padding/svg/Leaf Answers - Black.svg",
+            "assets/logos/answers/padding/svg/Leaf Answers - Negative.svg",
+            "assets/logos/answers/padding/svg/Leaf Answers - White.svg",
+            "assets/logos/answers/padding/svg/Leaf Answers.svg"
+          ]
+        }
+      }
+    },
+    "blog": {
+      "default": {
+        "no-padding": {
+          "png": [
+            "assets/logos/blog/no-padding/png/Leaf Blog - Black - Safe.png",
+            "assets/logos/blog/no-padding/png/Leaf Blog - Negative.png",
+            "assets/logos/blog/no-padding/png/Leaf Blog - White.png",
+            "assets/logos/blog/no-padding/png/Leaf Blog.png"
+          ],
+          "svg": [
+            "assets/logos/blog/no-padding/svg/Leaf Blog - Black - Safe.svg",
+            "assets/logos/blog/no-padding/svg/Leaf Blog - Negative.svg",
+            "assets/logos/blog/no-padding/svg/Leaf Blog - White.svg",
+            "assets/logos/blog/no-padding/svg/Leaf Blog.svg"
+          ]
+        },
+        "padding": {
+          "png": [
+            "assets/logos/blog/padding/png/Leaf Blog - Black.png",
+            "assets/logos/blog/padding/png/Leaf Blog - Negative.png",
+            "assets/logos/blog/padding/png/Leaf Blog - White.png",
+            "assets/logos/blog/padding/png/Leaf Blog.png"
+          ],
+          "svg": [
+            "assets/logos/blog/padding/svg/Leaf Blog - Black.svg",
+            "assets/logos/blog/padding/svg/Leaf Blog - Negative.svg",
+            "assets/logos/blog/padding/svg/Leaf Blog - White.svg",
+            "assets/logos/blog/padding/svg/Leaf Blog.svg"
+          ]
+        }
+      }
+    },
+    "colectivo": {
+      "default": {
+        "no-padding": {
+          "png": [
+            "assets/logos/colectivo/no-padding/png/Leaf Colectivo - Black.png",
+            "assets/logos/colectivo/no-padding/png/Leaf Colectivo - Negative.png",
+            "assets/logos/colectivo/no-padding/png/Leaf Colectivo - White.png",
+            "assets/logos/colectivo/no-padding/png/Leaf Colectivo.png"
+          ],
+          "svg": [
+            "assets/logos/colectivo/no-padding/svg/Leaf Colectivo - Black.svg",
+            "assets/logos/colectivo/no-padding/svg/Leaf Colectivo - Negative.svg",
+            "assets/logos/colectivo/no-padding/svg/Leaf Colectivo - White.svg",
+            "assets/logos/colectivo/no-padding/svg/Leaf Colectivo.svg"
+          ]
+        },
+        "padding": {
+          "png": [
+            "assets/logos/colectivo/padding/png/Leaf Colectivo - Black.png",
+            "assets/logos/colectivo/padding/png/Leaf Colectivo - Negative.png",
+            "assets/logos/colectivo/padding/png/Leaf Colectivo - White.png",
+            "assets/logos/colectivo/padding/png/Leaf Colectivo.png"
+          ],
+          "svg": [
+            "assets/logos/colectivo/padding/svg/Leaf Colectivo - Black.svg",
+            "assets/logos/colectivo/padding/svg/Leaf Colectivo - Negative.svg",
+            "assets/logos/colectivo/padding/svg/Leaf Colectivo - White.svg",
+            "assets/logos/colectivo/padding/svg/Leaf Colectivo.svg"
+          ]
+        }
+      }
+    },
+    "creative": {
+      "default": {
+        "no-padding": {
+          "png": [
+            "assets/logos/creative/no-padding/png/Leaf Creative - Black.png",
+            "assets/logos/creative/no-padding/png/Leaf Creative - Negative.png",
+            "assets/logos/creative/no-padding/png/Leaf Creative - White.png",
+            "assets/logos/creative/no-padding/png/Leaf Creative.png"
+          ],
+          "svg": [
+            "assets/logos/creative/no-padding/svg/Leaf Creative - Black.svg",
+            "assets/logos/creative/no-padding/svg/Leaf Creative - Negative.svg",
+            "assets/logos/creative/no-padding/svg/Leaf Creative - White.svg",
+            "assets/logos/creative/no-padding/svg/Leaf Creative.svg"
+          ]
+        },
+        "padding": {
+          "png": [
+            "assets/logos/creative/padding/png/Leaf Creative - Black.png",
+            "assets/logos/creative/padding/png/Leaf Creative - Negative.png",
+            "assets/logos/creative/padding/png/Leaf Creative - White.png",
+            "assets/logos/creative/padding/png/Leaf Creative.png"
+          ],
+          "svg": [
+            "assets/logos/creative/padding/svg/Leaf Creative - Black.svg",
+            "assets/logos/creative/padding/svg/Leaf Creative - Negative.svg",
+            "assets/logos/creative/padding/svg/Leaf Creative - White.svg",
+            "assets/logos/creative/padding/svg/Leaf Creative.svg"
+          ]
+        }
+      }
+    },
+    "leaf": {
+      "icon": {
+        "no-padding": {
+          "png": [
+            "assets/logos/leaf/icon/no-padding/png/Leaf Icon - Coral.png",
+            "assets/logos/leaf/icon/no-padding/png/Leaf Icon - Negative.png",
+            "assets/logos/leaf/icon/no-padding/png/Leaf Icon.png"
+          ],
+          "svg": [
+            "assets/logos/leaf/icon/no-padding/svg/Leaf Icon - Coral.svg",
+            "assets/logos/leaf/icon/no-padding/svg/Leaf Icon - Negative.svg",
+            "assets/logos/leaf/icon/no-padding/svg/Leaf Icon.svg"
+          ]
+        },
+        "padding": {
+          "png": [
+            "assets/logos/leaf/icon/padding/png/Leaf Icon - Coral.png",
+            "assets/logos/leaf/icon/padding/png/Leaf Icon - Negative.png",
+            "assets/logos/leaf/icon/padding/png/Leaf Icon.png"
+          ],
+          "svg": [
+            "assets/logos/leaf/icon/padding/svg/Leaf Icon - Coral.svg",
+            "assets/logos/leaf/icon/padding/svg/Leaf Icon - Negative.svg",
+            "assets/logos/leaf/icon/padding/svg/Leaf Icon.svg"
+          ]
+        }
+      },
+      "logo": {
+        "no-padding": {
+          "png": [
+            "assets/logos/leaf/logo/no-padding/png/Leaf - Coral.png",
+            "assets/logos/leaf/logo/no-padding/png/Leaf - Negative.png",
+            "assets/logos/leaf/logo/no-padding/png/Leaf.png"
+          ],
+          "svg": [
+            "assets/logos/leaf/logo/no-padding/svg/Leaf - Coral.svg",
+            "assets/logos/leaf/logo/no-padding/svg/Leaf - Negative.svg",
+            "assets/logos/leaf/logo/no-padding/svg/Leaf.svg"
+          ]
+        },
+        "padding": {
+          "png": [
+            "assets/logos/leaf/logo/padding/png/Leaf - Coral.png",
+            "assets/logos/leaf/logo/padding/png/Leaf - Negative.png",
+            "assets/logos/leaf/logo/padding/png/Leaf.png"
+          ],
+          "svg": [
+            "assets/logos/leaf/logo/padding/svg/Leaf - Coral.svg",
+            "assets/logos/leaf/logo/padding/svg/Leaf - Negative.svg",
+            "assets/logos/leaf/logo/padding/svg/Leaf.svg"
+          ]
+        }
+      }
+    },
+    "performance": {
+      "default": {
+        "no-padding": {
+          "png": [
+            "assets/logos/performance/no-padding/png/Leaf Performance - Black.png",
+            "assets/logos/performance/no-padding/png/Leaf Performance - Negative.png",
+            "assets/logos/performance/no-padding/png/Leaf Performance - White.png",
+            "assets/logos/performance/no-padding/png/Leaf Performance.png"
+          ],
+          "svg": [
+            "assets/logos/performance/no-padding/svg/Leaf Performance - Black.svg",
+            "assets/logos/performance/no-padding/svg/Leaf Performance - Negative.svg",
+            "assets/logos/performance/no-padding/svg/Leaf Performance - White.svg",
+            "assets/logos/performance/no-padding/svg/Leaf Performance.svg"
+          ]
+        },
+        "padding": {
+          "png": [
+            "assets/logos/performance/padding/png/Leaf Performance - Black.png",
+            "assets/logos/performance/padding/png/Leaf Performance - Negative.png",
+            "assets/logos/performance/padding/png/Leaf Performance - White.png",
+            "assets/logos/performance/padding/png/Leaf Performance.png"
+          ],
+          "svg": [
+            "assets/logos/performance/padding/svg/Leaf Performance - Black.svg",
+            "assets/logos/performance/padding/svg/Leaf Performance - Negative.svg",
+            "assets/logos/performance/padding/svg/Leaf Performance - White.svg",
+            "assets/logos/performance/padding/svg/Leaf Performance.svg"
+          ]
+        }
+      }
+    },
+    "signal": {
+      "default": {
+        "no-padding": {
+          "png": [
+            "assets/logos/signal/no-padding/png/Leaf Signal - Black.png",
+            "assets/logos/signal/no-padding/png/Leaf Signal - Negative.png",
+            "assets/logos/signal/no-padding/png/Leaf Signal - White.png",
+            "assets/logos/signal/no-padding/png/Leaf Signal.png"
+          ],
+          "svg": [
+            "assets/logos/signal/no-padding/svg/Leaf Signal - Black.svg",
+            "assets/logos/signal/no-padding/svg/Leaf Signal - Negative.svg",
+            "assets/logos/signal/no-padding/svg/Leaf Signal - White.svg",
+            "assets/logos/signal/no-padding/svg/Leaf Signal.svg"
+          ]
+        },
+        "padding": {
+          "png": [
+            "assets/logos/signal/padding/png/Leaf Signal - Black.png",
+            "assets/logos/signal/padding/png/Leaf Signal - Negative.png",
+            "assets/logos/signal/padding/png/Leaf Signal - White.png",
+            "assets/logos/signal/padding/png/Leaf Signal.png"
+          ],
+          "svg": [
+            "assets/logos/signal/padding/svg/Leaf Signal - Black.svg",
+            "assets/logos/signal/padding/svg/Leaf Signal - Negative.svg",
+            "assets/logos/signal/padding/svg/Leaf Signal - White.svg",
+            "assets/logos/signal/padding/svg/Leaf Signal.svg"
+          ]
+        }
+      }
+    },
+    "stores": {
+      "default": {
+        "no-padding": {
+          "png": [
+            "assets/logos/stores/no-padding/png/Leaf Stores - Black.png",
+            "assets/logos/stores/no-padding/png/Leaf Stores - Negative.png",
+            "assets/logos/stores/no-padding/png/Leaf Stores - White.png",
+            "assets/logos/stores/no-padding/png/Leaf Stores.png"
+          ],
+          "svg": [
+            "assets/logos/stores/no-padding/svg/Leaf Stores - Black.svg",
+            "assets/logos/stores/no-padding/svg/Leaf Stores - Negative.svg",
+            "assets/logos/stores/no-padding/svg/Leaf Stores - White.svg",
+            "assets/logos/stores/no-padding/svg/Leaf Stores.svg"
+          ]
+        },
+        "padding": {
+          "png": [
+            "assets/logos/stores/padding/png/Leaf Stores - Black.png",
+            "assets/logos/stores/padding/png/Leaf Stores - Negative.png",
+            "assets/logos/stores/padding/png/Leaf Stores - White.png",
+            "assets/logos/stores/padding/png/Leaf Stores.png"
+          ],
+          "svg": [
+            "assets/logos/stores/padding/svg/Leaf Stores - Black.svg",
+            "assets/logos/stores/padding/svg/Leaf Stores - Negative.svg",
+            "assets/logos/stores/padding/svg/Leaf Stores - White.svg",
+            "assets/logos/stores/padding/svg/Leaf Stores.svg"
+          ]
+        }
+      }
+    },
+    "strategy": {
+      "default": {
+        "no-padding": {
+          "png": [
+            "assets/logos/strategy/no-padding/png/Leaf Strategy - Black.png",
+            "assets/logos/strategy/no-padding/png/Leaf Strategy - Negative.png",
+            "assets/logos/strategy/no-padding/png/Leaf Strategy - White.png",
+            "assets/logos/strategy/no-padding/png/Leaf Strategy.png"
+          ],
+          "svg": [
+            "assets/logos/strategy/no-padding/svg/Leaf Strategy - Black.svg",
+            "assets/logos/strategy/no-padding/svg/Leaf Strategy - Negative.svg",
+            "assets/logos/strategy/no-padding/svg/Leaf Strategy - White.svg",
+            "assets/logos/strategy/no-padding/svg/Leaf Strategy.svg"
+          ]
+        },
+        "padding": {
+          "png": [
+            "assets/logos/strategy/padding/png/Leaf Strategy - Black.png",
+            "assets/logos/strategy/padding/png/Leaf Strategy - Negative.png",
+            "assets/logos/strategy/padding/png/Leaf Strategy - White.png",
+            "assets/logos/strategy/padding/png/Leaf Strategy.png"
+          ],
+          "svg": [
+            "assets/logos/strategy/padding/svg/Leaf Strategy - Black.svg",
+            "assets/logos/strategy/padding/svg/Leaf Strategy - Negative.svg",
+            "assets/logos/strategy/padding/svg/Leaf Strategy - White.svg",
+            "assets/logos/strategy/padding/svg/Leaf Strategy.svg"
+          ]
+        }
+      }
+    }
+  },
+  "source": "leafgrowio/brand:assets/logos"
+}

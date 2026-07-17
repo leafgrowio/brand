@@ -10,10 +10,11 @@ This repo stores the brand primitives Leaf uses across products, marketing, sale
 - `assets/icons/` - icon exports grouped by theme, icon, variation, and format.
 - `assets/logos/` - logos for Leaf and its related surfaces.
 - `system/` - the compiled Leaf design system: the ratified spec (`system/DESIGN.md`), design tokens, React components, specimen cards, and the Answers UI kit, synced to Leaf's Claude Design "Design System" project.
+- `skills/` - standalone Claude Agent Skills (`find-icon`, `leaf-design`) so anyone with a Claude CLI setup can use the brand without the internal plugin distribution. **Synced exports, not sources**: the canonical skills live in the `leaf` plugin repo (`prompts/brand/skills/`) and are re-exported with that repo's `scripts/sync-brand-skills.sh`. Never edit skill files here (only `skills/README.md` is authored in this repo) — fix them in the plugin repo and re-sync.
 
 The repo is the source of truth for Leaf's reusable design foundations — typography, colour, iconography, logos, design tokens, usage guidance, and distribution-ready exports.
 
-Tooling that generates, packages, or cleans these assets (Notion banner generator, icon/logo manifest generators, export cleanup) lives in the `leaf` plugin repo (`prompts/brand/tools/`), not here. That tooling runs against a local clone of this repo. Do not add scripts or generators to this repo; if a new tool is needed, it belongs in the plugin repo.
+Tooling that generates, packages, or cleans these assets (icon/logo manifest generators, export cleanup) lives in the `leaf` plugin repo (`prompts/brand/tools/`), not here. That tooling runs against a local clone of this repo. Do not add scripts or generators to this repo; if a new tool is needed, it belongs in the plugin repo. The one script published here is the synced copy of the Notion banner generator inside `skills/find-icon/` — it is an end-user feature of that skill, and it arrives via the sync, never by direct edits.
 
 ## Working Guidelines
 
@@ -55,7 +56,7 @@ Each theme is organized by icon name. Each icon folder is organized by colour va
 - `black` — the default; black line-art is the brand treatment
 - `white` — line-art for dark surfaces
 
-Solid variations were deliberately removed (July 2026): the brand is line-art only, and keeping solids invited off-brand use. Do not re-add them. Any variation change must be coordinated with a manifest regeneration in the `leaf` plugin repo (`prompts/brand/tools/generate_icon_manifest.py`) and updates to the hard-coded variation lists in the `find-icon` skill.
+Solid variations were deliberately removed (July 2026): the brand is line-art only, and keeping solids invited off-brand use. Do not re-add them. Any variation change must be coordinated with a manifest regeneration in the `leaf` plugin repo (`prompts/brand/tools/generate_icon_manifest.py`), updates to the hard-coded variation lists in the `find-icon` skill, and a re-export of the standalone skills into `skills/` here (the plugin repo's `scripts/sync-brand-skills.sh`).
 
 Each variation contains `png/` and `svg/` exports. The canonical structure is:
 

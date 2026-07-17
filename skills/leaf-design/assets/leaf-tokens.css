@@ -1,0 +1,176 @@
+/* Leaf design tokens — flattened for artifacts.
+   DOWNSTREAM COPY of system/tokens/*.css in github.com/leafgrowio/brand (v1.0.3).
+   Regenerate from the canonical files on version bumps; never edit values here.
+   Paste this whole block into the artifact's <style>. */
+
+/* Leaf colour tokens — source: DESIGN.md § Colour + § Data visualization + Implementation tokens,
+   verified against the brand book. Base palette first, then state, data-viz, and semantic aliases.
+
+   Usage rules live in DESIGN.md; the load-bearing ones:
+   - Copy colour: text is Ink / Coral / Warm Grey / Aqua-on-dark ONLY. Never secondary colours or tints as text.
+   - One decisive Coral moment per view. Solid Coral is for CTAs and small marks, never a large content fill.
+   - Ink text on every colour fill; Canvas text only on the dark anchors (Ink, Warm Grey, solid states, large-text Coral). */
+
+:root {
+  /* --- core --- */
+  --leaf-color-coral: #fb5e48;
+  --leaf-color-coral-hover: #e8462f;
+  --leaf-color-coral-tint: #fbe4df;
+  --leaf-color-ink: #171412;
+  --leaf-color-canvas: #fffdfb;
+
+  /* --- neutral --- */
+  --leaf-color-warm-grey: #656565;
+  --leaf-color-stone: #f2e8e1; /* skeletons, muted chips */
+  --leaf-color-stone-light: #f9f4f1; /* default page ground */
+  --leaf-color-stone-faint: #fbf7f4; /* sidebar, table headers, zebra */
+  --leaf-color-stone-deep: #ede3dc;
+  --leaf-color-stone-hairline: #d9cfc8;
+
+  /* --- highlight (dark surfaces only) --- */
+  --leaf-color-aqua: #7ad8ce;
+
+  /* --- secondary palette (fills only, never text) --- */
+  --leaf-color-harbor: #4fa3a6;
+  --leaf-color-marigold: #efb75a;
+  --leaf-color-butter: #f6e49d;
+  --leaf-color-apricot: #f4a38f;
+  --leaf-color-rosehip: #d96b7c;
+  --leaf-color-sage: #dce8c4;
+  --leaf-color-laurel: #8ebb91;
+  --leaf-color-eucalyptus: #9fc7bc;
+  --leaf-color-lilac: #d8cff0;
+  --leaf-color-heather: #aaa2d4;
+
+  /* --- product state palette (solid for icons/dots/borders; tint + Ink text for fills) --- */
+  --leaf-color-state-success: #2f8b57; /* Fern */
+  --leaf-color-state-success-tint: #e7f1ea;
+  --leaf-color-state-warning: #c77e1c; /* Amber */
+  --leaf-color-state-warning-tint: #f6e9cc;
+  --leaf-color-state-error: #c63a2b; /* Ember */
+  --leaf-color-state-error-tint: #f7e0db;
+  --leaf-color-state-info: #2e8388; /* Tidal */
+  --leaf-color-state-info-tint: #ddecec;
+
+  /* --- data-viz categorical series (fixed order) --- */
+  --leaf-chart-series-1: #fb5e48; /* Coral — focus */
+  --leaf-chart-series-2: #4fa3a6; /* Harbor */
+  --leaf-chart-series-3: #efb75a; /* Marigold */
+  --leaf-chart-series-4: #aaa2d4; /* Heather */
+  --leaf-chart-series-5: #8ebb91; /* Laurel */
+  --leaf-chart-series-6: #f4a38f; /* Apricot */
+  --leaf-chart-grid: rgba(23, 20, 18, 0.07);
+  --leaf-chart-axis: rgba(23, 20, 18, 0.16);
+
+  /* --- data-viz neutral lead (dense dashboards: graphite carries the set, Coral flags one series) --- */
+  --leaf-chart-neutral: #8c857e;
+  --leaf-chart-mono-1: #3f3a36;
+  --leaf-chart-mono-2: #8c857e;
+  --leaf-chart-mono-3: #c9c2bb;
+
+  /* --- sequential ramps (single measure) --- */
+  --leaf-ramp-coral-1: #fbe4df;
+  --leaf-ramp-coral-2: #f7a08f;
+  --leaf-ramp-coral-3: #fb5e48;
+  --leaf-ramp-coral-4: #c0392a;
+  --leaf-ramp-harbor-1: #ddecec;
+  --leaf-ramp-harbor-2: #9fc7bc;
+  --leaf-ramp-harbor-3: #4fa3a6;
+  --leaf-ramp-harbor-4: #2e8388;
+  --leaf-heatmap-mid: #efeae6; /* diverging heatmap midpoint */
+
+  /* --- semantic aliases --- */
+  --leaf-text-primary: var(--leaf-color-ink);
+  --leaf-text-secondary: var(--leaf-color-warm-grey);
+  --leaf-text-muted: #9a8f86; /* placeholders, disabled labels, quiet captions (intentional addition — see readme) */
+  --leaf-text-accent: var(--leaf-color-coral);
+  --leaf-text-on-dark: var(--leaf-color-canvas);
+  --leaf-text-on-dark-secondary: rgba(255, 253, 251, 0.6);
+  --leaf-surface-page: var(--leaf-color-stone-light);
+  --leaf-surface-card: var(--leaf-color-canvas);
+  --leaf-surface-ink: var(--leaf-color-ink);
+  --leaf-surface-ink-panel: rgba(255, 253, 251, 0.04);
+  --leaf-border: var(--leaf-border-light);
+
+  /* --- focus (focus-visible only; never removed) --- */
+  --leaf-focus-ring: var(--leaf-color-coral);
+  --leaf-focus-ring-dark: var(--leaf-color-aqua);
+}
+
+/* Leaf typography tokens — source: DESIGN.md § Typography + Implementation tokens.
+   Mona Sans is the working font; Source Serif 4 is the editorial serif only. */
+
+:root {
+  /* --- families --- */
+  --leaf-font-sans: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
+  --leaf-font-serif: "Source Serif 4", Georgia, serif;
+
+  /* --- type scale (font shorthands; desktop anchors) --- */
+  --leaf-type-display: 640 64px/0.96 "Mona Sans";
+  --leaf-type-h1: 640 46px/1.0 "Mona Sans";
+  --leaf-type-h2: 600 32px/1.05 "Mona Sans";
+  --leaf-type-h3: 600 22px/1.2 "Mona Sans";
+  --leaf-type-body-lg: 400 18px/1.55 "Mona Sans";
+  --leaf-type-body: 400 16px/1.6 "Mona Sans";
+  --leaf-type-label: 500 14px/1.4 "Mona Sans";
+  --leaf-type-caption: 500 13px/1.4 "Mona Sans";
+
+  /* --- stylistic sets: always on, enforced on * in fonts.css --- */
+  --leaf-type-features: "ss03" on, "ss05" on, "ss06" on, "ss07" on, "ss09" on;
+
+  /* --- tracking: tighten large headings --- */
+  --leaf-type-tracking-display: -0.03em;
+  --leaf-type-tracking-heading: -0.02em;
+}
+
+/* Leaf spacing tokens — base unit 4px, 8px rhythm. Source: DESIGN.md § Spacing & layout. */
+
+:root {
+  --leaf-space-1: 4px;
+  --leaf-space-2: 8px;
+  --leaf-space-3: 12px;
+  --leaf-space-4: 16px;
+  --leaf-space-5: 24px;
+  --leaf-space-6: 32px;
+  --leaf-space-7: 48px;
+  --leaf-space-8: 64px;
+  --leaf-space-9: 96px;
+
+  /* --- layout --- */
+  --leaf-container-max: 1200px;
+}
+
+/* Leaf radius tokens — sm: chips/small controls · md: cards/tiles · lg: large panels · pill: buttons/tags. */
+
+:root {
+  --leaf-radius-sm: 8px;
+  --leaf-radius-md: 14px;
+  --leaf-radius-lg: 18px;
+  --leaf-radius-pill: 999px;
+}
+
+/* Leaf elevation tokens — flat by default: hairline borders separate surfaces.
+   One warm shadow family for lifted/transient surfaces only. Never shadow + heavy border together. */
+
+:root {
+  /* --- borders --- */
+  --leaf-border-light: rgba(23, 20, 18, 0.1);
+  --leaf-border-dark: rgba(255, 253, 251, 0.12);
+  --leaf-border-input: rgba(23, 20, 18, 0.18);
+
+  /* --- shadows --- */
+  --leaf-shadow-sm: 0 1px 2px rgba(23, 20, 18, 0.05), 0 2px 6px rgba(23, 20, 18, 0.05);
+  --leaf-shadow-md: 0 4px 12px rgba(23, 20, 18, 0.08), 0 12px 28px rgba(23, 20, 18, 0.07);
+
+  /* --- overlay scrim (modals, drawers) --- */
+  --leaf-scrim: rgba(23, 20, 18, 0.44);
+}
+
+/* Leaf motion tokens — minimal and purposeful. Animate opacity and transform only;
+   ease-out; always honour prefers-reduced-motion. */
+
+:root {
+  --leaf-motion-fast: 120ms;
+  --leaf-motion-base: 180ms;
+  --leaf-ease: cubic-bezier(0.2, 0, 0, 1);
+}

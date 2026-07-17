@@ -2,7 +2,7 @@
 
 This repository is Leaf's canonical, public source of brand assets and design foundations: fonts, icons, logos, and the full Leaf design system (spec, tokens, components, and reference UI). It is public because assets are fetched at runtime over plain HTTPS from `raw.githubusercontent.com/leafgrowio/brand/main/...`, so anyone building against Leaf's brand (internal tooling, partner integrations, or the open web) can pull the exact current asset without needing repo access or a local clone.
 
-Tools that generate, package, or clean these assets (the Notion banner generator, icon and logo manifest generators, export cleanup scripts) live in Leaf's internal `leaf` plugin repo, not here. See the "Tools" section below.
+Tools that generate, package, or clean these assets (the icon and logo manifest generators, export cleanup scripts) live in Leaf's internal `leaf` plugin repo, not here. See the "Tools" section below. The repo does carry `skills/` — standalone Claude Agent Skills for using the brand (icon/logo resolution, the artifact design kit, Notion banner generation), installable by anyone with a Claude CLI setup. See the "Skills" section below.
 
 ## What Is Here
 
@@ -11,6 +11,7 @@ assets/
   font/
   icons/
   logos/
+skills/
 system/
 ```
 
@@ -105,9 +106,18 @@ assets/logos/<group>/no-padding/svg/
 
 Assets are consumed remotely over `raw.githubusercontent.com/leafgrowio/brand/main/...`, not through a local clone, so every asset path is a stable public URL that other systems depend on directly. Renaming, moving, or restructuring a folder is a breaking change for every consumer of that URL, not a local refactor. Coordinate any path change with a manifest regeneration in the `leaf` plugin repo (see "Tools" below) before merging, and treat path stability as a first-class constraint alongside asset fidelity.
 
+## Skills
+
+`skills/` holds standalone Claude Agent Skills for working with the brand from any Claude setup, without Leaf's internal plugin distribution:
+
+- `skills/find-icon/` — resolves a natural-language description to an exact icon or logo asset in this repo (right colour variation, SVG or PNG) and can generate Notion banners from a pick.
+- `skills/leaf-design/` — the artifact kit: design tokens, base styles, component classes, chart recipes, and an embeddable Mona Sans subset, so generated artifacts follow the Leaf design system.
+
+Install by copying the skill folders into `~/.claude/skills/` (or a project's `.claude/skills/`) — see `skills/README.md` for full instructions. These folders are synced exports from the internal `leaf` plugin repo, which remains the canonical source; edit them there, never here.
+
 ## Tools
 
-Asset tooling — the Notion banner generator, the icon and logo manifest generators, and export cleanup scripts — lives in Leaf's internal `leaf` plugin repo, not in this repo. Those tools run against a local clone of this repo and read or write files here directly; they are not published here because they are internal-only and not part of the public asset contract.
+Asset tooling — the icon and logo manifest generators and export cleanup scripts — lives in Leaf's internal `leaf` plugin repo, not in this repo. Those tools run against a local clone of this repo and read or write files here directly; they are not published here because they are internal-only and not part of the public asset contract. (The Notion banner generator is the exception: it is an end-user feature of the `find-icon` skill, so a synced copy ships inside `skills/find-icon/`.)
 
 ## Agent Setup
 

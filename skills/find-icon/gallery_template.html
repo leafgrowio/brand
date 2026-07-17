@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+  Premade gallery UI for the find-icon skill. find_icon.py fills this file via
+  Python string.Template and writes the result next to the user's work; agents
+  must never hand-author gallery markup. Edit this template, not its output.
+
+  Placeholders (doc names below are $$-escaped so string.Template skips them):
+    $$title     header title (the query, or "theme/Icon Name")
+    $$subtitle  header subtitle (result count, or "choose a colour variation")
+    $$cards     concatenated card blocks, formatted by CARD_TEMPLATE below
+    $$hint      footer hint line (e.g. "Reply with a number to choose")
+
+  CARD_TEMPLATE (lives in find_icon.py, formatted once per item):
+    <div class="card$$extra">
+      <span class="badge">$$number</span>$$tag
+      <div class="icon $$swatch">$$media</div>
+      <div class="caption"><div class="name">$$name</div>
+      <div class="meta">$$meta</div></div>
+    </div>
+  $$swatch is "light" (near-white, default) or "dark" (near-black, for white /
+  white variations); $$extra is "" or " recommended"; $$tag is "" or
+  <span class="rec-tag">recommended</span>; $$media is an <img> whose src is
+  the icon's SVG on cdn.jsdelivr.net (--embed cdn, the default), an inline
+  <svg> element (--embed inline, for surfaces whose CSP blocks jsDelivr too —
+  also the per-card fallback if inlining fails), or an <img> whose src is a
+  public raw-GitHub PNG URL (--embed url).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$title</title>
+<style>
+  :root {
+    --ink: #1c1c1a;
+    --muted: #8a8a85;
+    --border: #e7e7e3;
+    --accent: #e2543e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #ffffff;
+    color: var(--ink);
+    padding: 48px clamp(24px, 6vw, 72px);
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif;
+  }
+  header { margin-bottom: 32px; }
+  header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  header p { color: var(--muted); margin-top: 4px; font-size: 14px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+  .card.recommended {
+    border: 2px solid var(--accent);
+  }
+  .badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 1;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 11px;
+    background: var(--ink);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rec-tag {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .icon {
+    height: 136px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon.light { background: #fafaf7; }
+  .icon.dark { background: #161614; }
+  .icon img, .icon svg { width: 80px; height: 80px; }
+  .caption {
+    padding: 10px 12px 12px;
+    background: #ffffff;
+    border-top: 1px solid var(--border);
+  }
+  .caption .name { font-size: 14px; font-weight: 600; }
+  .caption .meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  footer { margin-top: 28px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>$title</h1>
+    <p>$subtitle</p>
+  </header>
+  <div class="grid">
+$cards
+  </div>
+  <footer>$hint</footer>
+</body>
+</html>
