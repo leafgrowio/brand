@@ -1,6 +1,6 @@
 ---
 name: leaf-design
-description: Make any generated visual artifact look and sound like Leaf — HTML artifacts, dashboards, deck slides, landing mockups, reports, social cards, charts (including matplotlib). Ships a self-contained artifact kit (design tokens, base styles, component classes, an embeddable Mona Sans subset) plus a matplotlib kit (static brand fonts with the letterforms frozen in, an rcParams/palette helper) and the brand's hard rules, so output follows the Leaf design system without fetching anything at render time. Use before generating any visual output for Leaf; pairs with find-icon (assets) and the full design spec, system/DESIGN.md in leafgrowio/brand (deep rules).
+description: "Use before generating ANY visual output at Leaf — an HTML artifact, chart or graph (including matplotlib), dashboard, deck slide, landing mockup, report, social card, diagram, or styled document — even when the request doesn't mention branding or design. Makes the output look and sound like Leaf: ships a self-contained artifact kit (design tokens, base styles, component classes, an embeddable Mona Sans subset) plus a matplotlib kit (static brand fonts with the letterforms frozen in, an rcParams/palette helper) and the brand's hard rules, so output follows the Leaf design system without fetching anything at render time. Pairs with find-icon (assets) and the full design spec, system/DESIGN.md in leafgrowio/brand (deep rules)."
 ---
 
 # Leaf design (artifact kit)

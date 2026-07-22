@@ -1,6 +1,6 @@
 ---
 name: find-icon
-description: Resolve a natural-language description (or a theme/name) to an exact Leaf icon or logo asset path — SVG or PNG, in the right colour variation — for generating branded documents, decks, banners, Notion pages, or UI mockups; when a human is choosing, it also previews candidate icons visually, guides the colour-variation pick for the target surface, and can go on to create the branded asset (e.g. a Notion banner). Use whenever a task needs a Leaf-brand icon or logo file, not a description of one.
+description: "Resolve a natural-language description (or a theme/name) to an exact Leaf icon or logo asset path — SVG or PNG, in the right colour variation — for generating branded documents, decks, banners, Notion pages, or UI mockups; when a human is choosing, it also previews candidate icons visually, guides the colour-variation pick for the target surface, and can go on to create the branded asset (e.g. a Notion banner). Use whenever a task needs a Leaf-brand icon or logo file, not a description of one."
 ---
 
 # Find Icon
