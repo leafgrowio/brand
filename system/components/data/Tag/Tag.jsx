@@ -26,6 +26,7 @@ const CSS = `
   }
   .leaf-tag--removable {
     font: var(--leaf-type-ui-label);
+    font-weight: 500;
     color: var(--leaf-color-ink);
     background: var(--leaf-color-stone-faint);
     border: 1px solid var(--leaf-border-light);

@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
  *
  * One decision per modal. A destructive confirm uses Ember
  * (`--leaf-color-state-error`), never Coral; Cancel stays neutral (Ink text,
- * `1px rgba(23,20,18,0.16)` border, pill).
+ * a `--leaf-border-input` hairline, pill).
  * @startingPoint
  */
 export interface ModalProps {

@@ -13,7 +13,7 @@ A real `<table>` for scannable, numeric-heavy data — reach for it for reportin
     { key: "delta", label: "Δ", numeric: true },
   ]}
   rows={[
-    { channel: "Paid media", spend: "£1.49M", roas: "3.72", delta: { value: "18%", delta: "up" } },
+    { channel: "Paid media", spend: "£1.49M", roas: "3.72x", delta: { value: "18%", delta: "up" } },
   ]}
 />
 ```

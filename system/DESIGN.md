@@ -450,14 +450,14 @@ Every product screen shares one frame: a persistent **sidebar** (place), a **top
 ### Sidebar
 
 - 236px panel on a faint Stone tint (`#FBF7F4`) with a 1px right hairline. Items are a black line icon (library style, ~20px) + sentence-case label, `radius.sm`.
-- **States:** rest = Ink; hover = quiet Stone wash (`rgba(23,20,18,0.05)`); **active = the one Coral signal, carried by the fill** — soft tint (`#FBE4DF`) behind **Ink** text and icon at 600, no accent bar. The text stays Ink because Coral on its own tint measures 2.54:1, which fails even the 3:1 floor; the fill and the weight mark the state, and they do it without asking colour to carry legibility. Active keeps the resting padding, so the label holds its position when an item activates rather than nudging sideways. Counts/badges sit right-aligned in a Coral-tint pill.
+- **States:** rest = Ink; hover = a quiet Ink wash (`--leaf-surface-hover`); **active = the one Coral signal, carried by the fill** — soft tint (`#FBE4DF`) behind **Ink** text and icon at 600, no accent bar. The text stays Ink because Coral on its own tint measures 2.54:1, which fails even the 3:1 floor; the fill and the weight mark the state, and they do it without asking colour to carry legibility. Active keeps the resting padding, so the label holds its position when an item activates rather than nudging sideways. Counts/badges sit right-aligned in a Coral-tint pill.
 - Group with short uppercase Warm-Grey labels (`11/600`, `+0.07em`). Order is stable; never icon-only except in the collapsed rail.
 - **Collapsed rail:** 60px icon-only rail at tight widths — same order, same active tint, no accent, labels on hover.
 
 ### Top bar
 
 - 58px, Canvas, 1px bottom hairline. **Left:** menu toggle, then the breadcrumb trail. **Right:** search pill, one primary Coral action, account avatar.
-- **Breadcrumbs:** light chevron separators (`rgba(23,20,18,0.28)`); ancestors are Coral links, only the current page is Ink + semibold.
+- **Breadcrumbs:** light chevron separators (`--leaf-text-muted`); ancestors are Coral links, only the current page is Ink + semibold.
 
 ### Tabs
 
@@ -481,7 +481,7 @@ Overlays are the one place Leaf leaves the flat plane. Reach for the lightest on
 
 **By type:**
 - **Tooltip** — short label on Ink, Canvas text, `radius.sm`; hover/focus only, never interactive or essential.
-- **Menu** — actions from a trigger; highlighted row is a Stone wash, destructive item in Ember, hairline divider before it. No scrim.
+- **Menu** — actions from a trigger; highlighted row is a quiet Ink wash (`--leaf-surface-hover`), destructive item in Ember, hairline divider before it. No scrim.
 - **Popover** — rich/interactive content anchored to its trigger with a small beak; Canvas, hairline, `shadow-md`, no scrim.
 - **Drawer** — edge panel over the scrim for scoped, longer tasks; square outer corners against the viewport, one Coral confirm.
 - **Modal** — centred on the scrim, Canvas card at `radius.lg` + `shadow-md`, one decision. Destructive primary uses **Ember, not Coral**. Close on ×, Esc, or scrim click.
