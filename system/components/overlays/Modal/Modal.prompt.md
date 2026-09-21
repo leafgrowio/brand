@@ -21,4 +21,4 @@ A centred, scrim-backed dialog for one decision at a time — use it to confirm 
 
 States: open · closed (returns null) · destructive (documentation-only hint — style the confirm button yourself).
 
-Rules: one decision per modal, never stack a second modal on top · the destructive primary is solid Ember (`--leaf-color-state-error`), never Coral — Cancel stays neutral (Ink text, `1px rgba(23,20,18,0.16)` border, pill) · closes on × click, Esc, or a click on the scrim; clicks inside the card never bubble to the scrim · confirmations name the consequence ("This can't be undone…") and the button repeats the verb ("Delete report", not "Confirm").
+Rules: one decision per modal, never stack a second modal on top · the destructive primary is solid Ember (`--leaf-color-state-error`), never Coral — Cancel stays neutral (Ink text, a `--leaf-border-input` hairline, pill) · closes on × click, Esc, or a click on the scrim; clicks inside the card never bubble to the scrim · confirmations name the consequence ("This can't be undone…") and the button repeats the verb ("Delete report", not "Confirm").

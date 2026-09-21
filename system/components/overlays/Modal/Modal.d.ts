@@ -19,7 +19,7 @@ export interface ModalProps {
   children?: ReactNode;
   /** Called on × click, Esc, or a click on the scrim. */
   onClose?: () => void;
-  /** Footer actions (e.g. Cancel + confirm), right-aligned with a 10px gap. Build the buttons yourself so you control which is primary/destructive. */
+  /** Footer actions (e.g. Cancel + confirm), right-aligned with a 8px gap. Build the buttons yourself so you control which is primary/destructive. */
   actions?: ReactNode;
   /** Documentation-only hint that this modal represents a destructive decision. Has no visual effect on Modal itself — style the destructive button inside `actions` with Ember, never Coral. */
   destructive?: boolean;

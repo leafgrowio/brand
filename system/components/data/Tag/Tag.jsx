@@ -1,35 +1,35 @@
 const CSS = `
   .leaf-tag {
+    font: var(--leaf-type-ui-label);
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
-    gap: 7px;
+    gap: var(--leaf-space-2);
     border-radius: var(--leaf-radius-pill);
-    font-family: var(--leaf-font-sans);
-    font-size: 12.5px;
-    font-weight: 600;
-    line-height: 1;
-    padding: 6px 12px;
+    padding: var(--leaf-space-1) var(--leaf-space-3);
   }
   .leaf-tag--neutral {
-    color: var(--leaf-color-warm-grey);
+    color: var(--leaf-color-ink);
     background: var(--leaf-color-stone);
+    border: 1px solid var(--leaf-border-light);
   }
   .leaf-tag--featured {
-    color: var(--leaf-color-coral);
+    color: var(--leaf-color-ink);
     background: var(--leaf-color-coral-tint);
+    border: 1px solid var(--leaf-border-brand);
   }
   .leaf-tag--count {
-    color: var(--leaf-color-coral);
+    color: var(--leaf-color-ink);
     background: var(--leaf-color-coral-tint);
-    padding: 5px 9px;
+    border: 1px solid var(--leaf-border-brand);
+    padding: var(--leaf-space-1) var(--leaf-space-2);
   }
   .leaf-tag--removable {
-    font-size: 13px;
-    font-weight: 500;
+    font: var(--leaf-type-ui-label);
     color: var(--leaf-color-ink);
     background: var(--leaf-color-stone-faint);
-    border: 1px solid rgba(23, 20, 18, 0.12);
-    padding: 6px 8px 6px 13px;
+    border: 1px solid var(--leaf-border-light);
+    padding: var(--leaf-space-1) var(--leaf-space-2) var(--leaf-space-1) var(--leaf-space-3);
   }
   .leaf-tag__remove {
     display: inline-flex;
@@ -47,7 +47,7 @@ const CSS = `
       color var(--leaf-motion-fast) var(--leaf-ease);
   }
   .leaf-tag__remove:hover {
-    background: rgba(23, 20, 18, 0.08);
+    background: var(--leaf-color-stone);
     color: var(--leaf-color-ink);
   }
   .leaf-tag__remove:focus-visible {

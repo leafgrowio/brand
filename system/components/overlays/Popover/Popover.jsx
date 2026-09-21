@@ -9,24 +9,24 @@ const CSS = `
   .leaf-popover-card {
     background: var(--leaf-color-canvas);
     border: 1px solid var(--leaf-border-light);
-    border-radius: 12px;
+    border-radius: var(--leaf-radius-md);
     box-shadow: var(--leaf-shadow-md);
-    padding: 16px 18px;
+    padding: var(--leaf-space-4) var(--leaf-space-4);
   }
   .leaf-popover-title {
-    font: 600 14px/1.2 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-body); font-weight: 600;
     color: var(--leaf-text-primary);
-    margin: 0 0 6px;
+    margin: 0 0 var(--leaf-space-1);
   }
   .leaf-popover-body {
-    font: 400 13px/1.5 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-label); font-weight: 400;
     color: var(--leaf-color-warm-grey);
     margin: 0;
   }
   .leaf-popover-action {
     display: inline-flex;
-    margin-top: 12px;
-    font: 600 12.5px/1 var(--leaf-font-sans);
+    margin-top: var(--leaf-space-3);
+    font: var(--leaf-type-ui-label); font-weight: 600;
     color: var(--leaf-text-accent);
     background: none;
     border: none;

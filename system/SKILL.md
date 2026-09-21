@@ -20,7 +20,7 @@ You are working inside Leaf's design system. Everything you produce should look 
 **Static HTML artifacts (previews, decks, one-off pages):**
 - Link `styles.css` (or inline-copy the token blocks from `tokens/*.css` when the artifact must be fully self-contained) and style exclusively with `var(--leaf-*)` tokens.
 - Copy specimen markup from `foundations/*.card.html` and `components/**/*.card.html` — they are small, correct, self-contained HTML you can lift patterns from directly.
-- Self-host or embed Mona Sans from `assets/fonts/` and keep `font-feature-settings: var(--leaf-type-features)` on `*` — Google Fonts' Mona Sans loses the brand letterforms.
+- Self-host or embed Mona Sans from `assets/fonts/` — it is a frozen build with ss03/05/06/07/09 baked into the glyphs, so the brand letterforms survive a renderer that cannot request OpenType features. Keep `font-feature-settings: var(--leaf-type-features)` on `*` anyway; it costs nothing and rescues a surface that loaded a stock Mona Sans.
 
 **Production React code:**
 - Import the primitives from `components/<category>/<Name>/<Name>.jsx` (named exports). Read the sibling `<Name>.prompt.md` for the one-line usage contract and `<Name>.d.ts` for props.

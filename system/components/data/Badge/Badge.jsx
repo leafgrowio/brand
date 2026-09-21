@@ -1,15 +1,13 @@
 const CSS = `
   .leaf-badge {
+    font: var(--leaf-type-ui-label);
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    padding: 6px 12px;
+    gap: var(--leaf-space-2);
+    padding: var(--leaf-space-1) var(--leaf-space-3);
     border-radius: var(--leaf-radius-pill);
     border: 1px solid transparent;
-    font-family: var(--leaf-font-sans);
-    font-size: 12.5px;
-    font-weight: 600;
-    line-height: 1;
     color: var(--leaf-color-ink);
   }
   .leaf-badge__dot {
@@ -20,28 +18,28 @@ const CSS = `
   }
   .leaf-badge--success {
     background: var(--leaf-color-state-success-tint);
-    border-color: rgba(47, 139, 87, 0.25);
+    border-color: var(--leaf-border-success);
   }
   .leaf-badge--success .leaf-badge__dot {
     background: var(--leaf-color-state-success);
   }
   .leaf-badge--warning {
     background: var(--leaf-color-state-warning-tint);
-    border-color: rgba(199, 126, 28, 0.28);
+    border-color: var(--leaf-border-warning);
   }
   .leaf-badge--warning .leaf-badge__dot {
     background: var(--leaf-color-state-warning);
   }
   .leaf-badge--error {
     background: var(--leaf-color-state-error-tint);
-    border-color: rgba(198, 58, 43, 0.28);
+    border-color: var(--leaf-border-error);
   }
   .leaf-badge--error .leaf-badge__dot {
     background: var(--leaf-color-state-error);
   }
   .leaf-badge--info {
     background: var(--leaf-color-state-info-tint);
-    border-color: rgba(46, 131, 136, 0.28);
+    border-color: var(--leaf-border-info);
   }
   .leaf-badge--info .leaf-badge__dot {
     background: var(--leaf-color-state-info);

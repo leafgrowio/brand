@@ -1,4 +1,4 @@
-<!-- @dsCard group="Colors" viewport="700x140" subtitle="the 6 categorical series, fixed order" name="Chart series" -->
+<!-- @dsCard group="Colors" viewport="700x180" subtitle="the 6 categorical series, fixed order; 1–3 also carry sequential ramps" name="Chart series" -->
 <!doctype html>
 <html>
 <head>
@@ -35,6 +35,12 @@
   .tile.s4 { background: var(--leaf-chart-series-4); }
   .tile.s5 { background: var(--leaf-chart-series-5); }
   .tile.s6 { background: var(--leaf-chart-series-6); }
+  .note {
+    font: var(--leaf-type-caption);
+    color: var(--leaf-text-muted);
+    padding: 0 var(--leaf-space-4) var(--leaf-space-4);
+    margin: 0;
+  }
   .caption {
     font: var(--leaf-type-caption);
     color: var(--leaf-text-secondary);
@@ -50,5 +56,6 @@
     <div class="item"><div class="tile s5">5</div><div class="caption">Laurel</div></div>
     <div class="item"><div class="tile s6">6</div><div class="caption">Apricot</div></div>
   </div>
+  <p class="note">Series 1–3 — Coral, Harbor, Marigold — each carry a four-step sequential ramp, so a chart can move from categorical to intensity without changing hue. Series 4–6 are categorical only.</p>
 </body>
 </html>

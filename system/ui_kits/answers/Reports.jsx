@@ -3,9 +3,9 @@ import { Table } from "../../components/data/Table/Table.jsx";
 import { Badge } from "../../components/data/Badge/Badge.jsx";
 
 const CSS = `
-  .leaf-reports__title { font: 640 26px/1.1 var(--leaf-font-sans); letter-spacing: -0.02em; color: var(--leaf-color-ink); margin-bottom: 6px; }
-  .leaf-reports__meta { font: 400 13.5px/1.5 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin-bottom: 22px; }
-  .leaf-reports__tabs { margin-bottom: 20px; }
+  .leaf-reports__title { font: var(--leaf-type-ui-title); letter-spacing: var(--leaf-type-tracking-title); color: var(--leaf-color-ink); margin-bottom: var(--leaf-space-1); }
+  .leaf-reports__meta { font: var(--leaf-type-ui-body); color: var(--leaf-color-warm-grey); margin-bottom: var(--leaf-space-5); }
+  .leaf-reports__tabs { margin-bottom: var(--leaf-space-5); }
 `;
 
 function ensureStyles() {

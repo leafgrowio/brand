@@ -19,20 +19,20 @@ const CSS = `
     flex-shrink: 0;
     background: var(--leaf-color-stone-faint);
     border-right: 1px solid var(--leaf-border-light);
-    padding: 16px 14px;
+    padding: var(--leaf-space-4) var(--leaf-space-4);
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: var(--leaf-space-1);
     overflow-y: auto;
   }
   .leaf-appshell__org {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--leaf-space-2);
     background: var(--leaf-color-canvas);
-    border: 1px solid rgba(23, 20, 18, 0.12);
-    border-radius: 10px;
-    padding: 9px 11px;
+    border: 1px solid var(--leaf-border-light);
+    border-radius: var(--leaf-radius-sm);
+    padding: var(--leaf-space-2) var(--leaf-space-3);
     margin-bottom: var(--leaf-space-3);
     cursor: pointer;
     width: 100%;
@@ -40,28 +40,28 @@ const CSS = `
   .leaf-appshell__org-tile {
     width: 24px;
     height: 24px;
-    border-radius: 7px;
+    border-radius: var(--leaf-radius-sm);
     background: var(--leaf-color-laurel);
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font: 700 11px/1 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-micro); font-weight: 700;
     color: var(--leaf-color-ink);
   }
   .leaf-appshell__org-name {
     flex: 1;
     text-align: left;
-    font: 600 13.5px/1.1 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-body); font-weight: 600;
     color: var(--leaf-color-ink);
   }
   .leaf-appshell__org-chevron { color: var(--leaf-color-warm-grey); display: flex; flex-shrink: 0; }
   .leaf-appshell__group-label {
-    font: 600 11px/1 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-micro);
     letter-spacing: 0.07em;
     color: var(--leaf-text-muted);
     text-transform: uppercase;
-    padding: 12px 12px 2px;
+    padding: var(--leaf-space-3) var(--leaf-space-3) var(--leaf-space-1);
   }
   .leaf-appshell__group-label:first-of-type { padding-top: 4px; }
 
@@ -69,12 +69,12 @@ const CSS = `
   .leaf-appshell__topbar {
     height: 58px;
     flex-shrink: 0;
-    padding: 0 18px;
+    padding: 0 var(--leaf-space-4);
     background: var(--leaf-color-canvas);
     border-bottom: 1px solid var(--leaf-border-light);
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: var(--leaf-space-4);
   }
   .leaf-appshell__icon-btn {
     display: inline-flex;
@@ -88,29 +88,29 @@ const CSS = `
     color: var(--leaf-color-warm-grey);
     cursor: pointer;
   }
-  .leaf-appshell__icon-btn:hover { background: rgba(23, 20, 18, 0.05); }
+  .leaf-appshell__icon-btn:hover { background: var(--leaf-surface-hover); }
   .leaf-appshell__icon-btn:focus-visible { outline: 2px solid var(--leaf-focus-ring); outline-offset: 2px; }
-  .leaf-appshell__divider { width: 1px; height: 22px; background: rgba(23, 20, 18, 0.12); flex-shrink: 0; }
+  .leaf-appshell__divider { width: 1px; height: 22px; background: var(--leaf-border-light); flex-shrink: 0; }
   .leaf-appshell__spacer { flex: 1; }
   .leaf-appshell__search {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--leaf-space-2);
     background: var(--leaf-color-stone-faint);
-    border: 1px solid rgba(23, 20, 18, 0.12);
+    border: 1px solid var(--leaf-border-light);
     border-radius: var(--leaf-radius-pill);
-    padding: 7px 14px;
+    padding: var(--leaf-space-2) var(--leaf-space-4);
     color: var(--leaf-color-warm-grey);
-    font: 500 13px/1 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-label);
     width: 220px;
   }
   .leaf-appshell__search span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .leaf-appshell__new-report {
-    font: 600 13.5px/1 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-body); font-weight: 600;
     color: var(--leaf-color-canvas);
     background: var(--leaf-color-coral);
     border: none;
-    padding: 9px 15px;
+    padding: var(--leaf-space-2) var(--leaf-space-4);
     border-radius: var(--leaf-radius-pill);
     cursor: pointer;
     white-space: nowrap;
@@ -124,7 +124,7 @@ const CSS = `
     border-radius: 50%;
     background: var(--leaf-color-heather);
     color: var(--leaf-color-ink);
-    font: 700 12.5px/1 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-label); font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,7 +132,7 @@ const CSS = `
   }
   .leaf-appshell__content {
     flex: 1;
-    padding: 24px 26px;
+    padding: var(--leaf-space-5) var(--leaf-space-5);
     background: var(--leaf-color-stone-light);
     overflow-y: auto;
   }

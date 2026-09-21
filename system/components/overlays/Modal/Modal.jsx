@@ -17,7 +17,7 @@ const CSS = `
     border: 1px solid var(--leaf-border-light);
     border-radius: var(--leaf-radius-lg);
     box-shadow: var(--leaf-shadow-md);
-    padding: 26px;
+    padding: var(--leaf-space-5);
     animation: leaf-modal-rise-in var(--leaf-motion-base) var(--leaf-ease);
   }
   .leaf-modal-header {
@@ -28,14 +28,14 @@ const CSS = `
     margin-bottom: var(--leaf-space-1);
   }
   .leaf-modal-title {
-    font: 600 20px/1.2 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-heading); font-weight: 600;
     color: var(--leaf-text-primary);
     margin: 0;
   }
   .leaf-modal-close {
     display: flex;
     flex: none;
-    margin-top: 2px;
+    margin-top: var(--leaf-space-1);
     color: var(--leaf-color-warm-grey);
     background: none;
     border: none;
@@ -48,13 +48,13 @@ const CSS = `
     outline-offset: 2px;
   }
   .leaf-modal-body {
-    font: 400 14.5px/1.55 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-body);
     color: var(--leaf-color-warm-grey);
-    margin: 0 0 22px;
+    margin: 0 0 var(--leaf-space-5);
   }
   .leaf-modal-actions {
     display: flex;
-    gap: 10px;
+    gap: var(--leaf-space-2);
     justify-content: flex-end;
   }
   @keyframes leaf-modal-fade-in {

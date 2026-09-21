@@ -8,14 +8,14 @@
   body { margin: 0; padding: var(--leaf-space-4); background: var(--leaf-surface-card); }
   .stage {
     position: relative;
-    border-radius: 16px;
+    border-radius: var(--leaf-radius-md);
     overflow: hidden;
     background: var(--leaf-color-stone-deep);
     min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 28px;
+    padding: var(--leaf-space-5);
   }
   .scrim { position: absolute; inset: 0; background: var(--leaf-scrim); }
   .card {
@@ -26,26 +26,28 @@
     border: 1px solid var(--leaf-border-light);
     border-radius: var(--leaf-radius-lg);
     box-shadow: var(--leaf-shadow-md);
-    padding: 26px;
+    padding: var(--leaf-space-5);
   }
   .header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--leaf-space-4); margin-bottom: var(--leaf-space-1); }
-  .title { font: 600 20px/1.2 var(--leaf-font-sans); color: var(--leaf-text-primary); margin: 0; }
-  .close { color: var(--leaf-color-warm-grey); display: flex; flex: none; margin-top: 2px; }
-  .body { font: 400 14.5px/1.55 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin: 0 0 22px; }
-  .actions { display: flex; gap: 10px; justify-content: flex-end; }
+  .title { font: var(--leaf-type-ui-heading); font-weight: 600; color: var(--leaf-text-primary); margin: 0; }
+  .close { color: var(--leaf-color-warm-grey); display: flex; flex: none; margin-top: var(--leaf-space-1); }
+  .body { font: var(--leaf-type-ui-body); color: var(--leaf-color-warm-grey); margin: 0 0 var(--leaf-space-5); }
+  .actions { display: flex; gap: var(--leaf-space-2); justify-content: flex-end; }
   .btn-cancel {
-    font: 600 14px/1 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-body);
+    font-weight: 600;
     color: var(--leaf-text-primary);
     background: transparent;
-    border: 1px solid rgba(23, 20, 18, 0.16);
-    padding: 10px 16px;
+    border: 1px solid var(--leaf-border-input);
+    padding: var(--leaf-space-2) var(--leaf-space-4);
     border-radius: var(--leaf-radius-pill);
   }
   .btn-destructive {
-    font: 600 14px/1 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-body);
+    font-weight: 600;
     color: var(--leaf-color-canvas);
     background: var(--leaf-color-state-error);
-    padding: 10px 16px;
+    padding: var(--leaf-space-2) var(--leaf-space-4);
     border-radius: var(--leaf-radius-pill);
   }
 </style>

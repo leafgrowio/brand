@@ -1,13 +1,10 @@
 const CSS = `
   .leaf-checkbox {
+    font: var(--leaf-type-ui-body);
     display: inline-flex;
     align-items: center;
     gap: var(--leaf-space-2);
     cursor: pointer;
-    font-family: var(--leaf-font-sans);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.4;
     color: var(--leaf-color-ink);
   }
   .leaf-checkbox.is-disabled {
@@ -32,8 +29,8 @@ const CSS = `
     justify-content: center;
     width: 22px;
     height: 22px;
-    border-radius: 6px;
-    border: 1.5px solid rgba(23, 20, 18, 0.3);
+    border-radius: var(--leaf-radius-sm);
+    border: 1.5px solid var(--leaf-border-strong);
     background: var(--leaf-color-canvas);
     transition: background-color var(--leaf-motion-fast) var(--leaf-ease),
       border-color var(--leaf-motion-fast) var(--leaf-ease);

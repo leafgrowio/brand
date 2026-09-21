@@ -1,20 +1,18 @@
 const CSS = `
   .leaf-tabs {
     display: flex;
-    gap: 22px;
-    border-bottom: 1px solid rgba(23, 20, 18, 0.12);
+    gap: var(--leaf-space-5);
+    border-bottom: 1px solid var(--leaf-border-light);
   }
   .leaf-tabs__tab {
+    font: var(--leaf-type-ui-body);
+    font-weight: 500;
     appearance: none;
     background: none;
     border: none;
     margin: 0;
     cursor: pointer;
-    padding: 0 0 12px;
-    font-family: var(--leaf-font-sans);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1;
+    padding: 0 0 var(--leaf-space-3);
     color: var(--leaf-color-warm-grey);
     box-shadow: inset 0 0 0 transparent;
     transition: color var(--leaf-motion-fast) var(--leaf-ease),

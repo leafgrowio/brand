@@ -22,15 +22,12 @@ const CSS = `
   }
   .leaf-table thead tr {
     background: var(--leaf-color-stone-faint);
-    border-bottom: 1.5px solid rgba(23, 20, 18, 0.14);
+    border-bottom: 1.5px solid var(--leaf-border-input);
   }
   .leaf-table th {
+    font: var(--leaf-type-ui-micro);
     text-align: left;
-    padding: 13px 16px;
-    font-family: var(--leaf-font-sans);
-    font-size: 11.5px;
-    font-weight: 600;
-    line-height: 1;
+    padding: var(--leaf-space-3) var(--leaf-space-4);
     letter-spacing: 0.02em;
     color: var(--leaf-color-ink);
   }
@@ -38,7 +35,7 @@ const CSS = `
     text-align: right;
   }
   .leaf-table tbody tr {
-    border-bottom: 1px solid rgba(23, 20, 18, 0.07);
+    border-bottom: 1px solid var(--leaf-border-light);
   }
   .leaf-table tbody tr:last-child {
     border-bottom: none;
@@ -47,11 +44,9 @@ const CSS = `
     background: var(--leaf-color-stone-faint);
   }
   .leaf-table td {
-    padding: 12px 16px;
-    font-family: var(--leaf-font-sans);
-    font-size: 13.5px;
+    font: var(--leaf-type-ui-label);
     font-weight: 400;
-    line-height: 1;
+    padding: var(--leaf-space-3) var(--leaf-space-4);
     color: var(--leaf-color-ink);
   }
   .leaf-table td[data-align="right"] {
@@ -65,8 +60,8 @@ const CSS = `
     display: inline-block;
     width: 9px;
     height: 9px;
-    border-radius: 3px;
-    margin-right: 8px;
+    border-radius: var(--leaf-radius-sm);
+    margin-right: var(--leaf-space-2);
     vertical-align: middle;
   }
   .leaf-table__delta {

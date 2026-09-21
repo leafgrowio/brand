@@ -11,22 +11,22 @@
     max-width: 220px;
     background: var(--leaf-color-canvas);
     border: 1px solid var(--leaf-border-light);
-    border-radius: 12px;
+    border-radius: var(--leaf-radius-md);
     box-shadow: var(--leaf-shadow-md);
-    padding: 6px;
+    padding: var(--leaf-space-1);
   }
   .item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 9px 10px;
-    border-radius: 8px;
-    font: 500 13.5px/1 var(--leaf-font-sans);
+    gap: var(--leaf-space-2);
+    padding: var(--leaf-space-2) var(--leaf-space-2);
+    border-radius: var(--leaf-radius-sm);
+    font: var(--leaf-type-ui-label);
     color: var(--leaf-text-primary);
   }
-  .item.is-highlighted { background: rgba(23, 20, 18, 0.05); }
+  .item.is-highlighted { background: var(--leaf-surface-hover); }
   .item.is-destructive { color: var(--leaf-color-state-error); }
-  .divider { height: 1px; background: rgba(23, 20, 18, 0.1); margin: 6px 4px; }
+  .divider { height: 1px; background: var(--leaf-border-light); margin: var(--leaf-space-1) var(--leaf-space-1); }
 </style>
 </head>
 <body>

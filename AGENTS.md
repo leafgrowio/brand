@@ -6,7 +6,7 @@ This is the Leaf brand repository. Treat it as the canonical, public source for 
 
 This repo stores the brand primitives Leaf uses across products, marketing, sales, and internal materials, published publicly so they can be fetched at runtime over `raw.githubusercontent.com/leafgrowio/brand/main/...`:
 
-- `assets/font/` - Mona Sans and Source Serif 4 source files, both SIL Open Font License. Mona Sans is the default system font and must be self-hosted wherever the brand letterforms matter (the Google Fonts build strips its stylistic-set tables); Source Serif 4 is an optional editorial/highlight serif.
+- `assets/font/` - Mona Sans and Source Serif 4 source files, both SIL Open Font License. Mona Sans is the default system font and must be self-hosted wherever the brand letterforms matter. This folder holds the **verbatim upstream** variable fonts; `system/assets/fonts/` holds the frozen build derived from them (stylistic sets baked into the glyphs), which is what the design system ships; Source Serif 4 is an optional editorial/highlight serif.
 - `assets/icons/` - icon exports grouped by theme, icon, variation, and format.
 - `assets/logos/` - logos for Leaf and its related surfaces.
 - `system/` - the compiled Leaf design system: the ratified spec (`system/DESIGN.md`), design tokens, React components, specimen cards, and the Answers UI kit, synced to Leaf's Claude Design "Design System" project.
@@ -97,6 +97,7 @@ system/
   readme.md               # guide + manifest for consumers
   SKILL.md                # agent entry point for producing Leaf-branded work
   styles.css              # token entry point (@import only)
+  support.js              # the two .dc.html references load this; nothing else does
   tokens/                 # --leaf-* custom properties, one file per concern
   components/<cat>/<Name>/  # React primitives: .jsx + .d.ts + .prompt.md + @dsCard .html
   foundations/            # foundation specimen cards
@@ -109,6 +110,7 @@ The `system/` tree syncs to the Claude Design project "Design System" (org defau
 
 ## Useful Checks
 
+- `.claude/launch.json` serves `system/` at `http://localhost:4173` (`python3 -m http.server 4173 --directory system`). Use it to render the specimen cards and both `.dc.html` references before a sync — `system/AGENTS.md` requires looking at what changed, and a screenshot from this server is how.
 - `git status --short` - see local changes.
 - `find assets -type f | wc -l` - count asset files.
 - `find assets/icons -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort` - list icon themes.

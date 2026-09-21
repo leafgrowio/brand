@@ -17,14 +17,13 @@
     display: inline-flex;
   }
   .trigger {
-    font-family: var(--leaf-font-sans);
-    font-size: 14px;
+    font: var(--leaf-type-ui-body);
     font-weight: 600;
     color: var(--leaf-color-canvas);
     background: var(--leaf-color-coral);
     border: none;
     border-radius: var(--leaf-radius-pill);
-    padding: 11px 20px;
+    padding: var(--leaf-space-3) var(--leaf-space-4);
   }
   .tooltip {
     position: absolute;
@@ -33,13 +32,11 @@
     align-items: center;
     justify-content: center;
     white-space: nowrap;
-    padding: 8px 12px;
+    padding: var(--leaf-space-2) var(--leaf-space-3);
     border-radius: var(--leaf-radius-sm);
     background: var(--leaf-color-ink);
-    font-family: var(--leaf-font-sans);
-    font-size: 13px;
+    font: var(--leaf-type-ui-label);
     font-weight: 600;
-    line-height: 1;
     color: var(--leaf-color-canvas);
     bottom: calc(100% + 10px);
     left: 50%;

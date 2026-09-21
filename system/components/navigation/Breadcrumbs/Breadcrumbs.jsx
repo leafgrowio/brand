@@ -3,21 +3,18 @@ const CSS = `
     display: flex;
   }
   .leaf-breadcrumbs__list {
+    font: var(--leaf-type-ui-label);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--leaf-space-2);
     margin: 0;
     padding: 0;
     list-style: none;
-    font-family: var(--leaf-font-sans);
-    font-size: 13.5px;
-    font-weight: 500;
-    line-height: 1;
   }
   .leaf-breadcrumbs__item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--leaf-space-2);
   }
   .leaf-breadcrumbs__link {
     color: var(--leaf-text-accent);
@@ -32,7 +29,7 @@ const CSS = `
     outline-offset: 2px;
   }
   .leaf-breadcrumbs__separator {
-    color: rgba(23, 20, 18, 0.28);
+    color: var(--leaf-text-muted);
   }
   .leaf-breadcrumbs__current {
     color: var(--leaf-color-ink);

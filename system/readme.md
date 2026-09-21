@@ -2,7 +2,7 @@
 
 The compiled, consumable form of Leaf's brand: tokens, React components, specimen cards, and an Answers UI kit, generated from the written spec in [DESIGN.md](DESIGN.md) and the two visual references ([Leaf Brand Book.dc.html](Leaf%20Brand%20Book.dc.html), [Leaf Component Library.dc.html](Leaf%20Component%20Library.dc.html)). Where anything here disagrees with DESIGN.md, DESIGN.md wins — fix both together.
 
-Version 1.0 — ratified 16 July 2026. Maintained by the Creative team (creative@leaf.fm). Versioning: patch = copy/typo/token value · minor = new component or guidance, backwards-compatible · major = a rule change that breaks existing artifacts.
+Version 2.0 — ratified 20 September 2026. Maintained by the Creative team (creative@leaf.fm). Versioning: patch = copy/typo/token value · minor = new component or guidance, backwards-compatible · major = a rule change that breaks existing artifacts.
 
 ## How to use it
 
@@ -10,7 +10,7 @@ Version 1.0 — ratified 16 July 2026. Maintained by the Creative team (creative
 
 **For agents:** read [SKILL.md](SKILL.md). Short version — for artifacts and static HTML, copy the token values and specimen patterns; for production code, import the components; for rules, read this file and DESIGN.md.
 
-**Fonts are self-hosted and that matters.** Mona Sans must load from `assets/fonts/` — the Google Fonts build strips the stylistic-set tables (ss03/05/06/07/09) that give Leaf its letterforms. The sets are enforced globally via `* { font-feature-settings: var(--leaf-type-features) }` because the `font` shorthand resets them. Source Serif 4 (editorial serif only — never UI, tables, forms, nav, or small labels) is self-hosted alongside for parity.
+**Fonts are self-hosted and that matters.** Mona Sans must load from `assets/fonts/`, where it is a frozen build carrying ss03/05/06/07/09 in the glyph mapping rather than in a feature table — so the brand letterforms arrive even on a surface that cannot request OpenType features. (The old reason given here, that the Google Fonts build strips those tables, was measured and is false; it is withdrawn.) The sets are what give Leaf its letterforms. The sets are enforced globally via `* { font-feature-settings: var(--leaf-type-features) }` because the `font` shorthand resets them. Source Serif 4 (editorial serif only — never UI, tables, forms, nav, or small labels) is self-hosted alongside for parity.
 
 ## Content fundamentals
 
@@ -26,10 +26,10 @@ Leaf sounds commercially sharp, technically credible, plain-spoken, and evidence
 ## Visual foundations
 
 - **Flat by default.** Surfaces separate with 1px hairline borders and background tone, not shadow. One warm shadow family exists for lifted/transient surfaces only (`--leaf-shadow-sm` hover, `--leaf-shadow-md` menus/modals). Never shadow + heavy border on the same element.
-- **One Coral moment per view.** Coral is the signal, not a coat of paint: the primary button, the active nav item, the focus series in a chart. Content blocks use the soft tint (`--leaf-color-coral-tint`) with Ink text; solid Coral is for CTAs and small marks only.
-- **Warm Stone grounds.** Light Stone (`--leaf-surface-page`) is the room, Canvas cards are for clarity, Ink is a real brand surface (Aqua accents, Canvas text, `--leaf-border-dark` hairlines).
-- **Copy colour rule.** Text is Ink, Coral, Warm Grey, or Aqua-on-dark only. Secondary palette colours are fills, never text — every colour fill takes Ink text; only the dark anchors take Canvas (white-on-Coral is 3.09:1, large text only).
-- **Minimal motion.** Opacity and transform only, 120–200ms, ease-out `cubic-bezier(0.2, 0, 0, 1)`, always honouring `prefers-reduced-motion`.
+- **One Coral moment per view.** Coral is the signal, not a coat of paint: the primary button, the active nav item, the focus series in a chart. On the active nav item the signal is the tint fill — the text and icon stay Ink, because Coral on its own tint is 2.54:1. Content blocks use the soft tint (`--leaf-color-coral-tint`) with Ink text; solid Coral is for CTAs and small marks only.
+- **Warm Stone grounds, everywhere.** Light Stone (`--leaf-surface-page`) is the room and Canvas cards are for clarity. Since v2.0, Ink is **the dark-mode UI surface and nothing else** — not a marketing, deck or social ground (Aqua accents, Canvas text, `--leaf-border-dark` hairlines apply there).
+- **Copy colour rule.** Text is Ink, Coral, Warm Grey, or Aqua-on-dark only. Secondary palette colours are fills, never text — every colour fill takes Ink text, except a solid Coral control, whose short 600-weight label is Canvas. Only the dark anchors take Canvas otherwise (Canvas-on-Coral is 3.04:1, large text only). As running text Coral is Canvas-only at 24px+ or 19px+ bold; eyebrows, small uppercase labels, inline links and the secondary button's label are the stated exception, because none is read as prose and each carries a second signal.
+- **Minimal motion.** Opacity and transform only, 120–180ms, ease-out `cubic-bezier(0.2, 0, 0, 1)`, always honouring `prefers-reduced-motion`.
 - **Accessibility is a foundation.** WCAG 2.1 AA: body text ≥ 4.5:1, never colour alone (deltas carry ▲/▼, badges carry dots, banners carry icons), 2px Coral focus ring (Aqua on dark) on everything interactive, hit targets ≥ 44px.
 
 ## Iconography
@@ -47,10 +47,10 @@ Small functional strokes inside components (check, chevron, ×, search, the side
 | File | Declares |
 | --- | --- |
 | `colors.css` | Core, neutral, highlight, secondary, state (+tints), chart series/grid/axis, graphite mono ramp, sequential ramps, heatmap midpoint, semantic aliases, focus rings |
-| `typography.css` | Families, `--leaf-type-*` shorthands, stylistic-set features, heading tracking |
+| `typography.css` | Families; four scales of `--leaf-type-*` shorthands (Interface, Editorial, Product, Slides); stylistic-set features; the three tracking tokens |
 | `spacing.css` | `--leaf-space-1..9` (4→96), `--leaf-container-max` |
 | `radius.css` | sm 8 · md 14 · lg 18 · pill 999 |
-| `elevation.css` | Hairlines (light/dark/input), `--leaf-shadow-sm/md`, `--leaf-scrim` |
+| `elevation.css` | Hairlines (light/dark/input/strong), the four state borders, `--leaf-shadow-sm/md/control`, `--leaf-scrim` |
 | `motion.css` | 120/180ms, `--leaf-ease` |
 | `fonts.css` | `@font-face` (Mona Sans VF, Source Serif 4 VF) + global feature-settings |
 
@@ -76,7 +76,7 @@ Groups: Colors (core, neutrals, aqua-on-Ink, secondary, state, chart series, ram
 
 ## Intentional additions & resolved discrepancies
 
-Additions beyond DESIGN.md's implementation block, each traceable to spec prose: sequential-ramp/graphite/heatmap tokens (Data visualization section) · `--leaf-border-input`, `--leaf-scrim`, dark-surface and focus tokens (Forms/Overlays/Dark surfaces sections) · `--leaf-text-muted: #9a8f86` (the muted grey used pervasively in the component library for placeholders and quiet captions, previously unnamed) · Button sm/lg sizes (the plan requires them; the reference shows md — sm/lg are derived proportionally) · heading tracking tokens.
+Additions beyond DESIGN.md's implementation block, each traceable to spec prose: sequential-ramp/graphite/heatmap tokens (Data visualization section) · `--leaf-border-input`, `--leaf-scrim`, dark-surface and focus tokens (Forms/Overlays/Dark surfaces sections) · `--leaf-text-muted: #767065` (the muted grey used pervasively in the component library for placeholders and quiet captions, previously unnamed) · Button sm/lg sizes (the plan requires them; the reference shows md — sm/lg are derived proportionally) · heading tracking tokens.
 
 Where the visual references disagreed with DESIGN.md, DESIGN.md won: breadcrumb ancestors are Coral links (one mock showed Warm Grey) · modal cancel is neutral Ink outline (one mock coloured it Ember; Ember is reserved for the destructive primary) · input focus is the 2px Coral outline ring (not the soft box-shadow variant) · inputs use `--leaf-radius-md` (14px).
 
@@ -90,7 +90,7 @@ The component cards are static specimens, so they render with or without the gen
 
 ## Sources
 
-- [DESIGN.md](DESIGN.md) — the written spec (v1.0, ratified). The deep dive; this readme is the digest.
+- [DESIGN.md](DESIGN.md) — the written spec (v2.0, ratified 20 September 2026). The deep dive; this readme is the digest.
 - [Leaf Brand Book.dc.html](Leaf%20Brand%20Book.dc.html) — brand foundations, visually. Token-driven (`styles.css`), with the foundation cards live-embedded under "Rendered from source".
 - [Leaf Component Library.dc.html](Leaf%20Component%20Library.dc.html) — the application layer, visually. Token-driven (`styles.css`), with all 18 component cards live-embedded under "Rendered from source".
 - [leafgrowio/brand](https://github.com/leafgrowio/brand) — logos, the full icon library, font sources, imagery, photography.

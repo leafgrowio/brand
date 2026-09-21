@@ -5,27 +5,22 @@ const CSS = `
     font-family: var(--leaf-font-sans);
   }
   .leaf-input__label {
-    display: block;
-    font-family: var(--leaf-font-sans);
-    font-size: 13px;
+    font: var(--leaf-type-ui-label);
     font-weight: 600;
-    line-height: 1;
+    display: block;
     color: var(--leaf-color-ink);
-    margin-bottom: 7px;
+    margin-bottom: var(--leaf-space-2);
   }
   .leaf-input__label.is-disabled {
     color: var(--leaf-text-muted);
   }
   .leaf-input__field {
-    font-family: var(--leaf-font-sans);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1;
+    font: var(--leaf-type-ui-body);
     color: var(--leaf-color-ink);
     background: var(--leaf-color-canvas);
     border: 1px solid var(--leaf-border-input);
     border-radius: var(--leaf-radius-md);
-    padding: 11px 14px;
+    padding: var(--leaf-space-3) var(--leaf-space-4);
     transition: border-color var(--leaf-motion-base) var(--leaf-ease);
   }
   .leaf-input__field::placeholder {
@@ -42,25 +37,20 @@ const CSS = `
   .leaf-input__field:disabled {
     color: var(--leaf-text-muted);
     background: var(--leaf-color-stone-faint);
-    border: 1px solid rgba(23, 20, 18, 0.12);
+    border: 1px solid var(--leaf-border-light);
     opacity: 0.7;
     cursor: not-allowed;
   }
   .leaf-input__help {
-    font-family: var(--leaf-font-sans);
-    font-size: 12.5px;
+    font: var(--leaf-type-ui-label);
     font-weight: 400;
-    line-height: 1.4;
     color: var(--leaf-color-warm-grey);
-    margin-top: 6px;
+    margin-top: var(--leaf-space-1);
   }
   .leaf-input__error {
-    font-family: var(--leaf-font-sans);
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.4;
+    font: var(--leaf-type-ui-label);
     color: var(--leaf-color-state-error);
-    margin-top: 6px;
+    margin-top: var(--leaf-space-1);
   }
   @media (prefers-reduced-motion: reduce) {
     .leaf-input__field {

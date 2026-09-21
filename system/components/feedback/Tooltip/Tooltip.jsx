@@ -4,19 +4,17 @@ const CSS = `
     display: inline-flex;
   }
   .leaf-tooltip {
+    font: var(--leaf-type-ui-label);
+    font-weight: 600;
     position: absolute;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
     white-space: nowrap;
-    padding: 8px 12px;
+    padding: var(--leaf-space-2) var(--leaf-space-3);
     border-radius: var(--leaf-radius-sm);
     background: var(--leaf-color-ink);
-    font-family: var(--leaf-font-sans);
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1;
     color: var(--leaf-color-canvas);
     opacity: 0;
     visibility: hidden;

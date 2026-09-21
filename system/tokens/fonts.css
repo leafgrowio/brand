@@ -1,6 +1,18 @@
 /* Leaf fonts — self-hosted variable fonts.
-   Mona Sans MUST be self-hosted: the Google Fonts build strips the ssXX
-   stylistic-set tables the brand depends on (ss03/05/06/07/09). */
+
+   Mona Sans here is a FROZEN build of upstream v2.0.27: ss03/05/06/07/09 are
+   baked into the glyph mapping rather than held in a feature table, and the
+   wght default is moved from 200 (Thin) to 400. So any surface gets the brand
+   letterforms whether or not it can request OpenType features, and a surface
+   that sets no weight gets Regular rather than Thin. Built from the verbatim
+   upstream sources at the repo root (`assets/font/Mona Sans/`); the filenames
+   below never change — they are public URLs.
+
+   Self-hosting is not about Google Fonts stripping the stylistic sets. That
+   claim was measured and is false: the sets are in that build and render when
+   requested. Self-hosting stands on pinning to a named upstream release, no
+   third-party request at render time, and renderers that cannot turn features
+   on at all. */
 
 @font-face {
   font-family: "Mona Sans";
@@ -39,8 +51,9 @@
   font-display: swap;
 }
 
-/* The `font` shorthand resets font-feature-settings, so the stylistic sets
-   are enforced on * — every surface inherits the same letterforms. */
+/* Kept even against a frozen file: it costs nothing, and it rescues any
+   surface that loads a stock Mona Sans instead of this one. The `font`
+   shorthand resets font-feature-settings, hence the * selector. */
 * {
   font-feature-settings: var(--leaf-type-features);
 }

@@ -24,10 +24,7 @@
     display: inline-flex;
     align-items: center;
     gap: var(--leaf-space-2);
-    font-family: var(--leaf-font-sans);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.4;
+    font: var(--leaf-type-ui-body);
     color: var(--leaf-color-ink);
   }
   .switch.is-disabled {
@@ -51,7 +48,7 @@
     height: 20px;
     border-radius: 50%;
     background: var(--leaf-color-canvas);
-    box-shadow: 0 1px 2px rgba(23, 20, 18, 0.2);
+    box-shadow: var(--leaf-shadow-control);
   }
   .track.on .thumb {
     left: 21px;

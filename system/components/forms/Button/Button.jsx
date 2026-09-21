@@ -25,6 +25,7 @@ const CSS = `
   .leaf-btn--primary {
     color: var(--leaf-color-canvas);
     background: var(--leaf-color-coral);
+    border: 1px solid transparent;
   }
   .leaf-btn--primary:hover:not(:disabled) {
     background: var(--leaf-color-coral-hover);
@@ -38,28 +39,34 @@ const CSS = `
     background: var(--leaf-color-coral-tint);
   }
   .leaf-btn--sm.leaf-btn--primary {
-    font-size: 13px;
-    padding: 8px 15px;
+    font: var(--leaf-type-ui-label);
+    font-weight: 600;
+    padding: var(--leaf-space-2) var(--leaf-space-4);
   }
   .leaf-btn--md.leaf-btn--primary {
-    font-size: 14px;
-    padding: 11px 20px;
+    font: var(--leaf-type-ui-body);
+    font-weight: 600;
+    padding: var(--leaf-space-3) var(--leaf-space-5);
   }
   .leaf-btn--lg.leaf-btn--primary {
-    font-size: 15px;
-    padding: 13px 26px;
+    font: var(--leaf-type-ui-heading);
+    font-weight: 600;
+    padding: var(--leaf-space-3) var(--leaf-space-6);
   }
   .leaf-btn--sm.leaf-btn--secondary {
-    font-size: 13px;
-    padding: 7px 14px;
+    font: var(--leaf-type-ui-label);
+    font-weight: 600;
+    padding: var(--leaf-space-2) var(--leaf-space-4);
   }
   .leaf-btn--md.leaf-btn--secondary {
-    font-size: 14px;
-    padding: 10px 19px;
+    font: var(--leaf-type-ui-body);
+    font-weight: 600;
+    padding: var(--leaf-space-3) var(--leaf-space-5);
   }
   .leaf-btn--lg.leaf-btn--secondary {
-    font-size: 15px;
-    padding: 12px 25px;
+    font: var(--leaf-type-ui-heading);
+    font-weight: 600;
+    padding: var(--leaf-space-3) var(--leaf-space-6);
   }
   @media (prefers-reduced-motion: reduce) {
     .leaf-btn {

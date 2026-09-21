@@ -5,29 +5,29 @@ import { Checkbox } from "../../components/forms/Checkbox/Checkbox.jsx";
 import { Button } from "../../components/forms/Button/Button.jsx";
 
 const CSS = `
-  .leaf-settings__title { font: 640 26px/1.1 var(--leaf-font-sans); letter-spacing: -0.02em; color: var(--leaf-color-ink); margin-bottom: 6px; }
-  .leaf-settings__meta { font: 400 13.5px/1.5 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin-bottom: 22px; }
+  .leaf-settings__title { font: var(--leaf-type-ui-title); letter-spacing: var(--leaf-type-tracking-title); color: var(--leaf-color-ink); margin-bottom: var(--leaf-space-1); }
+  .leaf-settings__meta { font: var(--leaf-type-ui-body); color: var(--leaf-color-warm-grey); margin-bottom: var(--leaf-space-5); }
   .leaf-settings-card {
     max-width: 560px;
     background: var(--leaf-color-canvas);
     border: 1px solid var(--leaf-border-light);
     border-radius: var(--leaf-radius-lg);
-    padding: 26px;
+    padding: var(--leaf-space-5);
   }
-  .leaf-settings-card__title { font: 600 18px/1.2 var(--leaf-font-sans); color: var(--leaf-color-ink); margin-bottom: 4px; }
-  .leaf-settings-card__sub { font: 400 13.5px/1.5 var(--leaf-font-sans); color: var(--leaf-color-warm-grey); margin-bottom: 22px; }
-  .leaf-settings-card__field { margin-bottom: 20px; }
+  .leaf-settings-card__title { font: var(--leaf-type-ui-heading); font-weight: 600; color: var(--leaf-color-ink); margin-bottom: var(--leaf-space-1); }
+  .leaf-settings-card__sub { font: var(--leaf-type-ui-body); color: var(--leaf-color-warm-grey); margin-bottom: var(--leaf-space-5); }
+  .leaf-settings-card__field { margin-bottom: var(--leaf-space-5); }
   .leaf-settings-card__switch-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4px 0 18px;
-    border-bottom: 1px solid rgba(23, 20, 18, 0.07);
-    margin-bottom: 18px;
+    padding: var(--leaf-space-1) 0 var(--leaf-space-4);
+    border-bottom: 1px solid var(--leaf-border-light);
+    margin-bottom: var(--leaf-space-4);
   }
-  .leaf-settings-card__switch-label { font: 500 14px/1.3 var(--leaf-font-sans); color: var(--leaf-color-ink); }
-  .leaf-settings-card__checkbox-row { margin-bottom: 24px; }
-  .leaf-settings-card__footer { display: flex; justify-content: flex-end; gap: 10px; padding-top: 4px; }
+  .leaf-settings-card__switch-label { font: var(--leaf-type-ui-body); font-weight: 500; color: var(--leaf-color-ink); }
+  .leaf-settings-card__checkbox-row { margin-bottom: var(--leaf-space-5); }
+  .leaf-settings-card__footer { display: flex; justify-content: flex-end; gap: var(--leaf-space-2); padding-top: 4px; }
 `;
 
 function ensureStyles() {

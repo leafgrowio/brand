@@ -1,25 +1,61 @@
 /* Leaf typography tokens — source: DESIGN.md § Typography + Implementation tokens.
-   Mona Sans is the working font; Source Serif 4 is the editorial serif only. */
+   Mona Sans is the working font; Source Serif 4 is the editorial serif only.
+
+   Four scales. Interface is the web and marketing scale. Editorial is the two
+   serif styles. Product is for dense application views (the Answers kit and
+   anything like it). Slides is deck typography on the 1920x1080 canvas.
+   Every style is a `font` shorthand: weight size/line-height family. */
 
 :root {
   /* --- families --- */
   --leaf-font-sans: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
   --leaf-font-serif: "Source Serif 4", Georgia, serif;
 
-  /* --- type scale (font shorthands; desktop anchors) --- */
-  --leaf-type-display: 640 64px/0.96 "Mona Sans";
-  --leaf-type-h1: 640 46px/1.0 "Mona Sans";
-  --leaf-type-h2: 600 32px/1.05 "Mona Sans";
+  /* --- Interface: web and marketing (desktop anchors) --- */
+  --leaf-type-display: 700 64px/0.96 "Mona Sans";
+  --leaf-type-h1: 700 46px/1.0 "Mona Sans";
+  --leaf-type-h2: 700 32px/1.05 "Mona Sans";
   --leaf-type-h3: 600 22px/1.2 "Mona Sans";
   --leaf-type-body-lg: 400 18px/1.55 "Mona Sans";
   --leaf-type-body: 400 16px/1.6 "Mona Sans";
   --leaf-type-label: 500 14px/1.4 "Mona Sans";
   --leaf-type-caption: 500 13px/1.4 "Mona Sans";
 
-  /* --- stylistic sets: always on, enforced on * in fonts.css --- */
+  /* --- Editorial: Source Serif 4, editorial moments only --- */
+  --leaf-type-serif-headline: 800 34px/1.08 "Source Serif 4";
+  --leaf-type-serif-quote: italic 500 24px/1.3 "Source Serif 4";
+
+  /* --- Product: dense application views. The figures sit one weight step
+         under ui-title so a number reads as data, not as a heading. --- */
+  --leaf-type-ui-title: 700 24px/1.15 "Mona Sans";
+  --leaf-type-ui-figure: 640 24px/1.0 "Mona Sans";
+  --leaf-type-ui-figure-sm: 640 20px/1.0 "Mona Sans";
+  --leaf-type-ui-heading: 600 16px/1.25 "Mona Sans";
+  --leaf-type-ui-body: 400 14px/1.5 "Mona Sans";
+  --leaf-type-ui-label: 500 13px/1.2 "Mona Sans";
+  --leaf-type-ui-micro: 600 11px/1.2 "Mona Sans";
+
+  /* --- Slides: 1920x1080 canvas, roughly 2x Interface --- */
+  --leaf-type-slide-display: 700 128px/0.96 "Mona Sans";
+  --leaf-type-slide-h1: 700 92px/1 "Mona Sans";
+  --leaf-type-slide-h2: 700 64px/1.05 "Mona Sans";
+  --leaf-type-slide-h3: 600 44px/1.2 "Mona Sans";
+  --leaf-type-slide-figure: 640 128px/0.96 "Mona Sans";
+  --leaf-type-slide-body-lg: 400 36px/1.55 "Mona Sans";
+  --leaf-type-slide-body: 400 32px/1.6 "Mona Sans";
+  --leaf-type-slide-label: 500 28px/1.4 "Mona Sans";
+  --leaf-type-slide-caption: 500 26px/1.4 "Mona Sans";
+  --leaf-type-slide-serif-headline: 800 68px/1.08 "Source Serif 4";
+  --leaf-type-slide-serif-quote: italic 500 48px/1.3 "Source Serif 4";
+
+  /* --- stylistic sets: baked into the font, and requested anyway in fonts.css --- */
   --leaf-type-features: "ss03" on, "ss05" on, "ss06" on, "ss07" on, "ss09" on;
 
-  /* --- tracking: tighten large headings --- */
-  --leaf-type-tracking-display: -0.03em;
-  --leaf-type-tracking-heading: -0.02em;
+  /* --- tracking: the web tightens, slides open.
+         Two web bands split at 54px; the slide band is positive, set so a
+         128px line opens by exactly 2px and held as a ratio down the scale.
+         Body, label and caption take none. --- */
+  --leaf-type-tracking-title: -0.03em;        /* 54px and below */
+  --leaf-type-tracking-title-large: -0.02em;  /* above 54px */
+  --leaf-type-tracking-slide: 0.015625em;     /* slide scale only */
 }

@@ -125,10 +125,10 @@ This repo includes `AGENTS.md` for agent-facing instructions, with `CLAUDE.md` a
 
 ## Design System
 
-The foundations that used to be aspirational here now live in `system/` as a working design system, ratified at v1.0 (16 July 2026):
+The foundations that used to be aspirational here now live in `system/` as a working design system, ratified at v2.0 (20 September 2026):
 
 - **Spec** — `system/DESIGN.md`: colour, typography (including the always-on Mona Sans stylistic sets), voice, spacing, elevation, motion, logos, iconography, imagery, photography, data visualization, product patterns, navigation, overlays, responsive rules, and governance.
-- **Tokens** — `system/styles.css` imports `system/tokens/*.css`; every value is a `--leaf-*` CSS custom property.
+- **Tokens** — `system/styles.css` imports `system/tokens/*.css`; every value is a `--leaf-*` CSS custom property. Typography carries four scales: Interface (web and marketing), Editorial (Source Serif 4), Product (dense application views) and Slides (deck typography).
 - **Components** — 18 React primitives across forms, data, feedback, navigation, and overlays, each with typed props, a usage prompt, and a rendered specimen card.
 - **Answers UI kit** — `system/ui_kits/answers/index.html`, an interactive recreation of Leaf's product surface composed from the primitives.
 

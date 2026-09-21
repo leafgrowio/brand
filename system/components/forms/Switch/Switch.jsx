@@ -1,13 +1,10 @@
 const CSS = `
   .leaf-switch {
+    font: var(--leaf-type-ui-body);
     display: inline-flex;
     align-items: center;
     gap: var(--leaf-space-2);
     cursor: pointer;
-    font-family: var(--leaf-font-sans);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.4;
     color: var(--leaf-color-ink);
   }
   .leaf-switch.is-disabled {
@@ -42,7 +39,7 @@ const CSS = `
     height: 20px;
     border-radius: 50%;
     background: var(--leaf-color-canvas);
-    box-shadow: 0 1px 2px rgba(23, 20, 18, 0.2);
+    box-shadow: var(--leaf-shadow-control);
     transition: left var(--leaf-motion-base) var(--leaf-ease);
   }
   .leaf-switch__input:checked + .leaf-switch__track {

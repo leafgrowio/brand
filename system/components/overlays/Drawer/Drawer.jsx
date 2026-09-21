@@ -28,11 +28,11 @@ const CSS = `
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: var(--leaf-space-3);
     margin-bottom: var(--leaf-space-4);
   }
   .leaf-drawer-title {
-    font: 600 18px/1.2 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-heading); font-weight: 600;
     color: var(--leaf-text-primary);
     margin: 0;
   }
@@ -53,7 +53,7 @@ const CSS = `
   .leaf-drawer-body {
     flex: 1;
     overflow-y: auto;
-    font: 400 14.5px/1.55 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-body);
     color: var(--leaf-color-warm-grey);
   }
   .leaf-drawer-footer {

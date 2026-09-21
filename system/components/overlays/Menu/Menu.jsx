@@ -6,28 +6,28 @@ const CSS = `
     max-width: 220px;
     background: var(--leaf-color-canvas);
     border: 1px solid var(--leaf-border-light);
-    border-radius: 12px;
+    border-radius: var(--leaf-radius-md);
     box-shadow: var(--leaf-shadow-md);
-    padding: 6px;
+    padding: var(--leaf-space-1);
     animation: leaf-menu-rise-in var(--leaf-motion-base) var(--leaf-ease);
   }
   .leaf-menu-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--leaf-space-2);
     width: 100%;
-    font: 500 13.5px/1 var(--leaf-font-sans);
+    font: var(--leaf-type-ui-label);
     color: var(--leaf-text-primary);
     background: none;
     border: none;
-    padding: 9px 10px;
-    border-radius: 8px;
+    padding: var(--leaf-space-2) var(--leaf-space-2);
+    border-radius: var(--leaf-radius-sm);
     cursor: pointer;
     text-align: left;
     transition: background-color var(--leaf-motion-fast) var(--leaf-ease);
   }
   .leaf-menu-item:hover {
-    background: rgba(23, 20, 18, 0.05);
+    background: var(--leaf-surface-hover);
   }
   .leaf-menu-item:focus-visible {
     outline: 2px solid var(--leaf-focus-ring);
@@ -45,8 +45,8 @@ const CSS = `
   }
   .leaf-menu-divider {
     height: 1px;
-    background: rgba(23, 20, 18, 0.1);
-    margin: 6px 4px;
+    background: var(--leaf-border-light);
+    margin: var(--leaf-space-1) var(--leaf-space-1);
   }
   @keyframes leaf-menu-rise-in {
     from { opacity: 0; transform: translateY(8px); }
