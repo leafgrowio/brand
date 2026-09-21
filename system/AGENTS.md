@@ -74,6 +74,7 @@ SKILL.md                # agent entry point for producing Leaf-branded work
 - The component inventory is locked to what the component library reference shows. New components require a minor version bump and an entry under "Intentional additions" in `readme.md` with a reason.
 
 **Specimen cards (`*.card.html`)**
+- **Show every state that looks materially different; not every value a prop accepts.** Select's focus is a Coral ring and its error is an Ember border plus a message — different objects, so the card shows them. Drawer's `side="left"` is a mirror of `right`, and Tooltip's four positions are one object at four offsets — showing those adds rows without adding information, and the subtitle says what is shown. The two rules pull against each other and this is the tie-break: a reader must be able to recognise a state in the wild from the card, which is a question about appearance, not about API surface.
 - Line 1 must be exactly `<!-- @dsCard group="…" viewport="WxH" subtitle="…" name="…" -->` — no leading whitespace; the app's compiler indexes cards from this line.
 - Cards link the root `styles.css` by relative path, are fully static (no React, no bundle references, no external resources), and show specimens directly with no headings or titles inside the body.
 - Copy follows Leaf voice: UK English, sentence case, verb-first button labels, no exclamation marks, no emojis, em-dash for missing data, and the number conventions (`£1.49M`, `3.72x`, `24.6%`, ▲/▼ in Fern/Ember, `1 Jun 2026`).

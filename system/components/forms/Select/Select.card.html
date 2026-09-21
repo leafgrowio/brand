@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" viewport="700x150" subtitle="default and disabled" name="Select" -->
+<!-- @dsCard group="Components" viewport="700x300" subtitle="default, focus, error, disabled" name="Select" -->
 <!doctype html>
 <html>
 <head>
@@ -11,8 +11,9 @@
     background: var(--leaf-surface-card);
   }
   .row {
-    display: flex;
-    gap: var(--leaf-space-6);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--leaf-space-5) var(--leaf-space-6);
   }
   .cell {
     display: flex;
@@ -45,6 +46,19 @@
     border: 1px solid var(--leaf-border-input);
     border-radius: var(--leaf-radius-md);
     padding: var(--leaf-space-3) var(--leaf-space-6) var(--leaf-space-3) var(--leaf-space-4);
+  }
+  .field.focus {
+    border-color: var(--leaf-color-coral);
+    outline: 2px solid var(--leaf-focus-ring);
+    outline-offset: 1px;
+  }
+  .field.error {
+    border-color: var(--leaf-color-state-error);
+  }
+  .error-text {
+    font: var(--leaf-type-ui-label);
+    color: var(--leaf-color-state-error);
+    margin-top: var(--leaf-space-2);
   }
   .field.is-disabled {
     color: var(--leaf-text-muted);
@@ -83,6 +97,35 @@
         </span>
       </div>
       <span class="cap">Default</span>
+    </div>
+    <div class="cell">
+      <label class="field-label" for="s3">Reporting frequency</label>
+      <div class="control">
+        <select id="s3" class="field focus">
+          <option selected>Weekly</option>
+        </select>
+        <span class="chevron">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
+      <span class="cap">Focus</span>
+    </div>
+    <div class="cell">
+      <label class="field-label" for="s4">Reporting frequency</label>
+      <div class="control">
+        <select id="s4" class="field error">
+          <option selected>Choose a frequency</option>
+        </select>
+        <span class="chevron">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
+      <span class="error-text">Pick a reporting frequency.</span>
+      <span class="cap">Error</span>
     </div>
     <div class="cell">
       <label class="field-label is-disabled" for="s2">Export format</label>

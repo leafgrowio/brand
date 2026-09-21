@@ -279,7 +279,7 @@ Never stack shadow *and* a heavy border on the same element; pick one separation
 
 - **Focus** — `2px solid Coral` outline, `2px` offset (`focus-visible` only). On Ink / dark surfaces use Aqua. Never remove focus outlines.
 - **Hover** — buttons shift fill (primary → `#E8462F`, secondary → `#FBE4DF`); cards/links may lift with `shadow.sm`. Keep transitions 120–180ms.
-- **Disabled** — 40% opacity + `not-allowed` cursor. Never signal disabled by colour alone.
+- **Disabled** — `not-allowed` cursor, and opacity by what the control has to convey. **40%** where the disabled state is carried by a shape or by a label outside the control: Button, Checkbox, Radio, Switch. **70%** where the control still displays a value the user may need to read — Input and Select. A locked field showing a workspace name or a plan's currency is content, and Ink at 40% on Canvas is 2.57:1 against 6.76:1 at 70%. WCAG exempts inactive controls from contrast, so 40% is permitted there; it is still the wrong call for a control whose whole job is to show something. Never signal disabled by colour alone.
 - **Links** — Coral default, Ink on hover; underline on hover for inline/body links (not for nav or button-style links).
 
 ---
