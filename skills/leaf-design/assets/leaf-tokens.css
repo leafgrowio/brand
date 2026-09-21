@@ -1,7 +1,19 @@
 /* Leaf design tokens — flattened for artifacts.
-   DOWNSTREAM COPY of system/tokens/*.css in github.com/leafgrowio/brand (v1.0.3).
+   DOWNSTREAM COPY of system/tokens/*.css in github.com/leafgrowio/brand (v2.0).
    Regenerate from the canonical files on version bumps; never edit values here.
-   Paste this whole block into the artifact's <style>. */
+   Paste this whole block into the artifact's <style>.
+
+   Fonts are NOT here — embed leaf-fonts-inline.css alongside this file; an
+   artifact cannot fetch an external font (CSP), so the face travels as a
+   data URI. Mona Sans there is a frozen build: ss03/05/06/07/09 are baked
+   into the glyphs, so the letterforms survive a renderer that cannot request
+   OpenType features.
+
+   Four type scales: Interface (web and marketing), Editorial (Source Serif 4),
+   Product (dense application views) and Slides (1920x1080 deck canvas).
+   Tracking has three tokens, not two — the web bands split at 54px and the
+   slide band is positive. --leaf-type-tracking-display and -heading were
+   removed in v2.0; nothing should reference them. */
 
 /* Leaf colour tokens — source: DESIGN.md § Colour + § Data visualization + Implementation tokens,
    verified against the brand book. Base palette first, then state, data-viz, and semantic aliases.
@@ -64,9 +76,9 @@
 
   /* --- data-viz neutral lead (dense dashboards: graphite carries the set, Coral flags one series) --- */
   --leaf-chart-neutral: #8c857e;
-  --leaf-chart-mono-1: #3f3a36;
+  --leaf-chart-mono-1: #c9c2bb;
   --leaf-chart-mono-2: #8c857e;
-  --leaf-chart-mono-3: #c9c2bb;
+  --leaf-chart-mono-3: #3f3a36;
 
   /* --- sequential ramps (single measure) --- */
   --leaf-ramp-coral-1: #fbe4df;
@@ -77,12 +89,16 @@
   --leaf-ramp-harbor-2: #9fc7bc;
   --leaf-ramp-harbor-3: #4fa3a6;
   --leaf-ramp-harbor-4: #2e8388;
+  --leaf-ramp-marigold-1: #fcf0de;
+  --leaf-ramp-marigold-2: #f5d39a;
+  --leaf-ramp-marigold-3: #efb75a;
+  --leaf-ramp-marigold-4: #ba8f46;
   --leaf-heatmap-mid: #efeae6; /* diverging heatmap midpoint */
 
   /* --- semantic aliases --- */
   --leaf-text-primary: var(--leaf-color-ink);
   --leaf-text-secondary: var(--leaf-color-warm-grey);
-  --leaf-text-muted: #9a8f86; /* placeholders, disabled labels, quiet captions (intentional addition — see readme) */
+  --leaf-text-muted: #767065; /* placeholders, disabled labels, quiet captions (intentional addition — see readme) */
   --leaf-text-accent: var(--leaf-color-coral);
   --leaf-text-on-dark: var(--leaf-color-canvas);
   --leaf-text-on-dark-secondary: rgba(255, 253, 251, 0.6);
@@ -90,6 +106,7 @@
   --leaf-surface-card: var(--leaf-color-canvas);
   --leaf-surface-ink: var(--leaf-color-ink);
   --leaf-surface-ink-panel: rgba(255, 253, 251, 0.04);
+  --leaf-surface-hover: rgba(23, 20, 18, 0.05);
   --leaf-border: var(--leaf-border-light);
 
   /* --- focus (focus-visible only; never removed) --- */
@@ -98,29 +115,65 @@
 }
 
 /* Leaf typography tokens — source: DESIGN.md § Typography + Implementation tokens.
-   Mona Sans is the working font; Source Serif 4 is the editorial serif only. */
+   Mona Sans is the working font; Source Serif 4 is the editorial serif only.
+
+   Four scales. Interface is the web and marketing scale. Editorial is the two
+   serif styles. Product is for dense application views (the Answers kit and
+   anything like it). Slides is deck typography on the 1920x1080 canvas.
+   Every style is a `font` shorthand: weight size/line-height family. */
 
 :root {
   /* --- families --- */
   --leaf-font-sans: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
   --leaf-font-serif: "Source Serif 4", Georgia, serif;
 
-  /* --- type scale (font shorthands; desktop anchors) --- */
-  --leaf-type-display: 640 64px/0.96 "Mona Sans";
-  --leaf-type-h1: 640 46px/1.0 "Mona Sans";
-  --leaf-type-h2: 600 32px/1.05 "Mona Sans";
+  /* --- Interface: web and marketing (desktop anchors) --- */
+  --leaf-type-display: 700 64px/0.96 "Mona Sans";
+  --leaf-type-h1: 700 46px/1.0 "Mona Sans";
+  --leaf-type-h2: 700 32px/1.05 "Mona Sans";
   --leaf-type-h3: 600 22px/1.2 "Mona Sans";
   --leaf-type-body-lg: 400 18px/1.55 "Mona Sans";
   --leaf-type-body: 400 16px/1.6 "Mona Sans";
   --leaf-type-label: 500 14px/1.4 "Mona Sans";
   --leaf-type-caption: 500 13px/1.4 "Mona Sans";
 
-  /* --- stylistic sets: always on, enforced on * in fonts.css --- */
+  /* --- Editorial: Source Serif 4, editorial moments only --- */
+  --leaf-type-serif-headline: 800 34px/1.08 "Source Serif 4";
+  --leaf-type-serif-quote: italic 500 24px/1.3 "Source Serif 4";
+
+  /* --- Product: dense application views. The figures sit one weight step
+         under ui-title so a number reads as data, not as a heading. --- */
+  --leaf-type-ui-title: 700 24px/1.15 "Mona Sans";
+  --leaf-type-ui-figure: 640 24px/1.0 "Mona Sans";
+  --leaf-type-ui-figure-sm: 640 20px/1.0 "Mona Sans";
+  --leaf-type-ui-heading: 600 16px/1.25 "Mona Sans";
+  --leaf-type-ui-body: 400 14px/1.5 "Mona Sans";
+  --leaf-type-ui-label: 500 13px/1.2 "Mona Sans";
+  --leaf-type-ui-micro: 600 11px/1.2 "Mona Sans";
+
+  /* --- Slides: 1920x1080 canvas, roughly 2x Interface --- */
+  --leaf-type-slide-display: 700 128px/0.96 "Mona Sans";
+  --leaf-type-slide-h1: 700 92px/1 "Mona Sans";
+  --leaf-type-slide-h2: 700 64px/1.05 "Mona Sans";
+  --leaf-type-slide-h3: 600 44px/1.2 "Mona Sans";
+  --leaf-type-slide-figure: 640 128px/0.96 "Mona Sans";
+  --leaf-type-slide-body-lg: 400 36px/1.55 "Mona Sans";
+  --leaf-type-slide-body: 400 32px/1.6 "Mona Sans";
+  --leaf-type-slide-label: 500 28px/1.4 "Mona Sans";
+  --leaf-type-slide-caption: 500 26px/1.4 "Mona Sans";
+  --leaf-type-slide-serif-headline: 800 68px/1.08 "Source Serif 4";
+  --leaf-type-slide-serif-quote: italic 500 48px/1.3 "Source Serif 4";
+
+  /* --- stylistic sets: baked into the font, and requested anyway in fonts.css --- */
   --leaf-type-features: "ss03" on, "ss05" on, "ss06" on, "ss07" on, "ss09" on;
 
-  /* --- tracking: tighten large headings --- */
-  --leaf-type-tracking-display: -0.03em;
-  --leaf-type-tracking-heading: -0.02em;
+  /* --- tracking: the web tightens, slides open.
+         Two web bands split at 54px; the slide band is positive, set so a
+         128px line opens by exactly 2px and held as a ratio down the scale.
+         Body, label and caption take none. --- */
+  --leaf-type-tracking-title: -0.03em;        /* 54px and below */
+  --leaf-type-tracking-title-large: -0.02em;  /* above 54px */
+  --leaf-type-tracking-slide: 0.015625em;     /* slide scale only */
 }
 
 /* Leaf spacing tokens — base unit 4px, 8px rhythm. Source: DESIGN.md § Spacing & layout. */
@@ -157,10 +210,20 @@
   --leaf-border-light: rgba(23, 20, 18, 0.1);
   --leaf-border-dark: rgba(255, 253, 251, 0.12);
   --leaf-border-input: rgba(23, 20, 18, 0.18);
+  --leaf-border-strong: rgba(23, 20, 18, 0.3);
+
+  --leaf-border-brand: rgba(251, 94, 72, 0.28);
+
+  /* --- state borders: the 1px tint edge on a status surface --- */
+  --leaf-border-success: rgba(47, 139, 87, 0.28);
+  --leaf-border-warning: rgba(199, 126, 28, 0.28);
+  --leaf-border-error: rgba(198, 58, 43, 0.28);
+  --leaf-border-info: rgba(46, 131, 136, 0.28);
 
   /* --- shadows --- */
   --leaf-shadow-sm: 0 1px 2px rgba(23, 20, 18, 0.05), 0 2px 6px rgba(23, 20, 18, 0.05);
   --leaf-shadow-md: 0 4px 12px rgba(23, 20, 18, 0.08), 0 12px 28px rgba(23, 20, 18, 0.07);
+  --leaf-shadow-control: 0 1px 2px rgba(23, 20, 18, 0.2);
 
   /* --- overlay scrim (modals, drawers) --- */
   --leaf-scrim: rgba(23, 20, 18, 0.44);

@@ -1,12 +1,13 @@
 # Leaf chart recipes (for artifacts)
 
-Downstream of `system/DESIGN.md` § Data visualization (leafgrowio/brand, v1.0.2). All colours by token — the kit's `leaf-tokens.css` defines every variable used here.
+Downstream of `system/DESIGN.md` § Data visualization (leafgrowio/brand, v2.0). All colours by token — the kit's `leaf-tokens.css` defines every variable used here.
 
 ## Palette rules
 
 - **Categorical series, fixed order** (a given series keeps its colour across every chart): 1 `--leaf-chart-series-1` Coral (focus) · 2 Harbor · 3 Marigold · 4 Heather · 5 Laurel · 6 Apricot. Use the fewest series possible.
 - **Two leads, chosen per chart:** *Coral lead* (default) for single-focus charts and headline metrics; *neutral lead* for dense dashboards — graphite `--leaf-chart-neutral` carries the set (mono ramp `--leaf-chart-mono-1..3`) and **Coral flags only the one series that matters**.
-- **Sequential ramps** (one measure): Coral `--leaf-ramp-coral-1..4`, or Harbor `--leaf-ramp-harbor-1..4` when Coral would read as alarm. Diverging heatmaps: harbor tints (good) → `--leaf-heatmap-mid` → coral tints (watch).
+- **Sequential ramps** (one measure, light → dark in four steps): Coral `--leaf-ramp-coral-1..4`, Harbor `--leaf-ramp-harbor-1..4` when Coral would read as alarm, or Marigold `--leaf-ramp-marigold-1..4`. Mono `--leaf-chart-mono-1..3` when the ramp should recede. Diverging heatmaps: harbor tints (good) → `--leaf-heatmap-mid` → coral tints (watch).
+- **Ink inside a fill needs the light end.** Marigold is the only ramp whose four steps all clear 4.5:1 against Ink, so use it where the fill carries a label — funnel stages, stacked bands, treemaps. On Coral or Harbor, stop at step 2 (step 4 drops to 3.37 and 4.12) or move the label outside the shape.
 - **Status ≠ series:** Fern up / Ember down, deltas only, always with ▲/▼ glyphs. Never repurpose a series colour as status or vice versa.
 
 ## Structure
@@ -37,7 +38,7 @@ Target line: absolutely positioned `border-top: 2px dashed var(--leaf-color-stat
                                       var(--leaf-chart-series-3) 69% 86%, var(--leaf-chart-series-4) 86% 100%);">
   <div style="position:absolute; inset:28px; border-radius:50%; background:var(--leaf-surface-card);
               display:flex; flex-direction:column; align-items:center; justify-content:center;">
-    <span style="font-size:20px; font-weight:640; letter-spacing:-0.02em;">£2.4M</span>
+    <span style="font:var(--leaf-type-ui-figure-sm); letter-spacing:var(--leaf-type-tracking-title);">£2.4M</span>
   </div>
 </div>
 ```
@@ -53,4 +54,4 @@ Legend rows: 9px square swatch (radius 3px) + label + right-aligned tabular perc
 
 **Heatmap table** — the `.leaf-table` from the kit with cell backgrounds from the diverging scale (`--leaf-ramp-harbor-2` good → `--leaf-heatmap-mid` → `--leaf-ramp-coral-2` watch), Ink text, hairline gaps, no cell borders.
 
-**KPI row** — `.leaf-card` per metric: `.leaf-kpi-label` (Warm Grey caption) + `.leaf-kpi-value` (26/640, tabular) + delta line (`.leaf-delta-up` ▲ Fern / `.leaf-delta-down` ▼ Ember, relative to a stated baseline).
+**KPI row** — `.leaf-card` per metric: `.leaf-kpi-label` (Warm Grey caption) + `.leaf-kpi-value` (`type.ui-figure` — 24/640, tabular) + delta line (`.leaf-delta-up` ▲ Fern / `.leaf-delta-down` ▼ Ember, relative to a stated baseline).

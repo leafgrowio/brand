@@ -41,7 +41,7 @@ FAMILY = "Leaf Sans"
 INK = "#171412"
 CANVAS = "#fffdfb"
 WARM_GREY = "#656565"
-MUTED = "#9a8f86"
+MUTED = "#767065"   # --leaf-text-muted; darkened in v2.0 to clear 4.5:1 on Canvas
 CORAL = "#fb5e48"
 CORAL_TINT = "#fbe4df"
 STONE_LIGHT = "#f9f4f1"
@@ -55,8 +55,13 @@ APRICOT = "#f4a38f"
 SERIES = [CORAL, HARBOR, MARIGOLD, HEATHER, LAUREL, APRICOT]
 
 # --- neutral lead (dense dashboards: graphite carries the set, Coral flags one) ---
+# MONO is a SERIES CYCLE, ordered by prominence: darkest first, because the
+# first colour in a cycle lands on the lead series. It is deliberately the
+# reverse of --leaf-chart-mono-1..3, which run light-to-dark like every other
+# ramp. Do not "align" it with the token numbering — that would put the
+# hairline grey on the lead series. Use RAMP_MONO for filled/sequential work.
 NEUTRAL = "#8c857e"
-MONO = ["#3f3a36", "#8c857e", "#c9c2bb"]
+MONO = ["#3f3a36", "#8c857e", "#c9c2bb"]      # mono-3, -2, -1
 
 # --- state (deltas/status only — never as series colours) ---
 FERN = "#2f8b57"    # good / up
@@ -65,12 +70,30 @@ AMBER = "#c77e1c"
 TIDAL = "#2e8388"
 
 # --- sequential ramps (single measure) and diverging midpoint ---
+# Light to dark, four steps. Marigold is the third ramp (added v2.0) and the
+# one to reach for on filled regions that carry Ink type inside them — funnel
+# stages, stacked bands — because it is the only ramp that holds Ink above
+# 4.5:1 on ALL FOUR steps (10.12 and 6.20 at steps 3-4, against Coral's 5.93
+# and 3.37 and Harbor's 6.22 and 4.12). On Coral or Harbor, stop at step 2 or
+# move the label out of the fill. Coral and Harbor were hand-tuned, not
+# generated from one formula; take the values, don't recompute them.
 RAMP_CORAL = ["#fbe4df", "#f7a08f", "#fb5e48", "#c0392a"]
 RAMP_HARBOR = ["#ddecec", "#9fc7bc", "#4fa3a6", "#2e8388"]
+RAMP_MARIGOLD = ["#fcf0de", "#f5d39a", "#efb75a", "#ba8f46"]
+RAMP_MONO = ["#c9c2bb", "#8c857e", "#3f3a36"]   # mono-1..3, ramp order
 HEATMAP_MID = "#efeae6"
 
 # --- structure (Ink at 7% / 16% alpha) ---
-GRID = "#17141212"
+# AXIS keeps its alpha in the hex because Spine.get_alpha() is None, so
+# matplotlib honours the colour's own alpha channel. Gridlines do NOT: they
+# are Line2Ds, rcParams["grid.alpha"] defaults to 1.0, and matplotlib
+# composites to_rgba(color, alpha) — which REPLACES the colour's alpha rather
+# than multiplying it. An "#17141212" grid.color therefore draws fully opaque
+# Ink: a 15:1 black rule where the spec wants a 7% hairline. So the grid alpha
+# is passed separately below and GRID stays solid. Do not fold it back into
+# the hex.
+GRID = "#171412"
+GRID_ALPHA = 0.07
 AXIS = "#17141229"
 
 _FONTS_REGISTERED = False
@@ -126,6 +149,7 @@ def rc(lead: str = "coral") -> dict:
         "axes.grid": True,
         "axes.grid.axis": "y",
         "grid.color": GRID,
+        "grid.alpha": GRID_ALPHA,   # see GRID: must be separate, not in the hex
         "grid.linewidth": 1.0,
         "axes.axisbelow": True,
         "axes.edgecolor": AXIS,

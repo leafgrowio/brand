@@ -75,10 +75,17 @@ glyphs.
 - **Target/threshold lines:** dashed Ember —
   `ax.axhline(3.5, linestyle="--", linewidth=1.4, color=leaf.EMBER)` with a
   small Ember label at the clear end.
-- **Single-measure ramps:** `leaf.RAMP_CORAL` / `leaf.RAMP_HARBOR` (use
-  Harbor when Coral would read as alarm). Diverging heatmaps: build the
-  colormap from `RAMP_HARBOR[1]` → `leaf.HEATMAP_MID` → `RAMP_CORAL[1]`
-  (good → neutral → watch), Ink text on cells.
+- **Single-measure ramps:** `leaf.RAMP_CORAL` / `leaf.RAMP_HARBOR` /
+  `leaf.RAMP_MARIGOLD`, each light to dark in four steps (use Harbor when
+  Coral would read as alarm; `leaf.RAMP_MONO` when the ramp should recede
+  entirely). Diverging heatmaps: build the colormap from `RAMP_HARBOR[1]` →
+  `leaf.HEATMAP_MID` → `RAMP_CORAL[1]` (good → neutral → watch), Ink text on
+  cells.
+- **Ink inside a fill needs the light end.** Marigold is the only ramp whose
+  four steps all clear 4.5:1 against Ink, so reach for it when the fill
+  carries a label — funnel stages, stacked bands, treemaps. On Coral or
+  Harbor, stop at step 2 (step 3 is ~6:1, step 4 falls to 3.37 and 4.12) or
+  move the label outside the shape.
 
 ## Labels and legends
 
