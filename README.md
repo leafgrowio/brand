@@ -104,7 +104,7 @@ assets/logos/<group>/no-padding/svg/
 
 ## Paths Are a Public Contract
 
-Assets are consumed remotely over `raw.githubusercontent.com/leafgrowio/brand/main/...`, not through a local clone, so every asset path is a stable public URL that other systems depend on directly. Renaming, moving, or restructuring a folder is a breaking change for every consumer of that URL, not a local refactor. Coordinate any path change with a manifest regeneration in the `leaf` plugin repo (see "Tools" below) before merging, and treat path stability as a first-class constraint alongside asset fidelity.
+Assets are consumed remotely over jsDelivr, pinned to a commit SHA (with raw.githubusercontent.com and a sparse git clone as fallbacks), not through a local clone, so every asset path is a stable public URL that other systems depend on directly. Renaming, moving, or restructuring a folder is a breaking change for every consumer of that URL, not a local refactor. Coordinate any path change with a manifest regeneration in the `leaf` plugin repo (see "Tools" below) before merging, and treat path stability as a first-class constraint alongside asset fidelity.
 
 ## Skills
 

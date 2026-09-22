@@ -8,9 +8,10 @@ overlay) sitting next to this script, merges them, and returns ranked matches
 as JSON on stdout.
 
 Assets are NOT shipped with the plugin. They live in the public leafgrowio/brand
-repo and are fetched at runtime via raw URLs. Each result therefore carries, for
-every colour-variation/format combination, both the brand-repo-relative `path`
-and the raw GitHub `url`. Download a chosen asset with fetch_asset() (see
+repo and are fetched at runtime via a URL pinned to a commit (see brand_repo.py).
+Each result therefore carries, for every colour-variation/format combination,
+the brand-repo-relative `path` plus `url` and `cdn_url` — now the same pinned
+jsDelivr URL; use `url`. Download a chosen asset with fetch_asset() (see
 brand_repo.py) or the --fetch flag, then use the returned local file.
 
 Usage:
@@ -42,16 +43,16 @@ for a dark banner) without a second lookup.
 Galleries are the premade UI for interactive picking: the script fills
 gallery_template.html (next to this script) with numbered cards and writes a
 self-contained HTML file. Galleries default to --embed inline: each card's SVG
-text is fetched (cached, with a git-clone fallback when raw URLs are
+text is fetched (cached, with a git-clone fallback when the URL is
 unreachable) and inlined directly into the file, because gallery files are
 often opened in an in-app file-preview panel whose CSP blocks ALL external
 images (including jsDelivr) — an inline gallery renders everywhere. --embed
 cdn instead points each card's <img> at the icon's SVG on cdn.jsdelivr.net —
 jsDelivr's mirror of the public brand repo — for galleries you know will be
 opened in a real browser (near-instant, nothing fetched). --embed url points
-<img> at the public raw-GitHub PNG — also nothing downloaded, for browser-
-destined files. A per-card inline failure falls back to a URL embed and is
-noted in the JSON output under embed_fallbacks.
+<img> at the PNG on that same pinned jsDelivr URL — also nothing downloaded,
+for browser-destined files. A per-card inline failure falls back to a URL embed
+and is noted in the JSON output under embed_fallbacks.
 
 --widget writes a compact chat-widget HTML fragment instead of (or alongside) a
 full gallery document: scoped .lfic- CSS, and clickable cards that call the
@@ -288,7 +289,7 @@ def card_media(fmts: dict, embed: str, label: str, fallbacks: list, local_root=N
     cdn.jsdelivr.net — nothing fetched or downloaded. In inline mode the SVG
     text is fetched (cached) and inlined; on failure the card falls back to a
     URL embed and the failure is recorded in `fallbacks`. In url mode an <img>
-    points at the public raw-GitHub PNG."""
+    points at the PNG on that same pinned jsDelivr URL."""
     if embed == "cdn":
         rel = fmts.get("svg") or fmts.get("png")
         if rel:
@@ -383,7 +384,8 @@ def lookup_icon(manifest: dict, spec: str):
 
 
 def enrich(variations: dict) -> dict:
-    """Add raw and CDN URLs alongside brand-repo-relative paths."""
+    """Add `url` and `cdn_url` alongside brand-repo-relative paths — both the
+    same pinned jsDelivr URL now, kept as two keys for back-compat."""
     return {
         variation: {
             fmt: {"path": rel, "url": asset_url(rel), "cdn_url": cdn_url(rel)}
@@ -472,9 +474,9 @@ def main() -> None:
         "nothing fetched or downloaded, on the chat-widget CSP allowlist). "
         "Passing --embed explicitly overrides both defaults and applies to "
         "whichever of --gallery/--widget are given. 'url' points <img> at the "
-        "public raw-GitHub PNG (nothing downloaded), for files opened in a "
-        "real browser. A per-card inline failure falls back to url and is "
-        "reported under embed_fallbacks.",
+        "PNG on that same pinned jsDelivr URL (nothing downloaded), for files "
+        "opened in a real browser. A per-card inline failure falls back to "
+        "url and is reported under embed_fallbacks.",
     )
     parser.add_argument("--theme", help="Restrict to one theme (e.g. shopping, banking)")
     parser.add_argument(

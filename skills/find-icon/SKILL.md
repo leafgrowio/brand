@@ -10,11 +10,11 @@ then exit. No attached Project; nothing here is working memory.*
 
 Leaf ships ~1,250 icons across 9 themes (banking, business, communications, ecology, education, electronics, logistics, shopping, social), each in two colour variations (black — the default brand treatment — and white for dark surfaces; the brand is line-art only, with no solid icons) and two formats (SVG, PNG), plus Leaf's logo set (Leaf, Signal, Answers, Stores, Creative, Performance, Strategy, Colectivo, blog — each in padded/unpadded, SVG/PNG). This skill is the query layer over both, so an agent never has to guess a filename to generate a branded asset.
 
-The asset files themselves do **not** ship with this skill. They live in the public GitHub repo `leafgrowio/brand` and are fetched at runtime via raw URLs. The manifests here store brand-repo-relative paths (e.g. `assets/icons/shopping/Shopping Bag/black/svg/Shopping Bag.svg`); the workflow is always: **run `find_icon.py` (or read `logos_manifest.json`) → fetch the asset by URL → use the local file.**
+The asset files themselves do **not** ship with this skill. They live in the public GitHub repo `leafgrowio/brand` and are fetched at runtime via a URL pinned to a commit — jsDelivr, with raw.githubusercontent.com and a sparse git clone as fallbacks (see `brand_repo.py`). The manifests here store brand-repo-relative paths (e.g. `assets/icons/shopping/Shopping Bag/black/svg/Shopping Bag.svg`); the workflow is always: **run `find_icon.py` (or read `logos_manifest.json`) → fetch the asset by URL → use the local file.**
 
 How a resolved asset is allowed to land on a surface is governed by the Leaf
-**design spec**: `system/DESIGN.md` in `leafgrowio/brand` (fetchable by raw
-URL, same repo as the assets). Inside the Leaf plugin, the same document is
+**design spec**: `system/DESIGN.md` in `leafgrowio/brand` (fetchable at the
+same pinned jsDelivr URL, same repo as the assets). Inside the Leaf plugin, the same document is
 mirrored as the `design` slice of the `leaf-context` skill — load that slice
 when it is available; otherwise fetch the file. "Design spec" below always
 means that document.
@@ -117,9 +117,10 @@ it can skip step 2 entirely (Notion banners — see step 4), and it makes step
    go straight from the icon pick to step 4.
 3. **Deliver.** `--fetch` the confirmed variation/format — the only download
    of a deliverable — and return the local cached path plus the brand-repo
-   path and raw URL. If raw.githubusercontent.com is unreachable (some
-   sandboxes block it), the fetch falls back automatically to a sparse git
-   clone of the brand repo via github.com — no action needed.
+   path and pinned jsDelivr URL. If jsDelivr is unreachable (some sandboxes
+   block it), the fetch falls back automatically to raw.githubusercontent.com
+   at the same pinned commit, then to a sparse git clone of the brand repo
+   via github.com — no action needed.
 4. **Build the asset.** If the destination was named in the ask, build it now
    without asking again; only if it is genuinely unknown, ask here — the only
    place usage ever gets asked.
@@ -143,7 +144,7 @@ it can skip step 2 entirely (Notion banners — see step 4), and it makes step
    `square` (1200×1200). The generator picks the black line-art treatment
    and composites on a light Leaf colour itself — that is why step 2 is
    skipped for banners. It fetches the one PNG it needs via the same
-   raw-URL-then-git fallback as `--fetch`. Present the banner and offer the
+   jsDelivr-then-raw-then-git fallback as `--fetch`. Present the banner and offer the
    other colour tokens if the user wants variants.
 
    Any other branded surface (deck slide, doc header, social image, mockup)
@@ -170,8 +171,8 @@ badge numbering; do not splice separate gallery files together by hand.
   broken image placeholders there. Use `--embed cdn` only when you know the
   file will be opened in a real browser tab (nothing fetched, near-instant):
   it points `<img>` tags at the icon's SVG on cdn.jsdelivr.net. `--embed url`
-  points `<img>` tags at the public raw-GitHub PNGs instead, also for
-  browser-destined files. A per-card inline failure falls back to a URL embed
+  points `<img>` tags at the PNGs on that same pinned jsDelivr URL instead,
+  also for browser-destined files. A per-card inline failure falls back to a URL embed
   and is noted under `embed_fallbacks` in the JSON.
 - `--widget <out.html>` writes a compact HTML fragment for inline
   chat-widget surfaces: scoped CSS, cdn-embedded icons by default (`--embed
@@ -195,9 +196,9 @@ python3 <this skill's directory>/find_icon.py "checkout" --variation "white" --f
 python3 <this skill's directory>/find_icon.py "ppc ads" --theme business
 ```
 
-Stdlib-only (no pip install needed). It returns ranked JSON matches, each with the icon's theme, name, and a `paths` object covering every colour variation/format combination available, keyed like `paths["white"]["svg"]` — each entry is an object with a brand-repo-relative `path` and the raw GitHub `url`. Pick the exact entry for the variation and format the target surface needs (e.g. `white` SVG for a dark banner, `black` PNG for a light doc) — do not always default to the first result.
+Stdlib-only (no pip install needed). It returns ranked JSON matches, each with the icon's theme, name, and a `paths` object covering every colour variation/format combination available, keyed like `paths["white"]["svg"]` — each entry is an object with a brand-repo-relative `path` and `url` (`cdn_url` is kept alongside it for back-compat, but the two are now the same pinned jsDelivr URL — use `url`). Pick the exact entry for the variation and format the target surface needs (e.g. `white` SVG for a dark banner, `black` PNG for a light doc) — do not always default to the first result.
 
-Then get the file: either fetch the `url` yourself (it is a plain raw.githubusercontent.com URL) or let the script do it — add `--fetch` to download the top result via `brand_repo.fetch_asset()` and print the local cached path (added to the result JSON as `fetched`). If raw.githubusercontent.com is blocked (common in sandboxed environments), `fetch_asset()` falls back automatically to a blobless sparse git clone of `leafgrowio/brand` via github.com — same file, same cache, no flag needed. Downloads are cached under `$XDG_CACHE_HOME/leaf-brand/` (default `~/.cache/leaf-brand/`), so repeat lookups are free. Use the returned local file — never assume the asset already exists on disk.
+Then get the file: either fetch the `url` yourself (it is a jsDelivr URL pinned to a commit) or let the script do it — add `--fetch` to download the top result via `brand_repo.fetch_asset()` and print the local cached path (added to the result JSON as `fetched`). If jsDelivr is blocked (uncommon, but possible in sandboxed environments), `fetch_asset()` falls back automatically to raw.githubusercontent.com at the same pinned commit, then to a blobless sparse git clone of `leafgrowio/brand` via github.com — same bytes, same cache, no flag needed. Downloads are cached under `$XDG_CACHE_HOME/leaf-brand/` (default `~/.cache/leaf-brand/`), namespaced by the pinned commit, so repeat lookups are free. Use the returned local file — never assume the asset already exists on disk.
 
 Flags: `--theme`, `--variation` (`black` / `white`), `--format` (`svg` / `png`), `--limit` (default 5), `--fetch` (download the top result — or, with `--icon`, the chosen variation), `--icon "theme/Icon Name"` (exact lookup instead of a search; alone it prints the icon's full JSON entry, unknown names get near-miss suggestions), `--gallery <out.html>` (write the premade gallery document — candidates for a query, colour variations with `--icon`), `--widget <out.html>` (write the compact chat-widget fragment, same two kinds; combinable with `--gallery`), `--recommend "<variation>"` (with `--icon --gallery`/`--widget`: tag that variation's card), `--embed cdn|inline|url` (gallery/widget embedding; default is per-output — `inline` for `--gallery`, `cdn` for `--widget` — an explicit value overrides both), `--local-root` (debug: read from a local clone of the brand repo instead of downloading). An empty `[]` means no icon matches that query — do not fall back to a loosely related icon without saying so; report the gap instead of guessing.
 

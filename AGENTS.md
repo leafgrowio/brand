@@ -4,7 +4,7 @@ This is the Leaf brand repository. Treat it as the canonical, public source for 
 
 ## Repository Purpose
 
-This repo stores the brand primitives Leaf uses across products, marketing, sales, and internal materials, published publicly so they can be fetched at runtime over `raw.githubusercontent.com/leafgrowio/brand/main/...`:
+This repo stores the brand primitives Leaf uses across products, marketing, sales, and internal materials, published publicly so they can be fetched at runtime over jsDelivr, pinned to a commit SHA (with raw.githubusercontent.com and a sparse git clone as fallbacks):
 
 - `assets/font/` - Mona Sans and Source Serif 4 source files, both SIL Open Font License. Mona Sans is the default system font and must be self-hosted wherever the brand letterforms matter. This folder holds the **verbatim upstream** variable fonts; `system/assets/fonts/` holds the frozen build derived from them (stylistic sets baked into the glyphs), which is what the design system ships; Source Serif 4 is an optional editorial/highlight serif.
 - `assets/icons/` - icon exports grouped by theme, icon, variation, and format.
@@ -23,7 +23,7 @@ Tooling that generates, packages, or cleans these assets (icon/logo manifest gen
 - Keep paired SVG and PNG exports together when adding or reorganizing icon or logo assets.
 - Preserve existing asset naming conventions unless the task is specifically about cleanup or normalization.
 - Do not treat `.DS_Store` files as brand assets. The repo ignores them, and they should not be committed.
-- Paths are a public URL contract. This repo is consumed remotely via `raw.githubusercontent.com/leafgrowio/brand/main/...`, so every folder and file path is effectively a stable public API. Any rename, move, or restructure is a breaking change for downstream consumers and must be coordinated with a manifest regeneration in the `leaf` plugin repo before or immediately after the change lands here.
+- Paths are a public URL contract. This repo is consumed remotely via jsDelivr, pinned to a commit SHA (with raw.githubusercontent.com and a sparse git clone as fallbacks), so every folder and file path is effectively a stable public API. Any rename, move, or restructure is a breaking change for downstream consumers and must be coordinated with a manifest regeneration in the `leaf` plugin repo before or immediately after the change lands here. Any change to files under `assets/` additionally requires bumping `BRAND_REPO_REF` in the plugin repo's `brand/skills/find-icon/brand_repo.py`, since the pin is a commit SHA, not `main`.
 - Keep documentation aligned with the actual folder structure. If assets move, update `README.md` and this file together.
 - **`system/DESIGN.md` is the single written source of truth for design foundations** (colour, typography, logo usage, icon guidance, tokens). There is deliberately no root-level DESIGN.md or `book/` — both were superseded by the design system in `system/`.
 - Before doing any work inside `system/`, read `system/AGENTS.md` first (`system/CLAUDE.md` symlinks to it). It carries the editing rules, verification workflow, and the sync procedure to the Claude Design project. Changes to design foundations always land in `system/DESIGN.md` and the token/component files together, then get synced.

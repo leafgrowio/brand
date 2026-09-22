@@ -19,7 +19,7 @@ cp -R brand/skills/find-icon brand/skills/leaf-design ~/.claude/skills/
 
 **skills CLI:** `npx skills add leafgrowio/brand` installs them from this repo directly, if you use the `skills` installer.
 
-Requirements: `find_icon.py` is stdlib-only. Banner generation additionally needs Pillow (`pip install pillow`); branded matplotlib charts need matplotlib ≥ 3.7. Asset fetching needs network access to `raw.githubusercontent.com` (with an automatic git-clone fallback via `github.com` when raw is blocked).
+Requirements: `find_icon.py` is stdlib-only. Banner generation additionally needs Pillow (`pip install pillow`); branded matplotlib charts need matplotlib ≥ 3.7. Asset fetching needs network access to `cdn.jsdelivr.net`, which serves this repo pinned to a commit (with automatic fallbacks to `raw.githubusercontent.com` at the same commit, then a sparse git clone via `github.com`, for networks that block the CDN).
 
 **Leafers:** if you have the `leaf` plugin installed, do not install these — the plugin already ships both skills (plus `leaf-context`, which layers the deeper design spec and company context on top). These copies exist for setups the plugin does not reach.
 

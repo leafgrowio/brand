@@ -1,5 +1,5 @@
 {
-  "base_url": "https://raw.githubusercontent.com/leafgrowio/brand/main",
+  "url_source": "brand/skills/find-icon/brand_repo.py (BRAND_REPO_REF) — URLs are built there, pinned to a commit; this manifest stores repo-relative paths only",
   "generated_by": "brand/tools/generate_logo_manifest.py",
   "group_count": 9,
   "groups": {

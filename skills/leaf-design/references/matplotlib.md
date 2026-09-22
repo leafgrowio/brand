@@ -101,7 +101,10 @@ glyphs.
 ## Numbers (formatters included — use them)
 
 - Money axis: `ax.yaxis.set_major_formatter(leaf.currency())` → `£1.49M`,
-  `£350K`, `£950`. Other currencies: `leaf.currency("$")`.
+  `£350K`, `£950`. Other currencies: `leaf.currency("$")`. For a single
+  string rather than an axis — a KPI, an annotation, a title — use
+  `leaf.fmt_currency(2410000)` → `£2.41M`; `currency()` returns a
+  matplotlib formatter, `fmt_currency()` returns the text.
 - Percent axis: `leaf.percent()` (0 dp on ticks); in labels
   `leaf.fmt_percent(24.63)` → `24.6%`.
 - Ratios: `leaf.fmt_ratio(3.716)` → `3.72x` (2 dp, lowercase x).
