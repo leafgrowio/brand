@@ -21,9 +21,18 @@ has no expiry — so one unlucky fetch would persist indefinitely. A SHA-pinned
 URL is immutable, so jsDelivr caches it forever and always correctly, and the
 cache directory is keyed on the same SHA so bumping the pin invalidates it.
 
-Bump BRAND_REPO_REF whenever files under `assets/` change in leafgrowio/brand —
-not on every commit there. Commits that only touch `system/`, `skills/` or docs
-do not affect what this module fetches.
+Bump BRAND_REPO_REF whenever anything FETCHED THROUGH IT changes in
+leafgrowio/brand — not on every commit there. That is: files under `assets/`,
+and `system/DESIGN.md`, which the find-icon skill tells callers to read at this
+same pinned URL. Commits touching only `skills/`, tooling or other docs need no
+bump. The invariant to check before a release is simply:
+
+    git -C <brand clone> diff --quiet <BRAND_REPO_REF> HEAD -- assets/ system/DESIGN.md
+
+The pin can never name the commit that contains itself — bumping it and
+re-exporting the standalone skills always advances the brand repo by one more
+commit. That is expected; the invariant above is what matters, not equality
+with HEAD.
 
 Stdlib only — no third-party dependencies — so any agent runtime can import it.
 
@@ -45,10 +54,11 @@ import urllib.request
 from pathlib import Path
 
 # The pinned commit in leafgrowio/brand that every URL below resolves against.
-# BUMP THIS when files under assets/ change there, and re-run the manifest
-# generators if any path moved. See the module docstring for why it is a SHA
-# and not a branch.
-BRAND_REPO_REF = "3d4ae1b8386042b928186f8be73a1de30b5c558e"
+# BUMP THIS when assets/ or system/DESIGN.md change there — both are fetched
+# through this pin — and re-run the manifest generators if any path moved.
+# `scripts/sync-brand-skills.sh --check` verifies it. See the module docstring
+# for why it is a SHA and not a branch.
+BRAND_REPO_REF = "597b98ae57be6ece64fcf2163369eca7cac8bba4"
 
 # PRIMARY: jsDelivr's GitHub mirror at the pinned commit. Used for everything —
 # display-only <img> embeds AND real downloads — so a gallery and a fetch can
