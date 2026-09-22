@@ -1,6 +1,6 @@
 # Leaf chart recipes (for artifacts)
 
-Downstream of `system/DESIGN.md` § Data visualization (leafgrowio/brand, v2.0). All colours by token — the kit's `leaf-tokens.css` defines every variable used here.
+Downstream of `system/DESIGN.md` § Data visualization (leafgrowio/brand, v2.0.1). All colours by token — the kit's `leaf-tokens.css` defines every variable used here.
 
 ## Palette rules
 
@@ -14,7 +14,7 @@ Downstream of `system/DESIGN.md` § Data visualization (leafgrowio/brand, v2.0).
 
 - Gridlines `1px --leaf-chart-grid`; baseline/zero `--leaf-chart-axis`. Axis labels and ticks: Warm Grey, caption size, sentence case.
 - Label series directly next to the line/bar where space allows; legends only when direct labels can't fit.
-- Chart surfaces are Canvas cards: `background: var(--leaf-surface-card); border: 1px solid var(--leaf-border); border-radius: var(--leaf-radius-lg); padding: var(--leaf-space-5);`
+- Chart surfaces are Canvas cards: `background: var(--leaf-surface-card); border: 1px solid var(--leaf-border-light); border-radius: var(--leaf-radius-lg); padding: var(--leaf-space-5);`
 - No chart junk: no 3D, drop shadows, heavy borders, or gradients outside the ramps.
 - Small sizes (thumbnails, deck tiles): drop gridlines and ticks, one direct label per series, line weight ≥ 2.5px, bake the key numbers in.
 

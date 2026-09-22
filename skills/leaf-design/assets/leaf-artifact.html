@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Leaf artifact starter — DOWNSTREAM of the Leaf design system (leafgrowio/brand system/, v2.0).
+<!-- Leaf artifact starter — DOWNSTREAM of the Leaf design system (leafgrowio/brand system/, v2.0.1).
      Self-contained by design: artifacts cannot fetch external CSS, fonts, or images.
      Keep every colour a var(--leaf-*); one solid-Coral moment per view; Ink text on
      colour fills; sentence case, UK English, no exclamation marks. -->
@@ -13,7 +13,7 @@
 
 /* ===== Leaf tokens (paste of leaf-tokens.css — do not edit values) ===== */
 /* Leaf design tokens — flattened for artifacts.
-   DOWNSTREAM COPY of system/tokens/*.css in github.com/leafgrowio/brand (v2.0).
+   DOWNSTREAM COPY of system/tokens/*.css in github.com/leafgrowio/brand (v2.0.1).
    Regenerate from the canonical files on version bumps; never edit values here.
    Paste this whole block into the artifact's <style>. */
 
@@ -109,7 +109,6 @@
   --leaf-surface-ink: var(--leaf-color-ink);
   --leaf-surface-ink-panel: rgba(255, 253, 251, 0.04);
   --leaf-surface-hover: rgba(23, 20, 18, 0.05);
-  --leaf-border: var(--leaf-border-light);
 
   /* --- focus (focus-visible only; never removed) --- */
   --leaf-focus-ring: var(--leaf-color-coral);
@@ -259,7 +258,7 @@ a:hover { color: var(--leaf-color-ink); }
 .leaf-btn:hover { background: var(--leaf-color-coral-hover); }
 .leaf-btn--secondary { color: var(--leaf-color-coral); background: transparent; border: 1px solid var(--leaf-color-coral); padding: 10px 19px; }
 .leaf-btn--secondary:hover { background: var(--leaf-color-coral-tint); }
-.leaf-card { background: var(--leaf-surface-card); border: 1px solid var(--leaf-border); border-radius: var(--leaf-radius-md); padding: var(--leaf-space-5); }
+.leaf-card { background: var(--leaf-surface-card); border: 1px solid var(--leaf-border-light); border-radius: var(--leaf-radius-md); padding: var(--leaf-space-5); }
 .leaf-block { background: var(--leaf-color-coral-tint); border: 1px solid rgba(251, 94, 72, 0.42); border-radius: var(--leaf-radius-md); padding: var(--leaf-space-5); color: var(--leaf-text-primary); }
 .leaf-eyebrow { display: inline-block; font: var(--leaf-type-caption); font-weight: 600; color: var(--leaf-text-accent); letter-spacing: 0.02em; margin-bottom: var(--leaf-space-2); }
 .leaf-kpi-label { font: var(--leaf-type-caption); color: var(--leaf-text-secondary); margin-bottom: var(--leaf-space-2); }

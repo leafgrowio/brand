@@ -2,12 +2,14 @@
 
 This document is the written source of truth for Leaf's design system. It pairs with two visual references: the **brand book** (`Leaf Brand Book.dc.html`) for brand foundations, and the **component library** (`Leaf Component Library.dc.html`) for the application layer. Where any of them disagree, fix all. Keep the split clean: brand-level language (foundations, colour, type, voice, logos, icons, imagery, photography, data viz, applications preview) lives in the brand book; product components (catalog, patterns, app shell, overlays) live in the component library.
 
-Status: v2.0 — ratified 20 September 2026 (supersedes v1.0, July 2026). All sections locked.
+Status: v2.0.1 — ratified 22 September 2026 (supersedes v2.0, September 2026). All sections locked.
 Source: core brand reference (June 2026) + v1.0 ratification (July 2026).
 
 ---
 
 ## Changelog
+
+**v2.0.1 — September 2026 (patch).** `--leaf-border` is retired; use **`--leaf-border-light`**. It was an alias pointing at that token, and the only one of the twelve semantic aliases that pointed at another semantic token rather than a physical colour — the rest translate a role to a hex. It also sat in `colors.css` while the border family it aliased lives in `elevation.css`, so the pair read as an accident rather than a decision. `--leaf-border-light` stays because it is half of a real pair: it is the light-ground counterpart to `--leaf-border-dark`, not a lighter variant of something. Nothing already rendered breaks — artifacts embed the token block, so they carry their own copy — but new work should use the explicit name. Three references moved: one specimen card, the artifact starter's `.leaf-card`, and the chart-recipes line.
 
 **v2.0 — September 2026 (major).** The first rule change since ratification that breaks existing artifacts. Anything already shipped against v1.0 needs re-rendering; anything reading the retired tracking tokens needs repointing.
 

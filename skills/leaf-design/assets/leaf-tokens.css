@@ -1,5 +1,5 @@
 /* Leaf design tokens — flattened for artifacts.
-   DOWNSTREAM COPY of system/tokens/*.css in github.com/leafgrowio/brand (v2.0).
+   DOWNSTREAM COPY of system/tokens/*.css in github.com/leafgrowio/brand (v2.0.1).
    Regenerate from the canonical files on version bumps; never edit values here.
    Paste this whole block into the artifact's <style>.
 
@@ -107,7 +107,6 @@
   --leaf-surface-ink: var(--leaf-color-ink);
   --leaf-surface-ink-panel: rgba(255, 253, 251, 0.04);
   --leaf-surface-hover: rgba(23, 20, 18, 0.05);
-  --leaf-border: var(--leaf-border-light);
 
   /* --- focus (focus-visible only; never removed) --- */
   --leaf-focus-ring: var(--leaf-color-coral);

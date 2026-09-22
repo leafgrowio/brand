@@ -90,7 +90,6 @@
   --leaf-surface-ink: var(--leaf-color-ink);
   --leaf-surface-ink-panel: rgba(255, 253, 251, 0.04);
   --leaf-surface-hover: rgba(23, 20, 18, 0.05);
-  --leaf-border: var(--leaf-border-light);
 
   /* --- focus (focus-visible only; never removed) --- */
   --leaf-focus-ring: var(--leaf-color-coral);

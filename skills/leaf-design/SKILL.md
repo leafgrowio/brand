@@ -7,7 +7,7 @@ description: "Use before generating ANY visual output at Leaf — an HTML artifa
 
 You are about to produce something visual for Leaf. Everything you make should look like Leaf (warm Stone grounds, one Coral moment, flat surfaces, Mona Sans letterforms) and sound like Leaf (UK English, sentence case, mechanism before claim, no hype). This skill gives you the kit to do that inside sandboxed artifacts, where **nothing external loads** — no CDN fonts, no remote stylesheets, no hotlinked images. Whatever the artifact needs must travel inside it.
 
-This kit is a downstream build of the Leaf design system (`system/` in the public GitHub repo `leafgrowio/brand`, v2.0). The canonical spec is `system/DESIGN.md` in that repo; inside the Leaf plugin the same document is mirrored as the **design** slice of the `leaf-context` skill (at `brand/files/DESIGN.md`).
+This kit is a downstream build of the Leaf design system (`system/` in the public GitHub repo `leafgrowio/brand`, v2.0.1). The canonical spec is `system/DESIGN.md` in that repo; inside the Leaf plugin the same document is mirrored as the **design** slice of the `leaf-context` skill (at `brand/files/DESIGN.md`).
 
 ## The kit (`assets/`)
 
