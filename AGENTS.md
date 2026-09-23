@@ -14,7 +14,7 @@ This repo stores the brand primitives Leaf uses across products, marketing, sale
 
 The repo is the source of truth for Leaf's reusable design foundations — typography, colour, iconography, logos, design tokens, usage guidance, and distribution-ready exports.
 
-Tooling that generates, packages, or cleans these assets (icon/logo manifest generators, export cleanup) lives in the `leaf` plugin repo (`prompts/brand/tools/`), not here. That tooling runs against a local clone of this repo. Do not add scripts or generators to this repo; if a new tool is needed, it belongs in the plugin repo. The one script published here is the synced copy of the Notion banner generator inside `skills/find-icon/` — it is an end-user feature of that skill, and it arrives via the sync, never by direct edits.
+Tooling that generates, packages, or cleans these assets (icon/logo manifest generators, export cleanup) lives in the `leaf` plugin repo (`prompts/brand/tools/`), not here. That tooling runs against a local clone of this repo. Do not add scripts or generators to this repo; if a new tool is needed, it belongs in the plugin repo.
 
 ## Working Guidelines
 

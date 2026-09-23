@@ -2,7 +2,7 @@
 
 Self-contained [Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills) for working with the Leaf brand from any Claude setup — Claude Code CLI, the desktop app, or anything else that reads `SKILL.md` folders. They are the same skills that ship inside Leaf's internal `leaf` plugin, packaged here so that people without access to the plugin distribution can still generate on-brand output.
 
-- **`find-icon/`** — resolves a natural-language description to an exact Leaf icon or logo asset (SVG or PNG, right colour variation) from this repo's ~1,250-icon library, and can generate Notion banners from a pick. Assets are fetched at runtime from this repo's raw GitHub URLs and cached locally, so the skill folder stays small.
+- **`find-icon/`** — resolves a natural-language description to an exact Leaf icon or logo asset (SVG or PNG, right colour variation) from this repo's ~1,250-icon library. (Notion banner generation now lives in the `leaf` plugin's `saville` skill.) Assets are fetched at runtime from this repo's raw GitHub URLs and cached locally, so the skill folder stays small.
 - **`leaf-design/`** — the artifact kit: Leaf design tokens, base styles, component classes, chart recipes, and an embeddable Mona Sans subset, plus the brand's hard rules, so generated HTML artifacts, dashboards, decks, and reports follow the Leaf design system without fetching anything at render time. Also carries the matplotlib kit for Python-generated charts: "Leaf Sans" static font cuts (Mona Sans with the brand letterforms and tabular figures frozen into the glyphs — matplotlib can't use variable fonts or apply OpenType features) and `leaf_matplotlib.py`, which applies the Leaf chart style and number formats in one call.
 
 ## Install

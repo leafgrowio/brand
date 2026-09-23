@@ -1,6 +1,6 @@
 ---
 name: find-icon
-description: "Resolve a natural-language description (or a theme/name) to an exact Leaf icon or logo asset path — SVG or PNG, in the right colour variation — for generating branded documents, decks, banners, Notion pages, or UI mockups; when a human is choosing, it also previews candidate icons visually, guides the colour-variation pick for the target surface, and can go on to create the branded asset (e.g. a Notion banner). Use whenever a task needs a Leaf-brand icon or logo file, not a description of one."
+description: "Resolve a natural-language description (or a theme/name) to an exact Leaf icon or logo asset path — SVG or PNG, in the right colour variation — for generating branded documents, decks, banners, Notion pages, or UI mockups; when a human is choosing, it also previews candidate icons visually, guides the colour-variation pick for the target surface, then hands the picked asset to the surface builder (in the Leaf plugin, the saville skill — which also builds Notion page covers and gallery cards). Use whenever a task needs a Leaf-brand icon or logo file, not a description of one."
 ---
 
 # Find Icon
@@ -43,8 +43,8 @@ artifact in the same breath ("an icon for a Notion banner of X", "…for a
 slide", "…for a doc header"). Read it out of the request and carry it through
 the whole flow — never ask for information the user already gave. A known
 destination does three things: it sets the `--recommend` variation in step 2,
-it can skip step 2 entirely (Notion banners — see step 4), and it makes step
-4 a build step, not a question.
+it can skip step 2 entirely (Notion banners — see step 4), and it tells step
+4 where to hand off, without a question.
 
 1. **Search and show the selector immediately.** Run the CLI once and present
    the results visually as the default action — do not wait to be asked for a
@@ -113,7 +113,7 @@ it can skip step 2 entirely (Notion banners — see step 4), and it makes step
    from the conversation** (dark surface → `white`; light →
    `black`); do not ask a question to establish it. Let the
    user confirm or override. **Skip this step entirely when the destination
-   is a Notion banner** — the banner generator owns colour and treatment, so
+   is a Notion banner** — the banner builder owns colour and treatment, so
    go straight from the icon pick to step 4.
 3. **Deliver.** `--fetch` the confirmed variation/format — the only download
    of a deliverable — and return the local cached path plus the brand-repo
@@ -121,36 +121,22 @@ it can skip step 2 entirely (Notion banners — see step 4), and it makes step
    block it), the fetch falls back automatically to raw.githubusercontent.com
    at the same pinned commit, then to a sparse git clone of the brand repo
    via github.com — no action needed.
-4. **Build the asset.** If the destination was named in the ask, build it now
-   without asking again; only if it is genuinely unknown, ask here — the only
-   place usage ever gets asked.
+4. **Hand off to the builder.** This skill resolves assets; it does not
+   build surfaces. If the destination was named in the ask, hand the picked
+   icon (theme/name and fetched path) straight on without asking again; only
+   if it is genuinely unknown, ask here — the only place usage ever gets
+   asked.
 
-   **Notion banners are fully wired.** After the icon pick, run the generator
-   directly (it needs Pillow — `pip install pillow --break-system-packages`
-   if missing) and present the PNG. The generator is
-   `notion_banner_generator.py`: in the standalone install it sits in this
-   skill's own directory; in the leaf plugin it lives at
-   `<plugin root>/brand/tools/`. Use whichever exists:
+   - **Leaf plugin installed:** hand off to the **`saville`** skill, which owns
+     every brand surface — including **Notion page covers, gallery cards, and
+     square banners** (its `scripts/notion_banner_generator.py`), social
+     cards, deck covers, and the rest of its surface catalogue. Pass the icon
+     name so Saville does not search again.
+   - **Standalone install (no plugin):** return the fetched asset and compose
+     the surface ad hoc, following the design spec for spacing, logo, and
+     colour rules. Notion banner generation needs the Leaf plugin.
 
-   ```bash
-   python3 <path to notion_banner_generator.py> "<request>" \
-     --icon "<Icon Name>" --colour auto --preset page-cover \
-     --output <workdir>/banner.png
-   ```
-
-   `--colour` takes `auto` or a Leaf secondary token (marigold, butter,
-   apricot, rosehip, sage, laurel, eucalyptus, harbor, lilac, heather);
-   presets are `page-cover` (1500×600), `gallery-preview` (1500×840),
-   `square` (1200×1200). The generator picks the black line-art treatment
-   and composites on a light Leaf colour itself — that is why step 2 is
-   skipped for banners. It fetches the one PNG it needs via the same
-   jsDelivr-then-raw-then-git fallback as `--fetch`. Present the banner and offer the
-   other colour tokens if the user wants variants.
-
-   Any other branded surface (deck slide, doc header, social image, mockup)
-   is composed ad hoc, following the design spec for spacing, logo, and
-   colour rules. Never place the icon on a surface that violates those
-   rules.
+   Never place the icon on a surface that violates the design spec.
 
 ### Selectors are premade — never hand-author gallery or widget markup
 
