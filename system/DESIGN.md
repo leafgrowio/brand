@@ -2,12 +2,14 @@
 
 This document is the written source of truth for Leaf's design system. It pairs with two visual references: the **brand book** (`Leaf Brand Book.dc.html`) for brand foundations, and the **component library** (`Leaf Component Library.dc.html`) for the application layer. Where any of them disagree, fix all. Keep the split clean: brand-level language (foundations, colour, type, voice, logos, icons, imagery, photography, data viz, applications preview) lives in the brand book; product components (catalog, patterns, app shell, overlays) live in the component library.
 
-Status: v2.0.1 — ratified 22 September 2026 (supersedes v2.0, September 2026). All sections locked.
+Status: v2.0.2 — ratified 23 September 2026 (supersedes v2.0.1, 22 September 2026). All sections locked.
 Source: core brand reference (June 2026) + v1.0 ratification (July 2026).
 
 ---
 
 ## Changelog
+
+**v2.0.2 — September 2026 (patch).** *Brand in the wild* catches up with v2.0. It still offered an "Ink or Stone ground" for the social / link-preview card and a Canvas wordmark to go with it — the pre-v2.0 treatment, left behind when Ink stopped being a brand surface. Social and link-preview cards are **Stone**, with the **Coral** wordmark (Coral on light, per Logos); Ink is never a social ground. The section intro loses "Ink/Stone grounds" for the same reason, and the brand book's social, carousel and brand-in-the-wild copy is corrected to match the mocks, which were already Stone. Copy only — no token, component or rendered mock changes.
 
 **v2.0.1 — September 2026 (patch).** `--leaf-border` is retired; use **`--leaf-border-light`**. It was an alias pointing at that token, and the only one of the twelve semantic aliases that pointed at another semantic token rather than a physical colour — the rest translate a role to a hex. It also sat in `colors.css` while the border family it aliased lives in `elevation.css`, so the pair read as an accident rather than a decision. `--leaf-border-light` stays because it is half of a real pair: it is the light-ground counterpart to `--leaf-border-dark`, not a lighter variant of something. Nothing already rendered breaks — artifacts embed the token block, so they carry their own copy — but new work should use the explicit name. Three references moved: one specimen card, the artifact starter's `.leaf-card`, and the chart-recipes line.
 
@@ -522,10 +524,10 @@ Full sidebar on desktop → 60px icon rail on tablet → bottom tab bar on mobil
 
 ## Brand in the wild
 
-The small surfaces where Leaf shows up outside the product. Small canvases, same system: the mark in Coral, Ink/Stone grounds, sentence case, one accent. (Lives in the brand book.)
+The small surfaces where Leaf shows up outside the product. Small canvases, same system: the mark in Coral, Stone-family grounds, sentence case, one accent. (Lives in the brand book.)
 
 - **Favicon & app icon** — the Leaf **icon** (never the wordmark) on a solid Coral tile; ships at 16 / 32 / 180px. Full wordmark is never cropped into a square.
-- **Social / link-preview (OG) card** — 1200×630, Ink or Stone ground, Canvas wordmark, one Coral accent, headline in the brand voice. Never a photo behind the wordmark — that treatment is for co-brand posts (see Photography).
+- **Social / link-preview (OG) card** — 1200×630, Stone ground (never Ink — see Dark surfaces), Coral wordmark, one Coral accent, headline in the brand voice. Never a photo behind the wordmark — that treatment is for co-brand posts (see Photography).
 - **Email signature** — live HTML text (not an image): name, one line of role, Coral links for address/site. Survives dark mode and high-DPI.
 
 ---
