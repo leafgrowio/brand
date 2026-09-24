@@ -53,7 +53,15 @@
 
 /* Kept even against a frozen file: it costs nothing, and it rescues any
    surface that loads a stock Mona Sans instead of this one. The `font`
-   shorthand resets font-feature-settings, hence the * selector. */
+   shorthand resets font-feature-settings, hence the * selector.
+
+   Optical size is pinned to 0 (since v2.1). Mona Sans has an opsz axis and
+   browsers drive it from the font size by default, which tightens display
+   type; the artifact kit, PNG exports and the matplotlib statics are all
+   instanced at opsz 0 and cannot follow. `none` makes every surface render
+   the axis default (0), so one headline looks the same everywhere. The
+   `font` shorthand resets this too, hence the same selector. */
 * {
   font-feature-settings: var(--leaf-type-features);
+  font-optical-sizing: none;
 }
