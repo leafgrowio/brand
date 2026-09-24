@@ -1,5 +1,5 @@
 {
-  "_comment": "Hand-curated synonym overlay, keyed by 'theme/Icon Name'. Merged with the auto-generated manifest.json at query time by find_icon.py — never overwritten by the generator script. This is a starter set focused on Leaf's own branded-asset use cases (growth, ecommerce, ads, tracking, trust). Extend it as gaps show up; nominate durable additions through the Context Inbox if the pattern is broadly useful.",
+  "_comment": "Hand-curated synonym overlay, keyed by 'theme/Icon Name'. Merged with the auto-generated manifest.json at query time by find_icon.py — never overwritten by the generator script. This is a starter set focused on Leaf's own branded-asset use cases (growth, ecommerce, ads, tracking, trust). Extend it as gaps show up; add durable, broadly useful additions directly via the harvest-knowledge skill.",
   "banking/Growth Chart": ["growth", "revenue growth", "roas", "upward trend", "performance", "market trend"],
   "banking/Money Fluctuation": ["market dynamics", "market volatility", "fluctuation", "demand"],
   "banking/Financial Growth": ["growth", "revenue", "profit", "roas"],

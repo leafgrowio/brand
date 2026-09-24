@@ -8,173 +8,49 @@ description: "Resolve a natural-language description (or a theme/name) to an exa
 *Action skill (stateless): one job — resolve a query to an exact asset path —
 then exit. No attached Project; nothing here is working memory.*
 
-Leaf ships ~1,250 icons across 9 themes (banking, business, communications, ecology, education, electronics, logistics, shopping, social), each in two colour variations (black — the default brand treatment — and white for dark surfaces; the brand is line-art only, with no solid icons) and two formats (SVG, PNG), plus Leaf's logo set (Leaf, Signal, Answers, Stores, Creative, Performance, Strategy, Colectivo, blog — each in padded/unpadded, SVG/PNG). This skill is the query layer over both, so an agent never has to guess a filename to generate a branded asset.
+Leaf ships ~1,250 icons across 9 themes (banking, business, communications,
+ecology, education, electronics, logistics, shopping, social), each in two
+colour variations (`black` — the default brand treatment — and `white` for
+dark surfaces; the brand is line-art only, no solids) and two formats (SVG,
+PNG), plus Leaf's logo set (Leaf, Signal, Answers, Stores, Creative,
+Performance, Strategy, Colectivo, blog). This skill is the query layer over
+both, so an agent never has to guess a filename.
 
-The asset files themselves do **not** ship with this skill. They live in the public GitHub repo `leafgrowio/brand` and are fetched at runtime via a URL pinned to a commit — jsDelivr, with raw.githubusercontent.com and a sparse git clone as fallbacks (see `brand_repo.py`). The manifests here store brand-repo-relative paths (e.g. `assets/icons/shopping/Shopping Bag/black/svg/Shopping Bag.svg`); the workflow is always: **run `find_icon.py` (or read `logos_manifest.json`) → fetch the asset by URL → use the local file.**
+**The asset files do not ship with this skill.** They live in the public
+GitHub repo `leafgrowio/brand`, fetched at runtime via a URL pinned to a
+commit — jsDelivr, with raw.githubusercontent.com and a sparse git clone as
+fallbacks (see `brand_repo.py`). Manifests here store brand-repo-relative
+paths. The workflow is always: **run `find_icon.py` (or read
+`logos_manifest.json`) → fetch the asset by URL → use the local file.** Never
+assume an asset already exists on disk.
 
-How a resolved asset is allowed to land on a surface is governed by the Leaf
-**design spec**: `system/DESIGN.md` in `leafgrowio/brand` (fetchable at the
-same pinned jsDelivr URL, same repo as the assets). Inside the Leaf plugin, the same document is
-mirrored as the `design` slice of the `leaf-context` skill — load that slice
-when it is available; otherwise fetch the file. "Design spec" below always
-means that document.
+How a resolved asset lands on a surface is governed by the Leaf **design
+spec**: `system/DESIGN.md` in `leafgrowio/brand` (fetchable at the same
+pinned jsDelivr URL). Inside the Leaf plugin, it is mirrored as the `design`
+slice of `leaf-context` — load that slice when available, otherwise fetch the
+file.
 
 ## Two modes, one run
 
-The skill stays one job → exit. Interactivity, when it happens, lives inside
-a single run; nothing is remembered between runs.
-
-**Resolve mode (programmatic).** When another skill or agent invokes this as
-a sub-step, resolve silently: run the CLI, pick the exact variation/format,
+**Resolve mode (programmatic).** Another skill or agent invokes this as a
+sub-step: resolve silently — run the CLI, pick the exact variation/format,
 fetch, return the path. No questions, no galleries. If the request is
-underspecified (e.g. unknown target surface), stay in resolve mode anyway —
-take the top match and a sensible default variation, and state the
-assumptions in the result. Never interrupt a calling flow with questions.
+underspecified, stay in resolve mode — take the top match and a sensible
+default variation, and state the assumptions in the result. Never interrupt a
+calling flow with questions.
 
-**Pick mode (interactive — default when a human asked).** When a person asked
-for an icon directly, or a human is in the loop and the choice is ambiguous
-(multiple plausible candidates, unknown target surface), run a guided visual
-flow. Search first, ask later: the user sees candidates before being asked
-anything — never ask where the icon will live, or whether they would like a
-preview, before they have picked one.
-
-**Capture the destination from the ask.** Most requests name the target
-artifact in the same breath ("an icon for a Notion banner of X", "…for a
-slide", "…for a doc header"). Read it out of the request and carry it through
-the whole flow — never ask for information the user already gave. A known
-destination does three things: it sets the `--recommend` variation in step 2,
-it can skip step 2 entirely (Notion banners — see step 4), and it tells step
-4 where to hand off, without a question.
-
-1. **Search and show the selector immediately.** Run the CLI once and present
-   the results visually as the default action — do not wait to be asked for a
-   preview. For a concept with no direct hit or thin results, pass SEVERAL
-   related terms to that ONE call instead (e.g. `find_icon.py "work in
-   progress" "construction" "checklist" --limit 6`) — the CLI merges and
-   dedupes them into a single ranked selector. Never run separate searches
-   and combine the resulting gallery/widget files by hand. Pick the best
-   presentation the surface supports:
-
-   **a. Inline chat widget** (surfaces with an in-chat HTML widget tool, e.g.
-   Cowork's `show_widget`). Generate BOTH outputs in one run so the fallback
-   is already on disk:
-
-   ```bash
-   python3 <this skill's directory>/find_icon.py "<query>" --limit 5 \
-     --widget <workdir>/icon-widget.html --gallery <workdir>/icon-candidates.html
-   ```
-
-   Read the fragment file and render it through the widget tool **verbatim**
-   — the cards are clickable and send the pick back into chat via the
-   surface's global `sendPrompt()`. If the widget tool requires a setup step
-   first (e.g. a `read_me` call), do that before rendering. **If the widget
-   tool errors or is unavailable, do not retry and do not re-run the CLI —
-   present the already-generated gallery file (rung b) immediately** and ask
-   for a pick by number or name. Widget tools can be intermittently flaky;
-   one attempt, then fall back.
-
-   **b. File preview / artifacts, no inline widget:**
-
-   ```bash
-   python3 <this skill's directory>/find_icon.py "<query>" --limit 5 \
-     --gallery <workdir>/icon-candidates.html
-   ```
-
-   Galleries are self-contained (inline `<svg>`) by default — in-app file-
-   preview panels typically block ALL external images (including
-   cdn.jsdelivr.net), so an inline gallery is the one that reliably renders.
-   Use `--embed cdn` only when the file is destined for a real browser tab.
-   Present the file (e.g. present_files in Cowork; attach/preview on
-   claude.ai) and ask the user to pick by number or name.
-
-   **c. Bare CLI:** give the user a text table (number, name, theme) read
-   from the ranked JSON, plus the file path if a gallery was written.
-
-   Both selectors show numbered, captioned cards (one neutral display
-   variation per candidate); stdout carries the same ranked JSON plus
-   `"widget"`/`"gallery"` paths. Never make a human choose from a list of
-   file paths alone. If `results` is empty (`[]`), say so and ask for a
-   different description — do not substitute a loosely related icon.
-2. **Show colour variations the same way.** Once an icon is chosen, same
-   ladder, same command shape:
-
-   ```bash
-   python3 <this skill's directory>/find_icon.py --icon "<theme>/<Icon Name>" \
-     --widget <workdir>/icon-var-widget.html --gallery <workdir>/icon-variations.html
-   ```
-
-   (Same dual-output rule: widget first, already-generated gallery file as
-   the no-retry fallback; gallery alone on surfaces with no widget tool.)
-
-   One card per colour variation that exists in the manifest — light swatch
-   behind `black`, dark swatch behind `white` —
-   so the right choice for the target surface is self-evident. Add
-   `--recommend "<variation>"` **only if the target surface is already known
-   from the conversation** (dark surface → `white`; light →
-   `black`); do not ask a question to establish it. Let the
-   user confirm or override. **Skip this step entirely when the destination
-   is a Notion banner** — the banner builder owns colour and treatment, so
-   go straight from the icon pick to step 4.
-3. **Deliver.** `--fetch` the confirmed variation/format — the only download
-   of a deliverable — and return the local cached path plus the brand-repo
-   path and pinned jsDelivr URL. If jsDelivr is unreachable (some sandboxes
-   block it), the fetch falls back automatically to raw.githubusercontent.com
-   at the same pinned commit, then to a sparse git clone of the brand repo
-   via github.com — no action needed.
-4. **Hand off to the builder.** This skill resolves assets; it does not
-   build surfaces. If the destination was named in the ask, hand the picked
-   icon (theme/name and fetched path) straight on without asking again; only
-   if it is genuinely unknown, ask here — the only place usage ever gets
-   asked.
-
-   - **Leaf plugin installed:** hand off to the **`saville`** skill, which owns
-     every brand surface — including **Notion page covers, gallery cards, and
-     square banners** (its `scripts/notion_banner_generator.py`), social
-     cards, deck covers, and the rest of its surface catalogue. Pass the icon
-     name so Saville does not search again.
-   - **Standalone install (no plugin):** return the fetched asset and compose
-     the surface ad hoc, following the design spec for spacing, logo, and
-     colour rules. Notion banner generation needs the Leaf plugin.
-
-   Never place the icon on a surface that violates the design spec.
-
-### Selectors are premade — never hand-author gallery or widget markup
-
-The selector UIs ship with the skill and `find_icon.py` generates them. Your
-whole job is to run one command and present the output — do not write, adapt,
-or "improve" gallery or widget HTML yourself, on any surface. To combine
-multiple searches into one selector, pass multiple query terms in a single
-run (e.g. `find_icon.py "work in progress" "construction" "checklist"`) —
-the script merges and dedupes them into one gallery/widget with continuous
-badge numbering; do not splice separate gallery files together by hand.
-
-- `--gallery <out.html>` fills the shipped `gallery_template.html` into a
-  self-contained HTML document. Icons default to inline `<svg>` (`--embed
-  inline`): each card's SVG text is fetched (cached, with a git-clone
-  fallback) and inlined directly into the file, because gallery files are
-  routinely opened in an in-app file-preview panel whose CSP blocks ALL
-  external images — including jsDelivr — so a CDN-embedded gallery renders as
-  broken image placeholders there. Use `--embed cdn` only when you know the
-  file will be opened in a real browser tab (nothing fetched, near-instant):
-  it points `<img>` tags at the icon's SVG on cdn.jsdelivr.net. `--embed url`
-  points `<img>` tags at the PNGs on that same pinned jsDelivr URL instead,
-  also for browser-destined files. A per-card inline failure falls back to a URL embed
-  and is noted under `embed_fallbacks` in the JSON.
-- `--widget <out.html>` writes a compact HTML fragment for inline
-  chat-widget surfaces: scoped CSS, cdn-embedded icons by default (`--embed
-  cdn`) because the chat-widget CSP allowlists cdn.jsdelivr.net — keeping the
-  fragment tiny — and clickable cards wired to `sendPrompt()`. Paste the
-  fragment into the widget tool verbatim — never hand-edit, trim, or restyle
-  it. It can be combined with `--gallery` in one run: each output resolves
-  its own default unless `--embed` is passed explicitly, in which case it
-  applies to both.
-
-Download only the final deliverable, with `--fetch`, after the variation is
-confirmed.
+**Pick mode (interactive — default when a human asked).** A person asked for
+an icon directly, or the choice is ambiguous (multiple plausible candidates,
+unknown target surface): run a guided visual flow. Search first, ask later —
+the user sees candidates before being asked anything. Full ladder (widget vs
+gallery vs bare CLI, variation selector, hand-off) is in
+`references/pick-mode.md`, anchored on this skill's own directory.
 
 ## Icons: run the CLI
 
-Do not read `manifest.json` directly to search — it is large and meant for the generator, not for a human or agent to scan by eye. Instead run the query script from this skill's own directory:
+Do not read `manifest.json` directly — it is large and meant for the
+generator, not for scanning by eye. Run the query script from this skill's
+own directory:
 
 ```bash
 python3 <this skill's directory>/find_icon.py "growth chart" --limit 3
@@ -182,51 +58,87 @@ python3 <this skill's directory>/find_icon.py "checkout" --variation "white" --f
 python3 <this skill's directory>/find_icon.py "ppc ads" --theme business
 ```
 
-Stdlib-only (no pip install needed). It returns ranked JSON matches, each with the icon's theme, name, and a `paths` object covering every colour variation/format combination available, keyed like `paths["white"]["svg"]` — each entry is an object with a brand-repo-relative `path` and `url` (`cdn_url` is kept alongside it for back-compat, but the two are now the same pinned jsDelivr URL — use `url`). Pick the exact entry for the variation and format the target surface needs (e.g. `white` SVG for a dark banner, `black` PNG for a light doc) — do not always default to the first result.
+Stdlib-only (no pip install needed). Returns ranked JSON matches, each with
+theme, name, and a `paths` object covering every variation/format
+combination, keyed like `paths["white"]["svg"]` — each entry has a
+brand-repo-relative `path` and `url` (a pinned jsDelivr URL). Pick the exact
+entry for the variation and format the target surface needs (e.g. `white`
+SVG for a dark banner, `black` PNG for a light doc) — do not default to the
+first result.
 
-Then get the file: either fetch the `url` yourself (it is a jsDelivr URL pinned to a commit) or let the script do it — add `--fetch` to download the top result via `brand_repo.fetch_asset()` and print the local cached path (added to the result JSON as `fetched`). If jsDelivr is blocked (uncommon, but possible in sandboxed environments), `fetch_asset()` falls back automatically to raw.githubusercontent.com at the same pinned commit, then to a blobless sparse git clone of `leafgrowio/brand` via github.com — same bytes, same cache, no flag needed. Downloads are cached under `$XDG_CACHE_HOME/leaf-brand/` (default `~/.cache/leaf-brand/`), namespaced by the pinned commit, so repeat lookups are free. Use the returned local file — never assume the asset already exists on disk.
+Fetch with `--fetch` to download the top result (or, with `--icon`, the
+chosen variation) via `brand_repo.fetch_asset()`, printed as `fetched` in the
+result JSON. Downloads are cached under `~/.cache/leaf-brand/`, namespaced by
+the pinned commit. An empty `[]` means no icon matches that query — say so
+and ask for a different description; never substitute a loosely related icon.
 
-Flags: `--theme`, `--variation` (`black` / `white`), `--format` (`svg` / `png`), `--limit` (default 5), `--fetch` (download the top result — or, with `--icon`, the chosen variation), `--icon "theme/Icon Name"` (exact lookup instead of a search; alone it prints the icon's full JSON entry, unknown names get near-miss suggestions), `--gallery <out.html>` (write the premade gallery document — candidates for a query, colour variations with `--icon`), `--widget <out.html>` (write the compact chat-widget fragment, same two kinds; combinable with `--gallery`), `--recommend "<variation>"` (with `--icon --gallery`/`--widget`: tag that variation's card), `--embed cdn|inline|url` (gallery/widget embedding; default is per-output — `inline` for `--gallery`, `cdn` for `--widget` — an explicit value overrides both), `--local-root` (debug: read from a local clone of the brand repo instead of downloading). An empty `[]` means no icon matches that query — do not fall back to a loosely related icon without saying so; report the gap instead of guessing.
+Key flags: `--theme`, `--variation` (`black`/`white`), `--format`
+(`svg`/`png`), `--limit` (default 5), `--fetch`, `--icon "theme/Icon Name"`
+(exact lookup instead of search), `--gallery <out.html>` / `--widget
+<out.html>` (premade selector UIs — see `references/pick-mode.md`),
+`--local-root` (debug: read from a local clone instead of downloading). Full
+flag list and generator/maintenance flags are in
+`references/maintenance.md`.
 
 ## Logos: read the manifest directly
 
-Logos are few enough (9 groups) that no search is needed. Read `<this skill's directory>/logos_manifest.json` and pick the group by name. Most groups have `padding`/`no-padding` × `svg`/`png`, with colour variants (`- Black`, `- White`, `- Negative`, or unsuffixed for the primary mark). The `leaf` group differs: it has an extra sublevel with two sub-marks — `logo/` (the full mark) and `icon/` (the Leaf icon alone) — before the `{padding,no-padding}/{svg,png}` split, and its variants are unsuffixed, `- Negative`, and `- Coral` (no `- Black`/`- White`). The stored paths are brand-repo-relative; turn one into a downloadable file with `brand_repo.fetch_asset("<path>")` (or build the raw URL with `brand_repo.asset_url("<path>")` — it URL-encodes the spaces for you). Use **padding** exports when the logo stands alone (e.g. a social avatar, a favicon-adjacent use); use **no-padding** exports inside layouts, navigation, cards, or watermarks where spacing is already controlled by the surrounding design — see the design spec for the full spacing and usage rules.
+Logos are few enough (9 groups) that no search is needed. Read `<this
+skill's directory>/logos_manifest.json` and pick the group by name. Most
+groups have `padding`/`no-padding` × `svg`/`png`, with colour variants (`-
+Black`, `- White`, `- Negative`, or unsuffixed for the primary mark). The
+`leaf` group differs: it has `logo/` (full mark) and `icon/` (Leaf icon
+alone) before the padding/format split, with variants unsuffixed, `-
+Negative`, and `- Coral`. Turn a stored path into a downloadable file with
+`brand_repo.fetch_asset("<path>")` (or `brand_repo.asset_url("<path>")` for
+the raw URL). Use **padding** exports when the logo stands alone; use
+**no-padding** exports inside layouts, navigation, cards, or watermarks where
+spacing is already controlled — see the design spec for the full spacing and
+usage rules.
 
-## Regenerating the manifests
+## Picking variation/format for a surface — load-bearing rules
 
-The manifests (`manifest.json`, `logos_manifest.json`) are generated from the brand repo's asset tree and must never be hand-edited. The stored paths are a public URL contract, so re-run the generators whenever icons or logos change in `leafgrowio/brand`, pointing `--brand-root` at a local clone of that repo (the directory containing `assets/`). The generators live in Leaf's internal `leaf` plugin repo (they are not distributed with this skill):
+- **Colour comes from the variation, never from editing:** `black` on light
+  surfaces (default), `white` on Ink/dark. Never recolour, add fills, or
+  apply effects.
+- Prefer SVG; PNG only when raster is required.
+- **In sandboxed artifacts** (Chat/Cowork), assets cannot be hotlinked —
+  fetch the SVG and inline its markup. The `leaf-design` skill carries the
+  artifact kit the inlined icon should land inside.
+- Everything else — sizes, category-tile and banner conventions, logo
+  minimums and clear space — lives in the design spec (`system/DESIGN.md` /
+  the `design` slice of `leaf-context`). Check it before placing an asset
+  somewhere unusual.
 
-```bash
-python3 brand/tools/generate_icon_manifest.py --brand-root /path/to/leafgrowio-brand
-python3 brand/tools/generate_logo_manifest.py --brand-root /path/to/leafgrowio-brand
-```
+## Hand-off
 
-`keywords.json` is the one hand-curated file here: a synonym overlay keyed by
-`"theme/Icon Name"` (e.g. `"shopping/Pay Per Click": ["ppc", "paid media"]`),
-merged with the icon's own name at query time. It ships as a starter set
-focused on Leaf's own use cases (growth, ecommerce, ads, tracking, trust) — add
-to it directly when a real query keeps missing an icon that should have
-matched. Never let the generator scripts touch it.
+This skill resolves assets; it does not build surfaces. If the destination
+was named in the ask, hand the picked icon (theme/name and fetched path)
+straight on without asking again; only ask here if usage is genuinely
+unknown — this is the only place usage ever gets asked.
 
-## How the design system expects icons and logos to be used
+- **Leaf plugin installed:** hand off to the **`saville`** skill, which owns
+  every brand surface — including Notion page covers, gallery cards, square
+  banners, social cards, and deck covers. Pass the icon name so Saville does
+  not search again.
+- **Standalone install (no plugin):** return the fetched asset and compose
+  the surface ad hoc, following the design spec for spacing, logo, and
+  colour rules.
 
-This skill resolves the asset; the design spec governs how it lands on the surface. The load-bearing rules, so a picked icon arrives correctly:
-
-- **Icons are line-art, and colour comes from the variation, never from editing:** `black` on light surfaces (the default brand treatment), `white` on Ink/dark. Never recolour, add fills, or apply effects.
-- **Sizes:** 16 · 20 · 24 · 32 · 48px in UI. Prefer SVG; PNG only when raster is required.
-- **Category tiles** (libraries, hubs, editorial navigation): one black icon, optically centred on one flat **secondary-colour** field (topic-matched — people → Heather, decisions → Harbor, momentum → Marigold), icon ≈ ⅓ of the tile's shorter side. Never a Coral field, never a gradient or photo, never multiple icons per field.
-- **Imagery/banners** follow the same convention at ≈ ¼ of the shorter edge with generous margin — Leaf imagery is iconographic, not photographic.
-- **Logos:** Coral on light; Negative on Coral/Ink. Minimums: icon 16px digital / 6mm print, full logo 80px / 20mm — below that, use the icon alone. Padding exports carry their own 50%-icon clear space; never trim it (switch to no-padding instead), never stretch, rotate, box, or add effects.
-- **In sandboxed artifacts** (Chat/Cowork), assets cannot be hotlinked — fetch the SVG and inline its markup. The `leaf-design` skill carries the artifact kit (tokens, base styles, embeddable Mona Sans) that the inlined icon should land inside.
+Never place the icon on a surface that violates the design spec.
 
 ## Rules
 
+- **Never hand-author selector markup.** Gallery/widget UIs are premade;
+  `find_icon.py` generates them. Run one command and present the output —
+  never write, adapt, or splice gallery/widget HTML by hand. Details in
+  `references/pick-mode.md`.
 - Never fabricate an icon or logo that does not exist in the manifest — an
   empty result means say so, not substitute something close.
-- Preserve asset fidelity: do not re-export, recolor, or resize an SVG/PNG
-  found through this skill. If a task needs a variation that does not exist
-  (e.g. a colour not in black/white), say so rather
-  than improvising one.
-- Logos and Leaf's core icon (Leaf) carry brand meaning — check the design
-  spec before using them somewhere unusual (e.g. outside Leaf-owned
-  surfaces, or altered).
+- **Never recolour, re-export, or resize** an SVG/PNG found through this
+  skill. If a needed variation does not exist (e.g. a colour outside
+  black/white), say so rather than improvising one.
+- Always fetch via `brand_repo` (or `--fetch`) — never assume an asset
+  already exists on disk.
+- Logos and Leaf's core icon carry brand meaning — check the design spec
+  before using them somewhere unusual (outside Leaf-owned surfaces, or
+  altered).
