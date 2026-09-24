@@ -2,12 +2,14 @@
 
 This document is the written source of truth for Leaf's design system. It pairs with two visual references: the **brand book** (`Leaf Brand Book.dc.html`) for brand foundations, and the **component library** (`Leaf Component Library.dc.html`) for the application layer. Where any of them disagree, fix all. Keep the split clean: brand-level language (foundations, colour, type, voice, logos, icons, imagery, photography, data viz, applications preview) lives in the brand book; product components (catalog, patterns, app shell, overlays) live in the component library.
 
-Status: v2.1 — ratified 24 September 2026 (supersedes v2.0.2, 23 September 2026). All sections locked.
+Status: v2.1.1 — ratified 24 September 2026 (supersedes v2.1, 24 September 2026). All sections locked.
 Source: core brand reference (June 2026) + v1.0 ratification (July 2026).
 
 ---
 
 ## Changelog
+
+**v2.1.1 — September 2026 (patch).** The v2.1 rule now actually applies. Every type token is a `font` shorthand, and the shorthand resets `font-optical-sizing` to `auto` on the element that sets it, so a bare `* { font-optical-sizing: none; }` lost to almost every heading — measured in Chromium against the pinned `styles.css`: headlines still rendered at the tight automatic optical size. The rule is now `font-optical-sizing: none !important`, which wins over the shorthand, inline styles included. No other change.
 
 **v2.1 — September 2026 (minor).** *Optical size is pinned to 0.* Mona Sans v2.0.27 carries an `opsz` axis, and browsers drive it from the font size by default (`font-optical-sizing: auto`), so display headlines on the brand book, component library and Claude Design rendered tighter and narrower than the same headline from the artifact kit, a PNG export or a matplotlib chart — all of which are instanced at `opsz` 0 and cannot follow. The spec never chose. It chooses now: **`font-optical-sizing: none` on `*`** in `tokens/fonts.css`, so every surface renders the axis default. Display headlines on the canonical surfaces get slightly wider; the kit, exports and charts do not change. Measured in Chromium: the kit subset and the canonical file at `opsz` 0 render identically, glyph outlines included. Backwards-compatible — nothing already rendered needs re-rendering.
 
@@ -211,12 +213,12 @@ Mona Sans is a variable font (pinned to upstream v2.0.27). Five OpenType stylist
 
 ```css
 /* the `font` shorthand resets both — enforce on * where inline fonts are used */
-* { font-feature-settings: "ss03" on, "ss05" on, "ss06" on, "ss07" on, "ss09" on; font-optical-sizing: none; }
+* { font-feature-settings: "ss03" on, "ss05" on, "ss06" on, "ss07" on, "ss09" on; font-optical-sizing: none !important; }
 ```
 
 ### Optical size
 
-Mona Sans has an optical-size axis (`opsz`, 0–100). **It is pinned to 0 on every surface** with `font-optical-sizing: none`, set on `*` beside the feature settings (the `font` shorthand resets it too). Browsers otherwise drive the axis from the font size, which tightens display type — and the surfaces that cannot follow (the artifact kit's subset, PNG exports, the matplotlib statics, all instanced at `opsz` 0) would then set the same headline wider than the brand book does. One headline, one shape, everywhere. Use `font-optical-sizing`, not `font-variation-settings`: the latter replaces every other axis setting declared on the element.
+Mona Sans has an optical-size axis (`opsz`, 0–100). **It is pinned to 0 on every surface** with `font-optical-sizing: none !important`, set on `*` beside the feature settings. The `!important` is load-bearing: every type token is a `font` shorthand, which resets optical sizing to `auto` on the element that sets it, and a plain `*` rule loses to it. Browsers otherwise drive the axis from the font size, which tightens display type — and the surfaces that cannot follow (the artifact kit's subset, PNG exports, the matplotlib statics, all instanced at `opsz` 0) would then set the same headline wider than the brand book does. One headline, one shape, everywhere. Use `font-optical-sizing`, not `font-variation-settings`: the latter replaces every other axis setting declared on the element.
 
 ---
 

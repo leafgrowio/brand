@@ -59,9 +59,12 @@
    browsers drive it from the font size by default, which tightens display
    type; the artifact kit, PNG exports and the matplotlib statics are all
    instanced at opsz 0 and cannot follow. `none` makes every surface render
-   the axis default (0), so one headline looks the same everywhere. The
-   `font` shorthand resets this too, hence the same selector. */
+   the axis default (0), so one headline looks the same everywhere.
+   !important is load-bearing: the `font` shorthand resets optical sizing to
+   auto on any element that sets it — every type token is a shorthand — and a
+   bare * rule loses to it. An !important author rule wins over those
+   (inline styles included). */
 * {
   font-feature-settings: var(--leaf-type-features);
-  font-optical-sizing: none;
+  font-optical-sizing: none !important;
 }

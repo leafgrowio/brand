@@ -1,6 +1,6 @@
 # Leaf chart recipes (for artifacts)
 
-Downstream of `system/DESIGN.md` § Data visualization (leafgrowio/brand, v2.1). All colours by token — the kit's `leaf-tokens.css` defines every variable used here.
+Downstream of `system/DESIGN.md` § Data visualization (leafgrowio/brand, v2.1.1). All colours by token — the kit's `leaf-tokens.css` defines every variable used here.
 
 ## Palette rules
 

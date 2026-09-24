@@ -90,7 +90,7 @@ The component cards are static specimens, so they render with or without the gen
 
 ## Sources
 
-- [DESIGN.md](DESIGN.md) — the written spec (v2.1, ratified 24 September 2026). The deep dive; this readme is the digest.
+- [DESIGN.md](DESIGN.md) — the written spec (v2.1.1, ratified 24 September 2026). The deep dive; this readme is the digest.
 - [Leaf Brand Book.dc.html](Leaf%20Brand%20Book.dc.html) — brand foundations, visually. Token-driven (`styles.css`), with the foundation cards live-embedded under "Rendered from source".
 - [Leaf Component Library.dc.html](Leaf%20Component%20Library.dc.html) — the application layer, visually. Token-driven (`styles.css`), with all 18 component cards live-embedded under "Rendered from source".
 - [leafgrowio/brand](https://github.com/leafgrowio/brand) — logos, the full icon library, font sources, imagery, photography.
