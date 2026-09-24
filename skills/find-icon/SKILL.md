@@ -111,20 +111,11 @@ usage rules.
 
 ## Hand-off
 
-This skill resolves assets; it does not build surfaces. If the destination
-was named in the ask, hand the picked icon (theme/name and fetched path)
-straight on without asking again; only ask here if usage is genuinely
-unknown — this is the only place usage ever gets asked.
-
-- **Leaf plugin installed:** hand off to the **`saville`** skill, which owns
-  every brand surface — including Notion page covers, gallery cards, square
-  banners, social cards, and deck covers. Pass the icon name so Saville does
-  not search again.
-- **Standalone install (no plugin):** return the fetched asset and compose
-  the surface ad hoc, following the design spec for spacing, logo, and
-  colour rules.
-
-Never place the icon on a surface that violates the design spec.
+This skill resolves assets; it does not build surfaces. Pass the picked icon
+straight to the surface builder (`saville`, if the plugin is installed) or
+compose it ad hoc against the design spec — never place it on a surface that
+violates the spec. Full ladder (when to ask, who owns which surface) is
+`references/pick-mode.md`'s Step 4.
 
 ## Rules
 
