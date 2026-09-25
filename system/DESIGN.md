@@ -2,12 +2,14 @@
 
 This document is the written source of truth for Leaf's design system. It pairs with two visual references: the **brand book** (`Leaf Brand Book.dc.html`) for brand foundations, and the **component library** (`Leaf Component Library.dc.html`) for the application layer. Where any of them disagree, fix all. Keep the split clean: brand-level language (foundations, colour, type, voice, logos, icons, imagery, photography, data viz, applications preview) lives in the brand book; product components (catalog, patterns, app shell, overlays) live in the component library.
 
-Status: v2.1.1 — ratified 24 September 2026 (supersedes v2.1, 24 September 2026). All sections locked.
+Status: v2.2 — ratified 25 September 2026 (supersedes v2.1.1, 24 September 2026). All sections locked.
 Source: core brand reference (June 2026) + v1.0 ratification (July 2026).
 
 ---
 
 ## Changelog
+
+**v2.2 — September 2026 (minor).** Directed by the CEO, from building the first all-hands deck on the system. *Decks get their own section* (see **Decks**): one black logo of the owning team or product on the cover, "Leaf Confidential" in the footer row, no author or presenter names, the same footer row on every slide, a quiet black Leaf-icon watermark on inner slides, and every deck closing on the Pura Vida seal. *Black joins the logo colour variants* for those deck uses; Coral on light stays the default everywhere else. *"Stone ground" is made exact.* Coral-as-type was ruled out "on any Stone ground", which read as the whole Stone family and contradicted the ratified eyebrow exception measured at 2.83:1 — the Light Stone ratio. The rule now names the grounds: Coral is never type on Stone, Stone-deep or the Coral tint; on Light Stone and Stone-faint it is type only under the eyebrow exception. *Lines are structural only* (see **Elevation & borders**): no accent bars, short rules over headings, underline flourishes or edge stripes. *A table header must differ from both its page and its zebra stripe*: the quiet Stone-faint header only works on Canvas with plain rows; on Light Stone, or striped, it steps down to Stone. Backwards-compatible: nothing already on-system needs re-rendering, except decks, which adopt the new chrome at their next edit.
 
 **v2.1.1 — September 2026 (patch).** The v2.1 rule now actually applies. Every type token is a `font` shorthand, and the shorthand resets `font-optical-sizing` to `auto` on the element that sets it, so a bare `* { font-optical-sizing: none; }` lost to almost every heading — measured in Chromium against the pinned `styles.css`: headlines still rendered at the tight automatic optical size. The rule is now `font-optical-sizing: none !important`, which wins over the shorthand, inline styles included. No other change.
 
@@ -93,9 +95,9 @@ The core, neutral, highlight, and secondary palettes are listed in the tables at
 Text is set in a small, high-contrast set only:
 
 - **Ink** — primary text on all light surfaces.
-- **Coral** — emphasis, eyebrows, links, small brand accents. Coral measures 3.04:1 on Canvas, 2.83:1 on Light Stone and 2.56:1 on Stone, so as running text it is Canvas-only and only at 24px+ or 19px+ bold. On any Stone ground it is a mark — a rule, an underline, a dot, a fill — never type.
+- **Coral** — emphasis, eyebrows, links, small brand accents. Coral measures 3.04:1 on Canvas, 2.83:1 on Light Stone and 2.56:1 on Stone, so as running text it is Canvas-only and only at 24px+ or 19px+ bold. On Stone (`#F2E8E1`), Stone-deep and the Coral tint it is a mark — a fill, a dot, a link underline, a data mark — never type. On Light Stone (2.83:1) and Stone-faint (2.90:1) it is type only under the eyebrow exception below.
 
-  **The eyebrow exception.** Section eyebrows, small uppercase labels and inline links are Coral at their own sizes, below that floor, and that is deliberate. An eyebrow is not read as prose: it is a wayfinding mark made of letters, it sits above a heading that carries the meaning, and it is never the only route to the information beneath it. The same licence covers a link inside body copy, where underline or context marks the link as well as colour. It does not extend to anything a reader has to read to understand the page, and it does not extend to Coral on a Stone ground at any size.
+  **The eyebrow exception.** Section eyebrows, small uppercase labels and inline links are Coral at their own sizes, below that floor, and that is deliberate. An eyebrow is not read as prose: it is a wayfinding mark made of letters, it sits above a heading that carries the meaning, and it is never the only route to the information beneath it. The same licence covers a link inside body copy, where underline or context marks the link as well as colour. It does not extend to anything a reader has to read to understand the page. It holds on Canvas, Stone-faint and Light Stone, and it does not extend to Coral on Stone (`#F2E8E1`), Stone-deep or the Coral tint at any size.
 - **Warm Grey** — secondary text on Light Stone, Stone, and Canvas (passes AA; avoid at very small sizes on Stone).
 - **Aqua** — small labels and accents on Ink / dark-mode surfaces only.
 
@@ -285,6 +287,8 @@ One soft, warm-tinted shadow exists for **lifted or transient surfaces only** �
 
 Never stack shadow *and* a heavy border on the same element; pick one separation cue.
 
+**Lines are structural, never decorative.** A line separates or measures: a table rule, a hairline card border, a chart axis or gridline, an input edge. It never decorates: no accent bars, short rules above headings, underline flourishes or left-edge stripes. Hierarchy comes from the eyebrow, type weight and background tone.
+
 ---
 
 ## Interaction states
@@ -318,7 +322,7 @@ Four rows below, covering three kinds of exception. They were measured, argued a
 
 **`--leaf-text-muted` (#767065) is valid on Canvas, Light Stone and Stone-faint only** — 4.84, 4.50 and 4.61:1. On Stone it is 4.07 and on Stone-deep 3.89, so use **Warm Grey** there instead. No single grey clears 4.5 on every Leaf ground without closing on Warm Grey and collapsing the two levels of quiet text into one, so the token carries a usage rule rather than a darker value.
 
-The licence stops where the second signal does. None of these extends to running text a reader has to read to understand the page, and none extends to Coral on a Stone ground at any size — Coral on Stone is 2.56:1 with nothing to lean on. Where a state has no second cue, contrast is not negotiable: the active sidebar item takes **Ink** on its Coral tint (15.08:1), because Coral on that tint is 2.54:1 and the fill alone was being asked to carry legibility.
+The licence stops where the second signal does. None of these extends to running text a reader has to read to understand the page, and none extends to Coral on Stone (`#F2E8E1`), Stone-deep or the Coral tint at any size — Coral on Stone is 2.56:1 with nothing to lean on. (Light Stone and Stone-faint, at 2.83–2.90:1, sit inside the eyebrow row above.) Where a state has no second cue, contrast is not negotiable: the active sidebar item takes **Ink** on its Coral tint (15.08:1), because Coral on that tint is 2.54:1 and the fill alone was being asked to carry legibility.
 
 ---
 
@@ -343,7 +347,7 @@ Minimal and purposeful. Animate `opacity` and `transform` only; 120–180ms; eas
 
 One mark leads — the Leaf icon and wordmark. Service and property lockups extend it. Every logo ships in padded and no-padding exports; choose by context, never crop by hand.
 
-- **Colour variants** — Coral on light; Negative (knockout) on Coral and on Ink.
+- **Colour variants** — Coral on light (the default); Negative (knockout) on Coral and on Ink; **Black** on light for decks — the owner's logo on the cover, the Leaf logo on the Pura Vida seal, and the Leaf icon as the inner-slide watermark (see **Decks**). Every group ships a black export; use it as shipped.
 - **Clear space** — padded exports carry a safe margin of 50% of the icon; don't trim it, switch to no-padding instead.
 - **Minimum sizes** — icon 16px digital / 6mm print; full logo 80px / 20mm. Below the full-logo minimum, use the icon alone. Prefer SVG; PNG only when raster is required.
 - **Service sub-logos** — Signal (tracking), Answers (reporting), Performance (media), Creative (content), Stores (Shopify), Strategy (SEO).
@@ -416,7 +420,8 @@ The building blocks behind Answers and internal tools, at working density.
 
 ### Tables & data density
 
-- **Quiet header** — faint Stone tint (`#FBF7F4`) with **Ink** labels (`11/600` (`ui-micro`), `+0.02em`) over a 1.5px bottom rule. The tint (not a heavy Ink fill) is what makes the header recede, while Ink labels keep them legible — Warm Grey on Stone is too low-contrast at this size. Avoid a full Ink header bar; it out-shouts the numbers that matter.
+- **Quiet header** — faint Stone tint (`#FBF7F4`) with **Ink** labels (`11/600` (`ui-micro`), `+0.02em`) over a 1.5px bottom rule. The tint (not a heavy Ink fill) is what makes the header recede, while Ink labels keep them legible — Warm Grey on Stone is too low-contrast at this size. Avoid a full Ink header bar; it out-shouts the numbers that matter. The header must read as distinct from both the page it sits on and the zebra stripe below it: the Stone-faint header only works on a Canvas table with plain rows. On a Light Stone page, or with zebra rows, step it down to **Stone** (`#F2E8E1`) over a stronger 2px `rgba(23,20,18,0.3)` rule — page, header and stripe must be three different fills.
+- **Tables are for data.** Use one only when every column carries its own information; ordered steps are a numbered sequence, never a table with an index column. Size columns to their content, never equal splits.
 - Right-align numerics and set them in **tabular figures** (`font-variant-numeric: tabular-nums`).
 - Hairline row dividers (`border-light`); optional zebra tint `#FBF7F4`.
 - Bring in the diverging heatmap scale (Harbor→Coral tints) for a scanned metric column; reserve Fern/Ember for the delta column only.
@@ -537,6 +542,22 @@ The small surfaces where Leaf shows up outside the product. Small canvases, same
 - **Favicon & app icon** — the Leaf **icon** (never the wordmark) on a solid Coral tile; ships at 16 / 32 / 180px. Full wordmark is never cropped into a square.
 - **Social / link-preview (OG) card** — 1200×630, Stone ground (never Ink — see Dark surfaces), Coral wordmark, one Coral accent, headline in the brand voice. Never a photo behind the wordmark — that treatment is for co-brand posts (see Photography).
 - **Email signature** — live HTML text (not an image): name, one line of role, Coral links for address/site. Survives dark mode and high-DPI.
+
+---
+
+## Decks
+
+Slides are 1920×1080 with 128px margins, set in the **Slides** type scale with its positive tracking (see Typography). Nearly every Leaf deck is internal or for a customer, so the chrome assumes both. The artifact kit's `references/slides.md` turns this section into exact values, copyable slide skeletons and a pre-publish checklist; where they disagree, this section wins.
+
+- **Ground** — Light Stone on every slide: cover, content, closing and seal alike. Never an Ink slide, band, card or panel (see Dark surfaces). Cards are Canvas with a hairline border; emphasis panels and step markers use the Coral tint with Ink text.
+- **Owner** — every deck represents one team or product: Leaf, Signal, Answers, Stores, Performance, Creative or Strategy. When the content doesn't make it clear, ask before building.
+- **Cover** — the owner's **black** no-padding logo top left; the title block centred on the slide; "Leaf Confidential" as the footer label, dropped only for a deck stated to be public. No author, presenter or owner name — on the cover or any slide. Decks ship under the Leaf or team brand; the logo says whose.
+- **Footer row** — every slide carries one label on the same line in the same place: the footer band at the bottom margin, `slide-caption` in Warm Grey. The cover's label reads "Leaf Confidential"; every other slide's reads the deck title and slide number.
+- **Watermark** — every slide except the cover and the seal carries the **black** Leaf icon on the footer row, bottom right, at the footer text's size and 60% opacity, so it reads at the footer's quiet tone. Opacity is the only adjustment; the mark is never recoloured.
+- **Content slides** — eyebrow and title at the top margin, one idea per slide. Coral eyebrows are the one piece of Coral type (the eyebrow exception on Light Stone). Ordered steps are rows led by an Ink number in a Coral-tint disc, never a table and never bare list markers. Tables follow **Tables & data density**, with square corners.
+- **Closing slide** — the cover's composition: eyebrow and title centred, footer row and watermark in place.
+- **The seal** — every deck ends on it, after any closing or Q&A slide: "Pura Vida" in `slide-display`, centred, with the **black Leaf** logo — always Leaf, whichever team owns the deck — top left in the cover's logo position, the footer label, and nothing else. It is Leaf's sign-off.
+- **One look** — cover, content, closing and seal share the ground, eyebrow treatment, type scale and footer. Vary layout, never the look; a slide that looks like it came from another deck is off-system.
 
 ---
 

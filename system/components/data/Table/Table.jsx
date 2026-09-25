@@ -43,6 +43,12 @@ const CSS = `
   .leaf-table--zebra tbody tr:nth-child(even) {
     background: var(--leaf-color-stone-faint);
   }
+  /* A striped table's header steps down to Stone so it never matches the stripe
+     (DESIGN.md › Tables & data density: page, header and stripe differ). */
+  .leaf-table--zebra thead tr {
+    background: var(--leaf-color-stone);
+    border-bottom: 2px solid var(--leaf-border-strong);
+  }
   .leaf-table td {
     font: var(--leaf-type-ui-label);
     font-weight: 400;

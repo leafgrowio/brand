@@ -7,7 +7,7 @@ description: "Use before generating ANY visual output at Leaf — an HTML artifa
 
 You are about to produce something visual for Leaf. Everything you make should look like Leaf (warm Stone grounds, one Coral moment, flat surfaces, Mona Sans letterforms) and sound like Leaf (UK English, sentence case, mechanism before claim, no hype). This skill gives you the kit to do that inside sandboxed artifacts, where **nothing external loads** — no CDN fonts, no remote stylesheets, no hotlinked images. Whatever the artifact needs must travel inside it.
 
-This kit is a downstream build of the Leaf design system (`system/` in the public GitHub repo `leafgrowio/brand`, v2.1.1). The canonical spec is `system/DESIGN.md` in that repo; inside the Leaf plugin the same document is mirrored as the **design** slice of the `leaf-context` skill (at `brand/files/DESIGN.md`).
+This kit is a downstream build of the Leaf design system (`system/` in the public GitHub repo `leafgrowio/brand`, v2.2). The canonical spec is `system/DESIGN.md` in that repo; inside the Leaf plugin the same document is mirrored as the **design** slice of the `leaf-context` skill (at `brand/files/DESIGN.md`).
 
 ## The kit (`assets/`)
 
@@ -23,12 +23,38 @@ This kit is a downstream build of the Leaf design system (`system/` in the publi
 ## Hard rules (never break)
 
 - **One solid-Coral moment per view** — the primary button, the active nav item, or the focus chart series. Never two. Emphasis fills use the Coral tint (`.leaf-block`) with Ink text; solid Coral is for CTAs and small marks only.
-- **Copy colour:** text is Ink, Coral, Warm Grey, or Aqua-on-dark only. Secondary palette colours are fills, never text; every colour fill takes Ink text; Canvas text only on dark anchors (white-on-Coral is large-text only).
+- **Grounds: the light Stone family only.** Decks, covers, dividers, quote frames, social cards, one-pagers and marketing pages sit on Light Stone (`#F9F4F1`, the page), Canvas (`#FFFDFB`, cards) and Stone (`#F2E8E1`, a quieter second tone). **Ink is not a brand surface**: it is the dark-mode UI surface and nothing else — never an Ink slide, cover, band, card or panel. Emphasis comes from the Coral tint (`#FBE4DF`) with Ink text, never a dark fill. Aqua and Canvas-on-Ink text belong to dark mode, so they never appear in a deck or marketing asset.
+- **Copy colour:** text is Ink, Coral (within the limits below), Warm Grey, or Aqua-on-dark only. Secondary palette colours are fills, never text; every colour fill takes Ink text; Canvas text only on the dark anchors (Ink in dark-mode UI, Warm Grey, solid state tones, a solid Coral button label).
+- **Coral as text depends on the ground** (ratios from the spec's ratified exceptions):
+
+  | Ground | Coral running text (≥24px, or ≥19px bold) | Coral eyebrows, small uppercase labels, inline links | Otherwise |
+  | --- | --- | --- | --- |
+  | Canvas `#FFFDFB` (3.04:1) | Yes | Yes | — |
+  | Stone-faint `#FBF7F4` (2.90:1), Light Stone `#F9F4F1` (2.83:1) | No | Yes — the eyebrow exception | Ink |
+  | Stone `#F2E8E1` (2.56:1), Stone-deep, Coral tint | No | No | Text in Ink; don't compensate with a decorative Coral line (below) |
+
+  An eyebrow is a wayfinding label above a heading that carries the meaning. Anything a reader has to read to understand the slide is not an eyebrow.
+- **No decorative lines.** No accent bars, short rules above headings, underline flourishes or left-edge stripes; the Coral eyebrow, type weight and background tone carry hierarchy. Lines are structural only: table rules, hairline card borders, chart axes and gridlines.
+- **Decks follow `references/slides.md` — read it in full before the first slide.** It is the whole deck rulebook: the owner logo and "Leaf Confidential" on the cover, no author names, the footer row and Leaf-icon watermark, the slide type scale, the cover, content, closing and Pura Vida seal layouts, steps and tables on slides, the Slides-renderer quirks, and a pre-publish checklist. Any deck decision made with the team lands there, not here.
+- **Tables are for data, not layout.** Use a table only when every column carries its own information (a comparison, a matrix, figures); ordered steps are a numbered sequence, never a table with an index column. Tables take the Answers kit `Table` treatment: Canvas body with a 1px `rgba(23,20,18,0.1)` border, an Ink header at 600 with a stronger rule beneath, zebra rows in Stone-faint (`#FBF7F4`), 1px hairlines between rows and none after the last. The header fill must differ visibly from both the page and the stripe (on a Light Stone page, use Stone `#F2E8E1`). Size columns to their content — set widths on every first-row cell — never equal splits.
+- **One system across a multi-page asset.** Every page or slide shares the same ground, eyebrow treatment and type scale; a slide that looks like it came from another deck is a defect. Vary layout, not the look.
 - **Status never wears Coral.** Success/warning/error/info use the state palette (`.leaf-badge--*`, `.leaf-alert--*`); destructive actions are Ember, never Coral.
 - **Flat by default:** hairline borders and background tone separate surfaces; the warm shadows are for lifted/transient surfaces only. Never shadow + heavy border together.
 - **Numbers:** `£1.49M` (abbreviate ≥1M) · ratios 2 dp with lowercase x (`3.72x`) · percentages 1 dp (`24.6%`) · deltas ▲/▼ in Fern/Ember (never colour alone) · dates `1 Jun 2026` · tabular figures right-aligned · missing data is an em-dash, never blank or 0.
 - **Voice:** UK English, sentence case everywhere, verb-first button labels ("Create report", never "Submit"), em dashes, no exclamation marks, no emojis. Signal, Answers, Watcher, Leaf Schema capitalised. Never fabricate metrics or client claims in sample content.
 - **Accessibility:** never colour as the only cue; visible focus ring (the kit sets it); body text contrast ≥ 4.5:1 (the copy-colour rule guarantees it — don't invent new text/background pairs).
+
+## Before you ship
+
+These hard rules summarise the spec; they don't replace it. Where they and `system/DESIGN.md` disagree, the spec wins — say so, so the summary gets fixed.
+
+- **Brand surfaces load the spec, not just this summary.** For a deck, cover, social card, one-pager or marketing page, read the **Colour**, **Dark surfaces** and **Ratified exceptions** sections of the design slice (or `system/DESIGN.md`) before choosing a single background or text colour.
+- **Surfaces that don't use the starter get no guardrails from it.** Slides built from an Artifact type, inline-styled HTML, Canva, Figma and PNG exports inherit none of the kit's tokens or classes, so every colour you type is unchecked. Keep to the hex values above and check each slide's background and each text colour against the grounds and Coral rules.
+- **Review before handover.** With the Leaf plugin installed, run `review-brand-asset` on the finished source before you publish or hand it over, and fix every P0 and P1 first. Without it, walk the hard rules above against every view.
+
+## Decks
+
+For any slide deck, read `references/slides.md` first and work through its pre-publish checklist before you publish. It carries exact values and copyable skeletons for every slide type.
 
 ## Charts
 
