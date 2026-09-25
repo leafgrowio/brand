@@ -1,5 +1,5 @@
 /* Leaf design tokens — flattened for artifacts.
-   DOWNSTREAM COPY of system/tokens/*.css in github.com/leafgrowio/brand (v2.1.1).
+   DOWNSTREAM COPY of system/tokens/*.css in github.com/leafgrowio/brand (v2.2).
    Regenerate from the canonical files on version bumps; never edit values here.
    Paste this whole block into the artifact's <style>.
 
@@ -21,7 +21,9 @@
    Usage rules live in DESIGN.md; the load-bearing ones:
    - Copy colour: text is Ink / Coral / Warm Grey / Aqua-on-dark ONLY. Never secondary colours or tints as text.
    - One decisive Coral moment per view. Solid Coral is for CTAs and small marks, never a large content fill.
-   - Ink text on every colour fill; Canvas text only on the dark anchors (Ink, Warm Grey, solid states, large-text Coral). */
+   - Ink text on every colour fill; Canvas text only on the dark anchors (Ink, Warm Grey, solid states, large-text Coral).
+   - Ink is the dark-mode UI surface ONLY. Decks, covers, social and marketing grounds are the Stone family, never Ink.
+   - Coral is never type on Stone, Stone-deep or the Coral tint; on Light Stone / Stone-faint only as an eyebrow. */
 
 :root {
   /* --- core --- */
