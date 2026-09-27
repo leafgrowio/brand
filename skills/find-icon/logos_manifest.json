@@ -1,7 +1,6 @@
 {
-  "url_source": "brand/skills/find-icon/brand_repo.py (BRAND_REPO_REF) — URLs are built there, pinned to a commit; this manifest stores repo-relative paths only",
   "generated_by": "brand/tools/generate_logo_manifest.py",
-  "group_count": 9,
+  "group_count": 10,
   "groups": {
     "answers": {
       "default": {
@@ -312,7 +311,24 @@
           ]
         }
       }
+    },
+    "tools": {
+      "github": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/github/no-padding/png/GitHub.png"
+          ]
+        }
+      },
+      "notion": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/notion/no-padding/png/Notion.png"
+          ]
+        }
+      }
     }
   },
-  "source": "leafgrowio/brand:assets/logos"
+  "source": "leafgrowio/brand:assets/logos",
+  "url_source": "brand/skills/find-icon/brand_repo.py (BRAND_REPO_REF) \u2014 URLs are built there, pinned to a commit; this manifest stores repo-relative paths only"
 }

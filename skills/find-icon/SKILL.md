@@ -13,7 +13,8 @@ ecology, education, electronics, logistics, shopping, social), each in two
 colour variations (`black` — the default brand treatment — and `white` for
 dark surfaces; the brand is line-art only, no solids) and two formats (SVG,
 PNG), plus Leaf's logo set (Leaf, Signal, Answers, Stores, Creative,
-Performance, Strategy, Colectivo, blog). This skill is the query layer over
+Performance, Strategy, Colectivo, blog) and a `tools` group of official
+third-party tool marks (GitHub, Notion). This skill is the query layer over
 both, so an agent never has to guess a filename.
 
 **The asset files do not ship with this skill.** They live in the public
@@ -82,13 +83,15 @@ flag list and generator/maintenance flags are in
 
 ## Logos: read the manifest directly
 
-Logos are few enough (9 groups) that no search is needed. Read `<this
+Logos are few enough (10 groups) that no search is needed. Read `<this
 skill's directory>/logos_manifest.json` and pick the group by name. Most
 groups have `padding`/`no-padding` × `svg`/`png`, with colour variants (`-
 Black`, `- White`, `- Negative`, or unsuffixed for the primary mark). The
 `leaf` group differs: it has `logo/` (full mark) and `icon/` (Leaf icon
 alone) before the padding/format split, with variants unsuffixed, `-
-Negative`, and `- Coral`. Turn a stored path into a downloadable file with
+Negative`, and `- Coral`. The `tools` group nests one folder per tool
+(`tools/github/`, `tools/notion/`), `no-padding/` only: official black marks
+used as shipped, nominatively (spec: Logos › Tool marks). Turn a stored path into a downloadable file with
 `brand_repo.fetch_asset("<path>")` (or `brand_repo.asset_url("<path>")` for
 the raw URL). Use **padding** exports when the logo stands alone; use
 **no-padding** exports inside layouts, navigation, cards, or watermarks where
