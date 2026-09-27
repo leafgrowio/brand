@@ -85,7 +85,7 @@ Logo groups currently include:
 - `signal`
 - `stores`
 - `strategy`
-- `tools` — curated third-party tool marks (currently `github`, `notion`), nested one folder per tool, `no-padding/` only. The lookup order is this group, then the gilbarbara/logos collection, then asking the user to upload the official file (plugin `find-icon` › `find_tool_logo.py`). Official marks as shipped, never recoloured or redrawn; rules in `system/DESIGN.md` › Logos › Tool marks. Adding a tool needs a logo-manifest regeneration in the plugin repo.
+- `tools` (not created yet — the folder appears with the first upload) — curated third-party tool marks, only for tools the gilbarbara/logos collection lacks (first to add: Klaviyo, Granola, Canva, Gmail, BigQuery, Attio), nested one folder per tool, `no-padding/` only. The lookup order is this group, then the gilbarbara/logos collection, then asking the user to upload the official file (plugin `find-icon` › `find_tool_logo.py`). Official marks as shipped, never recoloured or redrawn; rules in `system/DESIGN.md` › Logos › Tool marks. Adding a tool needs a logo-manifest regeneration in the plugin repo.
 
 Most product/surface logo groups contain `padding/` and `no-padding/` versions, each with `png/` and `svg/` exports. Use padded exports when the asset should carry its own 50%-Leaf-icon safe margin. Use no-padding exports inside applications, components, navigation, cards, and watermarks where layout spacing is already controlled. The core `leaf` icon and logo groups also have `padding/` and `no-padding/` folders.
 

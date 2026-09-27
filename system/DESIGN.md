@@ -366,7 +366,7 @@ Decks and explainers regularly name the tools Leaf works in — GitHub, Notion, 
 - **Used as shipped.** Official marks keep their own colours — they are the owner's mark, not Leaf palette — and are never recoloured, cropped, redrawn or combined with a Leaf mark into a lockup. Prefer the square **icon** version for the icon slot and the full logo only where the name must read; avoid a collection's `-dark` variants, which are built for dark grounds.
 - **Nominative use** — a mark names a tool Leaf uses or integrates with. It never implies partnership or endorsement; a real partnership uses the co-brand lockups above. The marks remain their owners' trademarks whatever licence the files carry.
 - **Sized as an icon, not a logo** — it takes the icon slot (see **Iconography**): 88–92px on a slide, 32–48px on the web, beside or above the text that names the tool. A card row mixing tool marks and library icons keeps them the same size.
-- **Keeping one.** When a Leafer uploads a mark the collection lacks, or a better official file than the collection's, add it under `tools/<tool>/no-padding/svg` (and `png`), then regenerate the logo manifest in the plugin repo, so the next deck finds it. The group currently carries **GitHub** and **Notion**.
+- **Keeping one.** When a Leafer uploads a mark the collection lacks, or a better official file than the collection's, add it under `tools/<tool>/no-padding/svg` (and `png`), then regenerate the logo manifest in the plugin repo, so the next deck finds it. The group holds only what the collection lacks — Klaviyo, Granola, Canva, Gmail, BigQuery and Attio are the first to add.
 
 ### Misuse
 
