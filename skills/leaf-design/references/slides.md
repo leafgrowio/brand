@@ -181,8 +181,11 @@ else.
 ### Icon slot
 
 Cards and emphasis panels carry one black line icon each (DESIGN.md ›
-Iconography), resolved with `find-icon` and inlined as SVG — or a tool mark
-from `assets/logos/tools/` for a card naming a tool, uploaded as an image. Every
+Iconography), resolved with `find-icon` and inlined as SVG — or, for a card naming a
+tool, that tool's official mark from `find-icon`'s `find_tool_logo.py` (Leaf's
+`tools` group, then the gilbarbara/logos collection), uploaded as an image. If
+the lookup finds nothing, ask the person to upload the official logo; never
+draw one. Every
 card in a row takes one or none does; pick each for what its card says.
 
 - **Card** — the icon first in the card's column, 92px (`width:93px;

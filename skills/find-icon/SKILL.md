@@ -13,8 +13,8 @@ ecology, education, electronics, logistics, shopping, social), each in two
 colour variations (`black` — the default brand treatment — and `white` for
 dark surfaces; the brand is line-art only, no solids) and two formats (SVG,
 PNG), plus Leaf's logo set (Leaf, Signal, Answers, Stores, Creative,
-Performance, Strategy, Colectivo, blog) and a `tools` group of official
-third-party tool marks (GitHub, Notion). This skill is the query layer over
+Performance, Strategy, Colectivo, blog), a curated `tools` group of third-party marks, and a lookup over
+the gilbarbara/logos collection for every other tool. This skill is the query layer over
 both, so an agent never has to guess a filename.
 
 **The asset files do not ship with this skill.** They live in the public
@@ -98,6 +98,35 @@ the raw URL). Use **padding** exports when the logo stands alone; use
 spacing is already controlled — see the design spec for the full spacing and
 usage rules.
 
+## Tool logos: run the lookup, then ask
+
+Third-party marks (Shopify, Slack, Snowflake, Google Ads…) resolve through
+`find_tool_logo.py`, never from memory:
+
+```bash
+python3 <this skill's directory>/find_tool_logo.py "google ads"
+python3 <this skill's directory>/find_tool_logo.py "slack" --fetch
+```
+
+It checks Leaf's curated `tools` group first, then the gilbarbara/logos
+collection (CC0 files, pinned to `TOOL_LOGOS_REF`; the marks stay their owners'
+trademarks), and returns JSON with a `status`:
+
+- `found` — use `recommended` (the square `-icon` mark when one exists, for the
+  icon slot). `url` is a pinned jsDelivr URL; `--fetch` downloads it.
+- `candidates` — no exact name match; confirm the right tool with the person
+  before using one.
+- `not_found` — **ask the person to upload the tool's official logo in the
+  session**, using the result's `ask_user` line. Never redraw, trace or
+  substitute a look-alike. Once they upload it, use their file, and offer to add
+  it to the brand repo's `assets/logos/tools/<tool>/` so the next deck finds it.
+- `unreachable` — this environment cannot reach the collection (some sandboxes
+  have no network from the shell). Try `catalogue_url` and the file URL with
+  another web tool the session has; failing that, ask the person to upload.
+
+Use marks as shipped, in their own colours, sized as icons (spec: Logos › Tool
+marks).
+
 ## Picking variation/format for a surface — load-bearing rules
 
 - **Colour comes from the variation, never from editing:** `black` on light
@@ -126,6 +155,8 @@ violates the spec. Full ladder (when to ask, who owns which surface) is
   `find_icon.py` generates them. Run one command and present the output —
   never write, adapt, or splice gallery/widget HTML by hand. Details in
   `references/pick-mode.md`.
+- Never draw a third-party logo. Resolve it with `find_tool_logo.py`; if it
+  is not found, ask the person to upload the official file.
 - Never fabricate an icon or logo that does not exist in the manifest — an
   empty result means say so, not substitute something close.
 - **Never recolour, re-export, or resize** an SVG/PNG found through this
