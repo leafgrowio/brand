@@ -1,6 +1,6 @@
 {
   "generated_by": "brand/tools/generate_logo_manifest.py",
-  "group_count": 10,
+  "group_count": 9,
   "groups": {
     "answers": {
       "default": {
@@ -308,22 +308,6 @@
             "assets/logos/strategy/padding/svg/Leaf Strategy - Negative.svg",
             "assets/logos/strategy/padding/svg/Leaf Strategy - White.svg",
             "assets/logos/strategy/padding/svg/Leaf Strategy.svg"
-          ]
-        }
-      }
-    },
-    "tools": {
-      "github": {
-        "no-padding": {
-          "png": [
-            "assets/logos/tools/github/no-padding/png/GitHub.png"
-          ]
-        }
-      },
-      "notion": {
-        "no-padding": {
-          "png": [
-            "assets/logos/tools/notion/no-padding/png/Notion.png"
           ]
         }
       }

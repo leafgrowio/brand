@@ -90,7 +90,7 @@ Black`, `- White`, `- Negative`, or unsuffixed for the primary mark). The
 `leaf` group differs: it has `logo/` (full mark) and `icon/` (Leaf icon
 alone) before the padding/format split, with variants unsuffixed, `-
 Negative`, and `- Coral`. The `tools` group nests one folder per tool
-(`tools/github/`, `tools/notion/`), `no-padding/` only: official black marks
+(`tools/<tool>/`), `no-padding/` only: official black marks
 used as shipped, nominatively (spec: Logos › Tool marks). Turn a stored path into a downloadable file with
 `brand_repo.fetch_asset("<path>")` (or `brand_repo.asset_url("<path>")` for
 the raw URL). Use **padding** exports when the logo stands alone; use
