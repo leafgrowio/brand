@@ -85,6 +85,7 @@ Logo groups currently include:
 - `signal`
 - `stores`
 - `strategy`
+- `tools` — third-party tool marks (currently `github`, `notion`), nested one folder per tool, `no-padding/` only. Official black marks, never recoloured or redrawn; rules in `system/DESIGN.md` › Logos › Tool marks. Adding a tool needs a logo-manifest regeneration in the plugin repo.
 
 Most product/surface logo groups contain `padding/` and `no-padding/` versions, each with `png/` and `svg/` exports. Use padded exports when the asset should carry its own 50%-Leaf-icon safe margin. Use no-padding exports inside applications, components, navigation, cards, and watermarks where layout spacing is already controlled. The core `leaf` icon and logo groups also have `padding/` and `no-padding/` folders.
 

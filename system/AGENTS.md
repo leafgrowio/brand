@@ -4,7 +4,7 @@ This folder is the **compiled, consumable form of Leaf's brand**: tokens, React 
 
 ## Source of truth, in order
 
-1. **`DESIGN.md`** (in this folder) — the ratified written spec (v2.2). Every rule and token traces to it. This is the single canonical DESIGN.md; there is deliberately no copy at the repo root.
+1. **`DESIGN.md`** (in this folder) — the ratified written spec (v2.3). Every rule and token traces to it. This is the single canonical DESIGN.md; there is deliberately no copy at the repo root.
 2. **`readme.md`** — the guide + manifest digest (voice rules, visual fundamentals, component index, intentional additions, resolved discrepancies).
 3. **`Leaf Brand Book.dc.html`** and **`Leaf Component Library.dc.html`** — visual references for humans, and navigators of the system (since v1.0.5). They consume `styles.css` — all styling through `var(--leaf-*)` tokens, fonts self-hosted via `tokens/fonts.css` — and each ends with a **Rendered from source** section that live-embeds every specimen card via relative iframes at its declared viewport. Keep them token-clean (no new hard-coded values; the only literal hexes are visible swatch-label text, do/don't specimens, and the JS fallbacks beside the `getComputedStyle` token reads). Renaming or moving a card breaks these embeds — update both references in the same change. The compiler ignores them; do not delete them.
 
@@ -103,7 +103,7 @@ The check exists because hand-auditing kept finding these one at a time: the act
 
 ## Ratified accessibility exceptions
 
-DESIGN.md's Accessibility section carries a **Ratified exceptions** table: Canvas on solid Coral (3.04:1), Coral eyebrows and small uppercase labels, and Coral inline links and secondary-button labels. These were measured and signed off by the CEO with the reasoning written down. **Do not re-raise them as defects, and do not "fix" them.** An audit that finds them has found the exception. Anything below the AA floor that is *not* in that table is a real defect — including anything that drifts onto a Stone ground, where Coral has no second signal.
+DESIGN.md's Accessibility section carries a **Ratified exceptions** table: Canvas on solid Coral (3.04:1), Coral eyebrows and small uppercase labels, Coral inline links and secondary-button labels, and (since v2.3) one Coral phrase in a display-size title, which moves the view's eyebrow to Warm Grey. These were measured and signed off by the CEO with the reasoning written down. **Do not re-raise them as defects, and do not "fix" them.** An audit that finds them has found the exception. Anything below the AA floor that is *not* in that table is a real defect — including anything that drifts onto a Stone ground, where Coral has no second signal.
 
 ## Canonical rulings
 

@@ -80,6 +80,7 @@ Current groups:
 - `signal`
 - `stores`
 - `strategy`
+- `tools` — official monochrome marks of third-party tools Leaf names (GitHub, Notion), one folder per tool under `tools/<tool>/no-padding/`. Nominative use only; see `system/DESIGN.md` › Logos › Tool marks.
 
 Most service and property logo groups include both `padding/` and `no-padding/` export modes, each with `png/` and `svg/` folders. Use `padding/` when the asset should carry its own safe area; the margin is equal to 50% of the Leaf icon. Use `no-padding/` inside applications, components, navigation, cards, and watermarks where the layout already controls spacing.
 

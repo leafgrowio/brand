@@ -2,12 +2,14 @@
 
 This document is the written source of truth for Leaf's design system. It pairs with two visual references: the **brand book** (`Leaf Brand Book.dc.html`) for brand foundations, and the **component library** (`Leaf Component Library.dc.html`) for the application layer. Where any of them disagree, fix all. Keep the split clean: brand-level language (foundations, colour, type, voice, logos, icons, imagery, photography, data viz, applications preview) lives in the brand book; product components (catalog, patterns, app shell, overlays) live in the component library.
 
-Status: v2.2 — ratified 25 September 2026 (supersedes v2.1.1, 24 September 2026). All sections locked.
+Status: v2.3 — ratified 27 September 2026 (supersedes v2.2, 25 September 2026). All sections locked.
 Source: core brand reference (June 2026) + v1.0 ratification (July 2026).
 
 ---
 
 ## Changelog
+
+**v2.3 — September 2026 (minor).** Directed by the CEO, from building the MeasureCamp London deck, where most of the rework traced to gaps in the deck rules rather than to the content. *Coral may emphasise one phrase in a title* (see **Copy colour** and **Ratified exceptions**): at display size, on Canvas, Stone-faint or Light Stone, one phrase of a title may be set in Coral, and when it is, that view's eyebrow moves to Warm Grey, so a view still carries one piece of Coral type. People were already reaching for this — two slides had improvised it, one of them on Stone, where it fails — so the system now offers the compliant version rather than leaving it to guesswork. *Cards and emphasis panels get an icon slot* (see **Iconography**): a black line icon above a card's title, or on the left of an emphasis panel, resolved from the library. *Categorical content prefers labelled rows to tables on slides* (see **Decks**): up to six rows of categories read better as full-width rows with a coloured label than as a table, and they avoid the Slides renderer's table limits; tables stay for figures. *Three slide layouts are named*: the layer stack, the process row and the mascot cover. *Tool marks* join the logo set (see **Logos**): official monochrome marks of the tools Leaf names, kept in one group so decks stop sourcing them ad hoc. *Decks get drift guards*: footer numbers are renumbered on every insert or reorder, slides imported from another deck are restyled to the current system, and a slide's height is budgeted before it ships. Backwards-compatible: nothing on-system breaks; decks adopt the new layouts at their next edit.
 
 **v2.2 — September 2026 (minor).** Directed by the CEO, from building the first all-hands deck on the system. *Decks get their own section* (see **Decks**): one black logo of the owning team or product on the cover, "Leaf Confidential" in the footer row, no author or presenter names, the same footer row on every slide, a quiet black Leaf-icon watermark on inner slides, and every deck closing on the Pura Vida seal. *Black joins the logo colour variants* for those deck uses; Coral on light stays the default everywhere else. *"Stone ground" is made exact.* Coral-as-type was ruled out "on any Stone ground", which read as the whole Stone family and contradicted the ratified eyebrow exception measured at 2.83:1 — the Light Stone ratio. The rule now names the grounds: Coral is never type on Stone, Stone-deep or the Coral tint; on Light Stone and Stone-faint it is type only under the eyebrow exception. *Lines are structural only* (see **Elevation & borders**): no accent bars, short rules over headings, underline flourishes or edge stripes. *A table header must differ from both its page and its zebra stripe*: the quiet Stone-faint header only works on Canvas with plain rows; on Light Stone, or striped, it steps down to Stone. Backwards-compatible: nothing already on-system needs re-rendering, except decks, which adopt the new chrome at their next edit.
 
@@ -98,6 +100,8 @@ Text is set in a small, high-contrast set only:
 - **Coral** — emphasis, eyebrows, links, small brand accents. Coral measures 3.04:1 on Canvas, 2.83:1 on Light Stone and 2.56:1 on Stone, so as running text it is Canvas-only and only at 24px+ or 19px+ bold. On Stone (`#F2E8E1`), Stone-deep and the Coral tint it is a mark — a fill, a dot, a link underline, a data mark — never type. On Light Stone (2.83:1) and Stone-faint (2.90:1) it is type only under the eyebrow exception below.
 
   **The eyebrow exception.** Section eyebrows, small uppercase labels and inline links are Coral at their own sizes, below that floor, and that is deliberate. An eyebrow is not read as prose: it is a wayfinding mark made of letters, it sits above a heading that carries the meaning, and it is never the only route to the information beneath it. The same licence covers a link inside body copy, where underline or context marks the link as well as colour. It does not extend to anything a reader has to read to understand the page. It holds on Canvas, Stone-faint and Light Stone, and it does not extend to Coral on Stone (`#F2E8E1`), Stone-deep or the Coral tint at any size.
+
+  **The title-emphasis exception.** One phrase of a title may be set in Coral, to carry the turn of a statement — "The model is a commodity. *Context is the moat.*" It applies only to titles set at 700 in `display` or `h1` on the web, and `slide-display`, `slide-h1` or `slide-h2` on slides (46px and up). The phrase is a clause or a few words, never the whole title and never more than half of it; the rest of the title stays Ink. **When a view uses it, that view's eyebrow moves to Warm Grey**, so the view still carries exactly one piece of Coral type, and there is at most one emphasised phrase per view. Like the eyebrow exception, it holds on Canvas (3.04:1), Stone-faint (2.90:1) and Light Stone (2.83:1) and never on Stone, Stone-deep or the Coral tint — a statement panel that wants Coral emphasis sits on Canvas, not Stone. It is type, not a fill: the one-solid-Coral-moment rule is unchanged.
 - **Warm Grey** — secondary text on Light Stone, Stone, and Canvas (passes AA; avoid at very small sizes on Stone).
 - **Aqua** — small labels and accents on Ink / dark-mode surfaces only.
 
@@ -311,12 +315,13 @@ A foundation, not a final pass. Target **WCAG 2.1 AA**.
 
 ### Ratified exceptions
 
-Four rows below, covering three kinds of exception. They were measured, argued and signed off by the CEO — an audit that surfaces them has found the exception, not a defect. Anything *not* on this list is a defect.
+Five rows below, covering four kinds of exception. They were measured, argued and signed off by the CEO — an audit that surfaces them has found the exception, not a defect. Anything *not* on this list is a defect.
 
 | What | Ratio | Why it stands |
 | --- | --- | --- |
 | **Canvas on solid Coral** — primary button and pill labels | 3.04:1 | Ink on Coral measures 5.93:1 and is the higher-contrast option, but on a control it reads as a warning label rather than an action. The label is short, set at 600, and never the only route to the action — the solid Coral fill is itself the signal. Ink on Coral stays the rule for the large quiet uses: a card, a panel, a block of colour read across. |
 | **Coral eyebrows and small uppercase labels** | 2.83–3.04:1 | An eyebrow is a wayfinding mark made of letters, not prose. It sits above a heading that carries the meaning and is never the only route to what follows. |
+| **Coral emphasis in a title** — one phrase of a 700-weight title at 46px and up | 2.83–3.04:1 | Set at display size and bold, the phrase is read by its shape well before contrast limits it, and the rest of the title carries the sentence in Ink. It replaces the view's Coral eyebrow rather than adding to it, which moves to Warm Grey, so a view never carries more Coral type than before. Canvas, Stone-faint and Light Stone only. Ratified 27 September 2026. |
 | **Coral inline links and the secondary button's label** | 3.04:1 | Underline, context or a 1px Coral border states the control as well as the colour does, so colour is never the only signal. |
 | **Canvas glyphs on a solid state tone** — the tick, i and exclamation inside a badge | 3.22–5.12:1 | A 22px solid circle with a glyph in it is a graphical object, so the 3:1 non-text floor applies and all four tones clear it. This does not extend to a word of text: as copy, only Ember reaches 4.5. |
 
@@ -353,6 +358,15 @@ One mark leads — the Leaf icon and wordmark. Service and property lockups exte
 - **Service sub-logos** — Signal (tracking), Answers (reporting), Performance (media), Creative (content), Stores (Shopify), Strategy (SEO).
 - **Special properties** — Leaf Blog (editorial), Leaf Colectivo (podcast). The Blog mark ships in colour, black, and white for watermark use.
 
+### Tool marks
+
+Decks and explainers regularly name the tools Leaf works in — GitHub, Notion, Slack, Shopify, Meta, Google and the like. Their marks live in one group, `assets/logos/tools/<tool>/`, so nobody sources them ad hoc or redraws one from memory.
+
+- **Official marks only**, as the owner publishes them, in their monochrome **black** version, used as shipped: never recoloured, redrawn, cropped or combined with a Leaf mark into a lockup. A tool with no black mark is added in its official single colour and noted.
+- **Nominative use** — a mark names a tool Leaf uses or integrates with. It never implies partnership or endorsement; a real partnership uses the co-brand lockups above.
+- **Sized as an icon, not a logo** — it takes the icon slot (see **Iconography**): 88–92px on a slide, 32–48px on the web, beside or above the text that names the tool.
+- **Adding one** — drop the official file into its own folder under `tools/` (`no-padding/svg` and `no-padding/png`, SVG preferred), then regenerate the logo manifest in the plugin repo. The group currently carries **GitHub** and **Notion**.
+
 ### Misuse
 
 Don't recolour the mark, stretch or squash it, rotate it, add shadows / glows / effects, place it on low-contrast or busy grounds, or box / crop its clear space. The logo ships finished — reach for the right export instead.
@@ -371,6 +385,7 @@ Two treatments (see **Photography** for the customer-frame rules):
 - Default to **SVG**, **black** variation. Keep icon treatment consistent within a set; let colour vary by category.
 - Sizes: `16 · 20 · 24 · 32 · 48`px. In coloured category tiles, the icon is ~⅓ of the shorter side.
 - Pair black icons with secondary-colour fields for libraries, hubs, and editorial navigation.
+- **The icon slot.** A card may carry one black line icon above its title, and an emphasis panel one icon on its left, vertically centred against the text. Slides use the icon at 88–92px; the web at 32–48px. Every card in a row takes an icon or none does, and each icon is chosen for what its card says, from the library (via `find-icon`) — never a generic placeholder repeated across cards. A card naming a tool can take that tool's mark instead (see **Tool marks**).
 
 ---
 
@@ -554,8 +569,14 @@ Slides are 1920×1080 with 128px margins, set in the **Slides** type scale with 
 - **Cover** — the owner's **black** no-padding logo top left; the title block centred on the slide; "Leaf Confidential" as the footer label, dropped only for a deck stated to be public. No author, presenter or owner name — on the cover or any slide. Decks ship under the Leaf or team brand; the logo says whose.
 - **Footer row** — every slide carries one label on the same line in the same place: the footer band at the bottom margin, `slide-caption` in Warm Grey. The cover's label reads "Leaf Confidential"; every other slide's reads the deck title and slide number.
 - **Watermark** — every slide except the cover and the seal carries the **black** Leaf icon on the footer row, bottom right, at the footer text's size and 60% opacity, so it reads at the footer's quiet tone. Opacity is the only adjustment; the mark is never recoloured.
-- **Content slides** — eyebrow and title at the top margin, one idea per slide. Coral eyebrows are the one piece of Coral type (the eyebrow exception on Light Stone). Ordered steps are rows led by an Ink number in a Coral-tint disc, never a table and never bare list markers. Tables follow **Tables & data density**, with square corners.
-- **Closing slide** — the cover's composition: eyebrow and title centred, footer row and watermark in place.
+- **Content slides** — eyebrow and title at the top margin, one idea per slide. Each slide carries one piece of Coral type: the Coral eyebrow (the eyebrow exception on Light Stone), or — when the title carries an emphasised phrase under the title-emphasis exception — that phrase, with the eyebrow in Warm Grey. Ordered steps are rows led by an Ink number in a Coral-tint disc, never a table and never bare list markers. Cards and emphasis panels take the icon slot (see **Iconography**).
+- **Rows before tables** — categorical content of up to six items (tiers, stages, layers, options) is set as **labelled rows**: full-width Canvas rows with a hairline, a secondary-colour label chip holding the name in Ink on the left, the description in the middle and a fixed right-hand column, with a quiet Warm Grey column-label row above. A table is for figures — every column carrying its own values — and follows **Tables & data density**, with square corners.
+- **Named layouts** — beyond the cover, content, closing and seal:
+  - *Layer stack* — an architecture or dependency stack as full-width bricks of equal width, each a secondary-colour fill with Ink text, a row of studs along its top edge, and the same three columns as labelled rows (name, what it holds, a right-hand fact), built bottom-up so the foundation layer sits last.
+  - *Process row* — a pipeline as full-width step blocks of equal width, each a secondary-colour fill with its step in Ink at 32px / 600, joined by Warm Grey arrows, spanning the same width as the content above it.
+  - *Mascot cover* — the cover with the mascot at 560px pinned right, level with the title block, and the subtitle narrowed to 1000px so text never runs under it. It uses the transparent cut-out from the mascot sticker pack, never a boxed image.
+- **Drift guards** — the footer's slide numbers are typed, so every insert, removal or reorder renumbers every footer after it. A slide imported from another deck is restyled to the current system before it ships — the older deck's sizes, weights and borders come with it otherwise. Re-install the design system into a deck before sharing it. Budget a slide's height before adding to it (the live area is 824px; `references/slides.md` carries the arithmetic), and split an over-full slide rather than shrinking type.
+- **Closing slide** — the cover's composition: eyebrow and title centred, footer row and watermark in place. One closing statement per deck.
 - **The seal** — every deck ends on it, after any closing or Q&A slide: "Pura Vida" in `slide-display`, centred, with the **black Leaf** logo — always Leaf, whichever team owns the deck — top left in the cover's logo position, the footer label, and nothing else. It is Leaf's sign-off.
 - **One look** — cover, content, closing and seal share the ground, eyebrow treatment, type scale and footer. Vary layout, never the look; a slide that looks like it came from another deck is off-system.
 
