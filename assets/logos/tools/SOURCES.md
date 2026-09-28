@@ -29,7 +29,11 @@ google, google-ads, google-analytics, google-tag-manager, looker.
 | cookiebot / Cookiebot Icon | cookiebot.com favicon | Official |
 | onetrust / OneTrust Icon | OneTrust nav lockup with the wordmark path removed | Official artwork, cropped; geometry untouched |
 | postgresql / PostgreSQL Icon | wiki.postgresql.org logo page (3-colour Slonik) | Official |
+| meta / Meta Icon | Supplied by Leaf (the Meta ∞ symbol) | Official artwork |
+| canva / Canva Icon | Supplied by Leaf (the round "C" app icon) | Official artwork |
+| amazon-ads / Amazon Ads Icon | Copy of amazon / Amazon Icon (Brandfetch) | Amazon Ads has no square mark of its own; Leaf uses the Amazon mark |
+| microsoft-advertising / Microsoft Advertising Icon | Supplied by Leaf, 512px PNG only | Official artwork; no public SVG (partner portal only) |
 
 ## Not cached
 
-Microsoft Advertising square mark and Amazon Ads square mark (not published as SVG; Amazon supplies files on request), Gmail wordmark (PNG only). Replace the two fallbacks (Facebook wordmark, Slack wordmark) with owner files when available.
+The Microsoft Advertising square mark as SVG (PNG only, above) and the Gmail wordmark (PNG only from Google). Replace the two fallbacks (Facebook wordmark, Slack wordmark) with owner files when available.
