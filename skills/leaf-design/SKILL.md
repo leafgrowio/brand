@@ -62,7 +62,7 @@ Read `references/chart-recipes.md` before drawing any chart in HTML/SVG. For cha
 
 ## Icons and logos in artifacts
 
-Resolve assets with the `find-icon` skill (same folder family), then — because artifacts cannot hotlink — **fetch the SVG and inline its markup** into the artifact rather than using an `<img src="https://…">`. Icons are black line-art (white on dark surfaces), never recoloured, never hand-drawn. Third-party tool logos come from `find-icon`'s `find_tool_logo.py` (Leaf's `tools` group, then the gilbarbara/logos collection); if nothing is found, ask the person to upload the official file — never draw one. Category tiles: one black icon centred on one flat secondary-colour field, never Coral, never a photo.
+Resolve assets with the `find-icon` skill (same folder family), then — because artifacts cannot hotlink — **fetch the SVG and inline its markup** into the artifact rather than using an `<img src="https://…">`. Icons are black line-art (white on dark surfaces), never recoloured, never hand-drawn. Third-party tool logos come through `find-icon` (Leaf's cached `tools` group, then the gilbarbara/logos collection, then Brandfetch); if nothing is found, ask the person to upload the official file — never draw one. Category tiles: one black icon centred on one flat secondary-colour field, never Coral, never a photo.
 
 ## Outside artifacts
 

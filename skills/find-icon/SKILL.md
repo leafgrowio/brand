@@ -98,31 +98,39 @@ the raw URL). Use **padding** exports when the logo stands alone; use
 spacing is already controlled — see the design spec for the full spacing and
 usage rules.
 
-## Tool logos: run the lookup, then ask
+## Tool logos: cache, collection, Brandfetch, then ask
 
-Third-party marks (Shopify, Slack, Snowflake, Google Ads…) resolve through
-`find_tool_logo.py`, never from memory:
+Third-party marks (Shopify, Slack, Klaviyo, Google Ads…) resolve in this order,
+never from memory:
+
+1. **The cache** — Leaf's `tools` group in the brand repo: the 26 marks decks use
+   most, `<Name>.svg` (full logo) and `<Name> Icon.svg` (square mark), each with
+   a PNG. Use the Icon for the icon slot.
+2. **The gilbarbara/logos collection** (CC0 files, pinned to `TOOL_LOGOS_REF`;
+   the marks stay their owners' trademarks) — free; best for Google products.
+3. **Brandfetch** — the plugin's `brandfetch` connector. `brand_search` is free;
+   each `get_brand_data` spends one credit on Leaf's shared account, so use it
+   only when 1 and 2 miss, once per brand. Take an `svg` file of type `symbol`
+   (square) or `logo`. Its `theme` names the artwork, not the ground: on Leaf's
+   light grounds take the **dark** file and reject any file whose fills are all
+   white. Its `src` URLs are credentialed: fetch them as returned (browser pane
+   when the shell has no network), never print or edit them.
+4. **Ask the person to upload** the official logo, using the `ask_user` line.
+   Never redraw, trace or substitute a look-alike.
+
+Steps 1–2 are one command:
 
 ```bash
 python3 <this skill's directory>/find_tool_logo.py "google ads"
 python3 <this skill's directory>/find_tool_logo.py "slack" --fetch
 ```
 
-It checks Leaf's curated `tools` group first, then the gilbarbara/logos
-collection (CC0 files, pinned to `TOOL_LOGOS_REF`; the marks stay their owners'
-trademarks), and returns JSON with a `status`:
-
-- `found` — use `recommended` (the square `-icon` mark when one exists, for the
-  icon slot). `url` is a pinned jsDelivr URL; `--fetch` downloads it.
-- `candidates` — no exact name match; confirm the right tool with the person
-  before using one.
-- `not_found` — **ask the person to upload the tool's official logo in the
-  session**, using the result's `ask_user` line. Never redraw, trace or
-  substitute a look-alike. Once they upload it, use their file, and offer to add
-  it to the brand repo's `assets/logos/tools/<tool>/` so the next deck finds it.
-- `unreachable` — this environment cannot reach the collection (some sandboxes
-  have no network from the shell). Try `catalogue_url` and the file URL with
-  another web tool the session has; failing that, ask the person to upload.
+It returns JSON with a `status`: `found` (use `recommended`; `url` is pinned,
+`--fetch` downloads it), `candidates` (no exact match — confirm the tool first),
+`not_found` (follow `next_step`: Brandfetch, then `ask_user`), or `unreachable`
+(this environment can't reach the collection — go to Brandfetch). A mark found
+in steps 2–4 is used for the session; if it will recur, suggest caching it in
+the brand repo's `tools` group.
 
 Use marks as shipped, in their own colours, sized as icons (spec: Logos › Tool
 marks).

@@ -1,6 +1,6 @@
 {
   "generated_by": "brand/tools/generate_logo_manifest.py",
-  "group_count": 9,
+  "group_count": 10,
   "groups": {
     "answers": {
       "default": {
@@ -308,6 +308,302 @@
             "assets/logos/strategy/padding/svg/Leaf Strategy - Negative.svg",
             "assets/logos/strategy/padding/svg/Leaf Strategy - White.svg",
             "assets/logos/strategy/padding/svg/Leaf Strategy.svg"
+          ]
+        }
+      }
+    },
+    "tools": {
+      "amazon": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/amazon/no-padding/png/Amazon Icon.png",
+            "assets/logos/tools/amazon/no-padding/png/Amazon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/amazon/no-padding/svg/Amazon Icon.svg",
+            "assets/logos/tools/amazon/no-padding/svg/Amazon.svg"
+          ]
+        }
+      },
+      "attio": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/attio/no-padding/png/Attio Icon.png",
+            "assets/logos/tools/attio/no-padding/png/Attio.png"
+          ],
+          "svg": [
+            "assets/logos/tools/attio/no-padding/svg/Attio Icon.svg",
+            "assets/logos/tools/attio/no-padding/svg/Attio.svg"
+          ]
+        }
+      },
+      "canva": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/canva/no-padding/png/Canva.png"
+          ],
+          "svg": [
+            "assets/logos/tools/canva/no-padding/svg/Canva.svg"
+          ]
+        }
+      },
+      "claude": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/claude/no-padding/png/Claude Icon.png",
+            "assets/logos/tools/claude/no-padding/png/Claude.png"
+          ],
+          "svg": [
+            "assets/logos/tools/claude/no-padding/svg/Claude Icon.svg",
+            "assets/logos/tools/claude/no-padding/svg/Claude.svg"
+          ]
+        }
+      },
+      "figma": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/figma/no-padding/png/Figma Icon.png",
+            "assets/logos/tools/figma/no-padding/png/Figma.png"
+          ],
+          "svg": [
+            "assets/logos/tools/figma/no-padding/svg/Figma Icon.svg",
+            "assets/logos/tools/figma/no-padding/svg/Figma.svg"
+          ]
+        }
+      },
+      "github": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/github/no-padding/png/GitHub Icon.png",
+            "assets/logos/tools/github/no-padding/png/GitHub.png"
+          ],
+          "svg": [
+            "assets/logos/tools/github/no-padding/svg/GitHub Icon.svg",
+            "assets/logos/tools/github/no-padding/svg/GitHub.svg"
+          ]
+        }
+      },
+      "gmail": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/gmail/no-padding/png/Gmail Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/gmail/no-padding/svg/Gmail Icon.svg"
+          ]
+        }
+      },
+      "google": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/google/no-padding/png/Google Icon.png",
+            "assets/logos/tools/google/no-padding/png/Google.png"
+          ],
+          "svg": [
+            "assets/logos/tools/google/no-padding/svg/Google Icon.svg",
+            "assets/logos/tools/google/no-padding/svg/Google.svg"
+          ]
+        }
+      },
+      "google-ads": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/google-ads/no-padding/png/Google Ads Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/google-ads/no-padding/svg/Google Ads Icon.svg"
+          ]
+        }
+      },
+      "google-analytics": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/google-analytics/no-padding/png/Google Analytics Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/google-analytics/no-padding/svg/Google Analytics Icon.svg"
+          ]
+        }
+      },
+      "google-tag-manager": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/google-tag-manager/no-padding/png/Google Tag Manager Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/google-tag-manager/no-padding/svg/Google Tag Manager Icon.svg"
+          ]
+        }
+      },
+      "granola": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/granola/no-padding/png/Granola Icon.png",
+            "assets/logos/tools/granola/no-padding/png/Granola.png"
+          ],
+          "svg": [
+            "assets/logos/tools/granola/no-padding/svg/Granola Icon.svg",
+            "assets/logos/tools/granola/no-padding/svg/Granola.svg"
+          ]
+        }
+      },
+      "hubspot": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/hubspot/no-padding/png/HubSpot Icon.png",
+            "assets/logos/tools/hubspot/no-padding/png/HubSpot.png"
+          ],
+          "svg": [
+            "assets/logos/tools/hubspot/no-padding/svg/HubSpot Icon.svg",
+            "assets/logos/tools/hubspot/no-padding/svg/HubSpot.svg"
+          ]
+        }
+      },
+      "instagram": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/instagram/no-padding/png/Instagram Icon.png",
+            "assets/logos/tools/instagram/no-padding/png/Instagram.png"
+          ],
+          "svg": [
+            "assets/logos/tools/instagram/no-padding/svg/Instagram Icon.svg",
+            "assets/logos/tools/instagram/no-padding/svg/Instagram.svg"
+          ]
+        }
+      },
+      "klaviyo": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/klaviyo/no-padding/png/Klaviyo Icon.png",
+            "assets/logos/tools/klaviyo/no-padding/png/Klaviyo.png"
+          ],
+          "svg": [
+            "assets/logos/tools/klaviyo/no-padding/svg/Klaviyo Icon.svg",
+            "assets/logos/tools/klaviyo/no-padding/svg/Klaviyo.svg"
+          ]
+        }
+      },
+      "linear": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/linear/no-padding/png/Linear Icon.png",
+            "assets/logos/tools/linear/no-padding/png/Linear.png"
+          ],
+          "svg": [
+            "assets/logos/tools/linear/no-padding/svg/Linear Icon.svg",
+            "assets/logos/tools/linear/no-padding/svg/Linear.svg"
+          ]
+        }
+      },
+      "looker": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/looker/no-padding/png/Looker Icon.png",
+            "assets/logos/tools/looker/no-padding/png/Looker.png"
+          ],
+          "svg": [
+            "assets/logos/tools/looker/no-padding/svg/Looker Icon.svg",
+            "assets/logos/tools/looker/no-padding/svg/Looker.svg"
+          ]
+        }
+      },
+      "meta": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/meta/no-padding/png/Meta.png"
+          ],
+          "svg": [
+            "assets/logos/tools/meta/no-padding/svg/Meta.svg"
+          ]
+        }
+      },
+      "notion": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/notion/no-padding/png/Notion Icon.png",
+            "assets/logos/tools/notion/no-padding/png/Notion.png"
+          ],
+          "svg": [
+            "assets/logos/tools/notion/no-padding/svg/Notion Icon.svg",
+            "assets/logos/tools/notion/no-padding/svg/Notion.svg"
+          ]
+        }
+      },
+      "pinterest": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/pinterest/no-padding/png/Pinterest Icon.png",
+            "assets/logos/tools/pinterest/no-padding/png/Pinterest.png"
+          ],
+          "svg": [
+            "assets/logos/tools/pinterest/no-padding/svg/Pinterest Icon.svg",
+            "assets/logos/tools/pinterest/no-padding/svg/Pinterest.svg"
+          ]
+        }
+      },
+      "shopify": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/shopify/no-padding/png/Shopify Icon.png",
+            "assets/logos/tools/shopify/no-padding/png/Shopify.png"
+          ],
+          "svg": [
+            "assets/logos/tools/shopify/no-padding/svg/Shopify Icon.svg",
+            "assets/logos/tools/shopify/no-padding/svg/Shopify.svg"
+          ]
+        }
+      },
+      "slack": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/slack/no-padding/png/Slack Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/slack/no-padding/svg/Slack Icon.svg"
+          ]
+        }
+      },
+      "snapchat": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/snapchat/no-padding/png/Snapchat Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/snapchat/no-padding/svg/Snapchat Icon.svg"
+          ]
+        }
+      },
+      "snowflake": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/snowflake/no-padding/png/Snowflake Icon.png",
+            "assets/logos/tools/snowflake/no-padding/png/Snowflake.png"
+          ],
+          "svg": [
+            "assets/logos/tools/snowflake/no-padding/svg/Snowflake Icon.svg",
+            "assets/logos/tools/snowflake/no-padding/svg/Snowflake.svg"
+          ]
+        }
+      },
+      "tiktok": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/tiktok/no-padding/png/TikTok Icon.png",
+            "assets/logos/tools/tiktok/no-padding/png/TikTok.png"
+          ],
+          "svg": [
+            "assets/logos/tools/tiktok/no-padding/svg/TikTok Icon.svg",
+            "assets/logos/tools/tiktok/no-padding/svg/TikTok.svg"
+          ]
+        }
+      },
+      "youtube": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/youtube/no-padding/png/YouTube Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/youtube/no-padding/svg/YouTube Icon.svg"
           ]
         }
       }

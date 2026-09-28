@@ -182,8 +182,9 @@ else.
 
 Cards and emphasis panels carry one black line icon each (DESIGN.md ›
 Iconography), resolved with `find-icon` and inlined as SVG — or, for a card naming a
-tool, that tool's official mark from `find-icon`'s `find_tool_logo.py` (Leaf's
-`tools` group, then the gilbarbara/logos collection), uploaded as an image. If
+tool, that tool's official mark via `find-icon` (Leaf's cached `tools` group —
+prefer its `Icon` file — then the gilbarbara/logos collection, then
+Brandfetch), uploaded as an image. If
 the lookup finds nothing, ask the person to upload the official logo; never
 draw one. Every
 card in a row takes one or none does; pick each for what its card says.
