@@ -109,6 +109,14 @@ system/
 
 The `system/` tree syncs to the Claude Design project "Design System" (org default). The repo side is canonical; see `system/AGENTS.md` for the full rules and sync workflow.
 
+## Agent Workflow
+
+These rules apply to every agent session here and in the `leaf` plugin repo (`leafgrowio/prompts`), which is usually worked on alongside this one; its `AGENTS.md` carries the same block.
+
+1. **Commit after every change.** When an edit is done and its checks pass, commit it in the repo it touched before moving on — one logical change per commit, with a message that says what and why. For work spanning both repos, commit here first: the plugin's `BRAND_REPO_REF` pin must name a real commit. Never leave a session with uncommitted work. Push when the change should reach consumers or when asked.
+2. **Notion through its tools first.** Read and write Notion pages with the Notion connector tools, never by browsing when a tool covers the job.
+3. **Computer and browser only where tools fall short.** Use the browser (or computer use) only for what no tool can do — rendering `system/` at `localhost:4173` to look at a change, the Claude Design project, Notion view or sharing settings. Say why the tool was not enough.
+
 ## Useful Checks
 
 - `.claude/launch.json` serves `system/` at `http://localhost:4173` (`python3 -m http.server 4173 --directory system`). Use it to render the specimen cards and both `.dc.html` references before a sync — `system/AGENTS.md` requires looking at what changed, and a screenshot from this server is how.
