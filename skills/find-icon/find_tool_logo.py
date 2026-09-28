@@ -29,6 +29,8 @@ import argparse
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -45,6 +47,7 @@ TOOL_LOGOS_REF = "a5b65275e761a8347a99eded1101c6b130a06e52"
 TOOL_LOGOS_REPO = "gilbarbara/logos"
 TOOL_LOGOS_CDN = f"https://cdn.jsdelivr.net/gh/{TOOL_LOGOS_REPO}@{TOOL_LOGOS_REF}"
 TOOL_LOGOS_RAW = f"https://raw.githubusercontent.com/{TOOL_LOGOS_REPO}/{TOOL_LOGOS_REF}"
+TOOL_LOGOS_GIT = f"https://github.com/{TOOL_LOGOS_REPO}.git"
 TOOL_LOGOS_LICENCE = "CC0-1.0 (files); marks remain their owners' trademarks — nominative use only"
 
 BRANDFETCH_STEP = (
@@ -82,8 +85,30 @@ def _get(url: str, timeout: int = 20) -> bytes:
         return resp.read()
 
 
+def _fetch_via_git(rel: str) -> bytes | None:
+    """Last-resort transport, mirroring brand_repo: a blobless, no-checkout
+    clone of the collection at the pinned ref, then `git show ref:path`, which
+    fetches only that one blob. For sandboxes that block both CDNs but allow
+    github.com."""
+    if shutil.which("git") is None:
+        return None
+    repo = _cache_dir() / "repo"
+    try:
+        if not (repo / ".git").is_dir():
+            if repo.exists():
+                shutil.rmtree(repo)
+            repo.parent.mkdir(parents=True, exist_ok=True)
+            brand_repo._git(["clone", "--filter=blob:none", "--no-checkout",
+                             TOOL_LOGOS_GIT, str(repo)])
+        out = subprocess.run(["git", "show", f"{TOOL_LOGOS_REF}:{rel}"], cwd=repo,
+                             check=True, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        return out.stdout or None
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
 def _fetch(rel: str, cache: bool = True) -> tuple[Path | None, str | None]:
-    """Download a collection file (CDN, then raw) into the pinned cache."""
+    """Download a collection file (CDN, then raw, then git) into the pinned cache."""
     dest = _cache_dir().joinpath(*rel.split("/"))
     if cache and dest.exists() and dest.stat().st_size > 0:
         return dest, None
@@ -97,11 +122,28 @@ def _fetch(rel: str, cache: bool = True) -> tuple[Path | None, str | None]:
             return dest, None
         except (urllib.error.URLError, OSError) as exc:
             last = f"{url}: {exc}"
+    data = _fetch_via_git(rel)
+    if data:
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(data)
+        return dest, None
     return None, last
 
 
-def curated(query: str, local_root: str | None) -> dict | None:
-    manifest = json.loads((HERE / "logos_manifest.json").read_text())
+def _curated_rank(f: dict) -> tuple:
+    """Explicit preference, not manifest order: SVG before PNG, and within a
+    format the square `<Name> Icon` mark (the icon slot) before the full logo."""
+    stem = Path(f["path"]).stem
+    return (0 if f["format"] == "svg" else 1, 0 if stem.endswith(" Icon") else 1, stem)
+
+
+def curated(query: str) -> dict | None:
+    """Look the tool up in Leaf's cached `tools` group (logos_manifest.json).
+    Paths are brand-repo-relative; `--local-root` is applied later, at fetch."""
+    try:
+        manifest = json.loads((HERE / "logos_manifest.json").read_text())
+    except (OSError, ValueError):
+        return None
     tools = manifest.get("groups", {}).get("tools", {})
     q = _norm(query)
     for name, variants in tools.items():
@@ -113,7 +155,7 @@ def curated(query: str, local_root: str | None) -> dict | None:
                 for p in paths:
                     files.append({"format": fmt, "spacing": spacing, "path": p,
                                   "url": brand_repo.asset_url(p)})
-        files.sort(key=lambda f: 0 if f["format"] == "svg" else 1)
+        files.sort(key=_curated_rank)
         return {"source": "leaf-tools", "tool": name, "files": files,
                 "recommended": files[0] if files else None}
     return None
@@ -168,7 +210,7 @@ def main() -> None:
     out: dict = {"query": args.tool, "collection_ref": TOOL_LOGOS_REF,
                  "licence": TOOL_LOGOS_LICENCE}
 
-    hit = curated(args.tool, args.local_root)
+    hit = curated(args.tool)
     if hit:
         out.update(status="found", **hit)
         if args.fetch and hit["recommended"]:
