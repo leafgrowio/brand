@@ -325,6 +325,28 @@
           ]
         }
       },
+      "anthropic": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/anthropic/no-padding/png/Anthropic Icon.png",
+            "assets/logos/tools/anthropic/no-padding/png/Anthropic.png"
+          ],
+          "svg": [
+            "assets/logos/tools/anthropic/no-padding/svg/Anthropic Icon.svg",
+            "assets/logos/tools/anthropic/no-padding/svg/Anthropic.svg"
+          ]
+        }
+      },
+      "apple": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/apple/no-padding/png/Apple Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/apple/no-padding/svg/Apple Icon.svg"
+          ]
+        }
+      },
       "attio": {
         "no-padding": {
           "png": [
@@ -334,6 +356,18 @@
           "svg": [
             "assets/logos/tools/attio/no-padding/svg/Attio Icon.svg",
             "assets/logos/tools/attio/no-padding/svg/Attio.svg"
+          ]
+        }
+      },
+      "bigcommerce": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/bigcommerce/no-padding/png/BigCommerce Icon.png",
+            "assets/logos/tools/bigcommerce/no-padding/png/BigCommerce.png"
+          ],
+          "svg": [
+            "assets/logos/tools/bigcommerce/no-padding/svg/BigCommerce Icon.svg",
+            "assets/logos/tools/bigcommerce/no-padding/svg/BigCommerce.svg"
           ]
         }
       },
@@ -356,6 +390,28 @@
           "svg": [
             "assets/logos/tools/claude/no-padding/svg/Claude Icon.svg",
             "assets/logos/tools/claude/no-padding/svg/Claude.svg"
+          ]
+        }
+      },
+      "cookiebot": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/cookiebot/no-padding/png/Cookiebot.png"
+          ],
+          "svg": [
+            "assets/logos/tools/cookiebot/no-padding/svg/Cookiebot.svg"
+          ]
+        }
+      },
+      "dbt": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/dbt/no-padding/png/dbt Icon.png",
+            "assets/logos/tools/dbt/no-padding/png/dbt.png"
+          ],
+          "svg": [
+            "assets/logos/tools/dbt/no-padding/svg/dbt Icon.svg",
+            "assets/logos/tools/dbt/no-padding/svg/dbt.svg"
           ]
         }
       },
@@ -495,6 +551,18 @@
           ]
         }
       },
+      "linkedin": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/linkedin/no-padding/png/LinkedIn Icon.png",
+            "assets/logos/tools/linkedin/no-padding/png/LinkedIn.png"
+          ],
+          "svg": [
+            "assets/logos/tools/linkedin/no-padding/svg/LinkedIn Icon.svg",
+            "assets/logos/tools/linkedin/no-padding/svg/LinkedIn.svg"
+          ]
+        }
+      },
       "looker": {
         "no-padding": {
           "png": [
@@ -529,6 +597,16 @@
           ]
         }
       },
+      "onetrust": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/onetrust/no-padding/png/OneTrust.png"
+          ],
+          "svg": [
+            "assets/logos/tools/onetrust/no-padding/svg/OneTrust.svg"
+          ]
+        }
+      },
       "pinterest": {
         "no-padding": {
           "png": [
@@ -538,6 +616,18 @@
           "svg": [
             "assets/logos/tools/pinterest/no-padding/svg/Pinterest Icon.svg",
             "assets/logos/tools/pinterest/no-padding/svg/Pinterest.svg"
+          ]
+        }
+      },
+      "reddit": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/reddit/no-padding/png/Reddit Icon.png",
+            "assets/logos/tools/reddit/no-padding/png/Reddit.png"
+          ],
+          "svg": [
+            "assets/logos/tools/reddit/no-padding/svg/Reddit Icon.svg",
+            "assets/logos/tools/reddit/no-padding/svg/Reddit.svg"
           ]
         }
       },
@@ -585,6 +675,38 @@
           ]
         }
       },
+      "stripe": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/stripe/no-padding/png/Stripe.png"
+          ],
+          "svg": [
+            "assets/logos/tools/stripe/no-padding/svg/Stripe.svg"
+          ]
+        }
+      },
+      "supabase": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/supabase/no-padding/png/Supabase.png"
+          ],
+          "svg": [
+            "assets/logos/tools/supabase/no-padding/svg/Supabase.svg"
+          ]
+        }
+      },
+      "superhuman": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/superhuman/no-padding/png/Superhuman Icon.png",
+            "assets/logos/tools/superhuman/no-padding/png/Superhuman.png"
+          ],
+          "svg": [
+            "assets/logos/tools/superhuman/no-padding/svg/Superhuman Icon.svg",
+            "assets/logos/tools/superhuman/no-padding/svg/Superhuman.svg"
+          ]
+        }
+      },
       "tiktok": {
         "no-padding": {
           "png": [
@@ -594,6 +716,26 @@
           "svg": [
             "assets/logos/tools/tiktok/no-padding/svg/TikTok Icon.svg",
             "assets/logos/tools/tiktok/no-padding/svg/TikTok.svg"
+          ]
+        }
+      },
+      "woocommerce": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/woocommerce/no-padding/png/WooCommerce.png"
+          ],
+          "svg": [
+            "assets/logos/tools/woocommerce/no-padding/svg/WooCommerce.svg"
+          ]
+        }
+      },
+      "x": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/x/no-padding/png/X Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/x/no-padding/svg/X Icon.svg"
           ]
         }
       },
