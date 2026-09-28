@@ -480,7 +480,8 @@
       "gmail": {
         "no-padding": {
           "png": [
-            "assets/logos/tools/gmail/no-padding/png/Gmail Icon.png"
+            "assets/logos/tools/gmail/no-padding/png/Gmail Icon.png",
+            "assets/logos/tools/gmail/no-padding/png/Gmail.png"
           ],
           "svg": [
             "assets/logos/tools/gmail/no-padding/svg/Gmail Icon.svg"
