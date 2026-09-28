@@ -28,7 +28,7 @@ You are working inside Leaf's design system. Everything you produce should look 
 
 **Assets:**
 - Icons: copy from `assets/icons/` (black SVG line-art by default); the full themed library (~1,250 icons) is in the brand repo. When the Leaf plugin is available, resolve icons and logos by query with its **`find-icon`** skill instead of guessing filenames — it searches the full library and returns exact paths per colour variation. Never hand-roll decorative SVGs, never recolour icons.
-- Logos: copy from `assets/logos/`; Coral on light, Negative on Coral/Ink; respect the padded exports' clear space; icon alone below 80px.
+- Logos: copy from `assets/logos/`; unsuffixed (Coral) on light, `- Black` for decks, `- White` on Coral/Ink, `- Negative` (two-tone) on Ink; respect the padded exports' clear space; icon alone below 80px.
 - Imagery: one black line icon centred on one flat secondary-colour field. No stock photos, no gradients (photography is reserved for customer co-brand moments — see DESIGN.md).
 
 ## Hard rules (never break)
