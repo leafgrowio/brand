@@ -33,7 +33,8 @@ google, google-ads, google-analytics, google-tag-manager, looker.
 | canva / Canva Icon | Supplied by Leaf (the round "C" app icon) | Official artwork |
 | amazon-ads / Amazon Ads Icon | Copy of amazon / Amazon Icon (Brandfetch) | Amazon Ads has no square mark of its own; Leaf uses the Amazon mark |
 | microsoft-advertising / Microsoft Advertising Icon | Supplied by Leaf, 512px PNG only | Official artwork; no public SVG (partner portal only) |
+| gmail / Gmail | Supplied by Leaf, 4096px PNG only, transparent, square canvas with padding | Official artwork; Google publishes no SVG wordmark |
 
 ## Not cached
 
-The Microsoft Advertising square mark as SVG (PNG only, above) and the Gmail wordmark (PNG only from Google). Replace the two fallbacks (Facebook wordmark, Slack wordmark) with owner files when available.
+SVG versions of the Microsoft Advertising square mark and the Gmail wordmark (both PNG only, above). Replace the two fallbacks (Facebook wordmark, Slack wordmark) with owner files when available.
