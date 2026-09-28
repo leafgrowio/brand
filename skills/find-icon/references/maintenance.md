@@ -65,5 +65,5 @@ Most groups in `logos_manifest.json` have `padding`/`no-padding` ×
 unsuffixed for the primary mark). The `leaf` group differs: it has an extra
 sublevel with two sub-marks — `logo/` (the full mark) and `icon/` (the Leaf
 icon alone) — before the `{padding,no-padding}/{svg,png}` split, and its
-variants are unsuffixed, `- Negative`, and `- Coral` (no `- Black`/`-
-White`).
+variants are unsuffixed (Coral), `- Black` and `- White` (no two-tone
+`- Negative`: the mark has one colour).

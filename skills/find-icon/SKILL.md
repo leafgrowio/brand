@@ -87,10 +87,11 @@ Logos are few enough (10 groups) that no search is needed. Read `<this
 skill's directory>/logos_manifest.json` and pick the group by name. Most
 groups have `padding`/`no-padding` × `svg`/`png`, with colour variants (`-
 Black`, `- White`, `- Negative`, or unsuffixed for the primary mark). The
-`leaf` group differs: it has `logo/` (full mark) and `icon/` (Leaf icon
-alone) before the padding/format split, with variants unsuffixed, `-
-Negative`, and `- Coral`. The `tools` group nests one folder per tool
-(`tools/<tool>/`), `no-padding/` only: official black marks
+`leaf` group adds `logo/` (full mark) and `icon/` (Leaf icon alone) before
+the padding/format split, and has unsuffixed (Coral), `- Black` and `- White`
+only — the single-colour mark has no two-tone `- Negative`. Decks take the
+`- Black` files. The `tools` group nests one folder per tool
+(`tools/<tool>/`), `no-padding/` only, `<Name>` and `<Name> Icon`: official marks
 used as shipped, nominatively (spec: Logos › Tool marks). Turn a stored path into a downloadable file with
 `brand_repo.fetch_asset("<path>")` (or `brand_repo.asset_url("<path>")` for
 the raw URL). Use **padding** exports when the logo stands alone; use

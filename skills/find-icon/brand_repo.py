@@ -58,7 +58,7 @@ from pathlib import Path
 # through this pin — and re-run the manifest generators if any path moved.
 # `scripts/sync-brand-skills.sh --check` verifies it. See the module docstring
 # for why it is a SHA and not a branch.
-BRAND_REPO_REF = "488c4244d5c3c4cc09f89774ad465f29af05a012"
+BRAND_REPO_REF = "f90f0cbc7a91e809b3f23713505c444d2813d4ba"
 
 # PRIMARY: jsDelivr's GitHub mirror at the pinned commit. Used for everything —
 # display-only <img> embeds AND real downloads — so a gallery and a fetch can

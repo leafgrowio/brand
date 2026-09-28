@@ -38,13 +38,13 @@
       "default": {
         "no-padding": {
           "png": [
-            "assets/logos/blog/no-padding/png/Leaf Blog - Black - Safe.png",
+            "assets/logos/blog/no-padding/png/Leaf Blog - Black.png",
             "assets/logos/blog/no-padding/png/Leaf Blog - Negative.png",
             "assets/logos/blog/no-padding/png/Leaf Blog - White.png",
             "assets/logos/blog/no-padding/png/Leaf Blog.png"
           ],
           "svg": [
-            "assets/logos/blog/no-padding/svg/Leaf Blog - Black - Safe.svg",
+            "assets/logos/blog/no-padding/svg/Leaf Blog - Black.svg",
             "assets/logos/blog/no-padding/svg/Leaf Blog - Negative.svg",
             "assets/logos/blog/no-padding/svg/Leaf Blog - White.svg",
             "assets/logos/blog/no-padding/svg/Leaf Blog.svg"
@@ -134,25 +134,25 @@
       "icon": {
         "no-padding": {
           "png": [
-            "assets/logos/leaf/icon/no-padding/png/Leaf Icon - Coral.png",
-            "assets/logos/leaf/icon/no-padding/png/Leaf Icon - Negative.png",
+            "assets/logos/leaf/icon/no-padding/png/Leaf Icon - Black.png",
+            "assets/logos/leaf/icon/no-padding/png/Leaf Icon - White.png",
             "assets/logos/leaf/icon/no-padding/png/Leaf Icon.png"
           ],
           "svg": [
-            "assets/logos/leaf/icon/no-padding/svg/Leaf Icon - Coral.svg",
-            "assets/logos/leaf/icon/no-padding/svg/Leaf Icon - Negative.svg",
+            "assets/logos/leaf/icon/no-padding/svg/Leaf Icon - Black.svg",
+            "assets/logos/leaf/icon/no-padding/svg/Leaf Icon - White.svg",
             "assets/logos/leaf/icon/no-padding/svg/Leaf Icon.svg"
           ]
         },
         "padding": {
           "png": [
-            "assets/logos/leaf/icon/padding/png/Leaf Icon - Coral.png",
-            "assets/logos/leaf/icon/padding/png/Leaf Icon - Negative.png",
+            "assets/logos/leaf/icon/padding/png/Leaf Icon - Black.png",
+            "assets/logos/leaf/icon/padding/png/Leaf Icon - White.png",
             "assets/logos/leaf/icon/padding/png/Leaf Icon.png"
           ],
           "svg": [
-            "assets/logos/leaf/icon/padding/svg/Leaf Icon - Coral.svg",
-            "assets/logos/leaf/icon/padding/svg/Leaf Icon - Negative.svg",
+            "assets/logos/leaf/icon/padding/svg/Leaf Icon - Black.svg",
+            "assets/logos/leaf/icon/padding/svg/Leaf Icon - White.svg",
             "assets/logos/leaf/icon/padding/svg/Leaf Icon.svg"
           ]
         }
@@ -160,25 +160,25 @@
       "logo": {
         "no-padding": {
           "png": [
-            "assets/logos/leaf/logo/no-padding/png/Leaf - Coral.png",
-            "assets/logos/leaf/logo/no-padding/png/Leaf - Negative.png",
+            "assets/logos/leaf/logo/no-padding/png/Leaf - Black.png",
+            "assets/logos/leaf/logo/no-padding/png/Leaf - White.png",
             "assets/logos/leaf/logo/no-padding/png/Leaf.png"
           ],
           "svg": [
-            "assets/logos/leaf/logo/no-padding/svg/Leaf - Coral.svg",
-            "assets/logos/leaf/logo/no-padding/svg/Leaf - Negative.svg",
+            "assets/logos/leaf/logo/no-padding/svg/Leaf - Black.svg",
+            "assets/logos/leaf/logo/no-padding/svg/Leaf - White.svg",
             "assets/logos/leaf/logo/no-padding/svg/Leaf.svg"
           ]
         },
         "padding": {
           "png": [
-            "assets/logos/leaf/logo/padding/png/Leaf - Coral.png",
-            "assets/logos/leaf/logo/padding/png/Leaf - Negative.png",
+            "assets/logos/leaf/logo/padding/png/Leaf - Black.png",
+            "assets/logos/leaf/logo/padding/png/Leaf - White.png",
             "assets/logos/leaf/logo/padding/png/Leaf.png"
           ],
           "svg": [
-            "assets/logos/leaf/logo/padding/svg/Leaf - Coral.svg",
-            "assets/logos/leaf/logo/padding/svg/Leaf - Negative.svg",
+            "assets/logos/leaf/logo/padding/svg/Leaf - Black.svg",
+            "assets/logos/leaf/logo/padding/svg/Leaf - White.svg",
             "assets/logos/leaf/logo/padding/svg/Leaf.svg"
           ]
         }

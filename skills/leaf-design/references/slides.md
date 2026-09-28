@@ -18,7 +18,8 @@ Every value below is exact. Copy it; don't approximate it.
 - **No author.** Never put an author's, presenter's or owner's name on any
   slide. Decks ship under the Leaf or team brand.
 - **Assets.** Resolve logos and the Leaf icon through `find-icon` — the black,
-  no-padding SVG exports — and inline the SVG. Never recolour or redraw.
+  no-padding SVG exports (`<Name> - Black.svg`: `Leaf - Black.svg`,
+  `Leaf Icon - Black.svg`) — and inline the SVG. The unsuffixed files are Coral. Never recolour or redraw.
 
 ## 2. Canvas and chrome
 
