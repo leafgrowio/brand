@@ -328,9 +328,11 @@
       "amazon-ads": {
         "no-padding": {
           "png": [
+            "assets/logos/tools/amazon-ads/no-padding/png/Amazon Ads Icon.png",
             "assets/logos/tools/amazon-ads/no-padding/png/Amazon Ads.png"
           ],
           "svg": [
+            "assets/logos/tools/amazon-ads/no-padding/svg/Amazon Ads Icon.svg",
             "assets/logos/tools/amazon-ads/no-padding/svg/Amazon Ads.svg"
           ]
         }
@@ -394,9 +396,11 @@
       "canva": {
         "no-padding": {
           "png": [
+            "assets/logos/tools/canva/no-padding/png/Canva Icon.png",
             "assets/logos/tools/canva/no-padding/png/Canva.png"
           ],
           "svg": [
+            "assets/logos/tools/canva/no-padding/svg/Canva Icon.svg",
             "assets/logos/tools/canva/no-padding/svg/Canva.svg"
           ]
         }
@@ -622,9 +626,11 @@
       "meta": {
         "no-padding": {
           "png": [
+            "assets/logos/tools/meta/no-padding/png/Meta Icon.png",
             "assets/logos/tools/meta/no-padding/png/Meta.png"
           ],
           "svg": [
+            "assets/logos/tools/meta/no-padding/svg/Meta Icon.svg",
             "assets/logos/tools/meta/no-padding/svg/Meta.svg"
           ]
         }
@@ -632,6 +638,7 @@
       "microsoft-advertising": {
         "no-padding": {
           "png": [
+            "assets/logos/tools/microsoft-advertising/no-padding/png/Microsoft Advertising Icon.png",
             "assets/logos/tools/microsoft-advertising/no-padding/png/Microsoft Advertising.png"
           ],
           "svg": [
