@@ -80,7 +80,7 @@ Current groups:
 - `signal`
 - `stores`
 - `strategy`
-- `tools` — a cache of the third-party tool marks Leaf uses most (Shopify, Meta, Google Ads, Klaviyo, LinkedIn, Stripe, Slack, Notion and ~30 more), one folder per tool under `tools/<tool>/no-padding/`, SVG plus a PNG rendered from it. Anything not cached is looked up in the gilbarbara/logos collection, then Brandfetch. Nominative use only; see `system/DESIGN.md` › Logos › Tool marks.
+- `tools` — a cache of the third-party tool marks Leaf uses most (Shopify, Meta, Google Ads, Klaviyo, LinkedIn, Stripe, Slack, Notion and ~35 more; sources in `tools/SOURCES.md`), one folder per tool under `tools/<tool>/no-padding/`, SVG plus a PNG rendered from it. Anything not cached is looked up in the gilbarbara/logos collection, then Brandfetch. Nominative use only; see `system/DESIGN.md` › Logos › Tool marks.
 
 Most service and property logo groups include both `padding/` and `no-padding/` export modes, each with `png/` and `svg/` folders. Use `padding/` when the asset should carry its own safe area; the margin is equal to 50% of the Leaf icon. Use `no-padding/` inside applications, components, navigation, cards, and watermarks where the layout already controls spacing.
 
