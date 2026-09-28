@@ -103,7 +103,7 @@ usage rules.
 Third-party marks (Shopify, Slack, Klaviyo, Google Ads…) resolve in this order,
 never from memory:
 
-1. **The cache** — Leaf's `tools` group in the brand repo: the 39 marks decks use
+1. **The cache** — Leaf's `tools` group in the brand repo: the 45 marks decks use
    most, `<Name>.svg` (full logo) and `<Name> Icon.svg` (square mark), each with
    a PNG. Use the Icon for the icon slot.
 2. **The gilbarbara/logos collection** (CC0 files, pinned to `TOOL_LOGOS_REF`;

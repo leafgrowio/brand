@@ -325,6 +325,16 @@
           ]
         }
       },
+      "amazon-ads": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/amazon-ads/no-padding/png/Amazon Ads.png"
+          ],
+          "svg": [
+            "assets/logos/tools/amazon-ads/no-padding/svg/Amazon Ads.svg"
+          ]
+        }
+      },
       "anthropic": {
         "no-padding": {
           "png": [
@@ -371,6 +381,16 @@
           ]
         }
       },
+      "bigquery": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/bigquery/no-padding/png/BigQuery Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/bigquery/no-padding/svg/BigQuery Icon.svg"
+          ]
+        }
+      },
       "canva": {
         "no-padding": {
           "png": [
@@ -396,9 +416,11 @@
       "cookiebot": {
         "no-padding": {
           "png": [
+            "assets/logos/tools/cookiebot/no-padding/png/Cookiebot Icon.png",
             "assets/logos/tools/cookiebot/no-padding/png/Cookiebot.png"
           ],
           "svg": [
+            "assets/logos/tools/cookiebot/no-padding/svg/Cookiebot Icon.svg",
             "assets/logos/tools/cookiebot/no-padding/svg/Cookiebot.svg"
           ]
         }
@@ -412,6 +434,18 @@
           "svg": [
             "assets/logos/tools/dbt/no-padding/svg/dbt Icon.svg",
             "assets/logos/tools/dbt/no-padding/svg/dbt.svg"
+          ]
+        }
+      },
+      "facebook": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/facebook/no-padding/png/Facebook Icon.png",
+            "assets/logos/tools/facebook/no-padding/png/Facebook.png"
+          ],
+          "svg": [
+            "assets/logos/tools/facebook/no-padding/svg/Facebook Icon.svg",
+            "assets/logos/tools/facebook/no-padding/svg/Facebook.svg"
           ]
         }
       },
@@ -575,6 +609,16 @@
           ]
         }
       },
+      "looker-studio": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/looker-studio/no-padding/png/Looker Studio Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/looker-studio/no-padding/svg/Looker Studio Icon.svg"
+          ]
+        }
+      },
       "meta": {
         "no-padding": {
           "png": [
@@ -582,6 +626,16 @@
           ],
           "svg": [
             "assets/logos/tools/meta/no-padding/svg/Meta.svg"
+          ]
+        }
+      },
+      "microsoft-advertising": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/microsoft-advertising/no-padding/png/Microsoft Advertising.png"
+          ],
+          "svg": [
+            "assets/logos/tools/microsoft-advertising/no-padding/svg/Microsoft Advertising.svg"
           ]
         }
       },
@@ -600,9 +654,11 @@
       "onetrust": {
         "no-padding": {
           "png": [
+            "assets/logos/tools/onetrust/no-padding/png/OneTrust Icon.png",
             "assets/logos/tools/onetrust/no-padding/png/OneTrust.png"
           ],
           "svg": [
+            "assets/logos/tools/onetrust/no-padding/svg/OneTrust Icon.svg",
             "assets/logos/tools/onetrust/no-padding/svg/OneTrust.svg"
           ]
         }
@@ -616,6 +672,16 @@
           "svg": [
             "assets/logos/tools/pinterest/no-padding/svg/Pinterest Icon.svg",
             "assets/logos/tools/pinterest/no-padding/svg/Pinterest.svg"
+          ]
+        }
+      },
+      "postgresql": {
+        "no-padding": {
+          "png": [
+            "assets/logos/tools/postgresql/no-padding/png/PostgreSQL Icon.png"
+          ],
+          "svg": [
+            "assets/logos/tools/postgresql/no-padding/svg/PostgreSQL Icon.svg"
           ]
         }
       },
@@ -646,20 +712,24 @@
       "slack": {
         "no-padding": {
           "png": [
-            "assets/logos/tools/slack/no-padding/png/Slack Icon.png"
+            "assets/logos/tools/slack/no-padding/png/Slack Icon.png",
+            "assets/logos/tools/slack/no-padding/png/Slack.png"
           ],
           "svg": [
-            "assets/logos/tools/slack/no-padding/svg/Slack Icon.svg"
+            "assets/logos/tools/slack/no-padding/svg/Slack Icon.svg",
+            "assets/logos/tools/slack/no-padding/svg/Slack.svg"
           ]
         }
       },
       "snapchat": {
         "no-padding": {
           "png": [
-            "assets/logos/tools/snapchat/no-padding/png/Snapchat Icon.png"
+            "assets/logos/tools/snapchat/no-padding/png/Snapchat Icon.png",
+            "assets/logos/tools/snapchat/no-padding/png/Snapchat.png"
           ],
           "svg": [
-            "assets/logos/tools/snapchat/no-padding/svg/Snapchat Icon.svg"
+            "assets/logos/tools/snapchat/no-padding/svg/Snapchat Icon.svg",
+            "assets/logos/tools/snapchat/no-padding/svg/Snapchat.svg"
           ]
         }
       },
@@ -678,9 +748,11 @@
       "stripe": {
         "no-padding": {
           "png": [
+            "assets/logos/tools/stripe/no-padding/png/Stripe Icon.png",
             "assets/logos/tools/stripe/no-padding/png/Stripe.png"
           ],
           "svg": [
+            "assets/logos/tools/stripe/no-padding/svg/Stripe Icon.svg",
             "assets/logos/tools/stripe/no-padding/svg/Stripe.svg"
           ]
         }
@@ -688,9 +760,11 @@
       "supabase": {
         "no-padding": {
           "png": [
+            "assets/logos/tools/supabase/no-padding/png/Supabase Icon.png",
             "assets/logos/tools/supabase/no-padding/png/Supabase.png"
           ],
           "svg": [
+            "assets/logos/tools/supabase/no-padding/svg/Supabase Icon.svg",
             "assets/logos/tools/supabase/no-padding/svg/Supabase.svg"
           ]
         }
@@ -722,9 +796,11 @@
       "woocommerce": {
         "no-padding": {
           "png": [
+            "assets/logos/tools/woocommerce/no-padding/png/WooCommerce Icon.png",
             "assets/logos/tools/woocommerce/no-padding/png/WooCommerce.png"
           ],
           "svg": [
+            "assets/logos/tools/woocommerce/no-padding/svg/WooCommerce Icon.svg",
             "assets/logos/tools/woocommerce/no-padding/svg/WooCommerce.svg"
           ]
         }
@@ -742,10 +818,12 @@
       "youtube": {
         "no-padding": {
           "png": [
-            "assets/logos/tools/youtube/no-padding/png/YouTube Icon.png"
+            "assets/logos/tools/youtube/no-padding/png/YouTube Icon.png",
+            "assets/logos/tools/youtube/no-padding/png/YouTube.png"
           ],
           "svg": [
-            "assets/logos/tools/youtube/no-padding/svg/YouTube Icon.svg"
+            "assets/logos/tools/youtube/no-padding/svg/YouTube Icon.svg",
+            "assets/logos/tools/youtube/no-padding/svg/YouTube.svg"
           ]
         }
       }
