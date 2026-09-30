@@ -116,6 +116,7 @@ These rules apply to every agent session here and in the `leaf` plugin repo (`le
 1. **Commit after every change.** When an edit is done and its checks pass, commit it in the repo it touched before moving on — one logical change per commit, with a message that says what and why. For work spanning both repos, commit here first: the plugin's `BRAND_REPO_REF` pin must name a real commit. Never leave a session with uncommitted work. Push when the change should reach consumers or when asked.
 2. **Notion through its tools first.** Read and write Notion pages with the Notion connector tools, never by browsing when a tool covers the job.
 3. **Computer and browser only where tools fall short.** Use the browser (or computer use) only for what no tool can do — rendering `system/` at `localhost:4173` to look at a change, the Claude Design project, Notion view or sharing settings. Say why the tool was not enough.
+4. **Keep the human docs in step with the harness.** When a change alters how Leafers set up or use the harness, update the Handbook page **The Leaf harness** (the plugin's `leaf-context` **harness-handbook** slice) in the same session; when it touches how agents work with Linear, update **Company › Linear** (**leaf-linear**). Brand-only changes rarely need either; say so in one line when they don't.
 
 ## Useful Checks
 
