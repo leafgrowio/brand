@@ -114,8 +114,29 @@ footer label pinned. Don't centre with spacer divs (see §8).
 </section>
 ```
 
-The logo keeps its own aspect ratio (height 64px); it is the owner's logo, not
-always Leaf's.
+**Cover logo size: 64px tall or 320px wide, whichever is smaller.** The logo
+keeps its own aspect ratio and stays pinned at `left:128px; top:128px`; it is
+the owner's logo, not always Leaf's. Compute it from the SVG's `viewBox`
+(ratio r = width ÷ height): height = min(64, 320 ÷ r), width = height × r.
+Compact marks are height-bound; every wide service lockup is width-bound, so it
+never outweighs the Leaf logo or competes with the 128px title.
+
+| Owner (black, no padding) | viewBox | Cover size (w × h) |
+|---|---|---|
+| Leaf | 422 × 128 | 211 × 64 |
+| Leaf Signal | 829 × 146 | 320 × 56 |
+| Leaf Stores | 848 × 128 | 320 × 48 |
+| Leaf Strategy | 978 × 146 | 320 × 48 |
+| Leaf Creative | 964 × 128 | 320 × 42 |
+| Leaf Answers | 987 × 128 | 320 × 41.5 |
+| Leaf Performance | 1323 × 146 | 320 × 35 |
+
+```html
+<svg aria-label="Leaf Answers" style="position:absolute; left:128px; top:128px; width:320px; height:41.5px" viewBox="0 0 987 128">…black Answers logo…</svg>
+```
+
+Never size a wide lockup to 64px tall: Answers at 64px is 494px wide, about
+2.3 times the Leaf logo's area.
 
 ### Content slide
 
@@ -269,6 +290,7 @@ Over 824: split the slide. Never shrink type below the §4 scale to fit.
   flourishes, left-edge stripes. Lines are structural only — table rules,
   hairline borders, chart axes and gridlines.
 - More than one logo on the cover, or any logo but the black export.
+- A cover logo taller than 64px or wider than 320px.
 - An author or presenter name.
 - A slide that looks like it came from another deck.
 - A table used for layout or for numbered steps.
@@ -322,7 +344,8 @@ Walk every slide against this before publishing, then run `review-brand-asset`
 if the Leaf plugin is installed.
 
 - [ ] Every slide on Light Stone; no Ink anywhere as a ground.
-- [ ] Cover: one black owner logo top left; title block centred; "Leaf
+- [ ] Cover: one black owner logo top left at the 128px margins, 64px tall or
+      320px wide, whichever is smaller; title block centred; "Leaf
       Confidential" in the footer row; no author.
 - [ ] Every content slide: eyebrow + title at the top margin; footer label with
       slide number; watermark bottom right at 26px, 60% opacity.
