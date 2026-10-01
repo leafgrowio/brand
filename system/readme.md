@@ -2,7 +2,7 @@
 
 The compiled, consumable form of Leaf's brand: tokens, React components, specimen cards, and an Answers UI kit, generated from the written spec in [DESIGN.md](DESIGN.md) and the two visual references ([Leaf Brand Book.dc.html](Leaf%20Brand%20Book.dc.html), [Leaf Component Library.dc.html](Leaf%20Component%20Library.dc.html)). Where anything here disagrees with DESIGN.md, DESIGN.md wins — fix both together.
 
-Version 2.3 — ratified 27 September 2026. Maintained by the Creative team (creative@leaf.fm). Versioning: patch = copy/typo/token value · minor = new component or guidance, backwards-compatible · major = a rule change that breaks existing artifacts.
+Version 2.4 — ratified 1 October 2026. Maintained by the Creative team (creative@leaf.fm). Versioning: patch = copy/typo/token value · minor = new component or guidance, backwards-compatible · major = a rule change that breaks existing artifacts.
 
 ## How to use it
 
