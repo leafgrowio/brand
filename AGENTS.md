@@ -9,7 +9,7 @@ This repo stores the brand primitives Leaf uses across products, marketing, sale
 - `assets/font/` - Mona Sans and Source Serif 4 source files, both SIL Open Font License. Mona Sans is the default system font and must be self-hosted wherever the brand letterforms matter. This folder holds the **verbatim upstream** variable fonts; `system/assets/fonts/` holds the frozen build derived from them (stylistic sets baked into the glyphs), which is what the design system ships; Source Serif 4 is an optional editorial/highlight serif.
 - `assets/icons/` - icon exports grouped by theme, icon, variation, and format.
 - `assets/logos/` - logos for Leaf and its related surfaces.
-- `system/` - the compiled Leaf design system: the ratified spec (`system/DESIGN.md`), design tokens, React components, specimen cards, and the Answers UI kit, synced to Leaf's Claude Design "Design System" project.
+- `system/` - the compiled Leaf design system: the ratified spec (`system/DESIGN.md`), design tokens, React components, specimen cards, and the Answers UI kit, published to the Leaf design system artifact on claude.ai (the org default).
 - `skills/` - standalone Claude Agent Skills (`find-icon`, `leaf-design`) so anyone with a Claude CLI setup can use the brand without the internal plugin distribution. **Synced exports, not sources**: the canonical skills live in the `leaf` plugin repo (`prompts/brand/skills/`) and are re-exported with that repo's `scripts/sync-brand-skills.sh`. Never edit skill files here (only `skills/README.md` is authored in this repo) — fix them in the plugin repo and re-sync.
 
 The repo is the source of truth for Leaf's reusable design foundations — typography, colour, iconography, logos, design tokens, usage guidance, and distribution-ready exports.
@@ -26,7 +26,7 @@ Tooling that generates, packages, or cleans these assets (icon/logo manifest gen
 - Paths are a public URL contract. This repo is consumed remotely via jsDelivr, pinned to a commit SHA (with raw.githubusercontent.com and a sparse git clone as fallbacks), so every folder and file path is effectively a stable public API. Any rename, move, or restructure is a breaking change for downstream consumers and must be coordinated with a manifest regeneration in the `leaf` plugin repo before or immediately after the change lands here. Any change to files under `assets/` — or to `system/DESIGN.md`, which the `find-icon` skill tells callers to fetch at the same pinned URL — additionally requires bumping `BRAND_REPO_REF` in the plugin repo's `brand/skills/find-icon/brand_repo.py`, since the pin is a commit SHA, not `main`. Until that bump lands, remote consumers are served the older content. The plugin repo's `scripts/sync-brand-skills.sh --check` verifies the pin.
 - Keep documentation aligned with the actual folder structure. If assets move, update `README.md` and this file together.
 - **`system/DESIGN.md` is the single written source of truth for design foundations** (colour, typography, logo usage, icon guidance, tokens). There is deliberately no root-level DESIGN.md or `book/` — both were superseded by the design system in `system/`.
-- Before doing any work inside `system/`, read `system/AGENTS.md` first (`system/CLAUDE.md` symlinks to it). It carries the editing rules, verification workflow, and the sync procedure to the Claude Design project. Changes to design foundations always land in `system/DESIGN.md` and the token/component files together, then get synced.
+- Before doing any work inside `system/`, read `system/AGENTS.md` first (`system/CLAUDE.md` symlinks to it). It carries the editing rules, verification workflow, and the publish procedure to the design system artifact. Changes to design foundations always land in `system/DESIGN.md` and the token/component files together, then get published.
 - Be careful with bulk operations under `assets/icons/`; the icon library is large and grouped by theme.
 - Before making broad edits, inventory the target folder with `find` or `rg --files` and work on a narrow subset.
 
@@ -107,7 +107,7 @@ system/
   Leaf Brand Book.dc.html / Leaf Component Library.dc.html  # visual references
 ```
 
-The `system/` tree syncs to the Claude Design project "Design System" (org default). The repo side is canonical; see `system/AGENTS.md` for the full rules and sync workflow.
+The `system/` tree publishes to the **Leaf design system** artifact (https://claude.ai/artifact/14y5teDYDyf7qVb8YTEXmM, the org default). The repo side is canonical; see `system/AGENTS.md` for the full rules and publish workflow.
 
 ## Agent Workflow
 
@@ -115,7 +115,7 @@ These rules apply to every agent session here and in the `leaf` plugin repo (`le
 
 1. **Commit after every change.** When an edit is done and its checks pass, commit it in the repo it touched before moving on — one logical change per commit, with a message that says what and why. For work spanning both repos, commit here first: the plugin's `BRAND_REPO_REF` pin must name a real commit. Never leave a session with uncommitted work. Push when the change should reach consumers or when asked.
 2. **Notion through its tools first.** Read and write Notion pages with the Notion connector tools, never by browsing when a tool covers the job.
-3. **Computer and browser only where tools fall short.** Use the browser (or computer use) only for what no tool can do — rendering `system/` at `localhost:4173` to look at a change, the Claude Design project, Notion view or sharing settings. Say why the tool was not enough.
+3. **Computer and browser only where tools fall short.** Use the browser (or computer use) only for what no tool can do — rendering `system/` at `localhost:4173` to look at a change, Notion view or sharing settings. The design system artifact is read and published with the Artifact tool, not the browser. Say why the tool was not enough.
 4. **Keep the human docs in step with the harness.** When a change alters how Leafers set up or use the harness, update the Handbook page **The Leaf harness** (the plugin's `leaf-context` **harness-handbook** slice) in the same session; when it touches how agents work with Linear, update **Company › Linear** (**leaf-linear**). Brand-only changes rarely need either; say so in one line when they don't.
 
 ## Useful Checks

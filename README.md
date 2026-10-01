@@ -15,7 +15,7 @@ skills/
 system/
 ```
 
-`system/` is the Leaf design system — the compiled, consumable form of the brand. It holds the ratified written spec (`system/DESIGN.md`, the single source of truth for design foundations), CSS design tokens (`system/styles.css` + `system/tokens/`), a React component library, foundation specimen cards, an interactive brand book and component library (`system/Leaf Brand Book.dc.html`, `system/Leaf Component Library.dc.html`), and the Answers UI kit. It syncs to Leaf's Claude Design "Design System" project, where it grounds design generation across the org. Start with `system/readme.md` for the guide and manifest; agents should read `system/AGENTS.md` before making changes there.
+`system/` is the Leaf design system — the compiled, consumable form of the brand. It holds the ratified written spec (`system/DESIGN.md`, the single source of truth for design foundations), CSS design tokens (`system/styles.css` + `system/tokens/`), a React component library, foundation specimen cards, an interactive brand book and component library (`system/Leaf Brand Book.dc.html`, `system/Leaf Component Library.dc.html`), and the Answers UI kit. It publishes to the **Leaf design system** artifact on claude.ai (https://claude.ai/artifact/14y5teDYDyf7qVb8YTEXmM, the organisation's default design system), where it grounds decks and designs across the org. Start with `system/readme.md` for the guide and manifest; agents should read `system/AGENTS.md` before making changes there.
 
 ### Font
 
@@ -122,7 +122,7 @@ Asset tooling — the icon and logo manifest generators and export cleanup scrip
 
 ## Agent Setup
 
-This repo includes `AGENTS.md` for agent-facing instructions, with `CLAUDE.md` as a symlink to the same file so Claude-compatible tooling reads the same guidance. The design system carries its own nested pair — `system/AGENTS.md` (and `system/CLAUDE.md` symlinked to it) — with the editing rules, verification workflow, and Claude Design sync procedure for that folder. Any agent (Claude Code, Codex, or otherwise) working under `system/` must follow it.
+This repo includes `AGENTS.md` for agent-facing instructions, with `CLAUDE.md` as a symlink to the same file so Claude-compatible tooling reads the same guidance. The design system carries its own nested pair — `system/AGENTS.md` (and `system/CLAUDE.md` symlinked to it) — with the editing rules, verification workflow, and the publish procedure to the design system artifact for that folder. Any agent (Claude Code, Codex, or otherwise) working under `system/` must follow it.
 
 ## Design System
 
@@ -133,4 +133,4 @@ The foundations that used to be aspirational here now live in `system/` as a wor
 - **Components** — 18 React primitives across forms, data, feedback, navigation, and overlays, each with typed props, a usage prompt, and a rendered specimen card.
 - **Answers UI kit** — `system/ui_kits/answers/index.html`, an interactive recreation of Leaf's product surface composed from the primitives.
 
-Changes follow the governance in `system/DESIGN.md` (patch/minor/major versioning, Creative team review via creative@leaf.fm) and sync from this repo to the Claude Design project — see `system/AGENTS.md` for the workflow.
+Changes follow the governance in `system/DESIGN.md` (patch/minor/major versioning, Creative team review via creative@leaf.fm) and publish from this repo to the Leaf design system artifact — see `system/AGENTS.md` for the workflow.

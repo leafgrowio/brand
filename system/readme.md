@@ -84,11 +84,11 @@ Where the visual references disagreed with DESIGN.md, DESIGN.md won: breadcrumb 
 
 ## Keeping it in sync
 
-This folder is canonical; the Claude Design project is a build target. Every change lands here first (spec + files together, verified by rendering), then syncs incrementally to the project. The full workflow, editing rules, and guardrails live in [AGENTS.md](AGENTS.md) — read it before changing anything in this folder.
+This folder is canonical; the **Leaf design system** artifact (https://claude.ai/artifact/14y5teDYDyf7qVb8YTEXmM, the org default) is a build target. Every change lands here first (spec + files together, verified by rendering), then publishes incrementally to the artifact. The full workflow, editing rules, and guardrails live in [AGENTS.md](AGENTS.md) — read it before changing anything in this folder.
 
-## Turning it on in Claude Design
+## The live components
 
-The component cards are static specimens, so they render with or without the generated bundle. Once this project is synced to a Claude Design design-system project (type is set at creation) and the app's self-check has compiled `_ds_bundle.js` and reported the `<Namespace>`, any card can be switched to mount the live component instead: `const { Button } = window.<Namespace>`. Do not hand-write `_ds_bundle.js`, `_ds_manifest.json`, `_adherence.oxlintrc.json`, or a barrel `index.js` — they are generated.
+The component cards here are static specimens, so they render anywhere. In the design system artifact the components are also compiled into `project/components/bundle.js`, which assigns `window.DesignSystem_50c586`; its previews and any page built on the system mount the live component from there (`const { Button } = window.DesignSystem_50c586`). The artifact's page generates `project/api/…`, `project/tokens.css` and `project/manifest.json` itself: never hand-write them.
 
 ## Sources
 
