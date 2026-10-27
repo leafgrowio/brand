@@ -9,10 +9,10 @@ Lookup order — stop at the first hit:
 2. The gilbarbara/logos collection (CC0 files; the marks stay their owners'
    trademarks), read from its `logos.json` catalogue pinned to a commit
    (`TOOL_LOGOS_REF`), matched on name and shortname.
-3. Not found in either: the result's `next_step` says to try the Brandfetch
-   connector (the plugin's MCP server: brand_search, then get_brand_data; take the
-   dark-theme SVG; it spends shared paid credits), and carries an `ask_user` line
-   for when Brandfetch has nothing either. The calling agent never redraws a logo
+3. Not found in either: the result carries an `ask_user` line asking the person
+   to upload the official file, and a `next_step` saying to flag the missing
+   mark as harness feedback so it is added to the cache. (Brandfetch was
+   removed from the lookup for cost.) The calling agent never redraws a logo
    or substitutes a look-alike.
 
 Stdlib only. Output is JSON on stdout.
@@ -50,12 +50,11 @@ TOOL_LOGOS_RAW = f"https://raw.githubusercontent.com/{TOOL_LOGOS_REPO}/{TOOL_LOG
 TOOL_LOGOS_GIT = f"https://github.com/{TOOL_LOGOS_REPO}.git"
 TOOL_LOGOS_LICENCE = "CC0-1.0 (files); marks remain their owners' trademarks — nominative use only"
 
-BRANDFETCH_STEP = (
-    "Not cached and not in the collection. Try the Brandfetch connector: brand_search "
-    "(free) to confirm the domain, then one get_brand_data call (1 shared credit). Use an "
-    "svg-format file of type 'symbol' (square mark) or 'logo'; prefer theme 'dark' "
-    "(Brandfetch's theme names the artwork, so 'light' files are often white) and reject "
-    "any file whose fills are all white. If Brandfetch has nothing, ask the person to upload."
+NOT_FOUND_STEP = (
+    "Not cached and not in the collection. Ask the person to upload the official logo "
+    "(ask_user), then log the missing mark as harness feedback with keep-memory "
+    "('tool mark missing from the cache: <tool>') so it is sourced and added to the "
+    "brand repo's tools group. No paid logo service is part of the lookup."
 )
 
 ASK_USER = (
@@ -224,13 +223,13 @@ def main() -> None:
         out.update(status="unreachable", error=err,
                    catalogue_url=f"{TOOL_LOGOS_CDN}/logos.json",
                    hint=("This environment cannot reach the collection. Try the catalogue URL "
-                         "with another web tool, or go straight to Brandfetch."),
-                   next_step=BRANDFETCH_STEP,
+                         "with another web tool, else ask the person to upload."),
+                   next_step=NOT_FOUND_STEP,
                    ask_user=ASK_USER.format(tool=args.tool))
         print(json.dumps(out, indent=2))
         return
     if not res["matches"]:
-        out.update(status="not_found", next_step=BRANDFETCH_STEP,
+        out.update(status="not_found", next_step=NOT_FOUND_STEP,
                    ask_user=ASK_USER.format(tool=args.tool))
         print(json.dumps(out, indent=2))
         return

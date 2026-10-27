@@ -205,10 +205,9 @@ else.
 Cards and emphasis panels carry one black line icon each (DESIGN.md ›
 Iconography), resolved with `find-icon` and inlined as SVG — or, for a card naming a
 tool, that tool's official mark via `find-icon` (Leaf's cached `tools` group —
-prefer its `Icon` file — then the gilbarbara/logos collection, then
-Brandfetch), uploaded as an image. If
-the lookup finds nothing, ask the person to upload the official logo; never
-draw one. Every
+prefer its `Icon` file — then the gilbarbara/logos collection), uploaded as
+an image. If the lookup finds nothing, ask the person to upload the official
+logo and flag the missing mark (`find-icon` says how); never draw one. Every
 card in a row takes one or none does; pick each for what its card says.
 
 - **Card** — the icon first in the card's column, 92px (`width:93px;

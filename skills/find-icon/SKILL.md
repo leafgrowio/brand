@@ -99,7 +99,7 @@ the raw URL). Use **padding** exports when the logo stands alone; use
 spacing is already controlled — see the design spec for the full spacing and
 usage rules.
 
-## Tool logos: cache, collection, Brandfetch, then ask
+## Tool logos: cache, collection, then ask
 
 Third-party marks (Shopify, Slack, Klaviyo, Google Ads…) resolve in this order,
 never from memory:
@@ -109,15 +109,14 @@ never from memory:
    a PNG. Use the Icon for the icon slot.
 2. **The gilbarbara/logos collection** (CC0 files, pinned to `TOOL_LOGOS_REF`;
    the marks stay their owners' trademarks) — free; best for Google products.
-3. **Brandfetch** — the plugin's `brandfetch` connector. `brand_search` is free;
-   each `get_brand_data` spends one credit on Leaf's shared account, so use it
-   only when 1 and 2 miss, once per brand. Take an `svg` file of type `symbol`
-   (square) or `logo`. Its `theme` names the artwork, not the ground: on Leaf's
-   light grounds take the **dark** file and reject any file whose fills are all
-   white. Its `src` URLs are credentialed: fetch them as returned (browser pane
-   when the shell has no network), never print or edit them.
-4. **Ask the person to upload** the official logo, using the `ask_user` line.
-   Never redraw, trace or substitute a look-alike.
+3. **Ask the person to upload** the official logo, using the `ask_user` line.
+   Never redraw, trace or substitute a look-alike. Then log the missing mark as
+   harness feedback with `keep-memory` ("tool mark missing from the cache:
+   <tool>") so Gilbert sources it and adds it to the brand repo's `tools`
+   group. Don't ask the person to chase it.
+
+There is no paid logo service in the lookup: Brandfetch was removed for cost.
+Don't reach for one, or for logo-scraping sites, to fill a gap.
 
 Steps 1–2 are one command:
 
@@ -128,10 +127,10 @@ python3 <this skill's directory>/find_tool_logo.py "slack" --fetch
 
 It returns JSON with a `status`: `found` (use `recommended`; `url` is pinned,
 `--fetch` downloads it), `candidates` (no exact match — confirm the tool first),
-`not_found` (follow `next_step`: Brandfetch, then `ask_user`), or `unreachable`
-(this environment can't reach the collection — go to Brandfetch). A mark found
-in steps 2–4 is used for the session; if it will recur, suggest caching it in
-the brand repo's `tools` group.
+`not_found` (follow `next_step`: `ask_user`, then flag it), or `unreachable`
+(this environment can't reach the collection — try its catalogue URL with
+another web tool, then ask). A mark found in steps 2–3 is used for the
+session; the feedback flag is how it reaches the cache.
 
 Use marks as shipped, in their own colours, sized as icons (spec: Logos › Tool
 marks).
