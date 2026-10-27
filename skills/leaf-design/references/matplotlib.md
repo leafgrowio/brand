@@ -137,7 +137,7 @@ glyphs.
 
 ## Rebuilding the fonts
 
-The statics are built by `brand/tools/subset_fonts.py` in the internal
-`leaf` plugin repo (same tool as the artifact woff2) from the canonical
-variable font in `leafgrowio/brand`. Rebuild there when the brand font
-changes; never hand-edit or re-cut them ad hoc.
+The statics are built by `tools/subset_fonts.py` in the `leafgrowio/brand`
+repo (same tool as the artifact woff2; in the Leaf plugin repo it sits at
+`brand/tools/`) from the canonical variable font there. Rebuild with it when the
+brand font changes; never hand-edit or re-cut them ad hoc.

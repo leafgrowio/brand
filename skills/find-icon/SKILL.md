@@ -1,6 +1,6 @@
 ---
 name: find-icon
-description: "Resolve a natural-language description (or a theme/name) to an exact Leaf icon or logo asset path — SVG or PNG, in the right colour variation — for generating branded documents, decks, banners, Notion pages, or UI mockups; when a human is choosing, it also previews candidate icons visually, guides the colour-variation pick for the target surface, then hands the picked asset to the surface builder (in the Leaf plugin, the saville skill — which also builds Notion page covers and gallery cards). Use whenever a task needs a Leaf-brand icon or logo file, not a description of one."
+description: "Resolve a description or name to an exact Leaf icon or logo file (SVG/PNG, right colour variation) for decks, banners, Notion pages and mockups, with a visual picker when a person is choosing. Use whenever a task needs a Leaf icon, Leaf logo or tool logo file, not a description of one."
 ---
 
 # Find Icon
@@ -43,9 +43,9 @@ calling flow with questions.
 **Pick mode (interactive — default when a human asked).** A person asked for
 an icon directly, or the choice is ambiguous (multiple plausible candidates,
 unknown target surface): run a guided visual flow. Search first, ask later —
-the user sees candidates before being asked anything. Full ladder (widget vs
-gallery vs bare CLI, variation selector, hand-off) is in
-`references/pick-mode.md`, anchored on this skill's own directory.
+the person sees candidates before being asked anything. Read
+`references/pick-mode.md` (in this skill's own directory) before showing
+candidates: it has the two-rung picker, the variation step and the hand-off.
 
 ## Icons: run the CLI
 
@@ -104,7 +104,7 @@ usage rules.
 Third-party marks (Shopify, Slack, Klaviyo, Google Ads…) resolve in this order,
 never from memory:
 
-1. **The cache** — Leaf's `tools` group in the brand repo: the 45 marks decks use
+1. **The cache** — Leaf's `tools` group in the brand repo: the marks decks use
    most, `<Name>.svg` (full logo) and `<Name> Icon.svg` (square mark), each with
    a PNG. Use the Icon for the icon slot.
 2. **The gilbarbara/logos collection** (CC0 files, pinned to `TOOL_LOGOS_REF`;
@@ -141,7 +141,7 @@ marks).
   surfaces (default), `white` on Ink/dark. Never recolour, add fills, or
   apply effects.
 - Prefer SVG; PNG only when raster is required.
-- **In sandboxed artifacts** (Chat/Cowork), assets cannot be hotlinked —
+- **In sandboxed artifacts** (chat and the Claude app), assets cannot be hotlinked —
   fetch the SVG and inline its markup. The `leaf-design` skill carries the
   artifact kit the inlined icon should land inside.
 - Everything else — sizes, category-tile and banner conventions, logo
@@ -149,29 +149,13 @@ marks).
   the `design` slice of `leaf-context`). Check it before placing an asset
   somewhere unusual.
 
-## Hand-off
-
-This skill resolves assets; it does not build surfaces. Pass the picked icon
-straight to the surface builder (`saville`, if the plugin is installed) or
-compose it ad hoc against the design spec — never place it on a surface that
-violates the spec. Full ladder (when to ask, who owns which surface) is
-`references/pick-mode.md`'s Step 4.
-
 ## Rules
 
-- **Never hand-author selector markup.** Gallery/widget UIs are premade;
-  `find_icon.py` generates them. Run one command and present the output —
-  never write, adapt, or splice gallery/widget HTML by hand. Details in
-  `references/pick-mode.md`.
-- Never draw a third-party logo. Resolve it with `find_tool_logo.py`; if it
-  is not found, ask the person to upload the official file.
-- Never fabricate an icon or logo that does not exist in the manifest — an
-  empty result means say so, not substitute something close.
-- **Never recolour, re-export, or resize** an SVG/PNG found through this
-  skill. If a needed variation does not exist (e.g. a colour outside
-  black/white), say so rather than improvising one.
-- Always fetch via `brand_repo` (or `--fetch`) — never assume an asset
-  already exists on disk.
-- Logos and Leaf's core icon carry brand meaning — check the design spec
-  before using them somewhere unusual (outside Leaf-owned surfaces, or
-  altered).
+- Never hand-author selector markup; `find_icon.py` generates it
+  (`references/pick-mode.md`).
+- Never draw a third-party logo, and never fabricate an icon or logo that isn't
+  in the manifest: an empty result means say so, not substitute something close.
+- Never recolour, re-export or resize an SVG/PNG from this skill. If a needed
+  variation doesn't exist, say so rather than improvising one.
+- Logos and Leaf's core icon carry brand meaning: check the design spec before
+  using them somewhere unusual (outside Leaf-owned surfaces, or altered).

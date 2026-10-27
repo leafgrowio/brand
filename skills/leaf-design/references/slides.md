@@ -2,11 +2,14 @@
 
 Read this whole page before writing a single slide, whatever builds the deck
 (the Slides artifact type, inline HTML, a .pptx, Figma). It is the complete set
-of deck decisions; `SKILL.md`'s hard rules still apply underneath it, and
-`system/DESIGN.md` (the **design** slice) wins where they disagree — say so, so
-this page gets fixed.
+of deck-specific decisions; the general rules in `rules.md` (Coral/ground table,
+tables, numbers, voice) still apply underneath it, and `system/DESIGN.md` (the
+**design** slice) wins where they disagree — say so, so this page gets fixed.
 
 Every value below is exact. Copy it; don't approximate it.
+
+*Verified against the Slides artifact type on a date unknown — re-verify the
+§8 renderer quirks and the font name before relying on them.*
 
 ## 1. Before you build
 
@@ -56,13 +59,13 @@ Only these values appear on a slide:
 | Eyebrows | Coral `#FB5E48` (the ratified exception on Light Stone) — or Warm Grey `#656565` on a slide whose title carries a Coral phrase |
 | Title emphasis | Coral `#FB5E48` on one phrase of a `slide-display`, `slide-h1` or `slide-h2` title, on Light Stone or Canvas only — never on Stone `#F2E8E1` or the Coral tint |
 
-No Aqua, no Canvas-on-Ink text (both are dark-mode only). No secondary or
-Coral-ramp colour as text. Emphasis never comes from a dark fill.
+The general copy-colour and Coral-on-ground rules are in `rules.md`; nothing
+outside this table appears on a slide.
 
 **One piece of Coral type per slide.** Either the Coral eyebrow, or one Coral
-phrase in the title (the title-emphasis exception, DESIGN.md › Copy colour) —
-never both. When the title takes the phrase, the eyebrow turns Warm Grey. The
-phrase is a clause or a few words, under half the title, with the rest in Ink:
+phrase in the title — never both. When the title takes the phrase, the eyebrow
+turns Warm Grey. The phrase is a clause or a few words, under half the title,
+with the rest in Ink:
 
 ```html
 <p style="font-size:28px; font-weight:500; line-height:1.4; color:#656565">The thesis</p>
@@ -70,7 +73,7 @@ phrase is a clause or a few words, under half the title, with the rest in Ink:
 ```
 
 A statement panel that carries the emphasised phrase is Canvas with a hairline,
-never Stone or the Coral tint (Coral fails on both).
+never Stone or the Coral tint.
 
 ## 4. Type
 
@@ -190,15 +193,12 @@ else.
   phrase in `<b>`. Rows are `display:flex; gap:40px; align-items:center` (the
   disc is taller than a line, so centre it, never baseline), 36px apart, so the
   list fills the slide.
-- **Tables** — only for real data, where every column carries its own
-  information. Answers-kit treatment: Canvas body with a 1px
-  `rgba(23,20,18,0.1)` border; header row on **Stone `#F2E8E1`**, labels in Ink
-  at `slide-label` weight with a 2px `rgba(23,20,18,0.3)` rule beneath; body in
-  `slide-body` Ink; zebra stripe `#FBF7F4` on even rows; 1px
-  `rgba(23,20,18,0.1)` hairlines between rows, none after the last. The page,
-  header and stripe must be three visibly different fills. Set `width:N%` on
-  every first-row cell, sized to content (label column just wider than its
-  longest entry). Square corners (see §8). Row fills go on `<tr>`.
+- **Tables** — only for real data (see `rules.md` › Tables). On slides: header
+  row on **Stone `#F2E8E1`**, labels in Ink at `slide-label` weight with a 2px
+  `rgba(23,20,18,0.3)` rule beneath; body in `slide-body` Ink; zebra stripe
+  `#FBF7F4` on even rows. Set `width:N%` on every first-row cell, sized to
+  content (label column just wider than its longest entry). Square corners (see
+  §8). Row fills go on `<tr>`.
 
 ### Icon slot
 
@@ -284,22 +284,18 @@ Over 824: split the slide. Never shrink type below the §4 scale to fit.
 
 ## 7. Never
 
-- An Ink or dark slide, band, card or panel.
-- Decorative lines: accent bars, short rules above headings, underline
-  flourishes, left-edge stripes. Lines are structural only — table rules,
-  hairline borders, chart axes and gridlines.
+- Anything `rules.md` forbids: an Ink or dark slide, band, card or panel;
+  decorative lines; Coral running text on Light Stone or any text on Stone;
+  fabricated metrics (mark unknowns as `[__]` placeholders and list them for the
+  person).
 - More than one logo on the cover, or any logo but the black export.
 - A cover logo taller than 64px or wider than 320px.
 - An author or presenter name.
 - A slide that looks like it came from another deck.
-- A table used for layout or for numbered steps.
-- Coral as running text on Light Stone (beyond the eyebrow or one title
-  phrase), or as any text on Stone.
-- Fabricated metrics, quotes or claims; mark unknowns as `[__]` placeholders
-  and list them for the person.
+- A table used for layout, numbered steps or categorical content that belongs
+  in labelled rows.
 - A Coral eyebrow on a slide whose title carries a Coral phrase, two Coral
   phrases, or a Coral phrase on Stone or the Coral tint.
-- A table for categorical content that belongs in labelled rows.
 - A tool logo redrawn from memory, or any mark not taken from the brand repo.
 - Two closing statements back to back.
 
