@@ -8,11 +8,19 @@ tables, numbers, voice) still apply underneath it, and `system/DESIGN.md` (the
 
 Every value below is exact. Copy it; don't approximate it.
 
-*Verified against the Slides artifact type on a date unknown — re-verify the
-§8 renderer quirks and the font name before relying on them.*
+*Verified against the Slides artifact type (release 1794461063) on 12 Nov 2026.
+Re-verify the §8 renderer quirks against the type's `format.md` when the type
+moves on.*
 
 ## 1. Before you build
 
+- **Surface.** A Leaf deck is built in **Claude Slides** (the Slides artifact
+  type) with the Leaf design system installed. Asked for PowerPoint: build it
+  in Claude Slides and export the .pptx from the deck. Asked for **Google
+  Slides**: don't build yet. Say in one line that Google Slides can't carry
+  Leaf's font or tracking and that Claude Slides exports a PDF or .pptx, then
+  ask whether they still want Google Slides. Build there only once they confirm,
+  and follow `google-slides.md` instead of this page's markup.
 - **Owner.** Decide which team or product the deck represents: Leaf, Leaf
   Signal, Leaf Answers, Leaf Stores, Leaf Performance, Leaf Creative or Leaf
   Strategy. If the content doesn't make it obvious, ask. It picks the cover logo.
@@ -58,9 +66,10 @@ Only these values appear on a slide:
 | Supporting text, footer | Warm Grey `#656565` |
 | Eyebrows | Coral `#FB5E48` (the ratified exception on Light Stone) — or Warm Grey `#656565` on a slide whose title carries a Coral phrase |
 | Title emphasis | Coral `#FB5E48` on one phrase of a `slide-display`, `slide-h1` or `slide-h2` title, on Light Stone or Canvas only — never on Stone `#F2E8E1` or the Coral tint |
+| Chart marks (fills and strokes inside a chart only, never text) | Focus series Coral `#FB5E48`; comparison Harbor `#4FA3A6`; neutral lead graphite `#C9C2BB` → `#8C857E` → `#3F3A36`; further series Marigold `#EFB75A`, Heather `#AAA2D4`, Laurel `#8EBB91`, Apricot `#F4A38F`, in that order; deltas Fern `#2F8B57` up and Ember `#C63A2B` down; gridlines Ink at 7% opacity, baseline Ink at 16% |
 
 The general copy-colour and Coral-on-ground rules are in `rules.md`; nothing
-outside this table appears on a slide.
+outside this table appears on a slide. `scripts/lint_deck.py` checks it.
 
 **One piece of Coral type per slide.** Either the Coral eyebrow, or one Coral
 phrase in the title — never both. When the title takes the phrase, the eyebrow
@@ -184,7 +193,8 @@ else.
 - **One idea per slide.** A statement beats bullets; turn lists into cards,
   steps, a table or a big number. Split an overfull slide; never shrink type.
 - **Cards.** Canvas, 1px `rgba(23,20,18,0.1)` border (or a secondary-colour
-  fill with Ink text for categories), 40–48px padding, `slide-h3` title,
+  fill with Ink text for categories), `border-radius:18px`, 40–48px padding,
+  `slide-h3` title,
   `slide-body` or 28px Warm Grey text. Flat: no shadow.
 - **Emphasis panel.** Coral tint `#FBE4DF`, Ink text. At most one per slide.
 - **Steps.** Ordered steps are rows, never a table and never a bare `<ol>`.
@@ -199,6 +209,61 @@ else.
   `#FBF7F4` on even rows. Set `width:N%` on every first-row cell, sized to
   content (label column just wider than its longest entry). Square corners (see
   §8). Row fills go on `<tr>`.
+
+### Charts
+
+A chart is a Canvas card holding a plot. The plot is one `<svg>` of **shapes
+only** — bars, lines, gridlines — and every word and number is a `<p>` beside
+or over it. Text inside an `<svg>` never takes the deck's font in the Slides
+type, so a `<text>` label falls out of Mona Sans and nothing else on the slide
+looks wrong. That is the fault this section exists to stop.
+
+- **Title states the finding** ("GA4 now records almost every order"), in the
+  slide's `slide-h2`. The card title, when two charts share a slide, is
+  `slide-h3`; never an off-scale size to make it fit.
+- **Plot host.** A `<div style="position:relative; width:…px; height:…px">` —
+  give it both, because a host with no flow child has no size of its own. The
+  `<svg>` is pinned inside it with `width`/`height` equal to its `viewBox`.
+  Space it from the title with the card's `gap`; `margin` is ignored.
+- **Marks.** Colours from the chart row in §3. One Coral series leads and the
+  comparison is Harbor or graphite; or, with many equal series, graphite
+  carries the set and Coral flags the one that matters. Lines are 5px or more
+  (2.5px at web scale, doubled). Bars are flat rectangles with a gap of about a
+  third of the bar width. No shadows, gradients or 3D.
+- **Structure.** Gridlines `stroke="#171412" stroke-opacity="0.07"
+  stroke-width="2"`, baseline the same at `0.16`. A chart filling the card
+  keeps them; a small tile (three or more across) drops gridlines and ticks
+  and bakes its key number in as a `slide-h3` figure.
+- **Labels.** Axis ticks and dates are pinned `<p>`s in the host at
+  `slide-caption` (26px / 500, Warm Grey `#656565`), y ticks right-aligned with
+  `font-variant-numeric:tabular-nums`, x labels centred on their mark with
+  `white-space:nowrap`. Five or fewer ticks per axis. Label each series
+  directly at its end; where there is no room, a legend row above the plot —
+  a 24px square swatch (`border-radius:4px`) and the name at 26px in Ink.
+- **Never colour alone.** The sentence under the chart says what the Coral
+  series shows, with the number. Source in `slide-caption` above the footer.
+
+```html
+<div style="flex:1; display:flex; flex-direction:column; gap:24px; background:#fffdfb; border:1px solid rgba(23,20,18,0.1); border-radius:18px; padding:40px">
+  <h3 style="font-size:44px; font-weight:600; line-height:1.2; letter-spacing:0.69px">EU, orders a day</h3>
+  <div style="position:relative; width:736px; height:224px">
+    <svg aria-label="Daily EU orders, 12 Oct to 10 Nov" width="672" height="162" viewBox="0 0 672 162" style="position:absolute; left:64px; top:12px">
+      <line x1="0" y1="81" x2="672" y2="81" stroke="#171412" stroke-opacity="0.07" stroke-width="2"/>
+      <rect x="3" y="76" width="16" height="85" fill="#c9c2bb"/>
+      <rect x="25" y="90" width="16" height="71" fill="#fb5e48"/>
+      …one rect per bar…
+      <line x1="0" y1="161" x2="672" y2="161" stroke="#171412" stroke-opacity="0.16" stroke-width="2"/>
+    </svg>
+    <p style="position:absolute; left:0px; top:68px; width:52px; font-size:26px; font-weight:500; line-height:26px; text-align:right; font-variant-numeric:tabular-nums; color:#656565">200</p>
+    <p style="position:absolute; left:30px; top:184px; width:90px; font-size:26px; font-weight:500; line-height:26px; text-align:center; white-space:nowrap; color:#656565">12 Oct</p>
+  </div>
+</div>
+```
+
+Compute every bar from the data in code, not by eye, and keep one `<svg>` per
+chart (52 KB at most). A chart built in matplotlib (`matplotlib.md`) can go on
+a slide as an uploaded image instead; it then carries its own labels in Leaf
+Sans, at 26px or larger on the 1920 canvas.
 
 ### Icon slot
 
@@ -279,6 +344,8 @@ Add it up before you publish, because nothing in the Slides type checks it:
 - a card ≈ padding (2 × 44) + icon (92 + 16) + `slide-h3` (53 + 16) + its text.
 - a table row ≈ 2.1 × font size per line of text.
 - a labelled row ≈ 82px; a layer-stack level ≈ 16 + 112px.
+- a chart card ≈ padding (2 × 40) + title (53 + 24) + legend row (36 + 24, if
+  any) + the plot host's height.
 
 Over 824: split the slide. Never shrink type below the §4 scale to fit.
 
@@ -298,6 +365,11 @@ Over 824: split the slide. Never shrink type below the §4 scale to fit.
   phrases, or a Coral phrase on Stone or the Coral tint.
 - A tool logo redrawn from memory, or any mark not taken from the brand repo.
 - Two closing statements back to back.
+- Text inside an `<svg>`: chart labels, ticks and legends are `<p>`s.
+- A chart colour outside the chart row in §3, or a chart colour used as text.
+- A deck built in Google Slides or as a separate .pptx without the person
+  confirming that is what they want.
+- The live deck link sent to a client. Clients get the exported PDF (§10).
 
 ## 8. Slides-renderer quirks (the Slides artifact type)
 
@@ -317,9 +389,15 @@ Learned the hard way; design around them.
   split equally.
 - **Weights** are whole hundreds only; `em` is not accepted (write tracking in
   px).
-- **Tables and SVGs don't inherit the slide's face.** Put
+- **Tables don't inherit the slide's face.** Put
   `font-family:'Mona Sans', Arial, sans-serif` and `font-size` on the `<table>`
-  (and cells), the `<svg>` and each `<text>`, or they fall out of Mona Sans.
+  itself, or it falls out of Mona Sans.
+- **Fonts never load inside an `<svg>`.** A `<text>` element renders in a
+  fallback face whatever `font-family` it carries. Keep SVGs to shapes and set
+  every label as a `<p>` over or beside the graphic (§6 › Charts).
+- **`margin` is ignored.** Space with `gap` and `padding`.
+- **A `position:relative` host with only pinned children needs `width` and
+  `height`,** or it collapses and its children pin to nothing.
 - **Install the design system, and re-install it before you ship.** A deck keeps
   a snapshot of the system's tokens and fonts from the moment it was installed;
   later system changes reach new decks only. Key the face to the installed
@@ -335,8 +413,8 @@ Learned the hard way; design around them.
 
 ## 9. Pre-publish checklist
 
-Walk every slide against this before publishing, then run `review-brand-asset`
-if the Leaf plugin is installed.
+Run the lint first (§10), then walk every slide against this before
+publishing, then run `review-brand-asset` if the Leaf plugin is installed.
 
 - [ ] Every slide on Light Stone; no Ink anywhere as a ground.
 - [ ] Cover: one black owner logo top left at the 128px margins, 64px tall or
@@ -361,3 +439,35 @@ if the Leaf plugin is installed.
 - [ ] Imported slides restyled to this page's values.
 - [ ] Every content slide inside the 824px height budget (§6a).
 - [ ] One closing statement before the seal.
+- [ ] Charts: shapes only in the `<svg>`, every label a `<p>` at 26px or more,
+      colours from the chart row, the finding in the title, the source above
+      the footer.
+- [ ] `scripts/lint_deck.py` reports no errors, and each warning is looked at.
+
+## 10. Check, then deliver
+
+**Lint every deck.** After writing or changing slides, run the lint on the
+folder that holds the deck's `project/` (the `<root>` you published from):
+
+```bash
+python3 <this skill's folder>/scripts/lint_deck.py <root>
+```
+
+It reads the slide files you already hold and checks the palette, the type
+scale and floor, footer numbering, watermark, cover logo size, the seal, table
+and chart fonts, and working notes left in speaker notes. It renders nothing.
+Leaf asks for this check on every deck, so it stands as the person's request
+where the Slides type says not to verify unless asked. Fix every error and
+republish; say which warnings you left and why. No shell in the session: walk
+§9 by hand instead and say the lint did not run.
+
+**Editing an existing deck** — a comment, a "change slide 7", a new slide —
+gets the same treatment: read this page first, make the change in the deck's
+own style, re-install the design system if the deck's copy is older than the
+system, then lint.
+
+**Deliver as a PDF.** When the deck is finished, tell the person in one line
+to export it as a PDF (Share › Export in the deck) and upload or share that
+file, rather than sending the live link. Speaker notes are readable by anyone
+who can open the deck, and they are where working notes collect. If the cover
+still says "Draft", or the lint flagged working notes, say so in the same line.

@@ -1,6 +1,6 @@
 # Leaf chart recipes (for artifacts)
 
-Downstream of `system/DESIGN.md` § Data visualization (leafgrowio/brand, v2.4). All colours by token — the kit's `leaf-tokens.css` defines every variable used here.
+Downstream of `system/DESIGN.md` § Data visualization (leafgrowio/brand, v2.5). **These recipes are for HTML artifacts.** A chart on a slide follows `slides.md` › Charts instead: the slide format takes no `var()` or classes, and text inside an `<svg>` never takes the deck's font. All colours by token — the kit's `leaf-tokens.css` defines every variable used here.
 
 ## Palette rules
 

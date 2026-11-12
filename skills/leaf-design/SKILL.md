@@ -1,6 +1,6 @@
 ---
 name: leaf-design
-description: "Use before making ANY visual at Leaf: deck, slide, one-pager, poster, social card, dashboard, chart (incl. matplotlib), HTML artifact, mockup, diagram or styled document, even if branding isn't mentioned. Routes to the right surface and carries Leaf's design tokens, artifact kit, matplotlib kit and hard rules."
+description: "Use before making OR editing ANY visual at Leaf: deck, slides, presentation (Claude Slides, Google Slides, PowerPoint), one-pager, poster, social card, dashboard, chart (incl. matplotlib), HTML artifact, mockup, diagram or styled document, even if branding isn't mentioned. Routes to the right surface and carries Leaf's design tokens, deck rulebook and lint, artifact kit, matplotlib kit and hard rules."
 ---
 
 # Leaf design
@@ -11,7 +11,7 @@ English, sentence case, mechanism before claim, no hype). This skill picks the
 surface, then gives you the rules and, for hand-built HTML, the kit.
 
 This kit is a downstream build of the Leaf design system (`system/` in
-`leafgrowio/brand`, v2.4). The canonical spec is `system/DESIGN.md` there;
+`leafgrowio/brand`, v2.5). The canonical spec is `system/DESIGN.md` there;
 in the Leaf plugin the same document is the **design** slice
 of `leaf-context`. Where this skill and the spec disagree, the spec wins.
 
@@ -19,16 +19,26 @@ of `leaf-context`. Where this skill and the spec disagree, the spec wins.
 
 | You're making | Use |
 | --- | --- |
-| A deck | The **Slides** artifact type. Read `references/slides.md` in full first. |
+| A deck, or a change to one | The **Slides** artifact type (Claude Slides). Read `references/slides.md` in full first, lint with `scripts/lint_deck.py`, deliver as a PDF export. |
+| A PowerPoint file | Build the deck in Claude Slides, then export .pptx from the deck. No separate .pptx build. |
+| A Google Slides deck | Confirm first: say what Google Slides loses and offer Claude Slides. Only once they confirm, follow `references/google-slides.md`. |
 | A poster, one-pager, mockup, or social graphic where exact pixels don't matter | The **Design** artifact type |
-| A dashboard | The **Dashboard** artifact type, with the Leaf tokens (`assets/leaf-tokens.css`) |
+| A dashboard, scorecard or metrics page | The **Data** artifact type (called Dashboard in older notes), with the Leaf tokens (`assets/leaf-tokens.css`) |
+| A report, proposal, memo or other document | The **Docs** artifact type. It has its own look and does not take the design system, so the voice and number rules are what make it Leaf's. For a designed leave-behind, use Design. |
+| A table to fill in or calculate with | The **Sheets** artifact type. No styling to apply. |
 | A chart | Python: the matplotlib kit (`references/matplotlib.md`). HTML/SVG: `references/chart-recipes.md`, plus the `dataviz` skill for method |
 | A bespoke interactive page, or anything exported at exact pixels (social cards, OG images, favicons, podcast art) | Hand-built HTML from `assets/leaf-artifact.html`, then `render-brand-asset` for the export |
 
-Typed artifacts (Slides, Design, Dashboard) carry the Leaf design system's
-fonts and tokens and export their own PDF, image or .pptx. They inherit none of
-the kit's guardrails, so every colour you type is unchecked: keep to the hex
-values in `references/rules.md`.
+Slides and Design take the Leaf design system's fonts and tokens (it is the
+org default; install it, and re-install before sharing) and export their own
+PDF, image or .pptx. They inherit none of the kit's guardrails, so every colour
+you type is unchecked: keep to the hex values in `references/rules.md`, and for
+a deck run the lint. The same holds when you are editing rather than building:
+a comment on a deck or a one-slide change still starts with `slides.md`.
+
+Anything that goes to a client leaves as an exported file (PDF by default),
+which the person uploads or shares. Never hand over the live artifact link:
+speaker notes and comments travel with it.
 
 ## Hard rules
 
@@ -76,7 +86,7 @@ or hotlinked images. Whatever the page needs travels inside it.
   content. Replace the `<title>` too: it ships as "Untitled — Leaf" and becomes
   the artifact's name on publish.
 - **`leaf-tokens.css`** — just the token block, for adding Leaf styling to an
-  existing page or a Dashboard artifact. Reference only `var(--leaf-*)`.
+  existing page or a Data artifact. Reference only `var(--leaf-*)`.
 - **`leaf-fonts-inline.css`** — Mona Sans as an embeddable `@font-face` (latin
   subset, variable weight 200–900, the five brand stylistic sets intact; ~71KB).
   Replace the `/* FONT: ... */` comment in the starter with its contents.
