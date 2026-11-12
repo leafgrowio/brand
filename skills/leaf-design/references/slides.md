@@ -227,8 +227,8 @@ looks wrong. That is the fault this section exists to stop.
   Space it from the title with the card's `gap`; `margin` is ignored.
 - **Marks.** Colours from the chart row in §3. One Coral series leads and the
   comparison is Harbor or graphite; or, with many equal series, graphite
-  carries the set and Coral flags the one that matters. Lines are 5px or more
-  (2.5px at web scale, doubled). Bars are flat rectangles with a gap of about a
+  carries the set and Coral flags the one that matters. Lines are 2.5px or more
+  (4–5px reads well on a chart that fills its card). Bars are flat rectangles with a gap of about a
   third of the bar width. No shadows, gradients or 3D.
 - **Structure.** Gridlines `stroke="#171412" stroke-opacity="0.07"
   stroke-width="2"`, baseline the same at `0.16`. A chart filling the card
