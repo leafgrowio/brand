@@ -593,7 +593,7 @@ Slides are 1920×1080 with 128px margins, set in the **Slides** type scale with 
 
 ## Governance & versioning
 
-The system is at **v2.4** — every section is ratified and locked. It stays a living document.
+The system is at **v2.5** — every section is ratified and locked. It stays a living document.
 
 - **Versioning** — patch (copy / typo / token value), minor (new component or guidance, backwards-compatible), major (a rule change that breaks existing artifacts). The brand book and component library carry the same version.
 - **Changes & exceptions** — proposals and exception requests go to the Creative team (creative@leaf.fm) for review before anything ships off-system. Merges update this doc, the brand book, and the component library together.
